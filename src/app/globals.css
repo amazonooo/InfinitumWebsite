@@ -6,3 +6,18 @@ html {
   scroll-behavior: smooth;
   color: #fff;
 }
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(228, 4%, 25%);
+  border-radius: 12px;
+  transition: .4s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #8951ff;
+}

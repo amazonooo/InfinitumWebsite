@@ -20,19 +20,19 @@ const More: FC = () => {
 		>
 			<ul className='flex flex-col gap-y-4 p-4'>
 				<li className='w-full h-full text-[14px]'>
-					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-700' href={'/'}>Помощь</Link>
+					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700' href={'/'}>Помощь</Link>
 				</li>
 				<li className='w-full h-full text-[14px]'>
-					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-700' href={'/'}>Команда проекта</Link>
+					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700' href={'/'}>Команда проекта</Link>
 				</li>
 				<li className='w-full h-full text-[14px]'>
-					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-700' href={'/'}>Банлист</Link>
+					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700' href={'/'}>Банлист</Link>
 				</li>
 				<li className='w-full h-full text-[14px]'>
-					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-700' href={'/'}>Бонусы</Link>
+					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700' href={'/'}>Бонусы</Link>
 				</li>
 				<li className='w-full h-full text-[14px]'>
-					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-700' href={'/'}>Контакты</Link>
+					<Link className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700' href={'/'}>Контакты</Link>
 				</li>
 			</ul>
 		</motion.div>
