@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Image from 'next/image'
 import More from './More'
+import ToggleSwitcher from '../toggle-switcher/ToggleSwitcher'
 
 export const FloatingNav = ({
 	navItems,
@@ -81,14 +82,14 @@ export const FloatingNav = ({
 				}}
 			>
 				<ul className='flex justify-between'>
-					<div className='text-2xl font-bold'>Logo</div>
+					<div className='text-2xl font-bold text-[#cbacf9]'>Infinitum</div>
 					<li className='flex justify-between gap-x-6 text-xl font-semibold'>
 						{navItems.map((navItem: any, idx: number) => (
 							<Link
 								key={`link=${idx}`}
 								href={navItem.link}
 								className={cn(
-									'relative dark:text-neutral-50 text-xl font-semibold items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500'
+									'relative dark:text-neutral-50 text-xl font-semibold cursor-pointer items-center  flex space-x-1 transition-colors duration-300 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-700'
 								)}
 							>
 								<span className='block sm:hidden'>{navItem.icon}</span>
@@ -98,24 +99,30 @@ export const FloatingNav = ({
 							</Link>
 						))}
 						<div
-							className='text-[14px] relative items-center  flex font-semibold dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500'
+							className='text-[14px] relative items-center  flex font-semibold transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-700'
 							onMouseEnter={() => setShow(true)}
+							onMouseLeave={() => setShow(false)}
 						>
-							<Link href={'/'}>Дополнительно</Link>
+							<Link className='z-[10]' href={'/'}>
+								Дополнительно
+							</Link>
+							{show && (
+								<div className='w-[250px] absolute left-0 top-0'>
+									<More />
+								</div>
+							)}
 						</div>
 					</li>
-					<li className='flex justify-between gap-x-6'>
-						{navButtons.map((navItem: any, idx: number) => (
-							<Link
-								key={`link=${idx}`}
-								href={'/'}
-								className={cn(
-									'relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500'
-								)}
-							>
-								<Image src={navItem.src} alt='logo' width={25} height={25} />
-							</Link>
-						))}
+					<li className='flex justify-between items-center gap-x-6'>
+						<ToggleSwitcher />
+						<Link
+							className={cn(
+								'relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-700'
+							)}
+							href={'/'}
+						>
+							<Image src={'/user.svg'} alt='logo' width={25} height={25} />
+						</Link>
 					</li>
 				</ul>
 				{/* remove this login btn */}
@@ -124,12 +131,6 @@ export const FloatingNav = ({
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
         </button> */}
 			</motion.div>
-			{show && (
-					<div onMouseLeave={() => setShow(false)}>
-						<More />
-					</div>
-				)
-			}
 		</AnimatePresence>
 	)
 }
