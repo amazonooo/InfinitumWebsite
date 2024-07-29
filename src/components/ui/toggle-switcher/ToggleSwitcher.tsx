@@ -24,10 +24,10 @@ export default function ToggleSwitcher() {
 	)
 
   if(resolvedTheme === 'dark') {
-    return <FiSun size={25} className='cursor-pointer' onClick={() => setTheme('light')} />
+    return <FiSun size={20} className='cursor-pointer' onClick={() => setTheme('light')} />
   }
 
   if (resolvedTheme === 'light') {
-    return <FiMoon size={25} className='cursor-pointer' onClick={() => setTheme('dark')} />
+    return <FiMoon size={20} className='cursor-pointer' onClick={() => setTheme('dark')} />
   }
 }

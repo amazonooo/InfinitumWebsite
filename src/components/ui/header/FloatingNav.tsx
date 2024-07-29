@@ -121,7 +121,7 @@ export const FloatingNav = ({
 							)}
 							href={'/'}
 						>
-							<Image src={'/user.svg'} alt='logo' width={25} height={25} />
+							<Image src={'/user.svg'} alt='logo' width={20} height={20} />
 						</Link>
 					</li>
 				</ul>
