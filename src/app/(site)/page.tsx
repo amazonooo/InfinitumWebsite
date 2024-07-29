@@ -1,7 +1,8 @@
+import Footer from '@/components/layout/Footer'
 import Hero from '@/components/ui/hero/Hero'
 import MainInfo from '@/components/ui/main-info/MainInfo'
 
-export default function Home() {
+export default function HomePage() {
   return (
 		<main className='h-full w-full px-5 sm:px-10 flex flex-col'>
 			<div
@@ -13,6 +14,7 @@ export default function Home() {
 			>
 				<Hero />
 				<MainInfo />
+				<Footer />
 			</div>
 		</main>
 	)

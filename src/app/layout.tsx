@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from '@/components/layout/Header'
 import { ThemeProvider } from '@/providers/theme-provider'
 import StarsCanvas from '@/components/ui/stars/Stars'
+import Footer from '@/components/layout/Footer'
 
 const inter = Inter({ subsets: ["latin"] });
 
