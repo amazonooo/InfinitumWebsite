@@ -16,7 +16,7 @@ const News: FC = () => {
 			<div className='flex flex-wrap items-center justify-center space-x-24 space-y-12 mt-16'>
 				<Card />
 			</div>
-			<Link href={'/news'} onClick={handleClick} className='bg-[#8951ff] px-16 py-4 rounded-lg mt-12'>
+			<Link href={'/news'} onClick={handleClick} className='button-primary px-16 py-4 rounded-lg mt-12'>
 				Смотреть все новости
 			</Link>
 		</div>

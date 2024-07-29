@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { FC } from 'react'
-import { FaDiscord, FaTelegram, FaTwitter } from 'react-icons/fa'
+import { FaDiscord, FaTelegram } from 'react-icons/fa'
 
 const FooterNav: FC = () => {
 	return (

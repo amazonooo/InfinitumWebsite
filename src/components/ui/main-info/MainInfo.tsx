@@ -3,20 +3,24 @@
 import { FC } from 'react'
 import Online from './online/Online'
 import News from './news/News'
+import { motion } from 'framer-motion'
+import { slideInFromLeft, slideInFromRight } from '@/utils/motion'
 
 const MainInfo: FC = () => {
   return (
-		<section
+		<motion.section
 			id='news'
 			className='grid grid-cols-4 relative'
+			initial='hidden'
+			animate='visible'
 		>
-			<div className='col-span-3'>
+			<motion.div variants={slideInFromLeft(0.8)} className='col-span-3'>
 				<News />
-			</div>
-			<aside className='col-span-1' aria-label='sidebar'>
+			</motion.div>
+			<motion.div variants={slideInFromRight(0.8)} className='col-span-1' aria-label='sidebar'>
 				<Online />
-			</aside>
-		</section>
+			</motion.div>
+		</motion.section>
 	)
 }
 

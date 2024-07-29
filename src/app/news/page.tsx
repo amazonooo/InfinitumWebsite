@@ -1,6 +1,9 @@
+'use client'
+
 import Footer from '@/components/layout/Footer'
 import Hero from '@/components/ui/hero/Hero'
 import NewsHero from './components/NewsHero'
+import News from '@/components/ui/main-info/news/News'
 
 export default function NewsPage() {
   return (
@@ -14,6 +17,7 @@ export default function NewsPage() {
 			>
 				{/* <Hero /> */}
 				<NewsHero />
+				<News />
 				<Footer />
 			</div>
 		</div>
