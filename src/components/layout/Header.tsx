@@ -10,7 +10,6 @@ const Header: FC = () => {
         backgroundImage: 'url(/header.png)'
       }}> */}
       <FloatingNav navButtons={navButtons} navItems={navItems} />
-      {/* <Hero /> */}
     </header>
   )
 }
