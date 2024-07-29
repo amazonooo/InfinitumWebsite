@@ -6,7 +6,10 @@ import News from './news/News'
 
 const MainInfo: FC = () => {
   return (
-		<section id='news' className='z-[50] grid grid-cols-4 relative'>
+		<section
+			id='news'
+			className='grid grid-cols-4 relative'
+		>
 			<div className='col-span-3'>
 				<News />
 			</div>
