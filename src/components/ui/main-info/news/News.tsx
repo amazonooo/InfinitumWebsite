@@ -16,7 +16,11 @@ const News: FC = () => {
 			<div className='flex flex-wrap items-center justify-center space-x-24 space-y-12 mt-16'>
 				<Card />
 			</div>
-			<Link href={'/news'} onClick={handleClick} className='button-primary px-16 py-4 rounded-lg mt-12'>
+			<Link
+				href={'/news'}
+				onClick={handleClick}
+				className='py-4 px-16 text-xl text-center rounded-lg cursor-pointer bg-[#8951ff] hover:bg-[#b68ef1] transition-all duration-300 hover:-translate-y-1.5 mt-12'
+			>
 				Смотреть все новости
 			</Link>
 		</div>

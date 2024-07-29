@@ -82,7 +82,9 @@ export const FloatingNav = ({
 				}}
 			>
 				<ul className='flex justify-between'>
-					<div className='text-2xl font-bold Welcome-text'>Infinitum</div>
+					<div className='text-2xl font-bold Welcome-text'>
+						<Link href={'/'}>Infinitum</Link>
+					</div>
 					<li className='flex justify-between gap-x-6 text-xl font-semibold'>
 						{navItems.map((navItem: any, idx: number) => (
 							<Link

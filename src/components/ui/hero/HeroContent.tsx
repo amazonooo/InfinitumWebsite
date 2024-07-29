@@ -29,7 +29,7 @@ const HeroContent: FC = () => {
 
 				<motion.a
 					variants={slideInFromLeft(0.7)}
-					className='py-4 px-16 text-xl text-center rounded-lg cursor-pointer max-w-[200px] button-primary'
+					className='py-4 px-16 text-xl text-center rounded-lg cursor-pointer max-w-[200px] bg-[#8951ff] hover:bg-[#b68ef1] transition-colors duration-300'
 				>
 					Играть
 				</motion.a>
