@@ -9,7 +9,7 @@ const More: FC = () => {
 		<motion.div
 			className='rounded-lg border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
 			style={{
-				backdropFilter: 'blur(16px) saturate(180%)',
+				backdropFilter: 'blur(0px) saturate(180%)',
 				backgroundColor: 'rgba(17, 25, 40, 0.75)',
 				borderRadius: '12px',
 				border: '1px solid rgba(255, 255, 255, 0.125)',

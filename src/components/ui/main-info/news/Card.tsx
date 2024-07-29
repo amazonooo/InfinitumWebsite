@@ -17,12 +17,12 @@ const Card: FC = () => {
 			{newsCard.map(news => (
 				<article
 					key={news.image}
-					className='relative z-0 select-none flex flex-col h-[460px] hover:scale-105 transition-transform duration-300 group'
+					className='relative z-0 select-none flex flex-col h-[560px] hover:scale-105 transition-transform duration-300 group'
 				>
 					<Image
 						src={news.image}
 						alt='news-img'
-						width={300}
+						width={400}
 						height={200}
 						className='mb-4 rounded-lg'
 					/>

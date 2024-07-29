@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from '@/components/layout/Header'
 import { ThemeProvider } from '@/providers/theme-provider'
+import StarsCanvas from '@/components/ui/stars/Stars'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,13 +19,16 @@ export default function RootLayout({
 }>) {
   return (
 		<html lang='en'>
-			<body className={inter.className}>
+			<body
+				className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}
+			>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='dark'
 					enableSystem
 					disableTransitionOnChange
 				>
+					<StarsCanvas />
 					<Header />
 					{children}
 				</ThemeProvider>
