@@ -24,16 +24,16 @@ export default function RootLayout({
 			<body
 				className={`${inter.className} bg-[#161616] overflow-y-scroll overflow-x-hidden`}
 			>
-				<ThemeProvider
+				{/* <ThemeProvider
 					attribute='class'
 					defaultTheme='dark'
 					enableSystem
 					disableTransitionOnChange
-				>
+				> */}
 					<StarsCanvas />
 					<Header navItems={navItems} navButtons={navButtons} />
 					{children}
-				</ThemeProvider>
+				{/* </ThemeProvider> */}
 			</body>
 		</html>
 	)

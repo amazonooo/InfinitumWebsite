@@ -6,6 +6,6 @@ export const navItems = [
 ]
 
 export const navButtons = [
-  { src: './theme.svg' },
+  { src: './discord.png' },
   { src: './user.svg' }
 ]

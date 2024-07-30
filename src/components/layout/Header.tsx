@@ -116,7 +116,14 @@ export const Header = ({
 						</div>
 					</li>
 					<li className='flex justify-between items-center gap-x-6'>
-						<ToggleSwitcher />
+						<Link
+							className={cn(
+								'relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+							)}
+							href={'/'}
+						>
+							<Image src={'/discord.png'} alt='logo' width={22} height={22} />
+						</Link>
 						<Link
 							className={cn(
 								'relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
