@@ -17,9 +17,9 @@ const MainInfo: FC = () => {
 			<motion.div variants={slideInFromLeft(0.8)} className='col-span-3'>
 				<News />
 			</motion.div>
-			<motion.div variants={slideInFromRight(0.8)} className='col-span-1' aria-label='sidebar'>
+			{/* <motion.div variants={slideInFromRight(0.8)} className='col-span-1' aria-label='sidebar'>
 				<Online />
-			</motion.div>
+			</motion.div> */}
 		</motion.section>
 	)
 }
