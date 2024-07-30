@@ -27,7 +27,7 @@ const MainInfo: FC = () => {
 			>
 				Новости
 			</motion.h1>
-			<motion.div variants={slideInFromLeft(0.8)} className='col-span-3'>
+			<motion.div variants={slideInFromLeft(0.8)}>
 				<News />
 			</motion.div>
 			<Link
