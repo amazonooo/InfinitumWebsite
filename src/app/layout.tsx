@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from '@/components/layout/Header'
+import { Header } from '@/components/layout/Header';
 import { ThemeProvider } from '@/providers/theme-provider'
 import StarsCanvas from '@/components/ui/stars/Stars'
 import Footer from '@/components/layout/Footer'
+import { navButtons, navItems } from '@/components/ui/header/navItems'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<StarsCanvas />
-					<Header />
+					<Header navItems={navItems} navButtons={navButtons} />
 					{children}
 				</ThemeProvider>
 			</body>

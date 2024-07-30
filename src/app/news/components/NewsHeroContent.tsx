@@ -9,7 +9,7 @@ const NewsHeroContent: FC = () => {
 			animate='visible'
 			className='flex items-center justify-center px-44 mt-52 w-full z-[20]'
 		>
-			<div className='flex flex-col w-full h-full justify-center items-center m-auto text-start'>
+			<div className='flex flex-col w-full h-full justify-center items-center text-start'>
 				<motion.div
 					variants={slideInFromRight(0.3)}
 					className='Welcome-box py-2 px-[7px]'
