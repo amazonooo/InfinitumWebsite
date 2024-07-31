@@ -85,13 +85,13 @@ export const Header = ({
 					<div className='text-2xl font-bold Welcome-text'>
 						<Link href={'/'}>Infinitum</Link>
 					</div>
-					<li className='flex justify-between gap-x-6 text-xl font-semibold'>
+					<li className='flex justify-between gap-x-6 font-semibold'>
 						{navItems.map((navItem: any, idx: number) => (
 							<Link
 								key={`link=${idx}`}
 								href={navItem.link}
 								className={cn(
-									'relative dark:text-neutral-50 text-xl font-semibold cursor-pointer items-center  flex space-x-1 transition-colors duration-300 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+									'relative dark:text-neutral-50 text-[14px] md:text-base font-semibold cursor-pointer items-center  flex space-x-1 transition-colors duration-300 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
 								)}
 							>
 								<span className='block sm:hidden'>{navItem.icon}</span>

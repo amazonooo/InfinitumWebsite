@@ -10,24 +10,54 @@ const FooterNav: FC = () => {
 			<h1 className='Welcome-text font-bold text-3xl mb-8 md:mb-0 md:mr-52'>
 				Infinitum
 			</h1>
-			<ul className='flex flex-col md:flex-row gap-y-6 text-[14px] sm:text-base lg:text-lg md:text-[14px] font-normal md:items-center md:gap-x-8 md:mr-auto'>
+			<ul className='flex flex-col md:flex-row gap-y-6 sm:text-base lg:text-lg font-normal md:items-center md:gap-x-8 md:mr-auto'>
 				<li>
-					<Link className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer' href={'#news'}>Новости</Link>
+					<Link
+						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						href={'#news'}
+					>
+						Новости
+					</Link>
 				</li>
 				<li>
-					<Link className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer' href={'/'}>Сервера</Link>
+					<Link
+						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						href={'/'}
+					>
+						Сервера
+					</Link>
 				</li>
 				<li>
-					<Link className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer' href={'/'}>Донат</Link>
+					<Link
+						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						href={'/'}
+					>
+						Донат
+					</Link>
 				</li>
 				<li>
-					<Link className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer' href={'/'}>Правила</Link>
+					<Link
+						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						href={'/'}
+					>
+						Правила
+					</Link>
 				</li>
 				<li>
-					<Link className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer' href={'/'}>Помощь</Link>
+					<Link
+						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						href={'/'}
+					>
+						Помощь
+					</Link>
 				</li>
 				<li>
-					<Link className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer' href={'/'}>Команда проекта</Link>
+					<Link
+						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						href={'/'}
+					>
+						Команда проекта
+					</Link>
 				</li>
 			</ul>
 			<ul className='mt-8 md:mt-0 flex gap-x-8'>

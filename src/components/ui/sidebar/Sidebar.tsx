@@ -11,35 +11,65 @@ export function SidebarDemo() {
 
 	const links = [
 		{
-			label: 'Dashboard',
-      count: '758',
+			label: 'Killbichs',
+			count: '758',
 			href: '#',
 			icon: (
-				<Image src={'/server-1.svg'} alt='server-1' width={32} height={32} className={`${open ? 'h-16 w-16' : 'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`} />
+				<Image
+					src={'/server-1.svg'}
+					alt='server-1'
+					width={32}
+					height={32}
+					className={`${
+						open ? 'h-16 w-16' : 'h-5 w-5'
+					} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
+				/>
 			),
 		},
 		{
-			label: 'Profile',
-      count: '112',
+			label: 'Boomboobs',
+			count: '112',
 			href: '#',
 			icon: (
-				<Image src={'/server-2.svg'} alt='server-2' width={32} height={32} className={`${open ? 'h-16 w-16' : 'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`} />
+				<Image
+					src={'/server-2.svg'}
+					alt='server-2'
+					width={32}
+					height={32}
+					className={`${
+						open ? 'h-16 w-16' : 'h-5 w-5'
+					} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
+				/>
 			),
 		},
 		{
-			label: 'Settings',
-      count: '312',
+			label: 'Killbichs',
+			count: '312',
 			href: '#',
 			icon: (
-				<Image src={'/server-1.svg'} alt='server-1' width={32} height={32} className={`${open ? 'h-16 w-16' : 'h-5 w-5'} flex-shrink-0`} />
+				<Image
+					src={'/server-1.svg'}
+					alt='server-1'
+					width={32}
+					height={32}
+					className={`${open ? 'h-16 w-16' : 'h-5 w-5'} flex-shrink-0`}
+				/>
 			),
 		},
 		{
-			label: 'Logout',
-      count: '94',
+			label: 'Boomboobs',
+			count: '94',
 			href: '#',
 			icon: (
-				<Image src={'/server-2.svg'} alt='server-2' width={32} height={32} className={`${open ? 'h-16 w-16' : 'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`} />
+				<Image
+					src={'/server-2.svg'}
+					alt='server-2'
+					width={32}
+					height={32}
+					className={`${
+						open ? 'h-16 w-16' : 'h-5 w-5'
+					} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
+				/>
 			),
 		},
 	]
