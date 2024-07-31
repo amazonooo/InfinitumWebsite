@@ -5,7 +5,7 @@ import { SidebarDemo } from '@/components/ui/sidebar/Sidebar'
 
 export default function HomePage() {
   return (
-		<main className='h-full w-full flex flex-col pl-5'>
+		<main className='h-full w-full flex flex-col pl-5 overflow-clip'>
 			<div
 				className='flex flex-col gap-20 isolate z-[50]'
 				style={{
@@ -16,7 +16,6 @@ export default function HomePage() {
 				<Hero />
 				<SidebarDemo />
 				<MainInfo />
-				<Footer />
 			</div>
 		</main>
 	)

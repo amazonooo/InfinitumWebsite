@@ -1,25 +1,21 @@
 'use client'
 import React, { useState } from 'react'
 import { SidebarSettings, SidebarBody, SidebarLink } from './SidebarSettings'
-import {
-	IconArrowLeft,
-	IconBrandTabler,
-	IconSettings,
-	IconUserBolt,
-} from '@tabler/icons-react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
 
 export function SidebarDemo() {
+	const [open, setOpen] = useState(false)
+
 	const links = [
 		{
 			label: 'Dashboard',
       count: '758',
 			href: '#',
 			icon: (
-				<Image src={'/server-1.svg'} alt='server-1' width={32} height={32} className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
+				<Image src={'/server-1.svg'} alt='server-1' width={32} height={32} className={`${open ? 'h-16 w-16' : 'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`} />
 			),
 		},
 		{
@@ -27,7 +23,7 @@ export function SidebarDemo() {
       count: '112',
 			href: '#',
 			icon: (
-				<Image src={'/server-2.svg'} alt='server-2' width={32} height={32} className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
+				<Image src={'/server-2.svg'} alt='server-2' width={32} height={32} className={`${open ? 'h-16 w-16' : 'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`} />
 			),
 		},
 		{
@@ -35,7 +31,7 @@ export function SidebarDemo() {
       count: '312',
 			href: '#',
 			icon: (
-				<Image src={'/server-1.svg'} alt='server-1' width={32} height={32} className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
+				<Image src={'/server-1.svg'} alt='server-1' width={32} height={32} className={`${open ? 'h-16 w-16' : 'h-5 w-5'} flex-shrink-0`} />
 			),
 		},
 		{
@@ -43,16 +39,15 @@ export function SidebarDemo() {
       count: '94',
 			href: '#',
 			icon: (
-				<Image src={'/server-2.svg'} alt='server-2' width={32} height={32} className='text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0' />
+				<Image src={'/server-2.svg'} alt='server-2' width={32} height={32} className={`${open ? 'h-16 w-16' : 'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`} />
 			),
 		},
 	]
-	const [open, setOpen] = useState(false)
 	return (
 		<div
 			className={cn(
 				'rounded-md flex absolute z-[50] right-0 top-[825px] flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-fit flex-1 border border-neutral-200 dark:border-neutral-700 overflow-hidden',
-				'h-fit' // for your use case, use `h-screen` instead of `h-[60vh]`
+				'h-full' // for your use case, use `h-screen` instead of `h-[60vh]`
 			)}
 		>
 			<SidebarSettings open={open} setOpen={setOpen}>
@@ -97,7 +92,7 @@ export const Logo = () => {
 			<motion.span
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
-				className='font-medium text-black dark:text-white whitespace-pre'
+				className='font-medium text-white'
 			>
 				Текущий онлайн
 			</motion.span>

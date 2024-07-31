@@ -17,7 +17,7 @@ export default function NewsPage() {
 				{/* <Hero /> */}
 				<NewsHero />
 				<News />
-				<Footer />
+				{/* <Footer /> */}
 			</div>
 		</div>
 	)
