@@ -11,7 +11,6 @@ import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Image from 'next/image'
 import More from '../ui/header/More'
-import ToggleSwitcher from '../ui/toggle-switcher/ToggleSwitcher'
 
 export const Header = ({
 	navItems,
@@ -68,10 +67,7 @@ export const Header = ({
 					duration: 0.2,
 				}}
 				className={cn(
-					// change rounded-full to rounded-lg
-					// remove dark:border-white/[0.2] dark:bg-black bg-white border-transparent
-					// change  pr-2 pl-8 py-2 to px-10 py-5
-					'max-w-fit md:min-w-[70vw] lg:min-w-[81vw] mx-auto fixed z-[5000] top-10 inset-x-0 px-10 py-4 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]',
+					'max-w-fit md:min-w-[40vw] lg:min-w-[70vw] 2xl:min-w-[81vw] mx-auto fixed z-[5000] top-10 inset-x-0 px-10 py-4 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]',
 					className
 				)}
 				style={{
