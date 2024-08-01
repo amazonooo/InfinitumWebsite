@@ -76,7 +76,7 @@ export function SidebarDemo() {
 	return (
 		<div
 			className={cn(
-				'rounded-lg flex fixed z-[50] top-28 right-0 flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 flex-1 border border-neutral-200 dark:border-neutral-700 overflow-hidden w-fit h-fit' // for your use case, use `h-screen` instead of `h-[60vh]`
+				'rounded-lg flex fixed z-[50] top-1/2 -translate-y-1/2 right-0 flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 flex-1 border border-neutral-200 dark:border-neutral-700 overflow-hidden w-fit h-fit' // for your use case, use `h-screen` instead of `h-[60vh]`
 			)}
 		>
 			<SidebarSettings open={open} setOpen={setOpen}>
