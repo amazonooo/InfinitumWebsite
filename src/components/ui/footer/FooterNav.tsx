@@ -6,11 +6,11 @@ import { FaDiscord, FaTelegram } from 'react-icons/fa'
 
 const FooterNav: FC = () => {
 	return (
-		<nav className='flex flex-col md:justify-between md:items-center md:flex-row px-10'>
-			<h1 className='Welcome-text font-bold text-3xl mb-8 md:mb-0 md:mr-52'>
+		<nav className='lg:flex lg:justify-between lg:items-center lg:flex-row px-5 lg:px-10'>
+			<h1 className='Welcome-text font-bold text-3xl mb-8 lg:mb-0 lg:mr-52'>
 				Infinitum
 			</h1>
-			<ul className='flex flex-col md:flex-row gap-y-6 sm:text-base lg:text-lg font-normal md:items-center md:gap-x-8 md:mr-auto'>
+			<ul className='lg:flex grid grid-cols-2 sm:grid-cols-3 lg:flex-row gap-y-6 sm:text-base lg:text-lg font-normal lg:items-center lg:gap-x-8 lg:mr-auto'>
 				<li>
 					<Link
 						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
@@ -60,7 +60,7 @@ const FooterNav: FC = () => {
 					</Link>
 				</li>
 			</ul>
-			<ul className='mt-8 md:mt-0 flex gap-x-8'>
+			<ul className='mt-8 lg:mt-0 flex gap-x-8'>
 				<li className='transition-colors duration-300 cursor-pointer text-lg dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'>
 					<FaTelegram />
 				</li>

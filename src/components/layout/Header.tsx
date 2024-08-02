@@ -54,8 +54,8 @@ export const Header = ({
 		}
 	})
 
-	const isDesktop = useMediaQuery({ minWidth: 901 })
-	const isMobile = useMediaQuery({ maxWidth: 900 })
+	const isDesktop = useMediaQuery({ minWidth: 951 })
+	const isMobile = useMediaQuery({ maxWidth: 950 })
 
 	return (
 		<>
