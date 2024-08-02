@@ -19,7 +19,7 @@ const More: FC = () => {
 			transition={{ duration: 0.3 }}
 		>
 			<ul className='flex flex-col gap-y-4 p-4'>
-				<li className='w-full h-full text-[14px]'>
+				<li className='w-full h-full text-sm'>
 					<Link
 						className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
 						href={'/'}
@@ -27,7 +27,7 @@ const More: FC = () => {
 						Помощь
 					</Link>
 				</li>
-				<li className='w-full h-full text-[14px]'>
+				<li className='w-full h-full text-sm'>
 					<Link
 						className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
 						href={'/'}
@@ -35,7 +35,7 @@ const More: FC = () => {
 						Команда проекта
 					</Link>
 				</li>
-				<li className='w-full h-full text-[14px]'>
+				<li className='w-full h-full text-sm'>
 					<Link
 						className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
 						href={'/'}
@@ -43,7 +43,7 @@ const More: FC = () => {
 						Банлист
 					</Link>
 				</li>
-				<li className='w-full h-full text-[14px]'>
+				<li className='w-full h-full text-sm'>
 					<Link
 						className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
 						href={'/'}
@@ -51,7 +51,7 @@ const More: FC = () => {
 						Бонусы
 					</Link>
 				</li>
-				<li className='w-full h-full text-[14px]'>
+				<li className='w-full h-full text-sm'>
 					<Link
 						className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
 						href={'/'}

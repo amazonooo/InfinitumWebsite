@@ -24,7 +24,7 @@ const MainInfo: FC = () => {
 		>
 			<Heading
 				title='Новости'
-				className='text-center text-5xl md:text-6xl font-semibold'
+				className='text-5xl md:text-6xl font-semibold'
 				// variants={slideInFromLeft(0.8)}
 			></Heading>
 			<motion.div variants={slideInFromLeft(0.8)} className='px-5 sm:px-10'>
@@ -33,7 +33,7 @@ const MainInfo: FC = () => {
 			<Link
 				href={'/news'}
 				onClick={handleClick}
-				className='py-3 px-6 md:py-4 md:text-px-16 md:text-xl text-base text-center rounded-lg cursor-pointer bg-[#8951ff] hover:bg-[#b68ef1] transition-all duration-300 hover:-translate-y-1.5'
+				className='mt-7 py-3 px-6 md:py-4 md:text-px-16 md:text-xl text-base text-center rounded-lg cursor-pointer bg-[#8951ff] hover:bg-[#b68ef1] transition-all duration-300 hover:-translate-y-1.5'
 			>
 				Смотреть все новости
 			</Link>

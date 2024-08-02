@@ -32,25 +32,25 @@ const MobileNavItems: FC = () => {
 				<ul className='flex justify-between w-full items-center h-full'>
 					<li className='flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'>
 						<HiHome className='w-5 h-5 sm:w-6 sm:h-7 md:w-7 md:h-7 group-active:translate-y-2 transition-transform duration-500' />
-						<Link href={'/'} className='text-xs sm:text-base'>
+						<Link href={'/'} className='text-sm sm:text-base'>
 							Главная
 						</Link>
 					</li>
 					<li className='flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'>
 						<FaGamepad className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:translate-y-2 transition-transform duration-500' />
-						<Link href={'/'} className='text-xs sm:text-base'>
+						<Link href={'/'} className='text-sm sm:text-base'>
 							Сервера
 						</Link>
 					</li>
 					<li className='flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'>
 						<RiVipDiamondFill className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:translate-y-2 transition-transform duration-500' />
-						<Link href={'/'} className='text-xs sm:text-base'>
+						<Link href={'/'} className='text-sm sm:text-base'>
 							Донат
 						</Link>
 					</li>
 					<li className='flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'>
 						<IoHelpOutline className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:translate-y-2 transition-transform duration-500' />
-						<Link href={'/'} className='text-xs sm:text-base'>
+						<Link href={'/'} className='text-sm sm:text-base'>
 							Помощь
 						</Link>
 					</li>
@@ -63,7 +63,7 @@ const MobileNavItems: FC = () => {
 						) : (
 							<IoCloseSharp className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:translate-y-2 transition-transform duration-500' />
 						)}
-						<p className='text-xs sm:text-base select-none'>Меню</p>
+						<p className='text-sm sm:text-base select-none'>Меню</p>
 					</li>
 				</ul>
 			</nav>

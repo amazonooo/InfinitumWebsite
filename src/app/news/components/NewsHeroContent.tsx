@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { motion } from 'framer-motion'
 import { slideInFromRight } from '@/utils/motion'
+import Heading from '@/components/ui/Heading'
 
 const NewsHeroContent: FC = () => {
   return (
@@ -12,11 +13,13 @@ const NewsHeroContent: FC = () => {
 			<div className='flex flex-col w-full h-full justify-center items-center text-start'>
 				<motion.div
 					variants={slideInFromRight(0.3)}
-					className='Welcome-box py-2 px-[7px]'
 				>
-					<h1 className='Welcome-text text-7xl'>Новости</h1>
+					<Heading
+						title='Новости'
+						className='text-5xl md:text-6xl font-semibold'
+					/>
+					{/* <h1 className='Welcome-text text-7xl'>Новости</h1> */}
 				</motion.div>
-				
 			</div>
 		</motion.div>
 	)

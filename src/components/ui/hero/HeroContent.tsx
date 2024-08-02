@@ -22,7 +22,7 @@ const HeroContent: FC = () => {
 
 				<motion.p
 					variants={slideInFromLeft(0.5)}
-					className='text-center mt-5 mb-7 text-base md:text-[18px]'
+					className='text-center mt-5 mb-7 text-base md:text-[18px] md:max-w-[750px]'
 				>
 					Испытай новый уровень удобства с инновационным лаунчером, объединяющим
 					все игровые библиотеки одном интерфейсе
