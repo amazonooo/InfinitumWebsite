@@ -1,13 +1,13 @@
 'use client'
 
-import { FC } from 'react'
+import { IconX } from '@tabler/icons-react'
 
-const MobileMore: FC = () => {
+const MobileMore = () => {
   return (
-    <div className='h-full w-full bg-black absolute top-0 left-0'>
-      MobileMore
-    </div>
-  )
+		<div className='z-[40]'>
+      Mobile more
+		</div>
+	)
 }
 
 export default MobileMore
