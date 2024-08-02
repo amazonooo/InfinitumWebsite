@@ -6,6 +6,8 @@ import { ThemeProvider } from '@/providers/theme-provider'
 import StarsCanvas from '@/components/ui/stars/Stars'
 import Footer from '@/components/layout/Footer'
 import { navButtons, navItems } from '@/components/ui/header/navItems'
+import { useMediaQuery } from 'react-responsive'
+import MobileNav from '@/components/ui/header/MobileNav'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +21,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+	// const isDesktop = useMediaQuery({ minWidth: 1024 })
+	// const isMobile = useMediaQuery({ minWidth: 767 })
+
   return (
 		<html lang='en'>
 			<body
@@ -31,6 +36,8 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<StarsCanvas />
+					{/* {isDesktop && <Header navItems={navItems} navButtons={navButtons} />}
+					{isMobile && <MobileNav />} */}
 					<Header navItems={navItems} navButtons={navButtons} />
 					{children}
 					<Footer />
