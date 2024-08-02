@@ -36,8 +36,6 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<StarsCanvas />
-					{/* {isDesktop && <Header navItems={navItems} navButtons={navButtons} />}
-					{isMobile && <MobileNav />} */}
 					<Header navItems={navItems} navButtons={navButtons} />
 					{children}
 					<Footer />
