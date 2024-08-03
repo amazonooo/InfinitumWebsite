@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/providers/theme-provider'
 import StarsCanvas from '@/components/ui/stars/Stars'
 import Footer from '@/components/layout/Footer'
 import { navButtons, navItems } from '@/components/ui/header/navItems'
+import { SidebarDemo } from '@/components/ui/sidebar/Sidebar'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
 		<html lang='en'>
-			<body
-				className={`${inter.className} bg-[#161616] overflow-x-hidden`}
-			>
+			<body className={`${inter.className} bg-[#161616] overflow-x-hidden`}>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='dark'
@@ -32,6 +31,8 @@ export default function RootLayout({
 				>
 					<StarsCanvas />
 					<Header navItems={navItems} navButtons={navButtons} />
+					<SidebarDemo />
+
 					{children}
 					<Footer />
 				</ThemeProvider>

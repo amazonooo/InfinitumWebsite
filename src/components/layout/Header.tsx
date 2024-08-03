@@ -58,10 +58,10 @@ export const Header = ({
 	const isMobile = useMediaQuery({ maxWidth: 950 })
 
 	return (
-		<>
+		<header>
 			{isDesktop && (
 				<AnimatePresence mode='wait'>
-					<motion.header
+					<motion.div
 						initial={{
 							opacity: 1,
 							y: -100,
@@ -144,10 +144,10 @@ export const Header = ({
 								</Link>
 							</li>
 						</ul>
-					</motion.header>
+					</motion.div>
 				</AnimatePresence>
 			)}
 			{isMobile && <MobileNav />}
-		</>
+		</header>
 	)
 }

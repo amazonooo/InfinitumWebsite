@@ -1,7 +1,5 @@
 'use client'
 
-import { IconX } from '@tabler/icons-react'
-
 const MobileMore = () => {
   return (
 		<div className='z-[40]'>

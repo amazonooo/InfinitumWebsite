@@ -10,7 +10,7 @@ const HeroContent: FC = () => {
 		<motion.div
 			initial='hidden'
 			animate='visible'
-			className='flex items-center justify-center px-44 mt-16 lg:mt-52 w-full z-[20]'
+			className='flex items-center justify-center px-44 mt-16 lg:mt-48 w-full z-[20]'
 		>
 			<div className='flex flex-col justify-center items-center'>
 				<motion.div

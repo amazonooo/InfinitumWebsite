@@ -14,7 +14,6 @@ export default function HomePage() {
 				}}
 			>
 				<Hero />
-				<SidebarDemo />
 				<MainInfo />
 			</div>
 		</main>
