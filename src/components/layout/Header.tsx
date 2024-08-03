@@ -100,13 +100,13 @@ export const Header = ({
 										<span className='block sm:hidden'>{navItem.icon}</span>
 										{/* add !cursor-pointer */}
 										{/* remove hidden sm:block for the mobile responsive */}
-										<span className='xl:text-base lg:text-sm !cursor-pointer'>
+										<span className='xl:text-base font-medium lg:text-sm !cursor-pointer'>
 											{navItem.name}
 										</span>
 									</Link>
 								))}
 								<div
-									className='xl:text-base lg:text-sm relative items-center  flex font-semibold transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+									className='xl:text-base lg:text-sm font-medium relative items-center  flex transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
 									onMouseEnter={() => setShow(true)}
 									onMouseLeave={() => setShow(false)}
 								>

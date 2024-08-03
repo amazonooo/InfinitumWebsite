@@ -140,7 +140,7 @@ export const MobileSidebar = ({
 							)}
 						>
 							<div
-								className='absolute right-8 top-5 z-50 text-neutral-800 dark:text-neutral-200'
+								className='absolute right-8 top-8 z-50 text-neutral-800 dark:text-neutral-200'
 								onClick={() => setOpen(!open)}
 							>
 								<IconX />
