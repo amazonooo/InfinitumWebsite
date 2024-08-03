@@ -37,7 +37,7 @@ const Card: FC<ICard> = ({ image, title, desc }) => {
 					<h1 className='text-2xl text-[#cbacf9]'>{title}</h1>
 					<p className='text-sm md:text-base'>{desc}</p>
 				</div>
-				<div className='pb-5 pl-2 flex items-center justify-center md:gap-x-2 gap-x-1 cursor-pointer '>
+				<div className='pb-5 pl-1 md:pl-2 flex items-center justify-center md:gap-x-2 gap-x-1 cursor-pointer '>
 					<h3 className='group-hover:text-[#cbacf9] transition-all duration-450'>
 						Читать
 					</h3>
