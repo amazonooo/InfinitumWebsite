@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { FC, useState } from 'react'
 import { HiHome } from 'react-icons/hi2'
 import { FaGamepad } from 'react-icons/fa6'
-import { RiVipDiamondFill, RiMenu3Line } from 'react-icons/ri'
+import { RiMenu3Line } from 'react-icons/ri'
 import { IoHelpOutline, IoCloseSharp } from 'react-icons/io5'
-import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import MobileMore from './MobileMore'
 import { MdLocalGroceryStore } from 'react-icons/md'
+import { IoMdClose } from 'react-icons/io'
 
 const MobileNavItems: FC = () => {
 	const [open, setOpen] = useState(false)
@@ -61,7 +61,7 @@ const MobileNavItems: FC = () => {
 						{!open ? (
 							<RiMenu3Line className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
 						) : (
-							<IoCloseSharp className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
+							<IoMdClose className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
 						)}
 						<p className='text-sm sm:text-base select-none'>Меню</p>
 					</li>
