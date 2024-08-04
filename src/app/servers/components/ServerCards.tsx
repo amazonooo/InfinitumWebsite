@@ -16,26 +16,26 @@ export function ServerCards() {
 		>
 			<motion.div variants={slideInFromLeft(0.3)}>
 				<CardContainer className='inter-var'>
-					<CardBody className='relative group/card   dark:border-white/[0.2]  w-[330px] sm:w-[28rem] md:w-[350px] lg:w-[425px] xl:w-[550px] h-auto rounded-xl p-6 border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] transition-transform duration-550 hover:shadow-3xl hover:shadow-teal-100/[0.3] '>
+					<CardBody className='relative group/card   dark:border-white/[0.2]  w-[330px] sm:w-[28rem] md:w-[350px] lg:w-[425px] xl:w-[550px] h-auto rounded-xl p-6 border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] transition-transform duration-550 hover:shadow-3xl hover:shadow-teal-100/[0.3]'>
 						<CardItem
 							translateZ='50'
 							className='text-xl font-bold text-neutral-600 dark:text-[#cbacf9]'
 						>
-							Make things float in air
+							Server 1
 						</CardItem>
 						<CardItem
 							as='p'
 							translateZ='60'
 							className='text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300'
 						>
-							Hover over this card to unleash the power of CSS perspective
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ab sint. Voluptates!
 						</CardItem>
-						<CardItem translateZ='100' className='w-full mt-4'>
+						<CardItem translateZ='70' className='w-full mt-4'>
 							<Image
-								src='/bg.png'
+								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl'
+								className='h-60 sm:h-64 md:h-72 lg:h-80 xl:h-96 w-full object-cover rounded-xl '
 								alt='thumbnail'
 							/>
 						</CardItem>
@@ -43,9 +43,9 @@ export function ServerCards() {
 							<CardItem
 								translateZ={20}
 								as={Link}
-								href='https://twitter.com/mannupaaji'
+								href='/'
 								target='__blank'
-								className='px-4 py-2 rounded-xl text-xs font-normal dark:text-white'
+								className='rounded-xl text-xs md:text-base bg-[#8153ff] py-2 px-4 font-normal dark:text-white'
 							>
 								Играть сейчас
 							</CardItem>
@@ -67,21 +67,21 @@ export function ServerCards() {
 							translateZ='50'
 							className='text-xl font-bold text-neutral-600 dark:text-[#cbacf9]'
 						>
-							Make things float in air
+							Server 2
 						</CardItem>
 						<CardItem
 							as='p'
 							translateZ='60'
 							className='text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300'
 						>
-							Hover over this card to unleash the power of CSS perspective
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ab sint. Voluptates!
 						</CardItem>
-						<CardItem translateZ='100' className='w-full mt-4'>
+						<CardItem translateZ='70' className='w-full mt-4'>
 							<Image
-								src='/bg.png'
+								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl'
+								className='h-60 sm:h-64 md:h-72 lg:h-80 xl:h-96 w-full object-cover rounded-xl '
 								alt='thumbnail'
 							/>
 						</CardItem>
@@ -89,9 +89,9 @@ export function ServerCards() {
 							<CardItem
 								translateZ={20}
 								as={Link}
-								href='https://twitter.com/mannupaaji'
+								href='/'
 								target='__blank'
-								className='px-4 py-2 rounded-xl text-xs font-normal dark:text-white'
+								className='rounded-xl text-xs md:text-base bg-[#8153ff] py-2 px-4 font-normal dark:text-white'
 							>
 								Играть сейчас
 							</CardItem>
@@ -113,21 +113,21 @@ export function ServerCards() {
 							translateZ='50'
 							className='text-xl font-bold text-neutral-600 dark:text-[#cbacf9]'
 						>
-							Make things float in air
+							Server 3
 						</CardItem>
 						<CardItem
 							as='p'
 							translateZ='60'
 							className='text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300'
 						>
-							Hover over this card to unleash the power of CSS perspective
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ab sint. Voluptates!
 						</CardItem>
-						<CardItem translateZ='100' className='w-full mt-4'>
+						<CardItem translateZ='70' className='w-full mt-4'>
 							<Image
-								src='/bg.png'
+								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl'
+								className='h-60 sm:h-64 md:h-72 lg:h-80 xl:h-96 w-full object-cover rounded-xl '
 								alt='thumbnail'
 							/>
 						</CardItem>
@@ -135,9 +135,9 @@ export function ServerCards() {
 							<CardItem
 								translateZ={20}
 								as={Link}
-								href='https://twitter.com/mannupaaji'
+								href='/'
 								target='__blank'
-								className='px-4 py-2 rounded-xl text-xs font-normal dark:text-white'
+								className='rounded-xl text-xs md:text-base bg-[#8153ff] py-2 px-4 font-normal dark:text-white'
 							>
 								Играть сейчас
 							</CardItem>
@@ -159,21 +159,21 @@ export function ServerCards() {
 							translateZ='50'
 							className='text-xl font-bold text-neutral-600 dark:text-[#cbacf9]'
 						>
-							Make things float in air
+							Server 4
 						</CardItem>
 						<CardItem
 							as='p'
 							translateZ='60'
 							className='text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300'
 						>
-							Hover over this card to unleash the power of CSS perspective
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ab sint. Voluptates!
 						</CardItem>
-						<CardItem translateZ='100' className='w-full mt-4'>
+						<CardItem translateZ='70' className='w-full mt-4'>
 							<Image
-								src='/bg.png'
+								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl'
+								className='h-60 sm:h-64 md:h-72 lg:h-80 xl:h-96 w-full object-cover rounded-xl '
 								alt='thumbnail'
 							/>
 						</CardItem>
@@ -181,16 +181,16 @@ export function ServerCards() {
 							<CardItem
 								translateZ={20}
 								as={Link}
-								href='https://twitter.com/mannupaaji'
+								href='/'
 								target='__blank'
-								className='px-4 py-2 rounded-xl text-xs font-normal dark:text-white'
+								className='rounded-xl text-xs md:text-base bg-[#8153ff] py-2 px-4 font-normal dark:text-white'
 							>
 								Играть сейчас
 							</CardItem>
 							<CardItem
 								translateZ={20}
 								as='button'
-								className='px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold'
+								className='px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs  font-bold'
 							>
 								Подробнее
 							</CardItem>
