@@ -3,6 +3,7 @@ import { cn } from '@/utils/cn'
 import Link, { LinkProps } from 'next/link'
 import React, { useState, createContext, useContext } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { MdKeyboardArrowLeft } from 'react-icons/md'
 import { IconMenu2, IconX } from '@tabler/icons-react'
 
 interface Links {
@@ -114,12 +115,13 @@ export const MobileSidebar = ({
 		<>
 			<div
 				className={cn(
-					'h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-neutral-800 w-full'
+					'h-10 px-1.5 py-1.5 sm:px-2 sm:py-2 md:px-2.5 md:py-2.5 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-neutral-800 w-full'
 				)}
 				{...props}
 			>
 				<div className='flex justify-end z-20 w-full'>
-					<IconMenu2
+					<MdKeyboardArrowLeft
+						size={20}
 						className='text-neutral-800 dark:text-neutral-200'
 						onClick={() => setOpen(!open)}
 					/>
