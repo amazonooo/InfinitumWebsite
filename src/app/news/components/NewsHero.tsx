@@ -18,7 +18,6 @@ const NewsHero: FC = () => {
 						title='Новости'
 						className='text-5xl md:text-6xl font-semibold'
 					/>
-					{/* <h1 className='Welcome-text text-7xl'>Новости</h1> */}
 				</motion.div>
 			</div>
 		</motion.div>

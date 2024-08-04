@@ -22,11 +22,14 @@ const MainInfo: FC = () => {
 			initial='hidden'
 			animate='visible'
 		>
-			<Heading
-				title='Новости'
-				className='text-5xl md:text-6xl font-semibold'
-				// variants={slideInFromLeft(0.8)}
-			></Heading>
+			<motion.div
+				variants={slideInFromLeft(0.8)}
+			>
+				<Heading
+					title='Новости'
+					className='text-5xl md:text-6xl font-semibold'
+				></Heading>
+			</motion.div>
 			<motion.div variants={slideInFromLeft(0.8)}>
 				<News />
 			</motion.div>

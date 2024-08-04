@@ -26,10 +26,9 @@ const MobileNavItems: FC = () => {
 		}
 	}
 
-
   return (
 		<>
-			<nav className='fixed bottom-0 left-0 right-0 px-5 sm:px-8 md:px-10 h-20 border-t border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] z-[50]'>
+			<nav className='fixed bottom-0 left-0 right-0 px-4 sm:px-8 md:px-10 h-20 border-t border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] z-[50]'>
 				<ul className='flex justify-between w-full items-center h-full'>
 					<li className='flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'>
 						<HiHome className='w-5 h-5 sm:w-6 sm:h-7 md:w-7 md:h-7 group-active:translate-y-2 transition-transform duration-500' />
@@ -39,7 +38,7 @@ const MobileNavItems: FC = () => {
 					</li>
 					<li className='flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'>
 						<FaGamepad className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:translate-y-2 transition-transform duration-500' />
-						<Link href={'/'} className='text-sm sm:text-base'>
+						<Link href={'/servers'} className='text-sm sm:text-base'>
 							Сервера
 						</Link>
 					</li>
