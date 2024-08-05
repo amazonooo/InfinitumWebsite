@@ -9,6 +9,7 @@ import React, {
 	useRef,
 	useEffect,
 } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 const MouseEnterContext = createContext<
 	[boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
@@ -45,34 +46,61 @@ export const CardContainer = ({
 		setIsMouseEntered(false)
 		containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`
 	}
+
+	const isDesktop = useMediaQuery({ minWidth: 951 })
+	const isMobile = useMediaQuery({ maxWidth: 950 })
+
 	return (
-		<MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
-			<div
-				className={cn(
-					'py-3 md:py-5 lg:py-7 flex items-center justify-center',
-					containerClassName
-				)}
-				style={{
-					perspective: '1000px',
-				}}
-			>
-				<div
-					ref={containerRef}
-					onMouseEnter={handleMouseEnter}
-					onMouseMove={handleMouseMove}
-					onMouseLeave={handleMouseLeave}
-					className={cn(
-						'flex items-center justify-center relative transition-all duration-200 ease-linear',
-						className
-					)}
-					style={{
-						transformStyle: 'preserve-3d',
-					}}
-				>
-					{children}
-				</div>
-			</div>
-		</MouseEnterContext.Provider>
+		<>
+			{isDesktop && (
+				<MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
+					<div
+						className={cn(
+							'py-3 md:py-5 lg:py-7 flex items-center justify-center',
+							containerClassName
+						)}
+						style={{
+							perspective: '1000px',
+						}}
+					>
+						<div
+							ref={containerRef}
+							onMouseEnter={handleMouseEnter}
+							onMouseMove={handleMouseMove}
+							onMouseLeave={handleMouseLeave}
+							className={cn(
+								'flex items-center justify-center relative transition-all duration-200 ease-linear',
+								className
+							)}
+							style={{
+								transformStyle: 'preserve-3d',
+							}}
+						>
+							{children}
+						</div>
+					</div>
+				</MouseEnterContext.Provider>
+			)}
+			{isMobile && (
+				<MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
+					<div
+						className={cn(
+							'py-3 md:py-5 lg:py-7 flex items-center justify-center',
+							containerClassName
+						)}
+					>
+						<div
+							className={cn(
+								'flex items-center justify-center relative transition-all duration-200 ease-linear',
+								className
+							)}
+						>
+							{children}
+						</div>
+					</div>
+				</MouseEnterContext.Provider>
+			)}
+		</>
 	)
 }
 

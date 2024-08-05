@@ -32,7 +32,8 @@ export function ServerCards() {
 								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-60 sm:h-64 md:h-72 lg:h-80 xl:h-96 w-full object-cover rounded-xl '
+								className='h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
+								// object-cover!!!
 								alt='thumbnail'
 							/>
 						</CardItem>
@@ -73,7 +74,8 @@ export function ServerCards() {
 								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-60 sm:h-64 md:h-72 lg:h-80 xl:h-96 w-full object-cover rounded-xl '
+								className='h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
+								// object-cover!!!
 								alt='thumbnail'
 							/>
 						</CardItem>
@@ -114,7 +116,8 @@ export function ServerCards() {
 								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-60 sm:h-64 md:h-72 lg:h-80 xl:h-96 w-full object-cover rounded-xl '
+								className='h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
+								// object-cover!!!
 								alt='thumbnail'
 							/>
 						</CardItem>
@@ -155,7 +158,8 @@ export function ServerCards() {
 								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-60 sm:h-64 md:h-72 lg:h-80 xl:h-96 w-full object-cover rounded-xl '
+								className='h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
+								// object-cover!!!
 								alt='thumbnail'
 							/>
 						</CardItem>
