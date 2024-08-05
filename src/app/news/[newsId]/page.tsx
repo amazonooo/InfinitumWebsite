@@ -1,11 +1,20 @@
-import Card from '@/components/ui/main-info/news/Card'
-import { FC } from 'react'
+'use client'
 
-const NewsDetail = ({ params }: {
-  params: {
-    newsId: string
-  }
-}) => {
+import { ICardData, newsCard } from '@/components/ui/main-info/news/newsCard'
+import CardDetail from '../components/CardDetail'
+
+interface ICardProps {
+	params: { id: string }
+}
+
+const NewsDetail = ({ params }: ICardProps) => {
+	const news: ICardData | undefined = newsCard.find((c) => c.id === params.id)
+
+	if(!news) {
+		<div>Что то пошло не так</div>
+		return null
+	}
+
   return (
 		<div className='h-screen w-full flex flex-col justify-center overflow-clip'>
 			<div
@@ -15,13 +24,7 @@ const NewsDetail = ({ params }: {
 					transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
 				}}
         >
-        {params.newsId}
-				<Card
-					desc='Присоединяйтесь к сообществу геймеров, которые уже оценили наш лаунчер. Скачайте его бесплатно сегодня и откройте для себя новый уровень комфорта и удовольствия от игр.'
-					image='/news-1.png'
-					link=''
-					title='Новый сервер'
-				/>
+					<CardDetail card={news} />
 			</div>
 		</div>
 	)
