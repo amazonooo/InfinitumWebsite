@@ -40,13 +40,13 @@ export function ServerCards() {
 							<CardItem
 								as={Link}
 								href='/'
-								target='__blank'
 								className='rounded-xl text-xs md:text-base bg-[#8153ff] py-2 px-4 font-normal dark:text-white'
 							>
 								Играть сейчас
 							</CardItem>
 							<CardItem
-								as='button'
+								as={Link}
+								href='/servers/1'
 								className='px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold'
 							>
 								Подробнее
@@ -81,13 +81,13 @@ export function ServerCards() {
 							<CardItem
 								as={Link}
 								href='/'
-								target='__blank'
 								className='rounded-xl text-xs md:text-base bg-[#8153ff] py-2 px-4 font-normal dark:text-white'
 							>
 								Играть сейчас
 							</CardItem>
 							<CardItem
-								as='button'
+								as={Link}
+								href='/servers/2'
 								className='px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold'
 							>
 								Подробнее
@@ -122,13 +122,13 @@ export function ServerCards() {
 							<CardItem
 								as={Link}
 								href='/'
-								target='__blank'
 								className='rounded-xl text-xs md:text-base bg-[#8153ff] py-2 px-4 font-normal dark:text-white'
 							>
 								Играть сейчас
 							</CardItem>
 							<CardItem
-								as='button'
+								as={Link}
+								href='/servers/3'
 								className='px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold'
 							>
 								Подробнее
@@ -163,13 +163,13 @@ export function ServerCards() {
 							<CardItem
 								as={Link}
 								href='/'
-								target='__blank'
 								className='rounded-xl text-xs md:text-base bg-[#8153ff] py-2 px-4 font-normal dark:text-white'
 							>
 								Играть сейчас
 							</CardItem>
 							<CardItem
-								as='button'
+								as={Link}
+								href='/servers/4'
 								className='px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs  font-bold'
 							>
 								Подробнее

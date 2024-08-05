@@ -1,4 +1,4 @@
-import { ServerCards } from './components/ServerCards'
+import {ServerCards} from './components/ServerCards'
 import ServerHero from './components/ServerHero'
 
 export default function NewsPage() {
