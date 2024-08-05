@@ -10,10 +10,11 @@ export default function News() {
 			{newsCard.map(card => (
 				<Card
 					key={card.id}
-					id={card.id ?? 'default-id'}
-					title={card.title ?? 'Default Title'}
-					desc={card.desc ?? 'Default Description'}
-					image={card.image ?? 'default-image.png'}
+					image={card.image}
+					title={card.title}
+					desc={card.desc}
+					link={`/news/${card.id}`}
+					id={card.id}
 				/>
 			))}
 		</div>

@@ -9,14 +9,15 @@ import { slideInFromLeft } from '@/utils/motion'
 import { cn } from '@/utils/cn'
 
 interface ICard {
-	id: string
+	id?: number
   image: string
   title: string
-  desc: string
+  desc?: string
+	link: string
 	// containerClassName?: string
 }
 
-const Card: FC<ICard> = ({ image, title, desc, id }) => {
+const Card: FC<ICard> = ({ image, title, desc, id, link }) => {
   const [isHovered, setIsHovered] = useState(false)
 
 	return (
