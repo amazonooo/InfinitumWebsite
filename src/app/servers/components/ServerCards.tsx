@@ -37,7 +37,7 @@ export function ServerCards() {
 								alt='thumbnail'
 							/>
 						</CardItem>
-						<div className='flex justify-between items-center mt-20'>
+						<div className='flex justify-between items-center mt-12 md:mt-14 lg:mt-16'>
 							<CardItem
 								as={Link}
 								href='/'
@@ -79,7 +79,7 @@ export function ServerCards() {
 								alt='thumbnail'
 							/>
 						</CardItem>
-						<div className='flex justify-between items-center mt-20'>
+						<div className='flex justify-between items-center mt-12 md:mt-14 lg:mt-16'>
 							<CardItem
 								as={Link}
 								href='/'
@@ -121,7 +121,7 @@ export function ServerCards() {
 								alt='thumbnail'
 							/>
 						</CardItem>
-						<div className='flex justify-between items-center mt-20'>
+						<div className='flex justify-between items-center mt-12 md:mt-14 lg:mt-16'>
 							<CardItem
 								as={Link}
 								href='/'
@@ -163,7 +163,7 @@ export function ServerCards() {
 								alt='thumbnail'
 							/>
 						</CardItem>
-						<div className='flex justify-between items-center mt-20'>
+						<div className='flex justify-between items-center mt-12 md:mt-14 lg:mt-16'>
 							<CardItem
 								as={Link}
 								href='/'
