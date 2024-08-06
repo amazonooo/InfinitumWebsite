@@ -6,6 +6,7 @@ import { CardBody, CardContainer, CardItem } from '../../../components/ui/main-i
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { slideInFromLeft } from '@/utils/motion'
+import { Meteors } from '@/components/ui/meteor/MeteorEffect'
 
 export function ServerCards() {
 	return (
@@ -29,7 +30,7 @@ export function ServerCards() {
 								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
+								className='pointer-events-none h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
 								// object-cover!!!
 								alt='thumbnail'
 							/>
@@ -54,7 +55,7 @@ export function ServerCards() {
 				</CardContainer>
 			</motion.div>
 			<motion.div variants={slideInFromLeft(0.3)}>
-				<CardContainer id='in-develop' className='inter-var cursor-not-allowed'>
+				<CardContainer id='in-develop' className='inter-var'>
 					<CardBody className='relative group/card   dark:border-white/[0.2] w-[21rem] sm:w-[28rem] md:w-[21.5rem] lg:w-[28rem] h-auto rounded-xl p-6 border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] transition-transform duration-550 hover:shadow-3xl hover:shadow-blue-700/[0.3] '>
 						<CardItem className='text-xl font-bold text-neutral-600 dark:text-[#cbacf9]'>
 							Server 2
@@ -71,22 +72,20 @@ export function ServerCards() {
 								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
+								className='pointer-events-none h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
 								// object-cover!!!
 								alt='thumbnail'
 							/>
 						</CardItem>
 						<div className='flex justify-between items-center mt-12 md:mt-14 lg:mt-16'>
 							<CardItem
-								as={Link}
-								href='/'
-								className='text-xs md:text-base font-normal Welcome-text Welcome-box px-3 py-1.5 cursor-not-allowed'
+								as='div'
+								className='text-xs md:text-base font-normal Welcome-text Welcome-box px-3 py-1.5 cursor-default'
 							>
 								В разработке
 							</CardItem>
 							<CardItem
-								as={Link}
-								href='/'
+								as='div'
 								className='px-4 py-2 rounded-xl bg-neutral-600 cursor-not-allowed text-black text-xs font-bold'
 							>
 								Подробнее
@@ -95,8 +94,8 @@ export function ServerCards() {
 					</CardBody>
 				</CardContainer>
 			</motion.div>
-			<motion.div variants={slideInFromLeft(0.3)}>
-				<CardContainer id='in-develop' className='inter-var cursor-not-allowed'>
+			{/* <motion.div variants={slideInFromLeft(0.3)}>
+				<CardContainer id='in-develop' className='inter-var'>
 					<CardBody className='relative group/card   dark:border-white/[0.2] w-[21rem] sm:w-[28rem] md:w-[21.5rem] lg:w-[28rem] h-auto rounded-xl p-6 border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] transition-transform duration-550 hover:shadow-3xl hover:shadow-purple-500/[0.3] '>
 						<CardItem className='text-xl font-bold text-neutral-600 dark:text-[#cbacf9]'>
 							Server 3
@@ -113,22 +112,20 @@ export function ServerCards() {
 								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
+								className='pointer-events-none h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
 								// object-cover!!!
 								alt='thumbnail'
 							/>
 						</CardItem>
 						<div className='flex justify-between items-center mt-12 md:mt-14 lg:mt-16'>
 							<CardItem
-								as={Link}
-								href='/'
-								className='text-xs md:text-base font-normal Welcome-text Welcome-box px-3 py-1.5 cursor-not-allowed'
+								as='div'
+								className='text-xs md:text-base font-normal Welcome-text Welcome-box px-3 py-1.5 cursor-default'
 							>
 								В разработке
 							</CardItem>
 							<CardItem
-								as={Link}
-								href='/'
+								as='div'
 								className='px-4 py-2 rounded-xl bg-neutral-600 cursor-not-allowed text-black text-xs font-bold'
 							>
 								Подробнее
@@ -138,7 +135,7 @@ export function ServerCards() {
 				</CardContainer>
 			</motion.div>
 			<motion.div variants={slideInFromLeft(0.3)}>
-				<CardContainer id='in-develop' className='inter-var cursor-not-allowed'>
+				<CardContainer id='in-develop' className='inter-var'>
 					<CardBody className='relative group/card   dark:border-white/[0.2] w-[21rem] sm:w-[28rem] md:w-[21.5rem] lg:w-[28rem] h-auto rounded-xl p-6 border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] transition-transform duration-550 hover:shadow-3xl hover:shadow-cyan-400/[0.3] '>
 						<CardItem className='text-xl font-bold text-neutral-600 dark:text-[#cbacf9]'>
 							Server 4
@@ -155,22 +152,20 @@ export function ServerCards() {
 								src='/news-1.png'
 								height='1000'
 								width='1000'
-								className='h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
+								className='pointer-events-none h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl'
 								// object-cover!!!
 								alt='thumbnail'
 							/>
 						</CardItem>
 						<div className='flex justify-between items-center mt-12 md:mt-14 lg:mt-16'>
 							<CardItem
-								as={Link}
-								href='/'
-								className='text-xs md:text-base font-normal Welcome-text Welcome-box px-3 py-1.5 cursor-not-allowed'
+								as='div'
+								className='text-xs md:text-base font-normal Welcome-text Welcome-box px-3 py-1.5 cursor-default'
 							>
 								В разработке
 							</CardItem>
 							<CardItem
-								as={Link}
-								href='/'
+								as='div'
 								className='px-4 py-2 rounded-xl bg-neutral-600 cursor-not-allowed text-black text-xs  font-bold'
 							>
 								Подробнее
@@ -178,7 +173,7 @@ export function ServerCards() {
 						</div>
 					</CardBody>
 				</CardContainer>
-			</motion.div>
+			</motion.div> */}
 		</motion.div>
 	)
 }
