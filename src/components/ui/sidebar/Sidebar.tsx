@@ -5,9 +5,15 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
+import { usePathname } from 'next/navigation'
 
 export function SidebarDemo() {
 	const [open, setOpen] = useState(false)
+
+	const pathname = usePathname()
+	const isNotHeaderOrFooter = pathname !== '/'
+
+	if (isNotHeaderOrFooter) return null
 
 	const links = [
 		{

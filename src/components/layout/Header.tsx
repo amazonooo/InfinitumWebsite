@@ -13,6 +13,8 @@ import Image from 'next/image'
 import More from '../ui/header/More'
 import { useMediaQuery } from 'react-responsive'
 import MobileNav from '../ui/header/MobileNav'
+import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 
 export const Header = ({
 	navItems,
@@ -30,6 +32,16 @@ export const Header = ({
 	}[]
 	className?: string
 }) => {
+	const pathname = usePathname()
+
+	const isLoggedLogin = pathname === '/login'
+	const isLoggedRegister = pathname === '/register'
+
+	if (isLoggedLogin) return null
+	if (isLoggedRegister) return null
+
+
+
 	const { scrollYProgress } = useScroll()
 
 	// set true for the initial state so that nav bar is visible in the hero section

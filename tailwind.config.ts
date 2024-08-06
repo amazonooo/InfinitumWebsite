@@ -40,6 +40,9 @@ const config: Config = {
 				'0%': { transform: 'translateY(10px)' },
 				'100%': { transform: 'translateY(0)' },
 			},
+			'spin': {
+				'100%': { transform: 'rotate(360deg)' }
+			}
 		},
 		animation: {
 			'meteor-effect': 'meteor 5s linear infinite',
@@ -47,6 +50,7 @@ const config: Config = {
 			'slide-down': 'slide-down 0.3s ease',
 			'card-up': 'card-up 0.8s ease',
 			'card-down': 'card-down 0.8s ease',
+			'spin': 'spin 1.5s linear infinite',
 		},
 	},
 	plugins: [],

@@ -1,0 +1,25 @@
+.field {
+	@apply flex items-center relative px-2 rounded-md border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] transition-colors duration-200 ease-linear;
+
+	> input {
+		@apply pr-2 py-2 outline-none bg-transparent placeholder:text-[#585654] w-full flex;
+	}
+
+	&:focus-within {
+		.icon {
+			@apply text-[#cbacf9];
+		}
+	}
+
+	.icon {
+		@apply mr-3 text-[#585654] transition-colors duration-200 ease-linear;
+	}
+
+	.error {
+		@apply absolute -bottom-5 left-9 text-red-600 text-xs;
+	}
+}
+
+.field:focus-within {
+	@apply border border-[#cbacf9];
+}

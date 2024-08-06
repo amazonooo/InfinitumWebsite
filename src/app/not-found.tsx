@@ -10,8 +10,14 @@ export default function NotFound() {
 	}
 
 	return (
-		<div className='h-screen w-screen'>
-			<div className='w-full h-full flex-col gap-y-6 flex items-center justify-center'>
+		<div className='h-full w-full flex flex-col overflow-clip'>
+			<div
+				className='flex flex-col items-center justify-center isolate z-[50]'
+				style={{
+					backdropFilter: 'blur(.5px)',
+					transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
+				}}
+			>
 				<h1 className='text-5xl Welcome-text Welcome-box p-4'>ОШИБКА 404</h1>
 				<button onClick={handleClick}>Вернуться на главную страницу</button>
 			</div>
