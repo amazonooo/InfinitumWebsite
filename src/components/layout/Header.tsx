@@ -150,7 +150,7 @@ export const Header = ({
 									className={cn(
 										'relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
 									)}
-									href={'/'}
+									href={'/register'}
 								>
 									<Image src={'/user.svg'} alt='logo' width={25} height={25} />
 								</Link>
