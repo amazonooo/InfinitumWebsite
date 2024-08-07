@@ -5,7 +5,7 @@ import MobileNavItems from './MobileNavItems'
 
 const MobileNav: FC = () => {
   return (
-    <header className='z-[60] relative'>
+    <header className='z-[600] relative'>
       <MobileNavItems />
     </header>
   )

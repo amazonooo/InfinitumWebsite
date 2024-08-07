@@ -9,6 +9,7 @@ import { IoHelpOutline, IoCloseSharp } from 'react-icons/io5'
 import MobileMore from './MobileMore'
 import { MdLocalGroceryStore } from 'react-icons/md'
 import { IoMdClose } from 'react-icons/io'
+import { Menu } from 'lucide-react'
 
 const MobileNavItems: FC = () => {
 	const [open, setOpen] = useState(false)
@@ -59,7 +60,7 @@ const MobileNavItems: FC = () => {
 						onClick={toggleMorePanel}
 					>
 						{!open ? (
-							<RiMenu3Line className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
+							<Menu className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
 						) : (
 							<IoMdClose className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
 						)}
@@ -69,7 +70,9 @@ const MobileNavItems: FC = () => {
 			</nav>
 			{open && (
 				<div
-					className={`fixed inset-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] ${isClosing ? 'animate-slide-down' : 'animate-slide-up'}`}
+					className={`fixed inset-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] ${
+						isClosing ? 'animate-slide-down' : 'animate-slide-up'
+					}`}
 				>
 					<MobileMore />
 				</div>

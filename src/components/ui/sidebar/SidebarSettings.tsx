@@ -5,6 +5,8 @@ import React, { useState, createContext, useContext } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 import { IconMenu2, IconX } from '@tabler/icons-react'
+import { CgArrowTopLeft } from 'react-icons/cg'
+import { ArrowBigUp } from 'lucide-react'
 
 interface Links {
 	label: string
@@ -120,18 +122,19 @@ export const MobileSidebar = ({
 				{...props}
 			>
 				<div className='flex justify-end z-20 w-full'>
-					<MdKeyboardArrowLeft
+					<ArrowBigUp
 						size={20}
 						className='text-neutral-800 dark:text-neutral-200'
 						onClick={() => setOpen(!open)}
 					/>
+
 				</div>
 				<AnimatePresence>
 					{open && (
 						<motion.div
-							initial={{ x: '100%', opacity: 0 }}
-							animate={{ x: 0, opacity: 1 }}
-							exit={{ x: '100%', opacity: 0 }}
+							initial={{ y: '100%', opacity: 0 }}
+							animate={{ y: 0, opacity: 1 }}
+							exit={{ y: '100%', opacity: 0 }}
 							transition={{
 								duration: 0.3,
 								ease: 'easeInOut',
