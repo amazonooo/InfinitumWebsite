@@ -10,9 +10,9 @@ const Safety: FC = () => {
 				<h1 className='text-center Welcome-text text-3xl xl:text-4xl'>
 					Безопасность
 				</h1>
-				<div className='flex flex-col my-9 gap-y-6'>
+				<div className='flex flex-col mt-9 mb-3 gap-y-6'>
 					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
-						<h2 className='text-base md:text-lg lg:text-xl'>
+						<h2 className='text-xs sm:text-base md:text-lgl'>
 							Двухфакторная аутентификация
 						</h2>
 						<Button className='text-base md:text-lg whitespace-nowrap'>
@@ -21,7 +21,7 @@ const Safety: FC = () => {
 					</div>
 
 					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
-						<h2 className='text-base md:text-lg lg:text-xl whitespace-nowrap'>
+						<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>
 							Почта
 						</h2>
 						<Button className='text-base md:text-lg whitespace-nowrap w-max'>
@@ -30,7 +30,7 @@ const Safety: FC = () => {
 					</div>
 
 					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
-						<h2 className='text-base md:text-lg lg:text-xl whitespace-nowrap'>
+						<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>
 							Пароль
 						</h2>
 						<Button className='text-base md:text-lg whitespace-nowrap w-max'>
@@ -39,10 +39,10 @@ const Safety: FC = () => {
 					</div>
 
 					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
-						<h2 className='text-base md:text-lg lg:text-xl whitespace-nowrap'>
+						<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>
 							Выход
 						</h2>
-						<button className='text-base md:text-lg whitespace-nowrap w-max rounded-lg transition-colors duration-300 py-2 px-5 hover:bg-[#fff]/70 bg-neutral-100 text-black'>
+						<button className='text-base md:text-lg whitespace-nowrap w-max rounded-lg transition-colors duration-300 py-2 px-5 hover:bg-rose-600/70 bg-rose-600 text-black'>
 							Выйти из аккаунта
 						</button>
 					</div>
