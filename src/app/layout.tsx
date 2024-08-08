@@ -32,7 +32,6 @@ export default function RootLayout({
 					<StarsCanvas />
 					<Header navItems={navItems} navButtons={navButtons} />
 					<SidebarDemo />
-
 					{children}
 					<Footer />
 				</ThemeProvider>
