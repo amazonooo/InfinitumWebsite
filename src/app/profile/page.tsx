@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
+import ProfileTop from './components/ProfileTop'
+import ProfileLinks from './components/ProfileLinks'
 
 export const metadata: Metadata = {
   title: 'Profile',
@@ -16,6 +18,8 @@ export default function ProfilePage() {
 					transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
 				}}
 			>
+				<ProfileTop />
+				<ProfileLinks />
 			</div>
 		</div>
 	)
