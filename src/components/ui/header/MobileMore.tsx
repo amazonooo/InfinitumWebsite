@@ -60,6 +60,14 @@ const MobileMore = () => {
 									</span>
 								</Link>
 								<Link
+									href={'/profile'}
+									className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
+								>
+									<span className='relative transition-all duration-300'>
+										Профиль
+									</span>
+								</Link>
+								<Link
 									href={'/'}
 									className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
 								>

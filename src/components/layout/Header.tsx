@@ -15,7 +15,7 @@ import { useMediaQuery } from 'react-responsive'
 import MobileNav from '../ui/header/MobileNav'
 // import { useRouter } from 'next/router'
 import { usePathname, useRouter } from 'next/navigation'
-import { CircleUser, LogOut, User } from 'lucide-react'
+import { CircleUser, CircleUserRound, LogOut, User } from 'lucide-react'
 
 export const Header = ({
 	navItems,
@@ -197,6 +197,18 @@ export const Header = ({
 												/> */}
 												<span className='relative transition-all duration-300 after:content-[""] after:absolute after:top-[105%] after:h-[1.5px] after:left-0 after:w-0 after:transition-all after:duration-300 after:bg-white group-hover:opacity-100 visible group-hover:after:w-[100%]'>
 													Личный кабинет
+												</span>
+											</Link>
+											<Link
+												href={'/profile'}
+												className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
+											>
+												<CircleUserRound
+													size={15}
+													className='absolute opacity-0 transition-all duration-300 group-hover:opacity-100'
+												/>
+												<span className='relative transition-all duration-300 after:content-[""] after:absolute after:top-[105%] after:h-[1.5px] after:left-0 after:w-0 after:transition-all after:duration-300 after:bg-white group-hover:opacity-100 visible group-hover:after:w-[100%] group-hover:ml-5'>
+													Профиль
 												</span>
 											</Link>
 											<Link
