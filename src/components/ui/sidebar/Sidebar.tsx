@@ -26,9 +26,7 @@ export function SidebarDemo() {
 					alt='server-1'
 					width={32}
 					height={32}
-					className={`${
-						open ? 'h-16 w-16' : 'h-5 w-5'
-					} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
+					className={`${'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
 				/>
 			),
 		},
@@ -42,9 +40,7 @@ export function SidebarDemo() {
 					alt='server-2'
 					width={32}
 					height={32}
-					className={`${
-						open ? 'h-16 w-16' : 'h-5 w-5'
-					} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
+					className={`${'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
 				/>
 			),
 		},
@@ -58,7 +54,7 @@ export function SidebarDemo() {
 					alt='server-1'
 					width={32}
 					height={32}
-					className={`${open ? 'h-16 w-16' : 'h-5 w-5'} flex-shrink-0`}
+					className={`${'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
 				/>
 			),
 		},
@@ -72,9 +68,7 @@ export function SidebarDemo() {
 					alt='server-2'
 					width={32}
 					height={32}
-					className={`${
-						open ? 'h-16 w-16' : 'h-5 w-5'
-					} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
+					className={`${'h-5 w-5'} text-neutral-700 dark:text-neutral-200 flex-shrink-0`}
 				/>
 			),
 		},
@@ -82,7 +76,7 @@ export function SidebarDemo() {
 	return (
 		<div
 			className={cn(
-				'rounded-lg flex fixed lg:top-1/4 bottom-[80.7px] right-5 sm:right-9 z-[500] lg:right-0 flex-col md:flex-row dark:bg-neutral-900 flex-1 border border-[#cbacf9]/60 overflow-hidden w-fit h-fit' // for your use case, use `h-screen` instead of `h-[60vh]`
+				'rounded-lg flex fixed lg:top-1/4 bottom-[80.7px] right-5 sm:right-9 z-[500] lg:right-0 flex-col md:flex-row dark:bg-neutral-900 flex-1 border border-[#cbacf9]/60 overflow-hidden w-fit h-fit'
 			)}
 		>
 			<SidebarSettings open={open} setOpen={setOpen}>

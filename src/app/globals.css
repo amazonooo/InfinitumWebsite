@@ -153,3 +153,11 @@ html {
     --ring: 240 4.9% 83.9%;
   }
 }
+
+canvas {
+  height: 400px;
+}
+
+div {
+  user-select: none;
+}

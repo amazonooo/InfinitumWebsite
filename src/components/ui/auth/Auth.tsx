@@ -7,9 +7,17 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { slideInFromTop } from '@/utils/motion'
 import { Meteors } from '../meteor/MeteorEffect'
+import { useRouter } from 'next/navigation'
 
 interface IAuth {
   type?: 'Войти' | 'Регистрация'
+}
+
+const handleClick = (link: string) => {
+	const router = useRouter()
+	return () => {
+		router.replace(`/${link}`)
+	}
 }
 
 export function Auth({ type }: IAuth) {
@@ -24,7 +32,7 @@ export function Auth({ type }: IAuth) {
 				}}
 			>
 				<form className='relative rounded-xl m-auto h-auto w-[450px] border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] p-8 sm:p-9 md:p-10'>
-					<h1 className='Welcome-text ml-auto mr-auto text-4xl text-center Welcome-box p-3 -top-[68px] absolute select-none'>
+					<h1 className='Welcome-text ml-auto mr-auto text-4xl text-center Welcome-box p-3 -top-[68px] sm:-top-[70px] lg:-top-[73px] absolute select-none'>
 						Infinitum
 					</h1>
 					<h2 className='text-3xl font-bold text-center mb-8'>{type}</h2>
@@ -43,8 +51,8 @@ export function Auth({ type }: IAuth) {
 							// error={{ message: 'Неверный пароль', type: 'min' }}
 						/>
 
-						<div className='mb-3'>
-							<Button>{type}</Button>
+						<div className='mb-3' onClick={handleClick('account')}>
+							<Button className='uppercase'>{type}</Button>
 						</div>
 						{type === 'Войти' ? (
 							<Link

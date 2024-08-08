@@ -67,7 +67,7 @@ const MobileMore = () => {
 										size={15}
 										className='absolute'
 									/>
-									<span className='relative transition-all duration-300 after:content-[""] after:absolute after:top-[105%] after:h-[1.5px] after:left-0 after:w-0 after:transition-all after:duration-300 after:bg-white group-hover:opacity-100 visible group-hover:after:w-[100%] ml-5'>
+									<span className='relative transition-all duration-300 ml-5'>
 										Выйти
 									</span>
 								</Link>

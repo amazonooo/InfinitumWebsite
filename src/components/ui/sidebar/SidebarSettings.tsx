@@ -205,7 +205,7 @@ export const SidebarLink = ({
 							: 'inline-block',
 						opacity: animate ? (open ? 1 : 0) : 1,
 					}}
-					className='text-neutral-700 dark:text-neutral-200 text-sm transition duration-150 whitespace-pre inline-block bg-[#8951ff] rounded-[10px] px-[10px] py-[5px]'
+					className='text-neutral-700 dark:text-neutral-200 text-sm transition duration-150 whitespace-pre inline-block bg-[#8951ff] rounded-[10px] px-[10px] py-[5px] w-[40px]'
 				>
 					{link.count}
 				</motion.span>
