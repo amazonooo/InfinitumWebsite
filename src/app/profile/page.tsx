@@ -18,8 +18,6 @@ export default function ProfilePage() {
 					transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
 				}}
 			>
-				<ProfileTop />
-				<ProfileLinks />
 			</div>
 		</div>
 	)

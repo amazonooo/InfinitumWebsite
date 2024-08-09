@@ -1,6 +1,8 @@
 import StarsCanvas from '@/components/ui/stars/Stars'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 import { Inter } from 'next/font/google'
+import ProfileLinks from './components/ProfileLinks'
+import ProfileTop from './components/ProfileTop'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,13 +20,9 @@ export default function ProfileLayout({
 }>) {
   return (
 		<div
-			className={`${inter.className} bg-[#161616] overflow-x-hidden w-full h-screen flex flex-col isolate`}
-			style={{
-				backdropFilter: 'blur(.5px)',
-				transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
-			}}
+			className={`${inter.className} bg-[#161616] overflow-x-hidden h-screen flex flex-col items-center`}
 		>
-			<StarsCanvas />
+			<ProfileLinks />
 			{children}
 		</div>
 	)

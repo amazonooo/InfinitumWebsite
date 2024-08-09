@@ -10,7 +10,7 @@ const NewsHero: FC = () => {
 		<motion.div
 			initial='hidden'
 			animate='visible'
-			className='flex items-center justify-center px-44 mt-16 lg:mt-48 w-full z-[20]'
+			className='flex items-center justify-center px-44 mt-16 lg:mt-44 w-full z-[20]'
 		>
 			<div className='flex flex-col w-full h-full justify-center items-center text-start'>
 				<motion.div variants={slideInFromRight(0.3)}>

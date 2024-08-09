@@ -7,8 +7,8 @@ export interface ILinks {
 export const links = [
 	{
 		id: '1',
-		name: 'Главная',
-		link: '/profile/profile',
+		name: 'Профиль',
+		link: '/profile',
 	},
 	{
 		id: '2',
