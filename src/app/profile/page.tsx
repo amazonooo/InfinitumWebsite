@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
-import ProfileTop from './components/ProfileTop'
-import ProfileLinks from './components/ProfileLinks'
 
 export const metadata: Metadata = {
   title: 'Profile',

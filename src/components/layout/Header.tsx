@@ -182,7 +182,7 @@ export const Header = ({
 									/>
 									<div
 										ref={dropdownRef}
-										className={`absolute right-0 top-[3rem] border border-[#cbacf9]/60 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] flex flex-col justify-between rounded-lg text-base w-52 opacity-0 transition-opacity duration-300 ${
+										className={`absolute right-0 top-[3.22rem] border border-[#cbacf9]/50 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] flex flex-col justify-between rounded-lg text-base w-52 opacity-0 transition-opacity duration-300 ${
 											dropdownOpen ? 'opacity-100' : ''
 										}`}
 									>

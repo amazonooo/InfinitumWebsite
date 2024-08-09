@@ -53,6 +53,7 @@ const MobileMore = () => {
 							<div className='p-4 flex flex-col gap-y-4'>
 								<Link
 									href={'/register'}
+									onClick={() => setDropdownOpen(false)}
 									className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
 								>
 									<span className='relative transition-all duration-300'>
@@ -61,6 +62,7 @@ const MobileMore = () => {
 								</Link>
 								<Link
 									href={'/profile'}
+									onClick={() => setDropdownOpen(false)}
 									className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
 								>
 									<span className='relative transition-all duration-300'>
@@ -69,12 +71,10 @@ const MobileMore = () => {
 								</Link>
 								<Link
 									href={'/'}
+									onClick={() => setDropdownOpen(false)}
 									className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
 								>
-									<LogOut
-										size={15}
-										className='absolute'
-									/>
+									<LogOut size={15} className='absolute' />
 									<span className='relative transition-all duration-300 ml-5'>
 										Выйти
 									</span>

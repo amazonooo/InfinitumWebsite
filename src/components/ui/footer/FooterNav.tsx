@@ -7,9 +7,9 @@ import { FaDiscord, FaTelegram } from 'react-icons/fa'
 const FooterNav: FC = () => {
 	return (
 		<nav className='xl:flex xl:justify-between xl:items-center xl:flex-row px-5 xl:px-10'>
-			<h1 className='Welcome-text font-bold text-3xl mb-8 xl:mb-0 xl:mr-52'>
+			<Link href={'/'} className='Welcome-text font-bold text-2xl mb-8 xl:mb-0 xl:mr-52'>
 				Infinitum
-			</h1>
+			</Link>
 			<ul className='xl:flex grid grid-cols-2 sm:grid-cols-3 xl:flex-row gap-y-6 sm:text-base xl:text-xl font-normal xl:items-center xl:gap-x-8 xl:mr-auto'>
 				<li>
 					<Link

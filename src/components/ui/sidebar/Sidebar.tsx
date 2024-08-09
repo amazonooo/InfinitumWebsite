@@ -76,7 +76,7 @@ export function SidebarDemo() {
 	return (
 		<div
 			className={cn(
-				'rounded-lg flex fixed lg:top-1/4 bottom-[80.7px] right-5 sm:right-9 z-[500] lg:right-0 flex-col md:flex-row dark:bg-neutral-900 flex-1 border border-[#cbacf9]/60 overflow-hidden w-fit h-fit'
+				'rounded-lg flex fixed lg:top-1/4 bottom-[80.7px] right-5 sm:right-9 z-[500] lg:right-0 flex-col md:flex-row dark:bg-neutral-900 flex-1 border border-[#cbacf9]/50 overflow-hidden w-fit h-fit'
 			)}
 		>
 			<SidebarSettings open={open} setOpen={setOpen}>

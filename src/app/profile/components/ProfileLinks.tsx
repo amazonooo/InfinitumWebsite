@@ -27,14 +27,20 @@ const ProfileLinks: FC<IProfile> = ({ currentPath, type }) => {
 	const [hoveredWidth, setHoveredWidth] = useState<number>(0)
 
   return (
-		<motion.div initial='hidden' animate='visible'>
-			<motion.h1 variants={slideInFromTop} className='mt-16 lg:mt-44 Welcome-text text-center text-4xl sm:text-5xl md:text-6xl font-semibold'>
+		<motion.div initial='hidden' animate='visible' className='flex flex-col items-center'>
+			<motion.h1
+				variants={slideInFromTop}
+				className='mt-16 lg:mt-40 Welcome-text text-center text-5xl sm:text-6xl font-semibold'
+			>
 				{currentType}
 			</motion.h1>
-			<motion.div variants={slideInFromLeft(0.25)} className='relative mt-10 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'>
+			<motion.div
+				variants={slideInFromLeft(0.5)}
+				className='relative mt-10 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
+			>
 				<div
 					className={clsx(
-						'hidden lg:block absolute h-10 bg-neutral-800 rounded transition-all duration-300 ease-in-out',
+						'hidden lg:block absolute h-10 bg-neutral-800 rounded transition-all duration-200 ease-in-out',
 						hoveredIndex !== null ? 'opacity-100' : 'opacity-0'
 					)}
 					style={{
@@ -46,7 +52,7 @@ const ProfileLinks: FC<IProfile> = ({ currentPath, type }) => {
 					{links.map((card, index) => (
 						<li
 							key={index}
-							className='relative px-3 py-2 text-white cursor-pointer'
+							className='relative px-3 py-2 cursor-pointer text-neutral-300/80 hover:text-white'
 							onMouseEnter={e => {
 								const { offsetLeft, offsetWidth } = e.currentTarget
 								setHoveredIndex(index)
@@ -58,9 +64,11 @@ const ProfileLinks: FC<IProfile> = ({ currentPath, type }) => {
 							<Link href={card.link} legacyBehavior>
 								<a
 									className={`${
-										active === card.link ? 'text-[#cbacf9]' : ''
-									} p-2 relative transition-colors duration-300`}
-									onClick={() => handleClick(card.link, card.name as IProfile['type'])}
+										active === card.link ? 'text-[#cbacf9] border-b border-b-[#cbacf9]' : ''
+									} p-2 relative transition-all duration-300`}
+									onClick={() =>
+										handleClick(card.link, card.name as IProfile['type'])
+									}
 								>
 									{card.name}
 								</a>
