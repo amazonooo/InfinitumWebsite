@@ -101,9 +101,9 @@ const MobileMore = () => {
 					</div>
 					<div className='border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] py-4 px-6 rounded-lg cursor-pointer group hover:shadow-3xl hover:shadow-[#cbacf9]/10 transition-colors duration-300'>
 						<div className='flex items-center'>
-							<p className='group-hover:text-[#cbacf9] transition-all duration-450'>
+							<Link href={'/rules'} className='group-hover:text-[#cbacf9] transition-all duration-450'>
 								Правила
-							</p>
+							</Link>
 						</div>
 					</div>
 					<div className='border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] py-4 px-6 rounded-lg cursor-pointer group hover:shadow-3xl hover:shadow-[#cbacf9]/10 transition-colors duration-300'>
