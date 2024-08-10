@@ -3,9 +3,18 @@
 import { cn } from '@/utils/cn'
 import { LogOut, User } from 'lucide-react'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import React, { useEffect, useRef, useState } from 'react'
 
 const MobileMore = () => {
+	// const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (href: string, e: any ) => {
+	// 	e.preventDefault()
+	// 	setDropdownOpen(false)
+	// 	onClose()
+	// 	const router = useRouter()
+	// 	router.push(href)
+	// }
+
 	const [dropdownOpen, setDropdownOpen] = useState(false)
 
 	const dropdownRef = useRef<HTMLDivElement>(null)
@@ -52,8 +61,7 @@ const MobileMore = () => {
 						>
 							<div className='p-4 flex flex-col gap-y-4'>
 								<Link
-									href={'/register'}
-									onClick={() => setDropdownOpen(false)}
+									href={'/'}
 									className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
 								>
 									<span className='relative transition-all duration-300'>
