@@ -16,7 +16,7 @@ const NewsHero: FC = () => {
 				<motion.div variants={slideInFromRight(0.3)}>
 					<Heading
 						title='Новости'
-						className='text-5xl md:text-6xl font-semibold'
+						className='text-4xl md:text-6xl font-semibold'
 					/>
 				</motion.div>
 			</div>

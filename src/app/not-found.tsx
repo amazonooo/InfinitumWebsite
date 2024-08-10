@@ -18,7 +18,7 @@ export default function NotFound() {
 					transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
 				}}
 			>
-				<h1 className='text-5xl Welcome-text Welcome-box p-4'>ОШИБКА 404</h1>
+				<h1 className='text-4xl Welcome-text Welcome-box p-4'>ОШИБКА 404</h1>
 				<button onClick={handleClick}>Вернуться на главную страницу</button>
 			</div>
 		</div>

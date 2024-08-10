@@ -3,7 +3,7 @@ import PrivilegeMain from './components/PrivilegeMain'
 
 const page: FC = () => {
   return (
-		<div className='h-full w-full py-8 sm:py-10 md:py-12 lg:py-16'>
+		<div className='h-full w-full pt-8 sm:pt-10 md:pt-12 lg:pt-16'>
 			<div
 				className='flex flex-col isolate z-[50] px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
 				style={{

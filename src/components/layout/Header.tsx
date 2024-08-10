@@ -13,9 +13,8 @@ import Image from 'next/image'
 import More from '../ui/header/More'
 import { useMediaQuery } from 'react-responsive'
 import MobileNav from '../ui/header/MobileNav'
-// import { useRouter } from 'next/router'
 import { usePathname, useRouter } from 'next/navigation'
-import { CircleUser, CircleUserRound, LogOut, User } from 'lucide-react'
+import { CircleUserRound, LogOut, User } from 'lucide-react'
 
 export const Header = ({
 	navItems,

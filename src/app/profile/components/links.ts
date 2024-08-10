@@ -12,12 +12,12 @@ export const links = [
 	},
 	{
 		id: '2',
-		name: 'Привелегии',
+		name: 'Привилегии',
 		link: '/profile/privilege',
 	},
 	{
 		id: '3',
-		name: 'Пополнить',
+		name: 'Пополнение',
 		link: '/profile/pay',
 	},
 	{
