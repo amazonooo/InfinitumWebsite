@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  // !!! нерекомндуемая настройка
+	experimental: {
+		missingSuspenseWithCSRBailout: false,
+	},
+}
 
 export default nextConfig;

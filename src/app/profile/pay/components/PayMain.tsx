@@ -3,7 +3,6 @@
 import { FC } from 'react'
 import { motion } from 'framer-motion'
 import { slideInFromLeft } from '@/utils/motion'
-import { DollarSign } from 'lucide-react'
 
 const PayMain: FC = () => {
   return (
