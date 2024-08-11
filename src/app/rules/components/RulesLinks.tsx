@@ -46,17 +46,17 @@ const RulesLinks: FC<IProfile> = ({ currentPath, type }) => {
 		<motion.div
 			initial='hidden'
 			animate='visible'
-			className='flex flex-col items-center'
+			className='flex flex-col items-center px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
 		>
 			<motion.h1
 				variants={slideInFromTop}
-				className='mt-16 lg:mt-40 Welcome-text text-center text-4xl sm:text-6xl font-semibold'
+				className='mt-16 lg:mt-40 Welcome-text text-center text-3xl sm:text-6xl font-semibold'
 			>
 				{currentType}
 			</motion.h1>
 			<motion.div
 				variants={slideInFromLeft(0.5)}
-				className='relative mt-10 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
+				className='relative mt-8 md:mt-10 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
 			>
 				<div
 					className={clsx(
@@ -68,11 +68,11 @@ const RulesLinks: FC<IProfile> = ({ currentPath, type }) => {
 						transform: `translateX(${hoveredPosition}px)`,
 					}}
 				></div>
-				<ul className='sm:flex grid grid-cols-2'>
+				<ul className='grid grid-cols-1 md:grid-cols-2 lg:flex'>
 					{rules.map((card, index) => (
 						<li
 							key={index}
-							className='relative px-3 py-2 cursor-pointer text-neutral-300/80 hover:text-white'
+							className='relative px-3 py-2 cursor-pointer text-white lg:text-neutral-300/80 hover:text-white whitespace-nowrap'
 							onMouseEnter={e => {
 								const { offsetLeft, offsetWidth } = e.currentTarget
 								setHoveredIndex(index)
@@ -85,7 +85,7 @@ const RulesLinks: FC<IProfile> = ({ currentPath, type }) => {
 								<a
 									className={`${
 										active === card.link
-											? 'text-[#cbacf9] border-b border-b-[#cbacf9]'
+											? 'text-[#cbacf9] border-none lg:border-b lg:border-b-[#cbacf9]'
 											: ''
 									} p-2 relative transition-all duration-300`}
 									onClick={() =>
@@ -104,10 +104,10 @@ const RulesLinks: FC<IProfile> = ({ currentPath, type }) => {
 }
 
 function determineSectionFromPath(path: string): IProfile['type'] {
-	if (path.includes('/profile/pay')) return 'Игровой процесс'
-	if (path.includes('/profile/possibilities')) return 'Общение'
-	if (path.includes('/profile/history')) return 'Строительство в мире'
-	if (path.includes('/profile/history')) return 'Правила серверов'
+	if (path.includes('/rules/gameproc')) return 'Игровой процесс'
+	if (path.includes('/rules/comminication')) return 'Общение'
+	if (path.includes('/rules/construction')) return 'Строительство в мире'
+	if (path.includes('/rules/serverrul')) return 'Правила серверов'
 	return 'Общие правила'
 }
 

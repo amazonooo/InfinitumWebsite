@@ -53,7 +53,7 @@ const ProfileLinks: FC<IProfile> = ({ currentPath, type }) => {
 			</motion.h1>
 			<motion.div
 				variants={slideInFromLeft(0.5)}
-				className='relative mt-10 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
+				className='relative mt-8 md:mt-10 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
 			>
 				<div
 					className={clsx(
@@ -69,7 +69,7 @@ const ProfileLinks: FC<IProfile> = ({ currentPath, type }) => {
 					{links.map((card, index) => (
 						<li
 							key={index}
-							className='relative px-3 py-2 cursor-pointer text-neutral-300/80 hover:text-white'
+							className='relative px-3 py-2 cursor-pointer text-white lg:text-neutral-300/80 hover:text-white'
 							onMouseEnter={e => {
 								const { offsetLeft, offsetWidth } = e.currentTarget
 								setHoveredIndex(index)
