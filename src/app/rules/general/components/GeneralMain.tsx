@@ -8,7 +8,7 @@ const GeneralMain: FC = () => {
 	return (
 		<motion.section initial='hidden' animate='visible'>
 			<motion.div
-				variants={slideInFromLeft(0.3)}
+				variants={slideInFromLeft(0.5)}
 				className='relative rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
 			>
 				<div className='p-8'>
@@ -24,7 +24,7 @@ const GeneralMain: FC = () => {
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									1.1
 								</h2>
-								<div className='text-xs md:text-sm mt-0.5 flex flex-col gap-y-2'>
+								<div className='text-sm mt-0.5 flex flex-col gap-y-2'>
 									<p>
 										Каждый игрок, посетивший проект Infinitum, автоматически
 										соглашается с данным сводом правил и политикой
@@ -52,7 +52,7 @@ const GeneralMain: FC = () => {
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									1.2
 								</h2>
-								<div className='text-xs md:text-sm mt-0.5 flex flex-col gap-y-2'>
+								<div className='text-sm mt-0.5 flex flex-col gap-y-2'>
 									<p>
 										Каждый игрок, посетивший проект Infinitum, автоматически
 										соглашается с данным сводом правил и политикой
@@ -80,7 +80,7 @@ const GeneralMain: FC = () => {
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									1.3
 								</h2>
-								<div className='text-xs md:text-sm mt-0.5 flex flex-col gap-y-2'>
+								<div className='text-sm mt-0.5 flex flex-col gap-y-2'>
 									<p>
 										Каждый игрок, посетивший проект Infinitum, автоматически
 										соглашается с данным сводом правил и политикой
@@ -108,7 +108,7 @@ const GeneralMain: FC = () => {
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									1.4
 								</h2>
-								<div className='text-xs md:text-sm mt-0.5 flex flex-col gap-y-2'>
+								<div className='text-sm mt-0.5 flex flex-col gap-y-2'>
 									<p>
 										Каждый игрок, посетивший проект Infinitum, автоматически
 										соглашается с данным сводом правил и политикой
@@ -136,7 +136,7 @@ const GeneralMain: FC = () => {
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									1.5
 								</h2>
-								<div className='text-xs md:text-sm mt-0.5 flex flex-col gap-y-2'>
+								<div className='text-sm mt-0.5 flex flex-col gap-y-2'>
 									<p>
 										Каждый игрок, посетивший проект Infinitum, автоматически
 										соглашается с данным сводом правил и политикой
@@ -164,7 +164,7 @@ const GeneralMain: FC = () => {
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									1.6
 								</h2>
-								<div className='text-xs md:text-sm mt-0.5 flex flex-col gap-y-2'>
+								<div className='text-sm mt-0.5 flex flex-col gap-y-2'>
 									<p>
 										Каждый игрок, посетивший проект Infinitum, автоматически
 										соглашается с данным сводом правил и политикой

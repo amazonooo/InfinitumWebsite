@@ -105,7 +105,7 @@ const RulesLinks: FC<IProfile> = ({ currentPath, type }) => {
 
 function determineSectionFromPath(path: string): IProfile['type'] {
 	if (path.includes('/rules/gameproc')) return 'Игровой процесс'
-	if (path.includes('/rules/comminication')) return 'Общение'
+	if (path.includes('/rules/communication')) return 'Общение'
 	if (path.includes('/rules/construction')) return 'Строительство в мире'
 	if (path.includes('/rules/serverrul')) return 'Правила серверов'
 	return 'Общие правила'
