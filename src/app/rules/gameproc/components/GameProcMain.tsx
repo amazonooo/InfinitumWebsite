@@ -104,7 +104,7 @@ const GeneralMain: FC = () => {
 
 					<div className='mt-8 flex flex-col'>
 						<ul>
-							<li className='p-6 bg-transparent rounded-lg border border-white/30 flex flex-col md:flex-row gap-x-5 gap-y-3'>
+							<li className='p-6 bg-transparent rounded-lg border border-[#cbacf9]/40 flex flex-col md:flex-row gap-x-5 gap-y-3'>
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									2.4
 								</h2>
