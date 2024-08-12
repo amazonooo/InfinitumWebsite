@@ -1,6 +1,6 @@
 'use client'
 
-import { KeyRound, Mail } from 'lucide-react'
+import { Eye, EyeOff, Icon, KeyRound, Mail } from 'lucide-react'
 import Field from '../field/Field'
 import { Button } from '../button/Button'
 import Link from 'next/link'
@@ -8,19 +8,25 @@ import { motion } from 'framer-motion'
 import { slideInFromTop } from '@/utils/motion'
 import { Meteors } from '../meteor/MeteorEffect'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { cn } from '@/utils/cn'
+import styles from '../field/Field.module.scss'
 
 interface IAuth {
   type?: 'Войти' | 'Регистрация'
 }
 
-const handleClick = (link: string) => {
-	const router = useRouter()
-	return () => {
-		router.replace(`/${link}`)
-	}
-}
 
 export function Auth({ type }: IAuth) {
+	const [isShowPassword, setIsShowPassword] = useState(false)
+
+	const handleClick = (link: string) => {
+		const router = useRouter()
+		return () => {
+			router.replace(`/${link}`)
+		}
+	}
+
   return (
 		<motion.div initial='hidden' animate='visible'>
 			<motion.div
@@ -37,7 +43,7 @@ export function Auth({ type }: IAuth) {
 					</h1>
 					<h2 className='text-3xl font-bold text-center mb-8'>{type}</h2>
 					<div className='text-center'>
-						<Field
+						{/* <Field
 							placeholder='Email'
 							type='email'
 							Icon={Mail}
@@ -45,11 +51,36 @@ export function Auth({ type }: IAuth) {
 						/>
 						<Field
 							placeholder='Password'
-							type='email'
+							type='password'
 							Icon={KeyRound}
 							className='mb-8'
-							// error={{ message: 'Неверный пароль', type: 'min' }}
-						/>
+						/> */}
+						<label className={cn(styles.field, 'mt-9')}>
+							<div className={styles.icon}>
+								<Mail />
+							</div>
+							<input
+								className='bg-transparent'
+								placeholder='Email'
+								type='email'
+							/>
+						</label>
+						<label className={cn(styles.field, 'mb-8 mt-6')}>
+							<div className={styles.icon}>
+								<Mail />
+							</div>
+							<input
+								className='bg-transparent'
+								placeholder='Password'
+								type={isShowPassword ? 'text' : 'password'}
+							/>
+							<div
+								className={styles.icon}
+								onClick={() => setIsShowPassword(!isShowPassword)}
+							>
+								{isShowPassword ? <Eye /> : <EyeOff />}
+							</div>
+						</label>
 
 						<div className='mb-3' onClick={handleClick('account')}>
 							<Button className='uppercase'>{type}</Button>

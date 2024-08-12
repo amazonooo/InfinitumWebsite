@@ -22,7 +22,7 @@ const PrivilegeMain: FC = () => {
 				<div className='hidden md:block absolute md:left-8 lg:left-10 xl:left-20 2xl:left-32 top-28'>
 					<Rocket size={isDesktop ? 70 : 50} className='text-[#cbacf9]' />
 				</div>
-				<div className='hidden md:block absolute md:right-8 lg:right-10 xl:right-20 2xl:right-32 top-1/2 -translate-y-1/2'>
+				<div className='hidden md:block absolute md:right-8 lg:right-10 xl:right-20 2xl:right-32 bottom-32'>
 					<Gem size={isDesktop ? 65 : 45} className='text-emerald-300' />
 				</div>
 				<div className='p-6'>
