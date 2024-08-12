@@ -20,7 +20,7 @@ const GeneralMain: FC = () => {
 					</h1>
 					<div className='mt-8 flex flex-col'>
 						<ul>
-							<li className='p-6 bg-neutral-800/40 rounded-lg border border-white/30 flex flex-col md:flex-row gap-x-5 gap-y-3'>
+							<li className='p-6 bg-neutral-800/40 rounded-lg border border-white/[0.2] flex flex-col md:flex-row gap-x-5 gap-y-3'>
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									4.1
 								</h2>
@@ -76,7 +76,7 @@ const GeneralMain: FC = () => {
 
 					<div className='mt-8 flex flex-col'>
 						<ul>
-							<li className='p-6 bg-neutral-800/40 rounded-lg border border-white/30 flex flex-col md:flex-row gap-x-5 gap-y-3'>
+							<li className='p-6 bg-neutral-800/40 rounded-lg border border-white/[0.2] flex flex-col md:flex-row gap-x-5 gap-y-3'>
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									4.3
 								</h2>
@@ -132,7 +132,7 @@ const GeneralMain: FC = () => {
 
 					<div className='mt-8 flex flex-col'>
 						<ul>
-							<li className='p-6 bg-neutral-800/40 rounded-lg border border-white/30 flex flex-col md:flex-row gap-x-5 gap-y-3'>
+							<li className='p-6 bg-neutral-800/40 rounded-lg border border-white/[0.2] flex flex-col md:flex-row gap-x-5 gap-y-3'>
 								<h2 className='w-fit text-base md:text-lg lg:text-xl text-[#cbacf9]/80 underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]/80'>
 									4.5
 								</h2>

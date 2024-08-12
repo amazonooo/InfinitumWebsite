@@ -155,7 +155,7 @@ export const Header = ({
 									)}
 								</div>
 							</li>
-							<li className='flex justify-between items-center lg:gap-x-4 xl:gap-x-6'>
+							<div className='flex justify-between items-center lg:gap-x-4 xl:gap-x-6'>
 								<Link
 									className={cn(
 										'relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
@@ -181,14 +181,14 @@ export const Header = ({
 									/>
 									<div
 										ref={dropdownRef}
-										className={`absolute right-0 top-[3.22rem] border border-[#cbacf9]/50 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] flex flex-col justify-between rounded-lg text-base w-52 opacity-0 transition-opacity duration-300 ${
+										className={`absolute right-0 top-[3.22rem] border border-[#cbacf9]/50 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] rounded-lg text-base w-52 opacity-0 transition-all duration-300 ${
 											dropdownOpen ? 'opacity-100' : ''
 										}`}
 									>
 										<div className='p-4 flex flex-col gap-y-4'>
 											<Link
 												href={'/register'}
-												className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
+												className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
 											>
 												{/* <CircleUser
 													size={15}
@@ -200,7 +200,7 @@ export const Header = ({
 											</Link>
 											<Link
 												href={'/profile'}
-												className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
+												className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
 											>
 												<CircleUserRound
 													size={15}
@@ -212,7 +212,7 @@ export const Header = ({
 											</Link>
 											<Link
 												href={'/'}
-												className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
+												className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
 											>
 												<LogOut
 													size={15}
@@ -225,7 +225,7 @@ export const Header = ({
 										</div>
 									</div>
 								</div>
-							</li>
+							</div>
 						</ul>
 					</motion.div>
 				</AnimatePresence>
