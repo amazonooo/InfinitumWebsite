@@ -62,7 +62,7 @@ const MobileMore = () => {
 						>
 							<div className='p-4 flex flex-col gap-y-4'>
 								<Link
-									href={'/account'}
+									href={'/register'}
 									className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 cursor-pointer whitespace-nowrap group items-center'
 								>
 									<span className='relative transition-all duration-300'>
