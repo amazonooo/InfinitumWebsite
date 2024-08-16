@@ -7,6 +7,7 @@ import StarsCanvas from '@/components/ui/stars/Stars'
 import Footer from '@/components/layout/Footer'
 import { navButtons, navItems } from '@/components/ui/header/navItems'
 import { SidebarDemo } from '@/components/ui/sidebar/Sidebar'
+import { Scrollbar } from '@/components/ui/scrollbar/Scrollbar'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<StarsCanvas />
+					<Scrollbar />
 					<Header navItems={navItems} navButtons={navButtons} />
 					<SidebarDemo />
 					{children}
