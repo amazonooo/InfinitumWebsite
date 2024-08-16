@@ -129,13 +129,19 @@ export const Header = ({
 										key={`link=${idx}`}
 										href={navItem.link}
 										className={cn(
-											'relative dark:text-neutral-50 font-semibold cursor-pointer items-center  flex space-x-1 transition-colors duration-300 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+											'relative dark:text-neutral-50 font-semibold cursor-pointer items-center  flex space-x-1 transition-colors duration-300'
 										)}
 									>
 										<span className='block sm:hidden'>{navItem.icon}</span>
 										{/* add !cursor-pointer */}
 										{/* remove hidden sm:block for the mobile responsive */}
-										<span className='xl:text-base font-medium lg:text-sm !cursor-pointer'>
+										<span
+											className={`xl:text-base font-medium lg:text-sm !cursor-pointer hover:text-neutral-400 transition-colors duration-300 ${
+												pathname === navItem.link
+													? 'text-[#cbacf9]'
+													: 'text-neutral-50'
+											}`}
+										>
 											{navItem.name}
 										</span>
 									</Link>
