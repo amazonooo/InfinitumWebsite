@@ -78,7 +78,7 @@ const MobileNavItems: FC = () => {
 						isClosing ? 'animate-slide-down' : 'animate-slide-up'
 					}`}
 				>
-					<MobileMore />
+					<MobileMore closeMenu={() => setOpen(false)} />
 				</div>
 			)}
 		</>
