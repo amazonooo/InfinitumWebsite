@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
 		<html lang='en'>
-			<body className={`${inter.className} bg-[#161616] overflow-x-hidden`}>
+			<body className={`bg-[#161616] overflow-x-hidden`}>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='dark'

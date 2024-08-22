@@ -17,7 +17,10 @@ const HeroContent: FC = () => {
 					variants={slideInFromTop}
 					className='Welcome-box py-1.5 px-[6px]'
 				>
-					<Heading title='Infinitum' className='text-6xl sm:text-7xl md:text-8xl lg:text-9xl'  />
+					<Heading
+						title='Infinitum'
+						className='text-6xl sm:text-7xl md:text-8xl lg:text-9xl'
+					/>
 				</motion.div>
 
 				<motion.p

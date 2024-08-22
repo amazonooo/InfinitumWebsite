@@ -8,10 +8,21 @@ html {
   color: #fff;
 }
 
-@font-face {
+body {
+  font-family: 'TTF';
+}
+
+/* @font-face {
   font-family: 'Space Mono';
   src: url('/fonts/SpaceMono-Bold.ttf') format('woff2'),
     url('/fonts/SpaceMono-Regular.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'TTF';
+  src: url('/fonts/TTFirsNeue-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -53,7 +64,7 @@ html {
   border-radius: 32px;
   box-shadow: inset 0 -7px 11px #a48fff1f;
   display: flex;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
   position: relative;
   width: -moz-max-content;
