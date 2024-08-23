@@ -6,7 +6,9 @@ import { ThemeProvider } from '@/providers/theme-provider'
 import StarsCanvas from '@/components/ui/stars/Stars'
 import Footer from '@/components/layout/Footer'
 import { navButtons, navItems } from '@/components/ui/header/navItems'
-import SidebarTest from '@/components/ui/sidebarTest/SidebarTest'
+import dynamic from 'next/dynamic'
+
+const Sidebar = dynamic(() => import('../components/ui/sidebarTest/SidebarTest'), { ssr: false })
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +32,7 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<StarsCanvas />
+					<Sidebar />
 					<Header navItems={navItems} navButtons={navButtons} />
 					{children}
 					<Footer />

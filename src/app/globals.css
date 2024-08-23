@@ -12,13 +12,13 @@ body {
   font-family: 'TTF';
 }
 
-/* @font-face {
+@font-face {
   font-family: 'Space Mono';
   src: url('/fonts/SpaceMono-Bold.ttf') format('woff2'),
     url('/fonts/SpaceMono-Regular.ttf') format('woff');
   font-weight: normal;
   font-style: normal;
-} */
+}
 
 @font-face {
   font-family: 'TTF';
