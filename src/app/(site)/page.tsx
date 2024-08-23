@@ -1,7 +1,11 @@
+'use client'
+
 import Footer from '@/components/layout/Footer'
 import Hero from '@/components/ui/hero/Hero'
 import MainInfo from '@/components/ui/main-info/MainInfo'
 import { SidebarDemo } from '@/components/ui/sidebar/Sidebar'
+import SidebarTest from '@/components/ui/sidebarTest/SidebarTest'
+import { domAnimation, LazyMotion } from 'framer-motion'
 
 export default function HomePage() {
   return (
@@ -13,8 +17,11 @@ export default function HomePage() {
 					transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
 				}}
 			>
-				<Hero />
-				<MainInfo />
+				<LazyMotion features={domAnimation}>
+					<SidebarTest />
+					<Hero />
+					<MainInfo />
+				</LazyMotion>
 			</div>
 		</main>
 	)

@@ -1,0 +1,35 @@
+.sidebar{
+  @apply fixed rounded-lg md:top-1/2 md:-translate-y-1/2 md:right-0 bg-white/5 z-[5000] bg-neutral-900 border border-[#cbacf9]/20 md:w-80 pt-10 pb-3 shadow-xl;
+
+  &.collapsed{
+    .menu{
+      >.link{
+      &:first-child{
+          @apply pt-8
+        }
+      }
+    }
+    .toggle{
+      @apply top-0 right-0.5 w-12 h-12
+    }
+  }
+
+  .menu{
+    
+    > .link{
+      @apply block py-5 px-3 transition-all duration-300 ease-in-out;
+
+      &:hover {
+        @apply bg-neutral-800;
+      }
+    }
+  }
+
+  .toggle{
+    @apply absolute top-1 left-1 flex items-center justify-center transition-opacity duration-300 ease-in-out opacity-50 w-10 h-10;
+
+    &:hover {
+      @apply opacity-100
+    }
+  }
+}
