@@ -15,9 +15,9 @@ const More: FC = () => {
 					borderRadius: '12px',
 					border: '1px solid rgba(255, 255, 255, 0.125)',
 				}}
-				initial={{ y: 0 }}
+				initial={{ y: 20 }}
 				animate={{ y: 55 }}
-				transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+				transition={{ type: 'spring', stiffness: 210, damping: 17 }}
 			>
 				<ul className='flex flex-col gap-y-4 p-4'>
 					<li className='w-full h-full text-sm'>
