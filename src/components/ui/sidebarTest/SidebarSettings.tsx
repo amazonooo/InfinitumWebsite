@@ -2,11 +2,11 @@
 import { cn } from '@/utils/cn'
 import Link, { LinkProps } from 'next/link'
 import React, { useState, createContext, useContext } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, m } from 'framer-motion'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 import { IconMenu2, IconX } from '@tabler/icons-react'
 import { CgArrowTopLeft } from 'react-icons/cg'
-import { ArrowBigUp } from 'lucide-react'
+import { ArrowBigUp, PanelTopClose } from 'lucide-react'
 
 interface Links {
 	label: string
@@ -91,7 +91,7 @@ export const DesktopSidebar = ({
 		<>
 			<motion.div
 				className={cn(
-					'h-full px-4 py-4 hidden  md:flex md:flex-col w-[300px] flex-shrink-0',
+					'h-full px-4 py-4 hidden  lg:flex lg:flex-col w-[300px] flex-shrink-0',
 					className
 				)}
 				animate={{
@@ -117,28 +117,24 @@ export const MobileSidebar = ({
 		<>
 			<div
 				className={cn(
-					'h-10 px-1.5 py-1.5 sm:px-2 sm:py-2 md:px-2.5 md:py-2.5 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-neutral-800 w-full'
+					'h-10 px-1.5 py-1.5 sm:px-2 sm:py-2 md:px-2.5 md:py-2.5 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-neutral-900 w-full'
 				)}
 				{...props}
 			>
 				<div className='flex justify-end z-20 w-full'>
-					<ArrowBigUp
+					<PanelTopClose
 						size={20}
 						className='text-neutral-800 dark:text-neutral-200'
 						onClick={() => setOpen(!open)}
 					/>
-
 				</div>
 				<AnimatePresence>
 					{open && (
-						<motion.div
+						<m.div
 							initial={{ y: '100%', opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}
 							exit={{ y: '100%', opacity: 0 }}
-							transition={{
-								duration: 0.3,
-								ease: 'easeInOut',
-							}}
+							transition={{ type: 'spring', stiffness: 200, damping: 21 }}
 							className={cn(
 								'fixed h-full w-full inset-0 bg-white dark:bg-neutral-900 p-8 z-[1000] flex flex-col justify-between',
 								className
@@ -151,7 +147,7 @@ export const MobileSidebar = ({
 								<IconX />
 							</div>
 							{children}
-						</motion.div>
+						</m.div>
 					)}
 				</AnimatePresence>
 			</div>
@@ -173,7 +169,7 @@ export const SidebarLink = ({
 		<Link
 			href={link.href}
 			className={cn(
-				'flex items-center justify-between gap-2  group/sidebar py-2',
+				'flex items-center justify-between gap-2  group/sidebar py-7',
 				className
 			)}
 			{...props}
@@ -191,7 +187,7 @@ export const SidebarLink = ({
 								: 'inline-block',
 							opacity: animate ? (open ? 1 : 0) : 1,
 						}}
-						className='text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0'
+						className='text-neutral-700 dark:text-neutral-200 text-base group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0'
 					>
 						{link.label}
 					</motion.span>
@@ -205,9 +201,9 @@ export const SidebarLink = ({
 							: 'inline-block',
 						opacity: animate ? (open ? 1 : 0) : 1,
 					}}
-					className='text-neutral-700 dark:text-neutral-200 text-sm transition duration-150 whitespace-pre inline-block bg-[#8951ff] rounded-[10px] px-[10px] py-[5px] w-[40px]'
+					className='bg-[#8159ff] rounded-md flex items-center p-1 justify-center w-[40px]'
 				>
-					{link.count}
+					<div className='flex items-center justify-center'>{link.count}</div>
 				</motion.span>
 			</div>
 		</Link>

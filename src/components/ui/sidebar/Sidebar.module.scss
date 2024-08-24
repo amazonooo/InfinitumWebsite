@@ -1,5 +1,5 @@
 .sidebar{
-  @apply fixed rounded-lg md:top-[47%] md:-translate-y-[47%] md:right-0 bg-white/5 z-[5000] bg-neutral-900 border border-[#cbacf9]/20 md:w-80 pt-10 pb-3 shadow-xl;
+  @apply fixed rounded-lg lg:top-[47%] lg:-translate-y-[47%] lg:right-0 bg-white/5 z-[5000] bg-neutral-900 border border-[#cbacf9]/20 lg:w-80 pt-10 pb-3 shadow-xl;
 
   &.collapsed{
     .menu{
