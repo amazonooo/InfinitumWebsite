@@ -10,10 +10,13 @@ import MobileMore from './MobileMore'
 import { MdLocalGroceryStore } from 'react-icons/md'
 import { IoMdClose } from 'react-icons/io'
 import { Menu } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 const MobileNavItems: FC = () => {
 	const [open, setOpen] = useState(false)
 	const [isClosing, setIsClosing] = useState(false)
+
+	const pathname = usePathname()
 
 	const toggleMorePanel = () => {
 		if(open) {
@@ -33,16 +36,20 @@ const MobileNavItems: FC = () => {
 				<ul className='flex justify-between w-full items-center h-full'>
 					<Link
 						href={'/'}
-						className='text-sm sm:text-base flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'
+						className={`text-sm sm:text-base flex items-center justify-center flex-col transition-colors duration-500 gap-y-1.5 group cursor-pointer ${
+							pathname === '/' ? 'text-[#cbacf9]' : ''
+						}`}
 					>
-						<HiHome className='w-5 h-5 sm:w-6 sm:h-7 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
+						<HiHome className='w-5 h-5 sm:w-6 sm:h-7 md:w-7 md:h-7' />
 						<li>Главная</li>
 					</Link>
 					<Link
 						href={'/servers'}
-						className='text-sm sm:text-base flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'
+						className={`text-sm sm:text-base flex items-center justify-center flex-col transition-colors duration-500 gap-y-1.5 group cursor-pointer ${
+							pathname === '/servers' ? 'text-[#cbacf9]' : ''
+						}`}
 					>
-						<FaGamepad className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
+						<FaGamepad className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7' />
 						<li>Сервера</li>
 					</Link>
 					<Link
