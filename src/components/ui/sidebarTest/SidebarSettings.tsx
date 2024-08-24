@@ -131,10 +131,10 @@ export const MobileSidebar = ({
 				<AnimatePresence>
 					{open && (
 						<m.div
-							initial={{ y: '100%', opacity: 0 }}
-							animate={{ y: 0, opacity: 1 }}
-							exit={{ y: '100%', opacity: 0 }}
-							transition={{ type: 'spring', stiffness: 200, damping: 21 }}
+							initial={{ y: '100%' }}
+							animate={{ y: 0 }}
+							exit={{ y: '100%' }}
+							transition={{ type: 'spring', stiffness: 150, damping: 18 }}
 							className={cn(
 								'fixed h-full w-full inset-0 bg-white dark:bg-neutral-900 p-8 z-[1000] flex flex-col justify-between',
 								className
