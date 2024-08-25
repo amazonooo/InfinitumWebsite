@@ -8,7 +8,7 @@ import Footer from '@/components/layout/Footer'
 import { navButtons, navItems } from '@/components/ui/header/navItems'
 import dynamic from 'next/dynamic'
 
-const Sidebar = dynamic(() => import('../components/ui/sidebar/SidebarTest'), { ssr: false })
+const Sidebar = dynamic(() => import('../components/layout/sidebar/Sidebar'), { ssr: false })
 
 const inter = Inter({ subsets: ["latin"] });
 
