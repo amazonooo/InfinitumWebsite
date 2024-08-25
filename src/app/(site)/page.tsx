@@ -2,7 +2,7 @@ import Footer from '@/components/layout/Footer'
 import Hero from '@/components/ui/hero/Hero'
 import MainInfo from '@/components/ui/main-info/MainInfo'
 import { SidebarDemo } from '@/components/ui/sidebarTest/SidebarTest'
-import SidebarTest from '@/components/ui/sidebar/SidebarTest'
+// import SidebarTest from '@/components/ui/sidebar/SidebarTest'
 import { domAnimation, LazyMotion } from 'framer-motion'
 
 export default function HomePage() {
