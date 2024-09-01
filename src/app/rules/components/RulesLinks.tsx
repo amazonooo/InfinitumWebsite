@@ -84,7 +84,7 @@ const RulesLinks: FC<IProfile> = ({ currentPath, type }) => {
 							<Link href={card.link} legacyBehavior>
 								<a
 									className={`${
-										active === card.link
+										pathname === card.link
 											? 'text-[#cbacf9] border-none lg:border-b lg:border-b-[#cbacf9]'
 											: ''
 									} p-2 relative transition-all duration-300`}
