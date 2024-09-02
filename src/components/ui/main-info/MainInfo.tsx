@@ -35,7 +35,7 @@ const MainInfo: FC = () => {
 				<Link
 					href={'/news'}
 					onClick={handleClick}
-					className='py-3 px-6 md:py-4 md:text-px-16 md:text-xl text-base text-center rounded-lg cursor-pointer bg-[#8951ff] hover:bg-[#b68ef1] transition-all duration-300 hover:-translate-y-1.5'
+					className='py-3 px-6 md:py-4 md:text-px-16 md:text-xl text-base text-center rounded-lg cursor-pointer bg-primary-purple hover:bg-[#b68ef1] transition-all duration-300 hover:-translate-y-1.5'
 				>
 					Смотреть все новости
 				</Link>

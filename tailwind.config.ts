@@ -7,6 +7,14 @@ const config: Config = {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
+		extend: {
+			colors: {
+				'primary-purple': '#8951ff',
+				'primary-pink': '#cbacf9',
+				'dark-pink': 'rgb(203 172 249 / 0.8)',
+				'dark-purple': 'rgb(137 81 255 / 0.8)',
+			},
+		},
 		screens: {
 			sm: '620px',
 			md: '767px',
@@ -40,9 +48,9 @@ const config: Config = {
 				'0%': { transform: 'translateY(10px)' },
 				'100%': { transform: 'translateY(0)' },
 			},
-			'spin': {
-				'100%': { transform: 'rotate(360deg)' }
-			}
+			spin: {
+				'100%': { transform: 'rotate(360deg)' },
+			},
 		},
 		animation: {
 			'meteor-effect': 'meteor 5s linear infinite',
@@ -50,7 +58,7 @@ const config: Config = {
 			'slide-down': 'slide-down 0.3s ease',
 			'card-up': 'card-up 0.8s ease',
 			'card-down': 'card-down 0.8s ease',
-			'spin': 'spin 1.5s linear infinite',
+			spin: 'spin 1.5s linear infinite',
 		},
 	},
 	plugins: [],

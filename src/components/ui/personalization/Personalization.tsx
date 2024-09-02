@@ -51,7 +51,7 @@ const Personalization: FC = () => {
 							/>
 							<label
 								htmlFor='skin'
-								className='bg-[#8951ff] rounded-lg transition-colors duration-300 py-2 px-5 hover:bg-[#8951ff]/80 cursor-pointer w-full'
+								className='bg-primary-purple rounded-lg transition-colors duration-300 py-2 px-5 hover:bg-dark-purple cursor-pointer w-full'
 							>
 								<span>Загрузить скин</span>
 							</label>
@@ -63,7 +63,7 @@ const Personalization: FC = () => {
 							<input type='file' id='skin' name='skin' className='hidden' />
 							<label
 								htmlFor='skin'
-								className='bg-[#8951ff] rounded-lg transition-colors duration-300 py-2 px-5 hover:bg-[#8951ff]/80 cursor-pointer w-full'
+								className='bg-primary-purple rounded-lg transition-colors duration-300 py-2 px-5 hover:bg-dark-purple cursor-pointer w-full'
 							>
 								<span>Загрузить плащ</span>
 							</label>
