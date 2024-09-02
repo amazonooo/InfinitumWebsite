@@ -56,7 +56,7 @@ export const Header = ({
 		if (typeof current === 'number') {
 			let direction = current! - scrollYProgress.getPrevious()!
 
-			if (scrollYProgress.get() < 0.3) {
+			if (scrollYProgress.get() < 0.1) {
 				// also set true for the initial state
 				setVisible(true)
 			} else {
