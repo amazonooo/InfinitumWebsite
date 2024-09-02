@@ -56,7 +56,7 @@ export const Header = ({
 		if (typeof current === 'number') {
 			let direction = current! - scrollYProgress.getPrevious()!
 
-			if (scrollYProgress.get() < 0.05) {
+			if (scrollYProgress.get() < 0.3) {
 				// also set true for the initial state
 				setVisible(true)
 			} else {
@@ -106,7 +106,6 @@ export const Header = ({
 						}}
 						animate={{
 							y: visible ? 0 : -100,
-							opacity: visible ? 1 : 0,
 						}}
 						transition={{
 							duration: 0.2,
@@ -117,7 +116,7 @@ export const Header = ({
 						)}
 						style={{
 							backdropFilter: 'blur(16px) saturate(180%)',
-							backgroundColor: 'rgba(26, 26, 30, 1.6)',
+							backgroundColor: '#161616',
 							borderRadius: '10px',
 						}}
 					>
@@ -201,7 +200,7 @@ export const Header = ({
 										>
 											<div className='p-4 flex flex-col gap-y-4'>
 												<Link
-													href={'/register'}
+													href={'/login'}
 													className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
 												>
 													{/* <CircleUser

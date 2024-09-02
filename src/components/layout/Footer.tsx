@@ -10,9 +10,18 @@ const Footer: FC = () => {
 	const pathname = usePathname()
 	const isLoggedLogin = pathname === '/login'
 	const isLoggedRegister = pathname === '/register'
+	const isNotFound =
+		pathname !== '/' &&
+		pathname !== '/account' &&
+		pathname !== '/news' &&
+		pathname !== '/profile' &&
+		pathname !== '/register' &&
+		pathname !== '/rules' &&
+		pathname !== '/servers'
 
 	if (isLoggedLogin) return null
 	if (isLoggedRegister) return null
+	if (isNotFound) return null
 
   return (
 		<LazyMotion features={domAnimation}>

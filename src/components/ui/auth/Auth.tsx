@@ -59,7 +59,7 @@ export function Auth({ type }: IAuth) {
 									<Mail />
 								</div>
 								<input
-									className='bg-transparent'
+									className='bg-transparent outline-none'
 									placeholder='Email'
 									type='email'
 								/>
@@ -69,7 +69,7 @@ export function Auth({ type }: IAuth) {
 									<Mail />
 								</div>
 								<input
-									className='bg-transparent'
+									className='bg-transparent outline-none'
 									placeholder='Password'
 									type={isShowPassword ? 'text' : 'password'}
 								/>
