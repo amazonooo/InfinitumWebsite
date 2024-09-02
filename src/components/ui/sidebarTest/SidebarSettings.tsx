@@ -3,10 +3,8 @@ import { cn } from '@/utils/cn'
 import Link, { LinkProps } from 'next/link'
 import React, { useState, createContext, useContext } from 'react'
 import { AnimatePresence, motion, m } from 'framer-motion'
-import { MdKeyboardArrowLeft } from 'react-icons/md'
-import { IconMenu2, IconX } from '@tabler/icons-react'
-import { CgArrowTopLeft } from 'react-icons/cg'
-import { ArrowBigUp, PanelTopClose } from 'lucide-react'
+import { IconX } from '@tabler/icons-react'
+import { PanelTopClose } from 'lucide-react'
 
 interface Links {
 	label: string

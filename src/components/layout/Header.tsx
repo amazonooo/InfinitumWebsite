@@ -16,7 +16,7 @@ import Image from 'next/image'
 import More from '../ui/header/More'
 import { useMediaQuery } from 'react-responsive'
 import MobileNav from '../ui/header/MobileNav'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { CircleUserRound, LogOut, User } from 'lucide-react'
 
 export const Header = ({
@@ -112,14 +112,13 @@ export const Header = ({
 							duration: 0.2,
 						}}
 						className={cn(
-							'max-w-fit md:min-w-[40vw] lg:min-w-[70vw] 2xl:min-w-[81vw] mx-auto fixed z-[5000] top-6 inset-x-0 xl:px-10 lg:px-5 py-4 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]',
+							'max-w-fit md:min-w-[40vw] lg:min-w-[70vw] 2xl:min-w-[81vw] mx-auto fixed z-[5000] top-6 inset-x-0 xl:px-10 lg:px-5 py-4 border border-primary-pink/20 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]',
 							className
 						)}
 						style={{
 							backdropFilter: 'blur(16px) saturate(180%)',
 							backgroundColor: 'rgba(26, 26, 30, 1.6)',
-							borderRadius: '12px',
-							border: '1px solid rgba(255, 255, 255, 0.125)',
+							borderRadius: '10px',
 						}}
 					>
 						<ul className='flex justify-between'>

@@ -15,7 +15,7 @@ const Safety: FC = () => {
 						<h2 className='text-xs sm:text-base md:text-lgl'>
 							Двухфакторная аутентификация
 						</h2>
-						<Button className='text-base md:text-lg whitespace-nowrap'>
+						<Button className='text-base md:text-lg whitespace-nowrap px-4 py-1.5'>
 							Подключить
 						</Button>
 					</div>
@@ -24,7 +24,7 @@ const Safety: FC = () => {
 						<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>
 							Почта
 						</h2>
-						<Button className='text-base md:text-lg whitespace-nowrap w-max'>
+						<Button className='text-base md:text-lg whitespace-nowrap w-max px-4 py-1.5'>
 							Изменить
 						</Button>
 					</div>
@@ -33,7 +33,7 @@ const Safety: FC = () => {
 						<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>
 							Пароль
 						</h2>
-						<Button className='text-base md:text-lg whitespace-nowrap w-max'>
+						<Button className='text-base md:text-lg whitespace-nowrap w-max px-4 py-1.5'>
 							Изменить
 						</Button>
 					</div>

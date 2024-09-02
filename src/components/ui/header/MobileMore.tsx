@@ -3,11 +3,7 @@
 import { cn } from '@/utils/cn'
 import { LogOut, User } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import React, { FC, useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
-import { useAtomValue } from 'jotai'
-import { isOpen } from '@/store'
 
 interface IMobileMore {
 	closeMenu: () => void
@@ -62,7 +58,7 @@ const MobileMore: FC<IMobileMore> = ({ closeMenu }) => {
 						/>
 						<div
 							ref={dropdownRef}
-							className={`absolute right-0 top-[2.35rem] border border-[#cbacf9]/60 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] flex flex-col justify-between rounded-lg text-base w-52 opacity-0 transition-opacity duration-300 ${
+							className={`absolute right-0 top-[2.35rem] border border-[#cbacf9]/20 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] flex flex-col justify-between rounded-lg text-base w-52 opacity-0 transition-opacity duration-300 ${
 								dropdownOpen ? 'opacity-100' : 'hidden'
 							}`}
 						>

@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from 'react'
 import { ILinks, links } from './links'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
+import { domAnimation, LazyMotion, m } from 'framer-motion'
 import { slideInFromLeft, slideInFromTop } from '@/utils/motion'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
@@ -44,57 +44,63 @@ const ProfileLinks: FC<IProfile> = ({ currentPath, type }) => {
 	const [hoveredWidth, setHoveredWidth] = useState<number>(0)
 
   return (
-		<motion.div initial='hidden' animate='visible' className='flex flex-col items-center'>
-			<motion.h1
-				variants={slideInFromTop}
-				className='mt-16 lg:mt-40 Welcome-text text-center text-4xl sm:text-6xl font-semibold'
+		<LazyMotion features={domAnimation}>
+			<m.div
+				initial='hidden'
+				animate='visible'
+				className='flex flex-col items-center'
 			>
-				{currentType}
-			</motion.h1>
-			<motion.div
-				variants={slideInFromLeft(0.5)}
-				className='relative mt-8 md:mt-10 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
-			>
-				<div
-					className={clsx(
-						'hidden lg:block absolute h-10 bg-neutral-800 rounded transition-all duration-200 ease-in-out',
-						hoveredIndex !== null ? 'opacity-100' : 'opacity-0'
-					)}
-					style={{
-						width: `${hoveredWidth}px`,
-						transform: `translateX(${hoveredPosition}px)`,
-					}}
-				></div>
-				<ul className='sm:flex grid grid-cols-2'>
-					{links.map((card, index) => (
-						<li
-							key={index}
-							className='relative px-3 py-2 cursor-pointer text-white lg:text-neutral-300/80 hover:text-white'
-							onMouseEnter={e => {
-								const { offsetLeft, offsetWidth } = e.currentTarget
-								setHoveredIndex(index)
-								setHoveredPosition(offsetLeft)
-								setHoveredWidth(offsetWidth)
-							}}
-							onMouseLeave={() => setHoveredIndex(null)}
-						>
-							<Link href={card.link} legacyBehavior>
-								<a
-									className={`${
-										pathname === card.link ? 'text-[#cbacf9]' : ''
-									} p-2 relative transition-all duration-300`}
-									onClick={() =>
-										handleClick(card.link, card.name as IProfile['type'])
-									}
-								>
-									{card.name}
-								</a>
-							</Link>
-						</li>
-					))}
-				</ul>
-			</motion.div>
-		</motion.div>
+				<m.h1
+					variants={slideInFromTop}
+					className='mt-16 lg:mt-40 Welcome-text text-center text-4xl sm:text-6xl font-semibold'
+				>
+					{currentType}
+				</m.h1>
+				<m.div
+					variants={slideInFromLeft(0.5)}
+					className='relative mt-8 md:mt-10 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
+				>
+					<div
+						className={clsx(
+							'hidden lg:block absolute h-10 bg-neutral-800 rounded transition-all duration-200 ease-in-out',
+							hoveredIndex !== null ? 'opacity-100' : 'opacity-0'
+						)}
+						style={{
+							width: `${hoveredWidth}px`,
+							transform: `translateX(${hoveredPosition}px)`,
+						}}
+					></div>
+					<ul className='sm:flex grid grid-cols-2'>
+						{links.map((card, index) => (
+							<li
+								key={index}
+								className='relative px-3 py-2 cursor-pointer text-white lg:text-neutral-300/80 hover:text-white'
+								onMouseEnter={e => {
+									const { offsetLeft, offsetWidth } = e.currentTarget
+									setHoveredIndex(index)
+									setHoveredPosition(offsetLeft)
+									setHoveredWidth(offsetWidth)
+								}}
+								onMouseLeave={() => setHoveredIndex(null)}
+							>
+								<Link href={card.link} legacyBehavior>
+									<a
+										className={`${
+											pathname === card.link ? 'text-[#cbacf9]' : ''
+										} p-2 relative transition-all duration-300`}
+										onClick={() =>
+											handleClick(card.link, card.name as IProfile['type'])
+										}
+									>
+										{card.name}
+									</a>
+								</Link>
+							</li>
+						))}
+					</ul>
+				</m.div>
+			</m.div>
+		</LazyMotion>
 	)
 }
 

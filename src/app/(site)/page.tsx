@@ -15,11 +15,8 @@ export default function HomePage() {
 					transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
 				}}
 			>
-				{/* <LazyMotion features={domAnimation}> */}
-					{/* <SidebarTest /> */}
-					<Hero />
-					<MainInfo />
-				{/* </LazyMotion> */}
+				<Hero />
+				<MainInfo />
 			</div>
 		</main>
 	)

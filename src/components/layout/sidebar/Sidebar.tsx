@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import Menu from './menu/Menu'
 import styles from './Sidebar.module.scss'
 import { PanelLeftClose, PanelLeftOpen, PanelTopClose, PanelTopOpen } from 'lucide-react'
