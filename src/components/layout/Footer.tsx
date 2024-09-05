@@ -17,7 +17,17 @@ const Footer: FC = () => {
 		pathname !== '/profile' &&
 		pathname !== '/register' &&
 		pathname !== '/rules' &&
-		pathname !== '/servers'
+		pathname !== '/servers' &&
+		pathname !== '/profile/general' &&
+		pathname !== '/profile/history' &&
+		pathname !== '/profile/pay' &&
+		pathname !== '/profile/possibilities' &&
+		pathname !== '/profile/privilege' &&
+		pathname !== '/rules/communication' &&
+		pathname !== '/rules/construction' &&
+		pathname !== '/rules/gameproc' &&
+		pathname !== '/rules/general' &&
+		pathname !== 'rules/serverrul'
 
 	if (isLoggedLogin) return null
 	if (isLoggedRegister) return null
