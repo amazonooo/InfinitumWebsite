@@ -27,7 +27,7 @@ const Footer: FC = () => {
 		pathname !== '/rules/construction' &&
 		pathname !== '/rules/gameproc' &&
 		pathname !== '/rules/general' &&
-		pathname !== 'rules/serverrul'
+		pathname !== '/rules/serverrul'
 
 	if (isLoggedLogin) return null
 	if (isLoggedRegister) return null
