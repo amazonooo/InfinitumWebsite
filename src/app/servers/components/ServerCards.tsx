@@ -49,7 +49,7 @@ export function ServerCards() {
 								</CardItem>
 								<CardItem
 									as={Link}
-									href='/servers/1'
+									href='/servers/server-info'
 									className='px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold'
 								>
 									Подробнее
