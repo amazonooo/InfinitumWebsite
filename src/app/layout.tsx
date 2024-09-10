@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Unbounded } from "next/font/google";
 import "./globals.css";
 import { Header } from '@/components/layout/Header';
 import { ThemeProvider } from '@/providers/theme-provider'
@@ -10,7 +10,7 @@ import dynamic from 'next/dynamic'
 
 const Sidebar = dynamic(() => import('../components/layout/sidebar/Sidebar'), { ssr: false })
 
-const inter = Inter({ subsets: ["latin"] });
+const unbounded = Unbounded({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",

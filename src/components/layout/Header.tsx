@@ -116,7 +116,7 @@ export const Header = ({
 						)}
 						style={{
 							backdropFilter: 'blur(16px) saturate(180%)',
-							backgroundColor: '#161616',
+							backgroundColor: 'transparent',
 							borderRadius: '10px',
 						}}
 					>

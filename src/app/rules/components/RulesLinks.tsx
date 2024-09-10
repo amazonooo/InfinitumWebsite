@@ -86,7 +86,7 @@ const RulesLinks: FC<IProfile> = ({ currentPath, type }) => {
 									<a
 										className={`${
 											pathname === card.link
-												? 'text-[#cbacf9] border-none lg:border-b lg:border-b-[#cbacf9]'
+												? 'Welcome-text font-extrabold border-none'
 												: ''
 										} p-2 relative transition-all duration-300`}
 										onClick={() =>
