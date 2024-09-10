@@ -1,6 +1,6 @@
 'use client'
 
-import { Eye, EyeOff, Mail } from 'lucide-react'
+import { Eye, EyeOff, KeyRound, Mail } from 'lucide-react'
 import { Button } from '../button/Button'
 import Link from 'next/link'
 import { m, LazyMotion, domAnimation } from 'framer-motion'
@@ -66,7 +66,7 @@ export function Auth({ type }: IAuth) {
 							</label>
 							<label className={cn(styles.field, 'mb-8 mt-6')}>
 								<div className={styles.icon}>
-									<Mail />
+									<KeyRound />
 								</div>
 								<input
 									className='bg-transparent outline-none'

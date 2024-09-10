@@ -2,7 +2,6 @@
 
 import Menu from './menu/Menu'
 import styles from './Sidebar.module.scss'
-import { PanelLeftClose, PanelLeftOpen, PanelTopClose, PanelTopOpen } from 'lucide-react'
 import { useAtom } from 'jotai'
 import { isCollapsedAtom } from '@/store'
 import { domAnimation, LazyMotion, m } from 'framer-motion'
@@ -10,6 +9,7 @@ import cn from 'clsx'
 import { useMediaQuery } from 'react-responsive'
 import { SidebarDemo } from '@/components/ui/sidebarTest/SidebarTest'
 import { usePathname } from 'next/navigation'
+import { Play } from 'lucide-react'
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useAtom(isCollapsedAtom)
@@ -37,12 +37,17 @@ export default function Sidebar() {
 								onMouseEnter={toggleSidebar}
 								onMouseLeave={toggleSidebar}
 							>
-								<button
+								{/* <button
 									className={styles.toggle}
-									// onClick={toggleSidebar}
 								>
 									{isCollapsed ? <PanelLeftClose /> : <PanelLeftOpen />}
-								</button>
+								</button> */}
+								<h2 className={`${styles.toggle} flex items-center gap-x-1.5`}>
+									1200
+									<span>
+										<Play size={15} className={`${isCollapsed ? 'hidden' : 'visible text-primary-pink'}`} />
+									</span>
+								</h2>
 								<Menu />
 							</m.aside>
 						</LazyMotion>
@@ -53,7 +58,9 @@ export default function Sidebar() {
 						</LazyMotion>
 					)}
 				</>
-			) : ''}
+			) : (
+				''
+			)}
 		</>
 	)
 }

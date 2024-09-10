@@ -15,7 +15,7 @@ interface SlideProps {
 const Slide: React.FC<SlideProps> = ({ slide }) => {
 	return (
 		<div className='relative text-center'>
-      <Image className='pointer-events-none' src='/planet-3.png' alt='planet' width={500} height={500} />
+      <Image className='pointer-events-none' src='/planet-3.png' alt='planet' width={600} height={600} />
 			<div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 text-white'>
 				<h2 className='text-3xl font-bold mb-4'>{slide.title}</h2>
 				<p className='text-lg mb-6'>{slide.description}</p>
