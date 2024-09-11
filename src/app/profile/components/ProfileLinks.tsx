@@ -86,7 +86,9 @@ const ProfileLinks: FC<IProfile> = ({ currentPath, type }) => {
 								<Link href={card.link} legacyBehavior>
 									<a
 										className={`${
-											pathname === card.link ? 'text-[#cbacf9]' : ''
+											pathname === card.link
+												? 'Welcome-text font-extrabold border-none'
+												: ''
 										} p-2 relative transition-all duration-300`}
 										onClick={() =>
 											handleClick(card.link, card.name as IProfile['type'])
