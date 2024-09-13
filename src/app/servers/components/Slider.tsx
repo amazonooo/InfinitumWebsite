@@ -1,64 +1,97 @@
+'use client'
+
 import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Slide from './Slide'
-import Navigation from './Navigation'
+import { SLIDE_CARD } from './SLIDE_CARD'
+
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
+import Image from 'next/image'
+import { Button } from '@/components/ui/button/Button'
 
 const Slider: React.FC = () => {
-	const [currentSlide, setCurrentSlide] = useState(0)
-
-	const slides = [
-		{
-			title: 'Новый 1',
-			description:
-				'Присоединяйтесь к сообществу геймеров, которые уже оценили наш лаунчер.',
-			buttonText: 'Читать',
-		},
-		{
-			title: 'Новый 2',
-			description:
-				'Присоединяйтесь к сообществу геймеров, которые уже оценили наш лаунчер.',
-			buttonText: 'Читать',
-		},
-		{
-			title: 'Новый 3',
-			description:
-				'Присоединяйтесь к сообществу геймеров, которые уже оценили наш лаунчер.',
-			buttonText: 'Читать',
-		},
-	]
-
-	const nextSlide = () => {
-		setCurrentSlide(prevSlide => (prevSlide + 1) % slides.length)
-	}
-
-	const prevSlide = () => {
-		setCurrentSlide(
-			prevSlide => (prevSlide - 1 + slides.length) % slides.length
-		)
-	}
-
-	const slideVariants = {
-		initial: { opacity: 0, x: 100 },
-		animate: { opacity: 1, x: 0 },
-		exit: { opacity: 0, x: -100 },
-	}
-
 	return (
 		<div className='relative flex items-center justify-center w-full'>
-			<AnimatePresence>
-				<motion.div
-					key={currentSlide}
-					initial='initial'
-					animate='animate'
-					exit='exit'
-					variants={slideVariants}
-					transition={{ type: 'spring', stiffness: 200, damping: 21 }}
-					className='absolute'
+			<div className='flex items-center justify-center w-full'>
+				<Swiper
+					centeredSlides={true}
+					loop={true}
+					slidesPerView={1}
+					autoplay={{
+						delay: 2500,
+						disableOnInteraction: false,
+					}}
+					modules={[Autoplay, Pagination, Navigation]}
 				>
-					<Slide slide={slides[currentSlide]} />
-				</motion.div>
-			</AnimatePresence>
-			<Navigation onNext={nextSlide} onPrev={prevSlide} />
+					<SwiperSlide>
+						<div className='flex items-center justify-center relative'>
+							<Image
+								className='pointer-events-none'
+								src={'/planet-3.png'}
+								alt='planet'
+								width={500}
+								height={500}
+							/>
+							<div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 text-white flex items-center justify-center flex-col'>
+								<h2 className='text-3xl font-bold mb-4'>Планета 1</h2>
+								<p className='text-lg mb-6'>
+									Присоединяйтесь к сообществу геймеров, которые уже оценили наш
+									лаунчер.
+								</p>
+								<Button className='px-6 py-2 bg-purple-600 rounded-lg shadow-lg'>
+									Читать
+								</Button>
+							</div>
+						</div>
+					</SwiperSlide>
+					<SwiperSlide>
+						<div className='flex items-center justify-center relative'>
+							<Image
+								className='pointer-events-none'
+								src={'/planet-3.png'}
+								alt='planet'
+								width={500}
+								height={500}
+							/>
+							<div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 text-white flex items-center justify-center flex-col'>
+								<h2 className='text-3xl font-bold mb-4'>Планета 2</h2>
+								<p className='text-lg mb-6'>
+									Присоединяйтесь к сообществу геймеров, которые уже оценили наш
+									лаунчер.
+								</p>
+								<Button className='px-6 py-2 bg-purple-600 rounded-lg shadow-lg'>
+									Читать
+								</Button>
+							</div>
+						</div>
+					</SwiperSlide>
+					<SwiperSlide>
+						<div className='flex items-center justify-center relative'>
+							<Image
+								className='pointer-events-none'
+								src={'/planet-3.png'}
+								alt='planet'
+								width={500}
+								height={500}
+							/>
+							<div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 text-white flex items-center justify-center flex-col'>
+								<h2 className='text-3xl font-bold mb-4'>Планета 3</h2>
+								<p className='text-lg mb-6'>
+									Присоединяйтесь к сообществу геймеров, которые уже оценили наш
+									лаунчер.
+								</p>
+								<Button className='px-6 py-2 bg-purple-600 rounded-lg shadow-lg'>
+									Читать
+								</Button>
+							</div>
+						</div>
+					</SwiperSlide>
+				</Swiper>
+			</div>
 		</div>
 	)
 }

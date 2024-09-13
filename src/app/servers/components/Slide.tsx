@@ -5,22 +5,27 @@ import Image from 'next/image'
 import React from 'react'
 
 interface SlideProps {
-	slide: {
-		title: string
-		description: string
-		buttonText: string
-	}
+	img: string
+	title: string
+	description: string
+	buttonText: string
 }
 
-const Slide: React.FC<SlideProps> = ({ slide }) => {
+const Slide: React.FC<SlideProps> = ({img, title, description, buttonText}) => {
 	return (
 		<div className='relative text-center'>
-      <Image className='pointer-events-none' src='/planet-3.png' alt='planet' width={600} height={600} />
+			<Image
+				className='pointer-events-none'
+				src={img}
+				alt='planet'
+				width={600}
+				height={600}
+			/>
 			<div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 text-white'>
-				<h2 className='text-3xl font-bold mb-4'>{slide.title}</h2>
-				<p className='text-lg mb-6'>{slide.description}</p>
+				<h2 className='text-3xl font-bold mb-4'>{title}</h2>
+				<p className='text-lg mb-6'>{description}</p>
 				<Button className='px-6 py-2 bg-purple-600 rounded-lg shadow-lg'>
-					{slide.buttonText}
+					{buttonText}
 				</Button>
 			</div>
 		</div>
