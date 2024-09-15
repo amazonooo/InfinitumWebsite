@@ -10,7 +10,7 @@
       }
     }
     .toggle{
-      @apply top-0 w-12 h-12 left-[8px]
+      @apply top-0 w-12 h-12 left-[5.5px]
     }
   }
 
@@ -26,7 +26,7 @@
   }
 
   .toggle{
-    @apply absolute top-2 left-3.5 flex items-center justify-center transition-opacity duration-300 ease-in-out;
+    @apply absolute top-1 left-3.5 flex items-center justify-center transition-opacity duration-300 ease-in-out;
 
     &:hover {
       @apply opacity-100
