@@ -18,6 +18,7 @@ import { useMediaQuery } from 'react-responsive'
 import MobileNav from '../ui/header/MobileNav'
 import { usePathname } from 'next/navigation'
 import { CircleUserRound, LogOut, User } from 'lucide-react'
+import Dropdown from '../ui/dropdown/Dropdown'
 
 export const Header = ({
 	navItems,
@@ -72,28 +73,6 @@ export const Header = ({
 	const isDesktop = useMediaQuery({ minWidth: 951 })
 	const isMobile = useMediaQuery({ maxWidth: 950 })
 
-	const [dropdownOpen, setDropdownOpen] = useState(false)
-	
-	const dropdownRef = useRef<HTMLDivElement>(null)
-	const buttonRef = useRef<HTMLDivElement>(null)
-
-	const handleClickOutside = (event: any) => {
-		if(
-			dropdownRef.current &&
-			!dropdownRef.current.contains(event.target) &&
-			buttonRef.current &&
-			!buttonRef.current.contains(event.target)
-		) {
-			setDropdownOpen(false)
-		}
-	}
-
-	useEffect(() => {
-		document.addEventListener('click', handleClickOutside)
-		return () => {
-			document.removeEventListener('click', handleClickOutside)
-		}
-	}, [])
 
 	return (
 		<header>
@@ -111,7 +90,7 @@ export const Header = ({
 							duration: 0.2,
 						}}
 						className={cn(
-						'max-w-fit md:min-w-[40vw] lg:min-w-[70vw] 2xl:min-w-[81vw] mx-auto fixed z-[5000] top-6 inset-x-0 xl:px-10 lg:px-5 py-4 border border-primary-pink/20 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]',
+							'max-w-fit md:min-w-[40vw] lg:min-w-[70vw] 2xl:min-w-[81vw] mx-auto fixed z-[5000] top-6 inset-x-0 xl:px-10 lg:px-5 py-4 border border-primary-pink/20 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]',
 							className
 						)}
 						style={{
@@ -176,69 +155,7 @@ export const Header = ({
 										height={22}
 									/>
 								</Link>
-								<div
-									ref={buttonRef}
-									onClick={() => setDropdownOpen(!dropdownOpen)}
-									className={cn('relative items-center flex')}
-								>
-									<User
-										className={`cursor-pointer ${
-											dropdownOpen ? 'text-[#cbacf9]' : 'text-neutral-50'
-										}`}
-									/>
-									<LazyMotion features={domAnimation}>
-										<m.div
-											transition={{
-												type: 'spring',
-												stiffness: 200,
-												damping: 18,
-											}}
-											ref={dropdownRef}
-											className={`absolute right-0 top-[3.22rem] border border-[#cbacf9]/20 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] rounded-lg text-base w-52 opacity-0 transition-all duration-300 ${
-												dropdownOpen ? 'opacity-100' : 'hidden'
-											}`}
-										>
-											<div className='p-4 flex flex-col gap-y-4'>
-												<Link
-													href={'/login'}
-													className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
-												>
-													{/* <CircleUser
-													size={15}
-													className='absolute opacity-0 transition-all duration-300 group-hover:opacity-100'
-												/> */}
-													<span className='relative transition-all duration-300 after:content-[""] after:absolute after:top-[105%] after:h-[1.5px] after:left-0 after:w-0 after:transition-all after:duration-300 after:bg-white group-hover:opacity-100 visible group-hover:after:w-[100%]'>
-														Личный кабинет
-													</span>
-												</Link>
-												<Link
-													href={'/profile'}
-													className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
-												>
-													<CircleUserRound
-														size={15}
-														className='absolute opacity-0 transition-all duration-300 group-hover:opacity-100'
-													/>
-													<span className='relative transition-all duration-300 after:content-[""] after:absolute after:top-[105%] after:h-[1.5px] after:left-0 after:w-0 after:transition-all after:duration-300 after:bg-white group-hover:opacity-100 visible group-hover:after:w-[100%] group-hover:ml-5'>
-														Профиль
-													</span>
-												</Link>
-												<Link
-													href={'/'}
-													className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
-												>
-													<LogOut
-														size={15}
-														className='absolute opacity-0 transition-all duration-300 group-hover:opacity-100'
-													/>
-													<span className='relative transition-all duration-300 after:content-[""] after:absolute after:top-[105%] after:h-[1.5px] after:left-0 after:w-0 after:transition-all after:duration-300 after:bg-white group-hover:opacity-100 visible group-hover:after:w-[100%] group-hover:ml-5'>
-														Выйти
-													</span>
-												</Link>
-											</div>
-										</m.div>
-									</LazyMotion>
-								</div>
+								<Dropdown />
 							</div>
 						</ul>
 					</motion.div>

@@ -14,7 +14,7 @@ const More: FC = () => {
 					backgroundColor: '#161616',
 				}}
 				initial={{ y: 20 }}
-				animate={{ y: 55 }}
+				animate={{ y: 57 }}
 				transition={{ type: 'spring', stiffness: 210, damping: 17 }}
 			>
 				<ul className='flex flex-col gap-y-4 p-4'>
