@@ -11,7 +11,7 @@ import 'swiper/css/navigation'
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button/Button'
+import { Button } from '@/components/ui/button'
 
 const Slider: React.FC = () => {
 	return (

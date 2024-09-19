@@ -13,7 +13,7 @@ const FooterNav: FC = () => {
 			<ul className='xl:flex grid grid-cols-2 sm:grid-cols-3 xl:flex-row gap-y-6 sm:text-base xl:text-xl font-normal xl:items-center xl:gap-x-8 xl:mr-auto mt-6 xl:mt-0'>
 				<li>
 					<Link
-						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
 						href={'#news'}
 					>
 						Новости
@@ -21,7 +21,7 @@ const FooterNav: FC = () => {
 				</li>
 				<li>
 					<Link
-						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
 						href={'/'}
 					>
 						Сервера
@@ -29,7 +29,7 @@ const FooterNav: FC = () => {
 				</li>
 				<li>
 					<Link
-						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
 						href={'/'}
 					>
 						Донат
@@ -37,7 +37,7 @@ const FooterNav: FC = () => {
 				</li>
 				<li>
 					<Link
-						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
 						href={'/'}
 					>
 						Правила
@@ -45,7 +45,7 @@ const FooterNav: FC = () => {
 				</li>
 				<li>
 					<Link
-						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
 						href={'/'}
 					>
 						Помощь
@@ -53,7 +53,7 @@ const FooterNav: FC = () => {
 				</li>
 				<li>
 					<Link
-						className='transition-colors duration-300 dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700 cursor-pointer text-[14px] md:text-[16px]'
+						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
 						href={'/'}
 					>
 						Команда проекта
@@ -61,10 +61,10 @@ const FooterNav: FC = () => {
 				</li>
 			</ul>
 			<ul className='mt-8 xl:mt-0 flex gap-x-8'>
-				<li className='transition-colors duration-300 cursor-pointer text-xl dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'>
+				<li className='transition-colors duration-300 cursor-pointer text-xl '>
 					<FaTelegram />
 				</li>
-				<li className='transition-colors duration-300 cursor-pointer text-xl dark:text-neutral-50 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'>
+				<li className='transition-colors duration-300 cursor-pointer text-xl '>
 					<FaDiscord />
 				</li>
 			</ul>

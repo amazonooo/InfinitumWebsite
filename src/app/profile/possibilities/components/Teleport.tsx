@@ -1,4 +1,12 @@
-import SelectServer from '@/components/ui/select/SelectServer'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select/Select"
 import { HandHelping } from 'lucide-react'
 import { FC } from 'react'
 
@@ -16,7 +24,21 @@ const Teleport: FC = () => {
 					и моментально телепортируйтесь на спавн по кнопке ниже!
 				</p>
 				<div className='flex items-center justify-center'>
-					<SelectServer />
+					<Select>
+						<SelectTrigger className='w-[180px]'>
+							<SelectValue placeholder='Выберите сервер' />
+						</SelectTrigger>
+						<SelectContent>
+							<SelectGroup>
+								<SelectLabel>Выберите сервер</SelectLabel>
+								<SelectItem value='server1'>server1</SelectItem>
+								<SelectItem value='server2'>server2</SelectItem>
+								<SelectItem value='server3'>server3</SelectItem>
+								<SelectItem value='server4'>server4</SelectItem>
+								<SelectItem value='server5'>server5</SelectItem>
+							</SelectGroup>
+						</SelectContent>
+					</Select>
 				</div>
 			</div>
 		</div>

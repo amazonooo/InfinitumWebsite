@@ -17,38 +17,68 @@ const config: Config = {
 			screens: {
 				sm: '620px',
 				md: '767px',
-				// 1024 !!!
 				lg: '951px',
 				xl: '1280px',
 				'2xl': '1536px',
 			},
 			keyframes: {
 				meteor: {
-					'0%': { transform: 'rotate(215deg) translateX(0)', opacity: '1' },
-					'70%': { opacity: '1' },
+					'0%': {
+						transform: 'rotate(215deg) translateX(0)',
+						opacity: '1',
+					},
+					'70%': {
+						opacity: '1',
+					},
 					'100%': {
 						transform: 'rotate(215deg) translateX(-500px)',
 						opacity: '0',
 					},
 				},
 				'slide-up': {
-					'0%': { transform: 'translateY(100%)' },
-					'100%': { transform: 'translateY(0)' },
+					'0%': {
+						transform: 'translateY(100%)',
+					},
+					'100%': {
+						transform: 'translateY(0)',
+					},
 				},
 				'slide-down': {
-					'0%': { transform: 'translateY(0)' },
-					'100%': { transform: 'translateY(100%)' },
+					'0%': {
+						transform: 'translateY(0)',
+					},
+					'100%': {
+						transform: 'translateY(100%)',
+					},
 				},
 				'card-up': {
-					'0%': { transform: 'translateY(10px)' },
-					'100%': { transform: 'translateY(10px)' },
+					'0%': {
+						transform: 'translateY(10px)',
+					},
+					'100%': {
+						transform: 'translateY(10px)',
+					},
 				},
 				'card-down': {
-					'0%': { transform: 'translateY(10px)' },
-					'100%': { transform: 'translateY(0)' },
+					'0%': {
+						transform: 'translateY(10px)',
+					},
+					'100%': {
+						transform: 'translateY(0)',
+					},
 				},
 				spin: {
-					'100%': { transform: 'rotate(360deg)' },
+					'100%': {
+						transform: 'rotate(360deg)',
+					},
+				},
+				shimmer: {
+					from: {
+						backgroundPosition: '0 0',
+					},
+					to: {
+						backgroundPosition: '-200% 0',
+					},
 				},
 			},
 			animation: {
@@ -58,10 +88,16 @@ const config: Config = {
 				'card-up': 'card-up 0.8s ease',
 				'card-down': 'card-down 0.8s ease',
 				spin: 'spin 1.5s linear infinite',
+				shimmer: 'shimmer 2s linear infinite',
+			},
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)',
 			},
 		},
 	},
-	plugins: [],
-	darkMode: 'class',
+	plugins: [require('tailwindcss-animate')],
+	darkMode: ['class', 'class'],
 }
 export default config;

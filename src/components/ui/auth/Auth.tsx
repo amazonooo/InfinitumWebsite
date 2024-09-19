@@ -1,7 +1,7 @@
 'use client'
 
 import { Eye, EyeOff, KeyRound, Mail } from 'lucide-react'
-import { Button } from '../button/Button'
+import { MainButton } from '../main-button/MainButton'
 import Link from 'next/link'
 import { m, LazyMotion, domAnimation } from 'framer-motion'
 import { slideInFromTop } from '@/utils/motion'
@@ -82,7 +82,7 @@ export function Auth({ type }: IAuth) {
 							</label>
 
 							<div className='mb-3' onClick={handleClick('account')}>
-								<Button className='uppercase px-5 py-2'>{type}</Button>
+								<MainButton className='uppercase px-5 py-2'>{type}</MainButton>
 							</div>
 							{type === 'Войти' ? (
 								<Link

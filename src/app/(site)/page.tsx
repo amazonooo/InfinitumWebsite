@@ -4,7 +4,7 @@ import MainInfo from '@/components/ui/main-info/MainInfo'
 export default function HomePage() {
   return (
 		<main className='h-full w-full flex flex-col overflow-clip'>
-			<div
+			<section
 				className='flex flex-col isolate z-[50]'
 				style={{
 					backdropFilter: 'blur(.5px)',
@@ -13,7 +13,7 @@ export default function HomePage() {
 			>
 				<Hero />
 				<MainInfo />
-			</div>
+			</section>
 		</main>
 	)
 }

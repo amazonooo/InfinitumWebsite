@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { domAnimation, LazyMotion, m } from 'framer-motion'
 import { slideInFromLeft, slideInFromTop } from '@/utils/motion'
 import Heading from '../Heading'
-import { Button } from '../button/Button'
+import { MainButton } from '../main-button/MainButton'
 
 const HeroContent: FC = () => {
   return (
@@ -34,7 +34,7 @@ const HeroContent: FC = () => {
 					</m.p>
 
 					<m.div variants={slideInFromLeft(0.7)}>
-						<Button text='Играть' className='px-8 py-3 md:px-12 md:py-4' />
+						<MainButton text='Играть' className='px-8 py-3 md:px-12 md:py-4' />
 					</m.div>
 				</div>
 			</m.div>

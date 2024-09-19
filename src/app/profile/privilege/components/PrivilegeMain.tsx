@@ -1,10 +1,17 @@
 'use client'
 
-import { Button } from '@/components/ui/button/Button'
 import Image from 'next/image'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Period from './Period'
-import SelectServer from '@/components/ui/select/SelectServer'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select/Select"
 import { domAnimation, LazyMotion, m } from 'framer-motion'
 import { slideInFromLeft } from '@/utils/motion'
 import { Gem, Rocket } from 'lucide-react'
@@ -12,6 +19,7 @@ import { useMediaQuery } from 'react-responsive'
 
 const PrivilegeMain: FC = () => {
 	const isDesktop = useMediaQuery({ minWidth: 1280 })
+	const [value, setValue] = useState('99')
 
   return (
 		<LazyMotion features={domAnimation}>
@@ -35,7 +43,21 @@ const PrivilegeMain: FC = () => {
 								Выбери сервер, где хотите приобрести{' '}
 								<span className='text-[#cbacf9]'>привилегию</span>
 							</h2>
-							<SelectServer />
+							<Select>
+								<SelectTrigger className='w-[180px]'>
+									<SelectValue placeholder='Выберите сервер' />
+								</SelectTrigger>
+								<SelectContent>
+									<SelectGroup>
+										<SelectLabel>Выберите сервер</SelectLabel>
+										<SelectItem value='server1'>server1</SelectItem>
+										<SelectItem value='server2'>server2</SelectItem>
+										<SelectItem value='server3'>server3</SelectItem>
+										<SelectItem value='server4'>server4</SelectItem>
+										<SelectItem value='server5'>server5</SelectItem>
+									</SelectGroup>
+								</SelectContent>
+							</Select>
 						</div>
 						<div className='mt-12 flex justify-center'>
 							<ul className='grid grid-cols-2 sm:flex gap-x-8'>
@@ -84,9 +106,6 @@ const PrivilegeMain: FC = () => {
 
 						<div className='flex justify-center mt-10'>
 							<Period />
-						</div>
-						<div className='text-center mt-6'>
-							<Button>Приобрести за 99 руб.</Button>
 						</div>
 					</div>
 				</m.div>

@@ -7,7 +7,7 @@ import { slideInFromLeft, slideInFromRight } from '@/utils/motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Heading from '../Heading'
-import { Button } from '../button/Button'
+import { Button } from "@/components/ui/button"
 
 const MainInfo: FC = () => {
 	const router = useRouter()
@@ -34,11 +34,11 @@ const MainInfo: FC = () => {
 					<News />
 				</m.div>
 				<m.div className='my-8' variants={slideInFromLeft(0.8)}>
-					<Link href={'/news'} onClick={handleClick}>
-						<Button
-							className='px-6 py-2.5 md:px-10 md:py-3'
-							text='Смотреть все новости'
-						/>
+					<Link
+						href={'/news'}
+						onClick={handleClick}
+					>
+						<Button size={'lg'}>Все новости</Button>
 					</Link>
 				</m.div>
 			</m.section>

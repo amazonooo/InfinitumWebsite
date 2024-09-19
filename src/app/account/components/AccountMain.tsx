@@ -1,6 +1,4 @@
 import { FC } from 'react'
-import Personalization from './RightInfo'
-import AccountMoreInfo from './LeftInfo'
 import LeftInfo from './LeftInfo'
 import RightInfo from './RightInfo'
 

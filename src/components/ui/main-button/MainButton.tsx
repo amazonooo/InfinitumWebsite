@@ -8,7 +8,7 @@ interface IButton extends InputHTMLAttributes<HTMLButtonElement> {
   text?: string
 }
 
-export function Button({ isLoading, children, className, text}: IButton) {
+export function MainButton({ isLoading, children, className, text}: IButton) {
   return (
 		<button
 			className={cn(

@@ -127,11 +127,11 @@ export const Header = ({
 									</Link>
 								))}
 								<div
-									className='xl:text-base lg:text-sm font-medium relative items-center  flex transition-colors duration-300 text-neutral-50 hover:text-primary-pink'
+									className='xl:text-base lg:text-sm font-medium relative items-center  flex transition-colors duration-300 text-neutral-50'
 									onMouseEnter={() => setShow(true)}
 									onMouseLeave={() => setShow(false)}
 								>
-									<Link className='z-[10]' href={'/'}>
+									<Link className='z-[10] hover:text-primary-pink transition-colors duration-300' href={'/'}>
 										Дополнительно
 									</Link>
 									{show && (

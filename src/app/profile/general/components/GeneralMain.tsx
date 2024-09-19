@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { domAnimation, LazyMotion, m } from 'framer-motion'
 import { slideInFromLeft } from '@/utils/motion'
 import { Gem } from 'lucide-react'
-import { Button } from '@/components/ui/button/Button'
+import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 
 const GeneralMain: FC = () => {

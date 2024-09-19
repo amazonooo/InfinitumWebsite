@@ -20,7 +20,7 @@ const More: FC = () => {
 				<ul className='flex flex-col gap-y-4 p-4'>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
 							href={'/'}
 						>
 							Помощь
@@ -28,7 +28,7 @@ const More: FC = () => {
 					</li>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
 							href={'/'}
 						>
 							Команда проекта
@@ -36,7 +36,7 @@ const More: FC = () => {
 					</li>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
 							href={'/'}
 						>
 							Банлист
@@ -44,7 +44,7 @@ const More: FC = () => {
 					</li>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
 							href={'/'}
 						>
 							Бонусы
@@ -52,7 +52,7 @@ const More: FC = () => {
 					</li>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
 							href={'/'}
 						>
 							Контакты
