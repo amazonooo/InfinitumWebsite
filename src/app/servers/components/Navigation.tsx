@@ -11,13 +11,13 @@ const Navigation: React.FC<NavigationProps> = ({ onNext, onPrev }) => {
 		<div className='absolute inset-0 flex justify-between items-center px-5 sm:px-10'>
 			<button
 				onClick={onPrev}
-				className='w-12 h-12 group border border-primary-pink bg-[#161616] rounded-full text-white flex justify-center items-center'
+				className='w-12 h-12 group border border-primary-pink bg-[#09090B] rounded-full text-white flex justify-center items-center'
 			>
 				<ArrowLeft className='group-hover:-translate-x-0.5 transition-all duration-300' />
 			</button>
 			<button
 				onClick={onNext}
-				className='w-12 h-12 group border border-primary-pink bg-[#161616] rounded-full text-white flex justify-center items-center'
+				className='w-12 h-12 group border border-primary-pink bg-[#09090B] rounded-full text-white flex justify-center items-center'
 			>
 				<ArrowRight className='group-hover:translate-x-0.5 transition-all duration-300' />
 			</button>

@@ -1,5 +1,5 @@
 .sidebar{
-  @apply fixed rounded-lg lg:top-[47%] lg:-translate-y-[47%] lg:right-0 bg-white/5 z-[5000] bg-neutral-900 border border-primary-pink/20 lg:w-80 pt-10 pb-3 shadow-xl;
+  @apply fixed rounded-lg lg:top-[47%] lg:-translate-y-[47%] lg:right-0 bg-[#09090B] z-[5000] border border-primary-pink/30 lg:w-80 pt-10 pb-3 shadow-xl;
 
   &.collapsed{
     .menu{
@@ -26,7 +26,7 @@
   }
 
   .toggle{
-    @apply absolute top-1 left-3.5 flex items-center justify-center transition-opacity duration-300 ease-in-out;
+    @apply absolute top-2 left-3.5 flex items-center justify-center transition-opacity duration-300 ease-in-out;
 
     &:hover {
       @apply opacity-100

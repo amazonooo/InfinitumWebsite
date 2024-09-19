@@ -35,7 +35,7 @@ const Personalization: FC = () => {
 	}
 	
   return (
-		<div className='rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'>
+		<div className='rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'>
 			<div className='py-7 px-3 md:px-5 lg:px-7 xl:px-8'>
 				<div className='text-center'>
 					<h1 className='Welcome-text text-3xl xl:text-4xl'>Персонализация</h1>
@@ -75,13 +75,13 @@ const Personalization: FC = () => {
 					<div className='flex justify-center gap-x-4 mb-12'>
 						<button
 							onClick={() => handleAnimationChange('Walk')}
-							className='group px-5 py-2 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
+							className='group px-5 py-2 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'
 						>
 							<Footprints className='transition-all group-hover:text-[#cbacf9] group-hover:-translate-y-0.5 duration-300' />
 						</button>
 						<button
 							onClick={() => handleAnimationChange('Run')}
-							className='group px-5 py-2 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
+							className='group px-5 py-2 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'
 						>
 							<FaRunning
 								className='transition-all group-hover:text-[#cbacf9] group-hover:translate-x-0.5 duration-300'

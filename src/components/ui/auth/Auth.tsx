@@ -36,7 +36,7 @@ export function Auth({ type }: IAuth) {
 						transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
 					}}
 				>
-					<form className='relative rounded-xl m-auto h-auto w-[450px] border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] p-8 sm:p-9 md:p-10'>
+					<form className='relative rounded-xl m-auto h-auto w-[450px] border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B] p-8 sm:p-9 md:p-10'>
 						<h1 className='Welcome-text ml-auto mr-auto text-4xl text-center Welcome-box p-3 -top-[68px] sm:-top-[70px] lg:-top-[73px] absolute select-none'>
 							Infinitum
 						</h1>

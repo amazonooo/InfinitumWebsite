@@ -7,8 +7,8 @@ export default function ProfileLayout({
 	children: ReactNode
 }>) {
 	return (
-		<div className={`bg-[#161616] overflow-clip h-full`}>
-      <RulesLinks />
+		<div className={`bg-[#09090B] overflow-clip h-full`}>
+			<RulesLinks />
 			{children}
 		</div>
 	)

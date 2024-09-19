@@ -19,7 +19,7 @@ export function ServerCards() {
 			>
 				<m.div variants={slideInFromLeft(0.3)}>
 					<CardContainer className='inter-var'>
-						<CardBody className='relative group/card   dark:border-white/[0.2] w-[21rem] sm:w-[28rem] md:w-[21.5rem] lg:w-[28rem] h-auto rounded-xl p-6 border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] transition-all duration-150 hover:shadow-3xl hover:shadow-primary-pink/[0.5]'>
+						<CardBody className='relative group/card   dark:border-white/[0.2] w-[21rem] sm:w-[28rem] md:w-[21.5rem] lg:w-[28rem] h-auto rounded-xl p-6 border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B] transition-all duration-150 hover:shadow-3xl hover:shadow-primary-pink/[0.5]'>
 							<CardItem className='text-xl font-bold dark:text-[#cbacf9]'>
 								Server 1
 							</CardItem>
@@ -60,7 +60,7 @@ export function ServerCards() {
 				</m.div>
 				<m.div variants={slideInFromLeft(0.3)}>
 					<CardContainer id='in-develop' className='inter-var'>
-						<CardBody className='relative group/card   dark:border-white/[0.2] w-[21rem] sm:w-[28rem] md:w-[21.5rem] lg:w-[28rem] h-auto rounded-xl p-6 border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] transition-all duration-150 hover:shadow-3xl hover:shadow-gray-500'>
+						<CardBody className='relative group/card   dark:border-white/[0.2] w-[21rem] sm:w-[28rem] md:w-[21.5rem] lg:w-[28rem] h-auto rounded-xl p-6 border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B] transition-all duration-150 hover:shadow-3xl hover:shadow-gray-500'>
 							<CardItem className='text-xl font-bold text-neutral-600 dark:text-[#cbacf9]'>
 								Server 2
 							</CardItem>

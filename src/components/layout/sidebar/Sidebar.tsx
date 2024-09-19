@@ -44,9 +44,10 @@ export default function Sidebar() {
 								</button> */}
 								<h2 className={`${styles.toggle} flex items-center`}>
 									1200
-									<span>
+									{isCollapsed ? '' : <Dot size={30} className='text-primary-pink animate-pulse' />}
+									{/* <span>
 										<Dot size={40	} className={`${isCollapsed ? 'hidden' : 'visible text-primary-pink'} animate-pulse`} />
-									</span>
+									</span> */}
 								</h2>
 								<Menu />
 							</m.aside>

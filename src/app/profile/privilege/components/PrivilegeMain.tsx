@@ -26,7 +26,7 @@ const PrivilegeMain: FC = () => {
 			<m.section initial='hidden' animate='visible'>
 				<m.div
 					variants={slideInFromLeft(0.3)}
-					className='relative rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616]'
+					className='relative rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'
 				>
 					<div className='hidden md:block absolute md:left-8 lg:left-10 xl:left-20 2xl:left-32 top-28'>
 						<Rocket size={isDesktop ? 70 : 50} className='text-[#cbacf9]' />

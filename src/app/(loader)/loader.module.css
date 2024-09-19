@@ -4,7 +4,7 @@
   height: 150px;
   border-radius: 50%;
   position: relative;
-  box-shadow: 0 0 30px 4px rgba(0, 0, 0, 0.5) inset,
+  box-shadow: 0 0 30px 4px #4b415a inset,
     0 5px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
 }
@@ -17,7 +17,7 @@
   height: 100%;
   border-radius: 45%;
   top: -40%;
-  background-color: #2e2e2e;
+  background-color: #0f0f0f;
   animation: wave 5s linear infinite;
 }
 

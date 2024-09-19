@@ -43,7 +43,7 @@ export default function Dropdown() {
 			/>
 			<m.div
 				ref={dropdownRef}
-				className={`absolute right-0 top-0 border border-[#cbacf9]/20 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#161616] rounded-lg text-base w-52 transition-all opacity-0 duration-300 ${
+				className={`absolute right-0 top-0 border border-primary-pink/30 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B] rounded-lg text-base w-52 transition-all opacity-0 duration-300 ${
 					dropdownOpen ? 'top-[3.23rem] opacity-100' : ''
 				}`}
 			>

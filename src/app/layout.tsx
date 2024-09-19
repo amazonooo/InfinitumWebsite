@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
 		<html lang='en'>
-			<body className={`bg-[#161616] overflow-x-hidden`}>
+			<body className={`bg-[#09090B] overflow-x-hidden`}>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='dark'
