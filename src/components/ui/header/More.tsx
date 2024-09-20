@@ -19,7 +19,7 @@ const More: FC = () => {
 				<ul className='flex flex-col gap-y-4 p-4'>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
+							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
 							href={'/'}
 						>
 							Помощь
@@ -27,7 +27,7 @@ const More: FC = () => {
 					</li>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
+							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
 							href={'/'}
 						>
 							Команда проекта
@@ -35,7 +35,7 @@ const More: FC = () => {
 					</li>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
+							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
 							href={'/'}
 						>
 							Банлист
@@ -43,7 +43,7 @@ const More: FC = () => {
 					</li>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
+							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
 							href={'/'}
 						>
 							Бонусы
@@ -51,7 +51,7 @@ const More: FC = () => {
 					</li>
 					<li className='w-full h-full text-sm'>
 						<Link
-							className='relative dark:text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 dark:hover:text-neutral-400'
+							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
 							href={'/'}
 						>
 							Контакты
