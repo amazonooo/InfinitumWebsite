@@ -76,7 +76,7 @@ export function SidebarDemo() {
 	return (
 		<div
 			className={cn(
-				'rounded-lg flex fixed lg:top-1/4 bottom-[78.7px] right-5 sm:right-9 z-[500] lg:right-0 flex-col md:flex-row bg-neutral-900 flex-1 border border-[#cbacf9]/20 overflow-hidden w-fit h-fit'
+				'rounded-lg flex fixed lg:top-1/4 bottom-[78.7px] right-5 sm:right-[2.295rem] z-[500] lg:right-0 flex-col md:flex-row bg-neutral-900 flex-1 border border-[#cbacf9]/20 overflow-hidden w-fit h-fit'
 			)}
 		>
 			<SidebarSettings open={open} setOpen={setOpen}>
@@ -100,7 +100,7 @@ export const Logo = () => {
 			href='#'
 			className='font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20'
 		>
-			<div className='h-5 w-6 bg-black dark:bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0' />
+			<div className='h-5 w-6 bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0' />
 			<motion.span
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
