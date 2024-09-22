@@ -13,6 +13,7 @@ const config: Config = {
 				'primary-pink': '#cbacf9',
 				'dark-pink': 'rgb(203 172 249 / 0.8)',
 				'dark-purple': 'rgb(137 81 255 / 0.8)',
+				'main-black': '#09090B',
 			},
 			screens: {
 				sm: '620px',

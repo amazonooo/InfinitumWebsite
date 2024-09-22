@@ -1,117 +1,52 @@
 'use client'
 
-import { FC, useEffect, useState } from 'react'
-import { ILinks, links } from './links'
+import { m, LazyMotion, domAnimation } from 'framer-motion'
 import Link from 'next/link'
-import clsx from 'clsx'
-import { domAnimation, LazyMotion, m } from 'framer-motion'
-import { slideInFromLeft, slideInFromTop } from '@/utils/motion'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 
-interface IProfile {
-	card?: ILinks
-	currentPath?: string
-	type?: 'Профиль' | 'Привилегии' | 'Пополнение' | 'Возможности' | 'История'
-}
+export default function ProfileLinks() {
+	const [selectedIndex, setSelectedIndex] = useState(0)
+	const links = [
+		{
+			name: 'Аккаунт',
+			link: '/profile',
+		},
+		{
+			name: 'Статистика',
+			link: '/profile',
+		},
+	]
 
-const ProfileLinks: FC<IProfile> = ({ currentPath, type }) => {
-  const [active, setActive] = useState(currentPath)
-	const [currentType, setCurrentType] = useState<typeof type>(type)
-
-	const pathname = usePathname()
-	const searchParams = useSearchParams()
-	const router = useRouter()
-
-  const handleClick = (href: string, name: IProfile['type']) => {
-    setActive(href)
-		setCurrentType(name)
-		router.push(`${href}?section=${name}`)
-  }
-
-	useEffect(() => {
-		const querySection = searchParams.get('section') as IProfile['type']
-		if(querySection) {
-			setCurrentType(querySection)
-		} else {
-			const section = determineSectionFromPath(pathname)
-			setCurrentType(section)
-		}
-		
-	}, [pathname, searchParams])
-
-	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-	const [hoveredPosition, setHoveredPosition] = useState<number>(0)
-	const [hoveredWidth, setHoveredWidth] = useState<number>(0)
-
-  return (
+	return (
 		<LazyMotion features={domAnimation}>
-			<m.div
-				initial='hidden'
-				animate='visible'
-				className='flex flex-col items-center'
-			>
-				<m.h1
-					variants={slideInFromTop}
-					className='mt-16 lg:mt-40 Welcome-text text-center text-4xl sm:text-6xl font-semibold'
-				>
-					{currentType}
-				</m.h1>
-				<m.div
-					variants={slideInFromLeft(0.5)}
-					className='relative mt-8 md:mt-10 rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'
-				>
-					<div
-						className={clsx(
-							'hidden lg:block absolute h-10 bg-neutral-800 rounded transition-all duration-200 ease-in-out',
-							hoveredIndex !== null ? 'opacity-100' : 'opacity-0'
-						)}
-						style={{
-							width: `${hoveredWidth}px`,
-							transform: `translateX(${hoveredPosition}px)`,
-						}}
-					></div>
-					<ul className='sm:flex grid grid-cols-2'>
-						{links.map((card, index) => (
-							<li
-								key={index}
-								className='relative px-3 py-2 cursor-pointer text-white lg:text-neutral-300/80 hover:text-white'
-								onMouseEnter={e => {
-									const { offsetLeft, offsetWidth } = e.currentTarget
-									setHoveredIndex(index)
-									setHoveredPosition(offsetLeft)
-									setHoveredWidth(offsetWidth)
-								}}
-								onMouseLeave={() => setHoveredIndex(null)}
-							>
-								<Link href={card.link} legacyBehavior>
-									<a
-										className={`${
-											pathname === card.link
-												? 'Welcome-text font-extrabold border-none'
-												: ''
-										} p-2 relative transition-all duration-300`}
-										onClick={() =>
-											handleClick(card.link, card.name as IProfile['type'])
-										}
-									>
-										{card.name}
-									</a>
+			<m.div className='flex items-center flex-col'>
+				<m.div className='mt-16 lg:mt-40'>
+					<div className='relative w-full'>
+						<div className='flex justify-between space-x-8 text-white'>
+							{links.map((link, index) => (
+								<Link
+									href={link.link}
+									key={index}
+									className={`pb-2 relative ${
+										selectedIndex === index ? 'text-white' : 'text-gray-500'
+									}`}
+									onClick={() => setSelectedIndex(index)}
+								>
+									{link.name}
 								</Link>
-							</li>
-						))}
-					</ul>
+							))}
+						</div>
+
+						<div className='w-full h-1 bg-neutral-700 relative mt-1 rounded-md'>
+							<div
+								className={`absolute h-1 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 rounded-md ${
+									selectedIndex === 0 ? 'left-0 w-1/2' : 'left-1/2 w-1/2'
+								}`}
+							/>
+						</div>
+					</div>
 				</m.div>
 			</m.div>
 		</LazyMotion>
 	)
 }
-
-function determineSectionFromPath(path: string): IProfile['type'] {
-	if (path.includes('/profile/privilege')) return 'Привилегии'
-	if (path.includes('/profile/pay')) return 'Пополнение'
-	if (path.includes('/profile/possibilities')) return 'Возможности'
-	if (path.includes('/profile/history')) return 'История'
-	return 'Профиль'
-}
-
-export default ProfileLinks
