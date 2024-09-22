@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
+import { m, LazyMotion, domAnimation } from 'framer-motion'
 
 export default function Transactions() {
   const transactions = [
@@ -60,16 +61,21 @@ export default function Transactions() {
   return (
 		<div className='w-full'>
 			<div className='space-y-4'>
-				{transactions.slice(0, visibleCards).map((trans, index) => (
-					<div
-						key={index}
-						className='p-4 border border-dark-pink rounded-lg flex justify-between items-center relative'
-					>
-						<div>{trans.date}</div>
-						<div>{trans.cardNumber}</div>
-						<div className='text-[#73FF7C]'>{trans.amount}</div>
-					</div>
-				))}
+				<LazyMotion features={domAnimation}>
+					{transactions.slice(0, visibleCards).map((trans, index) => (
+						<m.div
+							key={index}
+							className='p-4 border border-primary-pink/60 rounded-lg flex justify-between items-center relative'
+							initial={{ y: -20 }}
+							animate={{ y: 0 }}
+							transition={{ type: 'spring', stiffness: 200, damping: 21 }}
+						>
+							<div>{trans.date}</div>
+							<div>{trans.cardNumber}</div>
+							<div className='text-[#73FF7C]'>{trans.amount}</div>
+						</m.div>
+					))}
+				</LazyMotion>
 
 				<Button className='mt-4 w-full' size={'lg'} onClick={toggleCards}>
 					{visibleCards >= transactions.length ? 'Свернуть' : 'Показать еще'}

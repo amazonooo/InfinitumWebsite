@@ -13,7 +13,7 @@ export default function ProfileLinks() {
 		},
 		{
 			name: 'Статистика',
-			link: '/profile',
+			link: '/profile/statistics',
 		},
 	]
 
@@ -27,7 +27,7 @@ export default function ProfileLinks() {
 								<Link
 									href={link.link}
 									key={index}
-									className={`pb-2 relative ${
+									className={`pb-2 text-3xl sm:text-4xl md:text-5xl font-semibold relative ${
 										selectedIndex === index ? 'text-white' : 'text-gray-500'
 									}`}
 									onClick={() => setSelectedIndex(index)}

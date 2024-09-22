@@ -10,11 +10,11 @@ export default function GeneralMain() {
 	return (
 		<LazyMotion features={domAnimation}>
 			<m.section initial='hidden' animate='visible'>
-				<m.div className='grid grid-cols-1 md:grid-cols-3 gap-12'>
-					<m.div className='col-span-1'>
+				<m.div className='grid grid-cols-1 md:grid-cols-3 gap-20'>
+					<m.div className='md:col-span-1 flex items-center justify-center flex-col'>
 						<PlayerInfo />
 
-						<div className='bg-main-black border border-white/[0.2] rounded-lg mt-20 max-w-[440px]'>
+						<div className='bg-main-black border border-white/[0.2] rounded-lg mt-10 w-[310px] sm:w-[370px] md:w-[350px] lg:w-[440px]'>
 							<div className='p-6 text-center'>
 								<h2 className='Welcome-text text-lg md:text-xl lg:text-2xl mb-4'>
 									Текущий баланс
@@ -26,7 +26,7 @@ export default function GeneralMain() {
 							</div>
 						</div>
 
-						<div className='bg-main-black border border-white/[0.2] rounded-lg mt-20 max-w-[440px]'>
+						<div className='bg-main-black border border-white/[0.2] rounded-lg mt-10 w-[310px] sm:w-[370px] md:w-[350px] lg:w-[440px]'>
 							<div className='p-6'>
 								<h2 className='text-center text-lg md:text-xl lg:text-2xl mb-4'>
 									Текущий сервер
@@ -74,7 +74,7 @@ export default function GeneralMain() {
 						</div>
 					</m.div>
 
-					<m.div className='col-span-1 lg:col-span-2'>
+					<m.div className='col-span-1 sm:col-span-2'>
 						<div className='bg-main-black border border-white/[0.2] rounded-lg'>
 							<div className='py-6 px-12'>
 								<h1 className='Welcome-text text-3xl md:text-4xl lg:text-5xl text-center mb-10'>
@@ -86,6 +86,23 @@ export default function GeneralMain() {
 									<li>Внесено</li>
 								</ul>
 								<Transactions />
+							</div>
+						</div>
+
+						<div className='bg-main-black border border-white/[0.2] rounded-lg mt-10'>
+							<div className='py-6 px-12'>
+								<h1 className='Welcome-text text-3xl md:text-4xl lg:text-5xl text-center mb-10'>
+									Входы в профиль
+								</h1>
+								<h2 className='ml-6 mb-3'>Дата и время</h2>
+								<div className='flex flex-col gap-y-5'>
+									<div className='p-4 border border-primary-pink/60 rounded-lg flex justify-between items-center relative'>
+										<p>24.10.2024 – 11:02:57 </p>
+									</div>
+									<div className='p-4 border border-primary-pink/60 rounded-lg flex justify-between items-center relative'>
+										<p>24.10.2024 – 11:02:57 </p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</m.div>

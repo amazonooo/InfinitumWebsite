@@ -11,7 +11,7 @@ export default function ProfilePage() {
   return (
 		<section className='h-full w-full pt-24'>
 			<div
-				className='flex flex-col isolate z-[50] px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[140px]'
+				className='flex flex-col isolate z-[50] ml-auto mr-auto px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[8.75rem]'
 				style={{
 					backdropFilter: 'blur(.5px)',
 					transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
