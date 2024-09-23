@@ -10,6 +10,6 @@ export const metadata: Metadata = {
 
 export default function RegisterPage() {
 	return (
-    <Auth type='Регистрация' />
+    <Auth type='Создать аккаунт' />
   )
 }

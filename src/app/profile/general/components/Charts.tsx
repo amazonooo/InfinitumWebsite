@@ -62,8 +62,8 @@ export function Charts() {
 							cursor={false}
 							content={<ChartTooltipContent indicator='dashed' />}
 						/>
-						<Bar dataKey='desktop' fill='#2662d9' radius={6} />
-						<Bar dataKey='mobile' fill='#e23670' radius={6} />
+						<Bar dataKey='desktop' fill='#2662d9' radius={5} />
+						<Bar dataKey='mobile' fill='#e23670' radius={5} />
 					</BarChart>
 				</ChartContainer>
 			</CardContent>
