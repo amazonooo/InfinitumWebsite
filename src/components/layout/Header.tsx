@@ -82,83 +82,80 @@ export const Header = ({
 							duration: 0.2,
 						}}
 						className={cn(
-							'max-w-fit md:min-w-[40vw] lg:min-w-[70vw] 2xl:min-w-[81vw] mx-auto fixed z-[5000] border border-primary-pink top-6 inset-x-0 xl:px-10 lg:px-5 py-4 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]',
+							'max-w-fit md:min-w-[40vw] lg:min-w-[70vw] 2xl:min-w-[81vw] mx-auto fixed z-[5000] top-6 inset-x-0 p-[1px] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-gradient-to-r from-[rgb(229,156,255)] via-[rgb(186,156,255)] to-[rgb(156,178,255)] rounded-lg',
 							className
 						)}
-						style={{
-							backdropFilter: 'blur(16px)',
-							borderRadius: '10px', 
-							backgroundColor: 'transparent'
-						}}
 					>
-						<ul className='flex justify-between'>
-							<div className='text-2xl font-bold Welcome-text'>
-								<Link href={'/'}>Infinitum</Link>
-							</div>
-							<li className='flex justify-between lg:gap-x-4 xl:gap-x-6 font-semibold'>
-								{navItems.map((navItem: any, idx: number) => (
-									<Link
-										key={`link=${idx}`}
-										href={navItem.link}
-										className={cn(
-											'relative text-neutral-50 font-semibold cursor-pointer items-center  flex space-x-1 transition-colors duration-300'
-										)}
-									>
-										<span className='block sm:hidden'>{navItem.icon}</span>
-										{/* add !cursor-pointer */}
-										{/* remove hidden sm:block for the mobile responsive */}
-										<span
-											className={`xl:text-base font-medium lg:text-sm !cursor-pointer hover:text-primary-pink transition-colors duration-300 ${
-												pathname === navItem.link
-													? 'text-primary-pink'
-													: 'text-neutral-50'
-											}`}
+						<div className='xl:px-10 lg:px-5 py-4 bg-main-black rounded-lg'>
+							<ul className='flex justify-between'>
+								<div className='text-2xl font-bold Welcome-text'>
+									<Link href={'/'}>Infinitum</Link>
+								</div>
+								<li className='flex justify-between lg:gap-x-4 xl:gap-x-6 font-semibold'>
+									{navItems.map((navItem: any, idx: number) => (
+										<Link
+											key={`link=${idx}`}
+											href={navItem.link}
+											className={cn(
+												'relative text-neutral-50 font-semibold cursor-pointer items-center  flex space-x-1 transition-colors duration-300'
+											)}
 										>
-											{navItem.name}
-										</span>
-									</Link>
-								))}
-								<div
-									className='xl:text-base lg:text-sm font-medium relative items-center  flex transition-colors duration-300 text-neutral-50'
-									onMouseEnter={() => setShow(true)}
-									onMouseLeave={() => setShow(false)}
-								>
+											<span className='block sm:hidden'>{navItem.icon}</span>
+											{/* add !cursor-pointer */}
+											{/* remove hidden sm:block for the mobile responsive */}
+											<span
+												className={`xl:text-base font-medium lg:text-sm !cursor-pointer hover:text-primary-pink transition-colors duration-300 ${
+													pathname === navItem.link
+														? 'text-primary-pink'
+														: 'text-neutral-50'
+												}`}
+											>
+												{navItem.name}
+											</span>
+										</Link>
+									))}
+									<div
+										className='xl:text-base lg:text-sm font-medium relative items-center  flex transition-colors duration-300 text-neutral-50'
+										onMouseEnter={() => setShow(true)}
+										onMouseLeave={() => setShow(false)}
+									>
+										<Link
+											className='z-[10] hover:text-primary-pink transition-colors duration-300 flex items-center gap-x-1.5'
+											href={'/'}
+										>
+											Дополнительно
+											<ChevronDown
+												className={`${
+													show ? 'rotate-180' : ''
+												} transition-transform duration-300`}
+												size={15}
+											/>
+										</Link>
+										{show && (
+											<div className='w-[250px] absolute left-0 top-0'>
+												<More />
+											</div>
+										)}
+									</div>
+								</li>
+								<div className='flex justify-between items-center lg:gap-x-4 xl:gap-x-6'>
 									<Link
-										className='z-[10] hover:text-primary-pink transition-colors duration-300 flex items-center gap-x-1.5'
+										className={cn(
+											'relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
+										)}
 										href={'/'}
 									>
-										Дополнительно
-										<ChevronDown
-											className={`${
-												show ? 'rotate-180' : ''
-											} transition-transform duration-300`}
-											size={15}
+										<Image
+											src={'/discord.png'}
+											alt='logo'
+											width={22}
+											height={22}
 										/>
 									</Link>
-									{show && (
-										<div className='w-[250px] absolute left-0 top-0'>
-											<More />
-										</div>
-									)}
+									<Dropdown />
 								</div>
-							</li>
-							<div className='flex justify-between items-center lg:gap-x-4 xl:gap-x-6'>
-								<Link
-									className={cn(
-										'relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
-									)}
-									href={'/'}
-								>
-									<Image
-										src={'/discord.png'}
-										alt='logo'
-										width={22}
-										height={22}
-									/>
-								</Link>
-								<Dropdown />
-							</div>
-						</ul>
+							</ul>
+						</div>
 					</motion.div>
 				</AnimatePresence>
 			)}

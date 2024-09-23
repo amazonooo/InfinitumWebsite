@@ -77,9 +77,12 @@ export default function Transactions() {
 					))}
 				</LazyMotion>
 
-				<Button className='mt-4 w-full' size={'lg'} onClick={toggleCards}>
-					{visibleCards >= transactions.length ? 'Свернуть' : 'Показать еще'}
-				</Button>
+				{transactions.length > 3 ? (
+					<Button className='mt-4 w-full' size={'lg'} onClick={toggleCards}>
+						{visibleCards >= transactions.length ? 'Свернуть' : 'Показать еще'}
+					</Button>
+				) : ''}
+
 			</div>
 		</div>
 	)

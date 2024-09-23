@@ -99,6 +99,6 @@ canvas {
 
 @layer base {
   :root {
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 }

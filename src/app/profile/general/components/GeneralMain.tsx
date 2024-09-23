@@ -5,13 +5,14 @@ import { m, LazyMotion, domAnimation } from 'framer-motion'
 import PlayerInfo from './PlayerInfo'
 import { Button } from '@/components/ui/button'
 import Transactions from './Transactions'
+import { Charts } from './Charts'
 
 export default function GeneralMain() {
 	return (
 		<LazyMotion features={domAnimation}>
 			<m.section initial='hidden' animate='visible'>
-				<m.div className='grid grid-cols-1 md:grid-cols-3 gap-20'>
-					<m.div className='md:col-span-1 flex items-center justify-center flex-col'>
+				<m.div className='grid grid-cols-1 lg:grid-cols-3 gap-y-20 lg:gap-20'>
+					<m.div className='lg:col-span-1 flex items-center justify-center flex-col'>
 						<PlayerInfo />
 
 						<div className='bg-main-black border border-white/[0.2] rounded-lg mt-10 w-[310px] sm:w-[370px] md:w-[350px] lg:w-[440px]'>
@@ -32,7 +33,7 @@ export default function GeneralMain() {
 									Текущий сервер
 								</h2>
 								<h1 className='text-center Welcome-text text-3xl md:text-4xl lg:text-5xl mb-10'>
-									Fluddality
+									Server 1
 								</h1>
 								<div className='flex items-center justify-between'>
 									<h2 className='text-base md:text-lg'>игровое время:</h2>
@@ -105,6 +106,8 @@ export default function GeneralMain() {
 								</div>
 							</div>
 						</div>
+
+						{/* <Charts /> */}
 					</m.div>
 				</m.div>
 			</m.section>

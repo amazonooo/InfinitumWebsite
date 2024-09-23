@@ -1,3 +1,7 @@
+import { Charts } from '../../general/components/Charts'
+
 export default function StatisticsMain() {
-  return <div>StatisticsMain</div>
+  return (
+    <Charts />
+  )
 }
