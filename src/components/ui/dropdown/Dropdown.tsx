@@ -23,10 +23,6 @@ export default function Dropdown() {
     }
   }
 
-	const closeMenu = () => {
-		
-	}
-
   useEffect(() => {
     document.addEventListener('click', handleClickOutside)
     return () => {

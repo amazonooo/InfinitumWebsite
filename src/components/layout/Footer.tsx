@@ -37,7 +37,7 @@ const Footer: FC = () => {
 
   return (
 		<footer
-			className='mx-5 xl:px-0 lg:mx-16 xl:mx-auto lg:max-w-7xl overflow-x-clip mt-16 lg:mb-6 mb-28 p-[1px] rounded-lg bg-gradient-to-r from-[rgb(229,156,255)] via-[rgb(186,156,255)] to-[rgb(156,178,255)] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[50] isolate'
+			className='mx-5 xl:px-0 lg:mx-16 xl:mx-auto lg:max-w-7xl overflow-x-clip mt-16 lg:mb-6 mb-28 p-[1px] rounded-lg bg-gradient-to-r from-[rgb(229,156,255)] via-[rgb(186,156,255)] to-[rgb(156,178,255)] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[40] isolate'
 		>
 			<div className='px-5 xl:px-10 rounded-lg bg-main-black py-4'>
 				<FooterNav />

@@ -22,7 +22,7 @@ const Safety: FC = () => {
 							Подключить
 						</Button>
 						{isOpen && (
-							<Modal />
+							<Modal onClose={() => setIsOpen(false)} isOpen={isOpen} />
 						)}
 					</div>
 
