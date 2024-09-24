@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { newsCard } from './newsCard'
 import Card from './Card'

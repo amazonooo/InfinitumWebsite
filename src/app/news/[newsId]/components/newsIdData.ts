@@ -1,0 +1,38 @@
+export const newsIdData = [
+	{
+		id: 1,
+		title: 'Новый сервер',
+		subTitle: 'INFINITUM',
+		content: 'Присоединяйтесь к сообществу геймеров...',
+		image: '/images/news1.jpg',
+		additionalImages: ['/images/additional1.jpg', '/images/additional2.jpg'],
+		footerImage: '/images/footer1.jpg',
+	},
+	{
+		id: 2,
+		title: 'Новый сервер',
+		subTitle: 'INFINITUM',
+		content: 'Присоединяйтесь к сообществу геймеров...',
+		image: '/images/news1.jpg',
+		additionalImages: ['/images/additional1.jpg', '/images/additional2.jpg'],
+		footerImage: '/images/footer1.jpg',
+	},
+	{
+		id: 3,
+		title: 'Новый сервер',
+		subTitle: 'INFINITUM',
+		content: 'Присоединяйтесь к сообществу геймеров...',
+		image: '/images/news1.jpg',
+		additionalImages: ['/images/additional1.jpg', '/images/additional2.jpg'],
+		footerImage: '/images/footer1.jpg',
+	},
+	{
+		id: 4,
+		title: 'Новый сервер',
+		subTitle: 'INFINITUM',
+		content: 'Присоединяйтесь к сообществу геймеров...',
+		image: '/images/news1.jpg',
+		additionalImages: ['/images/additional1.jpg', '/images/additional2.jpg'],
+		footerImage: '/images/footer1.jpg',
+	},
+]

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AccountPage() {
   return (
-		<div className='h-full w-full flex flex-col overflow-clip'>
+		<section className='h-full w-full flex flex-col overflow-x-clip'>
 			<div
 				className='flex flex-col isolate z-[50] items-center justify-center px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
 				style={{
@@ -20,6 +20,6 @@ export default function AccountPage() {
 			>
         <AccountMain />
 			</div>
-		</div>
+		</section>
 	)
 }

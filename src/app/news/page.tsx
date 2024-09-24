@@ -3,7 +3,7 @@ import News from '@/components/ui/main-info/news/News'
 
 export default function NewsPage() {
   return (
-		<div className='h-full w-full flex flex-col overflow-clip'>
+		<section className='h-full w-full flex flex-col overflow-x-clip'>
 			<div
 				className='flex flex-col items-center justify-center isolate z-[50]'
 				style={{
@@ -14,6 +14,6 @@ export default function NewsPage() {
 				<NewsHero />
 				<News />
 			</div>
-		</div>
+		</section>
 	)
 }

@@ -1,28 +1,20 @@
-import Card from '@/components/ui/main-info/news/Card'
+import NewsHero from './components/NewsHero'
 
-const NewsDetail = ({ params }: {
-	params: {
-		newsId: string
-	}
-}) => {
+const NewsDetail = () => {
+	
+
   return (
-		<div className='h-screen w-full flex flex-col justify-center overflow-clip'>
+		<section className='h-full w-full flex flex-col overflow-x-clip'>
 			<div
-				className='flex flex-col items-center justify-center isolate z-[50]'
+				className='flex flex-col isolate z-[50] px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
 				style={{
 					backdropFilter: 'blur(.5px)',
 					transition: '0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow',
 				}}
 			>
-				{params.newsId}
-				<Card
-					desc='Присоединяйтесь к сообществу геймеров, которые уже оценили наш лаунчер. Скачайте его бесплатно сегодня и откройте для себя новый уровень комфорта и удовольствия от игр.'
-					image='/news-1.png'
-					link=''
-					title='Новый сервер'
-				/>
+				<NewsHero />
 			</div>
-		</div>
+		</section>
 	)
 }
 

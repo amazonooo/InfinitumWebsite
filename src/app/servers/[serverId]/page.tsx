@@ -8,7 +8,7 @@ const ServerDetail = ({params}: {
 	}
 }) => {
   return (
-		<div className='h-screen w-full flex flex-col justify-center overflow-clip'>
+		<div className='h-screen w-full flex flex-col justify-center overflow-x-clip'>
 			<div
 				className='flex flex-col items-center justify-center isolate z-[50]'
 				style={{

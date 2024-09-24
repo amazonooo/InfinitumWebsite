@@ -10,7 +10,7 @@ export default function NotFound() {
 	}
 
 	return (
-		<div className='h-screen w-screen flex flex-col overflow-clip'>
+		<div className='h-screen w-screen flex flex-col overflow-x-clip'>
 			<div
 				className='flex flex-col items-center justify-center isolate z-[50] w-full h-full'
 				style={{

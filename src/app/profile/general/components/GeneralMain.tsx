@@ -11,7 +11,7 @@ export default function GeneralMain() {
 	return (
 		<LazyMotion features={domAnimation}>
 			<m.section initial='hidden' animate='visible'>
-				<m.div className='grid grid-cols-1 lg:grid-cols-3 gap-y-20 lg:gap-20'>
+				<m.div className='grid grid-cols-1 lg:grid-cols-3 gap-y-20 lg:gap-y-20 lg:gap-x-10'>
 					<m.div className='lg:col-span-1 flex items-center justify-center flex-col'>
 						<PlayerInfo />
 
