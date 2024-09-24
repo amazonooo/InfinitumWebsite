@@ -66,16 +66,32 @@ export function Auth({ type }: IAuth) {
 										/>
 									</label>
 								)}
-								<label className={cn(styles.field, 'mt-6')}>
-									<div className={styles.icon}>
-										<CircleUser />
-									</div>
-									<input
-										className='bg-transparent outline-none'
-										placeholder='Логин или email'
-										type='email'
-									/>
-								</label>
+								{type === 'Войти' && (
+									<label className={cn(styles.field, 'mt-6')}>
+										<div className={styles.icon}>
+											<CircleUser />
+										</div>
+										<input
+											className='bg-transparent outline-none'
+											placeholder='ник или email'
+											type='email'
+										/>
+									</label>
+								)}
+
+								{type === 'Создать аккаунт' && (
+									<label className={cn(styles.field, 'mt-6')}>
+										<div className={styles.icon}>
+											<Mail />
+										</div>
+										<input
+											className='bg-transparent outline-none'
+											placeholder='email'
+											type='email'
+										/>
+									</label>
+								)}
+
 								<label className={cn(styles.field, 'mb-2 mt-6')}>
 									<div className={styles.icon}>
 										<KeyRound />
