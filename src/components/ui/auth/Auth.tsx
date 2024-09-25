@@ -33,7 +33,7 @@ export function Auth({ type }: IAuth) {
 			<m.div initial='hidden' animate='visible'>
 				<m.div
 					variants={slideInFromLeft(0.6)}
-					className='absolute top-12 xl:left-16 left-1/2 xl:-translate-x-0 -translate-x-1/2'
+					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0'
 				>
 					<h1 className='Welcome-text font-bold text-2xl'>Infinitum</h1>
 				</m.div>
