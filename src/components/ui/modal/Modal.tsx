@@ -49,7 +49,7 @@ export default function Modal({ isOpen, onClose }: {
 					animate={{ opacity: 1, scale: 1 }}
 					exit={{ opacity: 0, scale: 0.9 }}
 					transition={{ duration: 0.3 }}
-					className='bg-main-black border border-white/[0.2] p-4 w-[400px] h-[300px] rounded-lg'
+					className='bg-main-black border border-white/[0.2] p-4 w-[340px] h-[270px] sm:w-[400px] sm:h-[300px] rounded-lg'
 				>
 					<div className='flex justify-between items-center'>
 						<h1 className='Welcome-text text-2xl'>Infinitum</h1>

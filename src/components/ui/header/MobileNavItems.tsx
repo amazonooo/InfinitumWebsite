@@ -30,12 +30,17 @@ const MobileNavItems: FC = () => {
 		}
 	}
 
+	const menuClose = () => {
+		setOpen(false)
+	}
+
   return (
 		<>
 			<nav className='fixed bottom-0 left-0 right-0 px-4 sm:px-8 md:px-10 h-20 border-t border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B] z-[40]'>
 				<ul className='flex justify-between w-full items-center h-full'>
 					<Link
 						href={'/'}
+						onClick={menuClose}
 						className={`text-sm sm:text-base flex items-center justify-center flex-col transition-colors duration-500 gap-y-1.5 group cursor-pointer ${
 							pathname === '/' ? 'text-[#cbacf9]' : ''
 						}`}
@@ -45,6 +50,7 @@ const MobileNavItems: FC = () => {
 					</Link>
 					<Link
 						href={'/servers'}
+						onClick={menuClose}
 						className={`text-sm sm:text-base flex items-center justify-center flex-col transition-colors duration-500 gap-y-1.5 group cursor-pointer ${
 							pathname === '/servers' ? 'text-[#cbacf9]' : ''
 						}`}
@@ -54,6 +60,7 @@ const MobileNavItems: FC = () => {
 					</Link>
 					<Link
 						href={'/'}
+						onClick={menuClose}
 						className='text-sm sm:text-base flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'
 					>
 						<MdLocalGroceryStore className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
@@ -61,6 +68,7 @@ const MobileNavItems: FC = () => {
 					</Link>
 					<Link
 						href={'/'}
+						onClick={menuClose}
 						className='text-sm sm:text-base flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'
 					>
 						<IoHelpOutline className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
