@@ -1,96 +1,101 @@
 'use client'
 
-import React, { useState } from 'react'
-import { SLIDE_CARD } from './SLIDE_CARD'
-
 import { Swiper, SwiperSlide } from 'swiper/react'
-
 import 'swiper/css'
-import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-
-import { Autoplay, Pagination, Navigation } from 'swiper/modules'
+import { useRef, useEffect } from 'react'
+import { Navigation } from 'swiper/modules'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 
 const Slider: React.FC = () => {
+	const prevRef = useRef<HTMLDivElement>(null)
+	const nextRef = useRef<HTMLDivElement>(null)
+
+	const swiperRef = useRef<any>(null)
+
+	useEffect(() => {
+		if (swiperRef.current && prevRef.current && nextRef.current) {
+			swiperRef.current.params.navigation.prevEl = prevRef.current
+			swiperRef.current.params.navigation.nextEl = nextRef.current
+			swiperRef.current.navigation.update()
+		}
+	}, [prevRef, nextRef])
+
 	return (
-		<div className='relative flex items-center justify-center w-full'>
-			<div className='flex items-center justify-center w-full'>
+		<div className='relative flex justify-center w-full select-none pt-16'>
+			<div className='flex justify-center w-full relative'>
 				<Swiper
-					centeredSlides={true}
-					loop={true}
+					loop
+					spaceBetween={20}
 					slidesPerView={1}
-					autoplay={{
-						delay: 2500,
-						disableOnInteraction: false,
+					modules={[Navigation]}
+					onSwiper={swiper => (swiperRef.current = swiper)}
+					navigation={{
+						prevEl: prevRef.current,
+						nextEl: nextRef.current,
 					}}
-					modules={[Autoplay, Pagination, Navigation]}
 				>
 					<SwiperSlide>
-						<div className='flex items-center justify-center relative'>
-							<Image
-								className='pointer-events-none'
-								src={'/planet-3.png'}
-								alt='planet'
-								width={500}
-								height={500}
-							/>
-							<div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 text-white flex items-center justify-center flex-col'>
-								<h2 className='text-3xl font-bold mb-4'>Планета 1</h2>
-								<p className='text-lg mb-6'>
-									Присоединяйтесь к сообществу геймеров, которые уже оценили наш
-									лаунчер.
-								</p>
-								<Button className='px-6 py-2 bg-purple-600 rounded-lg shadow-lg'>
-									Читать
-								</Button>
+						<div className='flex justify-center items-center'>
+							<div className='relative'>
+								<Image
+									src='/planet-3.png'
+									alt='Планета 1'
+									width={740}
+									height={740}
+									className='object-cover rounded-full'
+								/>
+								<div className='absolute inset-0 flex flex-col items-center justify-center px-4 md:px-0'>
+									<h2 className='text-2xl md:text-3xl lg:text-4xl text-center Welcome-text font-bold'>
+										Новый сервер
+									</h2>
+									<p className='mt-2.5 text-center text-sm md:text-base lg:text-lg xl:text-xl max-w-[490px]'>
+										Присоединяйтесь к сообществу геймеров, которые уже оценили
+										наш сервер.
+									</p>
+									<Button className='mt-6 bg-primary-purple'>Читать</Button>
+								</div>
 							</div>
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className='flex items-center justify-center relative'>
-							<Image
-								className='pointer-events-none'
-								src={'/planet-3.png'}
-								alt='planet'
-								width={500}
-								height={500}
-							/>
-							<div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 text-white flex items-center justify-center flex-col'>
-								<h2 className='text-3xl font-bold mb-4'>Планета 2</h2>
-								<p className='text-lg mb-6'>
-									Присоединяйтесь к сообществу геймеров, которые уже оценили наш
-									лаунчер.
-								</p>
-								<Button className='px-6 py-2 bg-purple-600 rounded-lg shadow-lg'>
-									Читать
-								</Button>
-							</div>
-						</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						<div className='flex items-center justify-center relative'>
-							<Image
-								className='pointer-events-none'
-								src={'/planet-3.png'}
-								alt='planet'
-								width={500}
-								height={500}
-							/>
-							<div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 text-white flex items-center justify-center flex-col'>
-								<h2 className='text-3xl font-bold mb-4'>Планета 3</h2>
-								<p className='text-lg mb-6'>
-									Присоединяйтесь к сообществу геймеров, которые уже оценили наш
-									лаунчер.
-								</p>
-								<Button className='px-6 py-2 bg-purple-600 rounded-lg shadow-lg'>
-									Читать
-								</Button>
+						<div className='flex justify-center items-center'>
+							<div className='relative'>
+								<Image
+									src='/planet-3.png'
+									alt='Планета 2'
+									width={740}
+									height={740}
+									className='object-cover rounded-full'
+								/>
+								<div className='absolute inset-0 flex flex-col items-center justify-center px-4 md:px-0'>
+									<h2 className='text-2xl md:text-3xl lg:text-4xl text-center Welcome-text font-bold'>
+										Новый сервер 2
+									</h2>
+									<p className='mt-2.5 text-center text-sm md:text-base lg:text-lg xl:text-xl max-w-[490px]'>
+										Присоединяйтесь к сообществу геймеров, которые уже оценили
+										наш сервер.
+									</p>
+									<Button className='mt-6 bg-primary-purple'>Читать</Button>
+								</div>
 							</div>
 						</div>
 					</SwiperSlide>
 				</Swiper>
+				<div
+					ref={prevRef}
+					className='absolute invisible md:visible top-1/2 left-4 transform -translate-y-1/2 bg-main-black border border-primary-pink rounded-full p-3 cursor-pointer shadow-lg hover:bg-primary-pink hover:border-main-black group transition duration-300 z-[50]'
+				>
+					<ArrowLeft className='group-hover:text-black' size={27} />
+				</div>
+				<div
+					ref={nextRef}
+					className='absolute invisible md:visible top-1/2 right-4 transform -translate-y-1/2 bg-main-black border border-primary-pink rounded-full p-3 cursor-pointer shadow-lg hover:bg-primary-pink hover:border-main-black group transition duration-300 z-[50]'
+				>
+					<ArrowRight className='group-hover:text-black' size={27} />
+				</div>
 			</div>
 		</div>
 	)
