@@ -113,7 +113,7 @@ const Safety: FC = () => {
 											<Trash2 />
 										</div>
 										<input
-											className='bg-transparent outline-none'
+											className='bg-transparent outline-none truncate'
 											placeholder='Старый пароль'
 											type={isShowPassword ? 'text' : 'password'}
 										/>
@@ -129,8 +129,8 @@ const Safety: FC = () => {
 											<KeyRound />
 										</div>
 										<input
-											className='bg-transparent outline-none'
-											placeholder='Придумай новый пароль'
+											className='bg-transparent outline-none truncate'
+											placeholder='Новый пароль'
 											type={isShowPassword ? 'text' : 'password'}
 										/>
 										<div
@@ -145,7 +145,7 @@ const Safety: FC = () => {
 											<Check />
 										</div>
 										<input
-											className='bg-transparent outline-none'
+											className='bg-transparent outline-none truncate'
 											placeholder='Введи новый пароль повторно'
 											type={isShowPassword ? 'text' : 'password'}
 										/>
