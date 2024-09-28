@@ -14,7 +14,7 @@ const FooterNav: FC = () => {
 				<li>
 					<Link
 						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'#news'}
+						href={'/news'}
 					>
 						Новости
 					</Link>
@@ -22,7 +22,7 @@ const FooterNav: FC = () => {
 				<li>
 					<Link
 						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'/'}
+						href={'/servers'}
 					>
 						Сервера
 					</Link>
@@ -38,7 +38,7 @@ const FooterNav: FC = () => {
 				<li>
 					<Link
 						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'/'}
+						href={'/rules'}
 					>
 						Правила
 					</Link>

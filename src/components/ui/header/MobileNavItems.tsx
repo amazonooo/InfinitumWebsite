@@ -59,9 +59,11 @@ const MobileNavItems: FC = () => {
 						<li>Сервера</li>
 					</Link>
 					<Link
-						href={'/'}
+						href={'/donate'}
 						onClick={menuClose}
-						className='text-sm sm:text-base flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'
+						className={`text-sm sm:text-base flex items-center justify-center flex-col transition-colors duration-500 gap-y-1.5 group cursor-pointer ${
+							pathname === '/donate' ? 'text-primary-pink' : ''
+						}`}
 					>
 						<MdLocalGroceryStore className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
 						<li>Донат</li>
