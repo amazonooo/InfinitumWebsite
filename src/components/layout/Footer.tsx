@@ -18,6 +18,7 @@ const Footer: FC = () => {
 		pathname !== '/register' &&
 		pathname !== '/rules' &&
 		pathname !== '/servers' &&
+		pathname !== '/donate' &&
 		pathname !== '/profile/general' &&
 		pathname !== '/profile/history' &&
 		pathname !== '/profile/pay' &&

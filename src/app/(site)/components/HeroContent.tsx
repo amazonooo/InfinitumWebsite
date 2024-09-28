@@ -3,8 +3,8 @@
 import { FC } from 'react'
 import { domAnimation, LazyMotion, m } from 'framer-motion'
 import { slideInFromLeft, slideInFromTop } from '@/utils/motion'
-import Heading from '../Heading'
-import { MainButton } from '../main-button/MainButton'
+import Heading from '../../../components/ui/Heading'
+import { MainButton } from '../../../components/ui/main-button/MainButton'
 
 const HeroContent: FC = () => {
   return (

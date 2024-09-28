@@ -61,7 +61,7 @@ export default function Modal({ isOpen, onClose, children, header, className, ic
 					animate={{ opacity: 1, scale: 1 }}
 					exit={{ opacity: 0, scale: 0.9 }}
 					transition={{ duration: 0.3 }}
-					className='bg-main-black border border-white/[0.2] w-[340px] h-auto sm:w-[400px] rounded-lg'
+					className='bg-main-black border border-white/[0.2] w-[320px] h-auto sm:w-[400px] rounded-lg'
 				>
 					<div className='flex justify-between items-center border-b border-b-white/[0.2] p-4'>
 						<div className='flex items-center gap-x-2 md:gap-x-3'>

@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn'
 import { FC } from 'react'
 
 interface IHeading {
-  title: string
+  title: any
   className?: string
 }
 

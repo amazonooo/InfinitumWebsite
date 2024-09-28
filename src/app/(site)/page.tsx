@@ -1,5 +1,5 @@
-import Hero from '@/components/ui/hero/Hero'
 import MainInfo from '@/components/ui/main-info/MainInfo'
+import Hero from './components/Hero'
 
 export default function HomePage() {
   return (

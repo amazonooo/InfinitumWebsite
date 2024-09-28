@@ -1,7 +1,7 @@
 export const navItems = [
 	{ name: 'Новости', link: '/news' },
 	{ name: 'Сервера', link: '/servers' },
-	{ name: 'Донат', link: '#testimonials' },
+	{ name: 'Донат', link: '/donate' },
 	{ name: 'Правила', link: '/rules' },
 ]
 

@@ -30,7 +30,7 @@ const FooterNav: FC = () => {
 				<li>
 					<Link
 						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'/'}
+						href={'/donate'}
 					>
 						Донат
 					</Link>

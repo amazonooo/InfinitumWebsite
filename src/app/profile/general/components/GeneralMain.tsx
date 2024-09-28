@@ -6,13 +6,14 @@ import PlayerInfo from './PlayerInfo'
 import { Button } from '@/components/ui/button'
 import Transactions from './Transactions'
 import { Charts } from './Charts'
+import PrivilegeMain from '../../privilege/components/PrivilegeMain'
 
 export default function GeneralMain() {
 	return (
 		<LazyMotion features={domAnimation}>
 			<m.section initial='hidden' animate='visible'>
 				<m.div className='grid grid-cols-1 lg:grid-cols-3 gap-y-20 lg:gap-y-20 lg:gap-x-10'>
-					<m.div className='lg:col-span-1 flex items-center justify-center flex-col'>
+					<m.div className='lg:col-span-1 flex items-center flex-col'>
 						<PlayerInfo />
 
 						<div className='bg-main-black border border-white/[0.2] rounded-lg mt-10 w-[310px] sm:w-[370px] md:w-[350px] lg:w-[440px]'>
@@ -90,7 +91,7 @@ export default function GeneralMain() {
 							</div>
 						</div>
 
-						<div className='bg-main-black border border-white/[0.2] rounded-lg mt-10'>
+						<div className='bg-main-black border border-white/[0.2] rounded-lg my-10'>
 							<div className='py-6 px-12'>
 								<h1 className='Welcome-text text-3xl md:text-4xl lg:text-5xl text-center mb-10'>
 									Входы в профиль
@@ -107,7 +108,7 @@ export default function GeneralMain() {
 							</div>
 						</div>
 
-						{/* <Charts /> */}
+						{/* <PrivilegeMain /> */}
 					</m.div>
 				</m.div>
 			</m.section>
