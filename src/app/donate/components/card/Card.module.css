@@ -33,10 +33,10 @@
   width: 85%;
   height: 85%;
   transform: translate(-50%);
-  background: #1b1b1b;
+  background: #181717;
   z-index: -1;
   transform-origin: bottom;
-
+  border: 1px solid #3A3A3C;
   border-radius: inherit;
   transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -49,9 +49,10 @@
   width: 70%;
   height: 70%;
   transform: translate(-50%);
-  background: #232327;
+  background: #1b1b1b;
   z-index: -2;
   transform-origin: bottom;
+  border: 1px solid #3A3A3C;
   border-radius: inherit;
   transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
 }

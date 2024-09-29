@@ -6,7 +6,7 @@ import { IDonateData } from './donateData'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import Modal from '@/components/ui/modal/Modal'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 export default function DonateCard({ title, Icon, count }: IDonateData) {
 	const [isOpen, setIsOpen] = useState(false)
@@ -25,6 +25,11 @@ export default function DonateCard({ title, Icon, count }: IDonateData) {
 		} else {
 			toast.error('Выберите сервер')
 		}
+	}
+
+	const buyConfirm = () => {
+		setIsOpen(false)
+		toast.success('Покупка завершена')
 	}
 
   return (
@@ -48,7 +53,6 @@ export default function DonateCard({ title, Icon, count }: IDonateData) {
 			{isOpen && (
 				<Modal
 					isOpen={isOpen}
-					icon={<ShoppingCart className='text-primary-pink' />}
 					onClose={() => setIsOpen(false)}
 					header={`Покупка статуса ${title}`}
 				>
@@ -56,7 +60,11 @@ export default function DonateCard({ title, Icon, count }: IDonateData) {
 						<div className='flex items-center justify-center gap-x-2 mb-6 relative'>
 							{step === 2 && (
 								<div className='absolute -top-2.5 -left-3'>
-									<ArrowBigLeft className='cursor-pointer hover:text-primary-pink transition-colors duration-300' size={25} onClick={() => setStep(1)} />
+									<ArrowBigLeft
+										className='cursor-pointer hover:text-primary-pink transition-colors duration-300'
+										size={25}
+										onClick={() => setStep(1)}
+									/>
 								</div>
 							)}
 							<div
@@ -99,7 +107,7 @@ export default function DonateCard({ title, Icon, count }: IDonateData) {
 							<div>
 								<h2 className='text-2xl font-bold'>Описание</h2>
 								<p className='mt-4'>Выбранный сервер: {selectedServer}</p>
-								<Button onClick={() => setIsOpen(false)} className='mt-6'>
+								<Button onClick={buyConfirm} className='mt-6'>
 									Завершить покупку
 								</Button>
 							</div>

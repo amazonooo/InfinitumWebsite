@@ -8,13 +8,16 @@ import styles from '../field/Field.module.scss'
 import { cn } from '@/lib/utils'
 import { FaDiscord, FaTelegram, FaVk } from 'react-icons/fa6'
 import { FloatingDock } from '../floating-dock'
+import { toast } from 'react-toastify'
 
 const Safety: FC = () => {
 	// const [isOpen, setIsOpen] = useState(false)
 	const [isTwoFactorOpen, setIsTwoFactorOpen] = useState(false)
 	const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false)
-	const [isShowPassword, setIsShowPassword] = useState(false)
-
+	const [isShowPastPassword, setIsShowPastPassword] = useState(false)
+	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
+	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
+	
 	 const links = [
 			{
 				title: 'Телеграм',
@@ -39,6 +42,11 @@ const Safety: FC = () => {
 				href: '#!',
 			},
 		]
+
+		const changedConfirm = () => {
+			setIsChangePasswordOpen(false)
+			toast.success('Пароль изменен')
+		}
 
   return (
 		<div className='rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'>
@@ -115,13 +123,13 @@ const Safety: FC = () => {
 										<input
 											className='bg-transparent outline-none truncate'
 											placeholder='Старый пароль'
-											type={isShowPassword ? 'text' : 'password'}
+											type={isShowPastPassword ? 'text' : 'password'}
 										/>
 										<div
 											className={styles.icon}
-											onClick={() => setIsShowPassword(!isShowPassword)}
+											onClick={() => setIsShowPastPassword(!isShowPastPassword)}
 										>
-											{isShowPassword ? <Eye /> : <EyeOff />}
+											{isShowPastPassword ? <Eye /> : <EyeOff />}
 										</div>
 									</label>
 									<label className={cn(styles.field, 'mb-2 mt-6')}>
@@ -131,13 +139,13 @@ const Safety: FC = () => {
 										<input
 											className='bg-transparent outline-none truncate'
 											placeholder='Новый пароль'
-											type={isShowPassword ? 'text' : 'password'}
+											type={isShowNewPassword ? 'text' : 'password'}
 										/>
 										<div
 											className={styles.icon}
-											onClick={() => setIsShowPassword(!isShowPassword)}
+											onClick={() => setIsShowNewPassword(!isShowNewPassword)}
 										>
-											{isShowPassword ? <Eye /> : <EyeOff />}
+											{isShowNewPassword ? <Eye /> : <EyeOff />}
 										</div>
 									</label>
 									<label className={cn(styles.field, 'mb-2 mt-6')}>
@@ -147,19 +155,18 @@ const Safety: FC = () => {
 										<input
 											className='bg-transparent outline-none truncate'
 											placeholder='Введи новый пароль повторно'
-											type={isShowPassword ? 'text' : 'password'}
+											type={isShowAgreePassword ? 'text' : 'password'}
 										/>
 										<div
 											className={styles.icon}
-											onClick={() => setIsShowPassword(!isShowPassword)}
+											onClick={() =>
+												setIsShowAgreePassword(!isShowAgreePassword)
+											}
 										>
-											{isShowPassword ? <Eye /> : <EyeOff />}
+											{isShowAgreePassword ? <Eye /> : <EyeOff />}
 										</div>
 									</label>
-									<Button
-										onClick={() => setIsChangePasswordOpen(false)}
-										className='text-center mt-6'
-									>
+									<Button onClick={changedConfirm} className='text-center mt-6'>
 										Подтвердить
 									</Button>
 								</div>
