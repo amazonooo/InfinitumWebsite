@@ -97,7 +97,7 @@ export default function DonateCard({ title, Icon, count }: IDonateData) {
 
 						{step === 2 && (
 							<div>
-								<h2 className='text-2xl font-bold'>Подтверждение</h2>
+								<h2 className='text-2xl font-bold'>Описание</h2>
 								<p className='mt-4'>Выбранный сервер: {selectedServer}</p>
 								<Button onClick={() => setIsOpen(false)} className='mt-6'>
 									Завершить покупку
