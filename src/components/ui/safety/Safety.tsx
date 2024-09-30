@@ -3,7 +3,7 @@
 import { FC, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import Modal from '../modal/Modal'
-import { Eye, KeyRound, EyeOff, Trash2, Check, ShieldHalf } from 'lucide-react'
+import { Eye, KeyRound, EyeOff, Trash2, Check, ShieldHalf, ArrowBigLeft } from 'lucide-react'
 import styles from '../field/Field.module.scss'
 import { cn } from '@/lib/utils'
 import { FaDiscord, FaTelegram, FaVk } from 'react-icons/fa6'
@@ -17,6 +17,13 @@ const Safety: FC = () => {
 	const [isShowPastPassword, setIsShowPastPassword] = useState(false)
 	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
 	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
+
+	const [selected, setSelected] = useState(false)
+	const [step, setStep] = useState(1)
+
+	const handleContinue = () => {
+		setStep(step + 1)
+	}
 	
 	 const links = [
 			{
@@ -74,18 +81,53 @@ const Safety: FC = () => {
 								icon={<ShieldHalf className='text-primary-pink' />}
 							>
 								<div className='p-4'>
-									<div className='flex items-center justify-center w-full'>
-										<FloatingDock
-											mobileClassName='' // only for demo, remove for production
-											items={links}
-										/>
+									<div className='flex items-center justify-center gap-x-2 mb-4 relative'>
+										{step === 2 && (
+											<div className='absolute -top-2.5 -left-3'>
+												<ArrowBigLeft
+													className='cursor-pointer hover:text-primary-pink transition-colors duration-300'
+													size={25}
+													onClick={() => setStep(1)}
+												/>
+											</div>
+										)}
+										<div
+											className={`border-white/[0.2] h-1 w-12 rounded-lg ${
+												step === 1 ? 'bg-white animate-pulse' : 'bg-neutral-700'
+											}`}
+										></div>
+										<div
+											className={`border-white/[0.2] h-1 w-12 rounded-lg  ${
+												step === 2 ? 'bg-white animate-pulse' : 'bg-neutral-700'
+											}`}
+										></div>
 									</div>
+
+									{step === 1 && (
+										<div className='p-4'>
+											<div
+												className='flex items-center justify-center w-full'
+												onClick={handleContinue}
+											>
+												<FloatingDock
+													mobileClassName='' // only for demo, remove for production
+													items={links}
+												/>
+											</div>
+										</div>
+									)}
+
+									{step === 2 && (
+										<div className='p-4'>
+											<div className='flex items-center justify-center w-full'></div>
+										</div>
+									)}
 								</div>
 							</Modal>
 						)}
 					</div>
 
-					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
+					{/* <div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
 						<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>
 							Почта
 						</h2>
@@ -95,7 +137,7 @@ const Safety: FC = () => {
 						>
 							Изменить
 						</Button>
-					</div>
+					</div> */}
 
 					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
 						<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>

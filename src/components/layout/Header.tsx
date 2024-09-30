@@ -148,8 +148,8 @@ export const Header = ({
 										<Image
 											src={'/discord.png'}
 											alt='logo'
-											width={22}
-											height={22}
+											width={23}
+											height={23}
 										/>
 									</Link>
 									<Dropdown />

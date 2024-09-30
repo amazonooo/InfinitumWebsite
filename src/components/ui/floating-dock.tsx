@@ -38,7 +38,7 @@ const FloatingDockMobile = ({
 	items,
 	className,
 }: {
-	items: { title: string; icon: React.ReactNode; href: string }[]
+	items: { title: string; icon: React.ReactNode;}[]
 	className?: string
 }) => {
 	const [open, setOpen] = useState(false)
@@ -52,13 +52,12 @@ const FloatingDockMobile = ({
 						key={item.title}
 						className='flex items-center justify-center'
 					>
-						<Link
-							href={item.href}
+						<div
 							key={item.title}
 							className='h-12 w-12 rounded-full bg-neutral-900 flex items-center justify-center'
 						>
 							<div className='h-5 w-5'>{item.icon}</div>
-						</Link>
+						</div>
 					</div>
 				))}
 			</div>
@@ -76,7 +75,7 @@ const FloatingDockDesktop = ({
 	items,
 	className,
 }: {
-	items: { title: string; icon: React.ReactNode; href: string }[]
+	items: { title: string; icon: React.ReactNode; }[]
 	className?: string
 }) => {
 	let mouseX = useMotionValue(Infinity)
@@ -100,12 +99,10 @@ function IconContainer({
 	mouseX,
 	title,
 	icon,
-	href,
 }: {
 	mouseX: MotionValue
 	title: string
 	icon: React.ReactNode
-	href: string
 }) {
 	let ref = useRef<HTMLDivElement>(null)
 
@@ -146,7 +143,7 @@ function IconContainer({
 	const [hovered, setHovered] = useState(false)
 
 	return (
-		<Link href={href}>
+		<div className='cursor-pointer'>
 			<motion.div
 				ref={ref}
 				style={{ width, height }}
@@ -173,6 +170,6 @@ function IconContainer({
 					{icon}
 				</motion.div>
 			</motion.div>
-		</Link>
+		</div>
 	)
 }

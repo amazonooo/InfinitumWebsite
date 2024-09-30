@@ -5,6 +5,7 @@ import { CircleUserRound, LogOut, User } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
 import { m } from 'framer-motion'
+import { FaUserAstronaut } from 'react-icons/fa6'
 
 export default function Dropdown() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -36,7 +37,8 @@ export default function Dropdown() {
 			onClick={() => setDropdownOpen(!dropdownOpen)}
 			className={cn('relative items-center flex')}
 		>
-			<User
+			<FaUserAstronaut
+				size={18}
 				className={`cursor-pointer select-none ${
 					dropdownOpen ? 'text-[#cbacf9]' : 'text-neutral-50'
 				}`}
