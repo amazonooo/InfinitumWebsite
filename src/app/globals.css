@@ -102,3 +102,25 @@ canvas {
     --radius: 0.75rem;
   }
 }
+
+
+/* Уведомления */
+
+.Toastify__toast {
+  font-size: .9rem;
+  border-radius: 12px;
+  padding: .5rem;
+}
+
+.Toastify__toast--success .Toastify__toast-icon svg {
+  fill: #cbacf9;
+}
+
+.Toastify__close-button {
+  transition: .3s;
+}
+
+.Toastify__close-button:hover,
+.Toastify__close-button:focus {
+  color: #cbacf9;
+}
