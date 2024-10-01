@@ -39,7 +39,7 @@ export function Auth({ type }: IAuth) {
 				</m.div>
 				<m.div
 					variants={slideInFromTop}
-					className='flex items-center justify-center h-screen isolate z-[40] relative px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
+					className='flex items-center justify-center h-screen isolate z-[10] relative px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
 				>
 					<div className='flex flex-row gap-36'>
 						<div className='flex items-center justify-center'>

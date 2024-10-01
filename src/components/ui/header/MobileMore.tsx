@@ -35,7 +35,7 @@ const MobileMore: FC<IMobileMore> = ({ closeMenu }) => {
 	}, [])
 
 	return (
-		<div className='z-[40]'>
+		<div className='z-[10]'>
 			<div className='p-7 flex flex-col'>
 				<div className='flex justify-between items-center mb-24'>
 					<Link href={'/'} onClick={closeMenu} className='Welcome-text text-2xl'>Infinitum</Link>

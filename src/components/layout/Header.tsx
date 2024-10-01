@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	motion,
 	AnimatePresence,
@@ -16,6 +16,7 @@ import MobileNav from '../ui/header/MobileNav'
 import { usePathname } from 'next/navigation'
 import { ChevronDown } from 'lucide-react'
 import Dropdown from '../ui/dropdown/Dropdown'
+import { truncate } from 'fs'
 
 export const Header = ({
 	navItems,
@@ -45,6 +46,10 @@ export const Header = ({
 
 	const [visible, setVisible] = useState(true)
 	const [show, setShow] = useState(false)
+
+	useEffect(() => {
+		setVisible(true)
+	}, [pathname])
 
 	useMotionValueEvent(scrollYProgress, 'change', current => {
 		if (typeof current === 'number') {
@@ -82,7 +87,7 @@ export const Header = ({
 							duration: 0.2,
 						}}
 						className={cn(
-							'max-w-fit md:min-w-[40vw] lg:min-w-[70vw] 2xl:min-w-[81vw] mx-auto fixed z-[400] top-6 inset-x-0 p-[1px] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-gradient-to-r from-[rgb(229,156,255)] via-[rgb(186,156,255)] to-[rgb(156,178,255)] rounded-lg',
+							'max-w-fit md:min-w-[40vw] lg:min-w-[70vw] 2xl:min-w-[81vw] mx-auto fixed z-[15] top-6 inset-x-0 p-[1px] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-gradient-to-r from-[rgb(229,156,255)] via-[rgb(186,156,255)] to-[rgb(156,178,255)] rounded-lg',
 							className
 						)}
 					>
