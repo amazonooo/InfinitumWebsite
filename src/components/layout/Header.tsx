@@ -111,7 +111,7 @@ export const Header = ({
 											<span
 												className={`xl:text-base font-medium lg:text-sm !cursor-pointer hover:text-primary-pink transition-colors duration-300 ${
 													pathname === navItem.link
-														? 'Welcome-text font-bold'
+														? 'Welcome-text font-extrabold'
 														: 'text-neutral-50'
 												}`}
 											>

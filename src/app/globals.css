@@ -36,14 +36,24 @@ body {
 }
 
 .Welcome-text {
-  background: linear-gradient(0deg,
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.4)),
-    linear-gradient(90.01deg, #e59cff 0.01%, #ba9cff 50.01%, #9cb2ff 100%);
-  background-blend-mode: normal, screen;
   -webkit-background-clip: text;
-  background-clip: text;
+  background-image: linear-gradient(130deg, #b2d8f1, #e7b4f6);
   -webkit-text-fill-color: transparent;
+  background-blend-mode: normal, screen;
+  /* -webkit-background-clip: text; */
+  background-clip: text;
+  /* -webkit-text-fill-color: transparent; */
+  user-select: none;
+}
+
+.Second-text {
+  background-image: linear-gradient(275deg, #fffdff, #c0bdf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-blend-mode: normal, screen;
+  /* -webkit-background-clip: text; */
+  background-clip: text;
+  /* -webkit-text-fill-color: transparent; */
   user-select: none;
 }
 
