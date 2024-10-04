@@ -8,7 +8,7 @@ import { useState } from 'react'
 import Modal from '@/components/ui/modal/Modal'
 import { toast } from 'react-toastify'
 
-export default function DonateCard({ title, Icon, count }: IDonateData) {
+export default function DonateCard({ title, Icon, count, border }: IDonateData) {
 	const [isOpen, setIsOpen] = useState(false)
 	const [step, setStep] = useState(1)
 	const [selectedServer, setSelectedServer] = useState<string | null>(null)
@@ -35,7 +35,9 @@ export default function DonateCard({ title, Icon, count }: IDonateData) {
   return (
 		<>
 			<article className={`${styles.card} group`}>
-				<div className={`${styles.content} group-hover:border-primary-pink/50`}>
+				<div className={`${styles.content} group-hover:border`} style={{
+					borderColor: border
+				}}>
 					<Diamond
 						className='group-hover:text-primary-pink lg:text-white text-primary-pink'
 						size={50}

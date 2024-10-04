@@ -45,7 +45,7 @@ const Card: FC<ICard> = ({ image, title, desc, id, link }) => {
 						</div>
 						<div className='flex items-end'>
 							<div className='max-w-[80%] space-y-3 p-5 border-r border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
-								<h1 className='text-2xl text-[#cbacf9]'>{title}</h1>
+								<h1 className='text-2xl Welcome-text'>{title}</h1>
 								<p className='text-sm md:text-base'>{desc}</p>
 							</div>
 							<div className='pb-5 pl-1 md:pl-2 flex items-center justify-center md:gap-x-2 gap-x-1 cursor-pointer '>

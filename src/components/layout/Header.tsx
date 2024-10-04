@@ -109,10 +109,10 @@ export const Header = ({
 											{/* add !cursor-pointer */}
 											{/* remove hidden sm:block for the mobile responsive */}
 											<span
-												className={`xl:text-base font-medium lg:text-sm !cursor-pointer hover:text-primary-pink transition-colors duration-300 ${
+												className={`xl:text-base lg:text-sm !cursor-pointer hover:text-primary-pink transition-colors duration-300 ${
 													pathname === navItem.link
 														? 'Welcome-text font-extrabold'
-														: 'text-neutral-50'
+														: 'text-neutral-50 font-medium'
 												}`}
 											>
 												{navItem.name}
@@ -120,12 +120,12 @@ export const Header = ({
 										</Link>
 									))}
 									<div
-										className='xl:text-base lg:text-sm font-medium relative items-center  flex transition-colors duration-300 text-neutral-50'
+										className='xl:text-base lg:text-sm font-medium relative items-center  flex group transition-colors duration-300 text-neutral-50'
 										onMouseEnter={() => setShow(true)}
 										onMouseLeave={() => setShow(false)}
 									>
 										<Link
-											className='z-[10] hover:text-primary-pink transition-colors duration-300 flex items-center gap-x-1.5'
+											className='z-[10] group-hover:text-primary-pink transition-colors duration-300 flex items-center gap-x-1.5'
 											href={'/'}
 										>
 											Дополнительно
