@@ -11,6 +11,11 @@ import { cn } from '@/utils/cn'
 import styles from '../field/Field.module.scss'
 import Image from 'next/image'
 import { useMediaQuery } from 'react-responsive'
+import { useMutation } from '@tanstack/react-query'
+import { IAuthForm } from '@/types/auth.types'
+import { authService } from '@/services/auth.service'
+import { toast } from 'react-toastify'
+import { ResponseError } from '@/types/error.types'
 
 interface IAuth {
   type?: 'Войти' | 'Создать аккаунт'
@@ -18,6 +23,22 @@ interface IAuth {
 
 export function Auth({ type }: IAuth) {
 	const [isShowPassword, setIsShowPassword] = useState(false)
+
+	const { mutate, isPending } = useMutation({
+		mutationKey: ['auth'],
+		mutationFn: (data: IAuthForm) => authService.register(data),
+		onSuccess() {
+			toast.dismiss()
+			toast.success('Вы успешно зарегистрировались')
+			handleClick
+		},
+		onError(error: ResponseError) {
+			toast.dismiss()
+			if (error.status && error.status === 401) {
+				toast.error('Ошибка авторизации')
+			}
+		}
+	})
 
 	const handleClick = (link: string) => {
 		const router = useRouter()
