@@ -23,29 +23,49 @@ interface IAuth {
 
 export function Auth({ type }: IAuth) {
 	const [isShowPassword, setIsShowPassword] = useState(false)
+	const [formData, setFormData] = useState({ email: '', username: '',  password: ''})
 
-	const { mutate, isPending } = useMutation({
-		mutationKey: ['auth'],
-		mutationFn: (data: IAuthForm) => authService.register(data),
-		onSuccess() {
-			toast.dismiss()
-			toast.success('Вы успешно зарегистрировались')
-			handleClick
-		},
-		onError(error: ResponseError) {
-			toast.dismiss()
-			if (error.status && error.status === 401) {
-				toast.error('Ошибка авторизации')
+	const router = useRouter()
+
+  const { mutate } = useMutation({
+		mutationFn: async () => {
+			if (type === 'Войти') {
+				return authService.login('email', formData)
+			} else {
+				return authService.register(formData)
 			}
-		}
+		},
+		onSuccess: () => {
+			toast.success(
+				type === 'Войти'
+					? 'Вы успешно вошли в систему'
+					: 'Вы успешно зарегистрировались'
+			)
+			router.replace('/account')
+		},
+		onError: (error: any) => {
+			toast.error('Ошибка: ' + error.message)
+		},
 	})
 
-	const handleClick = (link: string) => {
-		const router = useRouter()
-		return () => {
-			router.replace(`/${link}`)
-		}
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value,
+		})
 	}
+
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault()
+		mutate()
+	}
+
+	// const handleClick = (link: string) => {
+	// 	const router = useRouter()
+	// 	return () => {
+	// 		router.replace(`/${link}`)
+	// 	}
+	// }
 
 	const isDesktop = useMediaQuery({ minWidth: 951 })
 
@@ -64,7 +84,10 @@ export function Auth({ type }: IAuth) {
 				>
 					<div className='flex flex-row gap-36'>
 						<div className='flex items-center justify-center'>
-							<form className='relative rounded-xl bg-main-black border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] p-8 sm:p-9 md:p-10 w-[320px] sm:w-[400px] md:w-[500px] lg:w-[600px]'>
+							<form
+								onSubmit={handleSubmit}
+								className='relative rounded-xl bg-main-black border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] p-8 sm:p-9 md:p-10 w-[320px] sm:w-[400px] md:w-[500px] lg:w-[600px]'
+							>
 								{/* <h1 className='Welcome-text ml-auto mr-auto text-4xl text-center Welcome-box p-3 -top-[68px] sm:-top-[70px] lg:-top-[73px] absolute select-none'>
 									Infinitum
 								</h1> */}
@@ -79,7 +102,8 @@ export function Auth({ type }: IAuth) {
 										<input
 											className='bg-transparent outline-none'
 											placeholder='Ник'
-											type='email'
+											type='text'
+											onChange={handleChange}
 										/>
 									</label>
 								)}
@@ -91,7 +115,8 @@ export function Auth({ type }: IAuth) {
 										<input
 											className='bg-transparent outline-none'
 											placeholder='ник или email'
-											type='email'
+											type='text'
+											onChange={handleChange}
 										/>
 									</label>
 								)}
@@ -105,6 +130,7 @@ export function Auth({ type }: IAuth) {
 											className='bg-transparent outline-none'
 											placeholder='email'
 											type='email'
+											onChange={handleChange}
 										/>
 									</label>
 								)}
@@ -117,6 +143,7 @@ export function Auth({ type }: IAuth) {
 										className='bg-transparent outline-none'
 										placeholder='Пароль'
 										type={isShowPassword ? 'text' : 'password'}
+										onChange={handleChange}
 									/>
 									<div
 										className={styles.icon}
@@ -138,9 +165,9 @@ export function Auth({ type }: IAuth) {
 
 								<div
 									className='mb-3 mt-8 text-center'
-									onClick={handleClick('account')}
+									// onClick={handleClick('account')}
 								>
-									<MainButton className='uppercase w-full py-2'>
+									<MainButton type='submit' className='uppercase w-full py-2'>
 										{type}
 									</MainButton>
 								</div>

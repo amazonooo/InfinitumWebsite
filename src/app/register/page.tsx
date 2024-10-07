@@ -1,15 +1,14 @@
-import type { Metadata } from 'next'
+'use client'
 
-import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 import { Auth } from '@/components/ui/auth/Auth'
-
-export const metadata: Metadata = {
-	title: 'Register',
-	...NO_INDEX_PAGE,
-}
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 export default function RegisterPage() {
+	const queryClient = new QueryClient
+
 	return (
-    <Auth type='Создать аккаунт' />
+		<QueryClientProvider client={queryClient}>
+			<Auth type='Создать аккаунт' />
+		</QueryClientProvider>
   )
 }
