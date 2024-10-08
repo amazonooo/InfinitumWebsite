@@ -16,6 +16,7 @@ import { IAuthForm } from '@/types/auth.types'
 import { authService } from '@/services/auth.service'
 import { toast } from 'react-toastify'
 import { ResponseError } from '@/types/error.types'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 interface IAuth {
   type?: 'Войти' | 'Создать аккаунт'
@@ -23,55 +24,67 @@ interface IAuth {
 
 export function Auth({ type }: IAuth) {
 	const [isShowPassword, setIsShowPassword] = useState(false)
-	const [formData, setFormData] = useState({ email: '', username: '',  password: ''})
 
 	const router = useRouter()
 
 	const { mutate: login } = useMutation({
-		mutationFn: () => authService.login('username', formData),
+		mutationKey: ['login'],
+		mutationFn: (data: IAuthForm) => authService.login('email', data),
 		onSuccess: () => {
 			toast.success('Успешный вход')
 			router.replace('/account')
 		},
-		onError: (error: ResponseError) => {
-			toast.error('Ошибка авторизации')
+		onError: (error: ResponseError) => {      
+			toast.dismiss()
+			if (error.status && error.status === 401) {
+				toast.error('Указан неверный логин или пароль')
+			} else {
+				toast.error('Ошибка авторизации')
+			}
 		},
 	})
 
-	const { mutate: register } = useMutation({
-		mutationFn: () => authService.register(formData),
+	const { mutate: registerMode } = useMutation({
+		mutationKey: ['register'],
+		mutationFn: (data: IAuthForm) => authService.register(data),
 		onSuccess: () => {
 			toast.success('Успешная регистрация')
 			router.replace('/account')
 		},
-		onError: (error: ResponseError) => {
-			toast.error('Ошибка регистрации')
+		onError: () => {
+			toast.error('Ошибка')
 		}
 	})
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setFormData({
-			...formData,
-			[e.target.name]: e.target.value,
-		})
-	}
+	// const [isButtonClicked, setIsButtonClicked] = useState(false)
+	// const [buttonKey, setButtonKey] = useState(0)
 
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault()
+	// const handleButtonClick = () => {
+	// 	setIsButtonClicked(true)
 
-		if (type === 'Войти') {
-			login()
-		} else if (type === 'Создать аккаунт') {
-			register()
-		}
-	}
-
-	// const handleClick = (link: string) => {
-	// 	const router = useRouter()
-	// 	return () => {
-	// 		router.replace(`/${link}`)
+	// 	if (errors.username || errors.password) {
+	// 		setButtonKey(prevKey => prevKey + 1)
+	// 		toast.error('Пожалуйста, заполните все поля')
 	// 	}
 	// }
+
+	const onSubmit: SubmitHandler<IAuthForm> = (data: IAuthForm) => {
+		if (type === 'Войти') {
+			login(data)
+		} else {
+			registerMode(data)
+		}
+		reset()
+	}
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		reset,
+	} = useForm<IAuthForm>({
+		mode: 'onChange',
+	})
 
 	const isDesktop = useMediaQuery({ minWidth: 951 })
 
@@ -91,12 +104,9 @@ export function Auth({ type }: IAuth) {
 					<div className='flex flex-row gap-36'>
 						<div className='flex items-center justify-center'>
 							<form
-								onSubmit={handleSubmit}
+								onSubmit={handleSubmit(onSubmit)}
 								className='relative rounded-xl bg-main-black border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] p-8 sm:p-9 md:p-10 w-[320px] sm:w-[400px] md:w-[500px] lg:w-[600px]'
 							>
-								{/* <h1 className='Welcome-text ml-auto mr-auto text-4xl text-center Welcome-box p-3 -top-[68px] sm:-top-[70px] lg:-top-[73px] absolute select-none'>
-									Infinitum
-								</h1> */}
 								<h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 Welcome-text'>
 									{type}
 								</h2>
@@ -109,8 +119,11 @@ export function Auth({ type }: IAuth) {
 											className='bg-transparent outline-none'
 											placeholder='Ник'
 											type='text'
-											onChange={handleChange}
-											name='username'
+											{...register('username', {
+												minLength: 4,
+												maxLength: 18,
+												required: true,
+											})}
 										/>
 									</label>
 								)}
@@ -123,8 +136,11 @@ export function Auth({ type }: IAuth) {
 											className='bg-transparent outline-none'
 											placeholder='ник или email'
 											type='text'
-											onChange={handleChange}
-											name='username'
+											{...register('username', {
+												required: true,
+												minLength: 4,
+												maxLength: 18
+											})}
 										/>
 									</label>
 								)}
@@ -138,8 +154,11 @@ export function Auth({ type }: IAuth) {
 											className='bg-transparent outline-none'
 											placeholder='email'
 											type='email'
-											onChange={handleChange}
-											name='email'
+											{...register('email', {
+												required: true,
+												pattern:
+													/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+											})}
 										/>
 									</label>
 								)}
@@ -152,8 +171,10 @@ export function Auth({ type }: IAuth) {
 										className='bg-transparent outline-none'
 										placeholder='Пароль'
 										type={isShowPassword ? 'text' : 'password'}
-										onChange={handleChange}
-										name='password'
+										{...register('password', {
+											minLength: 8,
+											required: true,
+										})}
 									/>
 									<div
 										className={styles.icon}
@@ -175,7 +196,6 @@ export function Auth({ type }: IAuth) {
 
 								<div
 									className='mb-3 mt-8 text-center'
-									// onClick={handleClick('account')}
 								>
 									<MainButton type='submit' className='uppercase w-full py-2'>
 										{type}

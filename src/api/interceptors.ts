@@ -6,14 +6,15 @@ import {
 	removeFromStorage
 } from '@/services/auth-token.service'
 import { authService } from '@/services/auth.service'
-import { API_URL } from '@/constants/api.constants'
+import { API_URL, URL } from '@/constants/api.constants'
 
 const options: CreateAxiosDefaults = {
 	baseURL: API_URL,
 	headers: {
-		'Content-Type': 'application/json'
+		'Content-Type': 'application/json',
+		'Access-Control-Allow-Origin': URL,
 	},
-	withCredentials: true
+	withCredentials: true,
 }
 
 const axiosClassic = axios.create(options)
