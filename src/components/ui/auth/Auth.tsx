@@ -27,25 +27,26 @@ export function Auth({ type }: IAuth) {
 
 	const router = useRouter()
 
-  const { mutate } = useMutation({
-		mutationFn: async () => {
-			if (type === 'Войти') {
-				return authService.login('email', formData)
-			} else {
-				return authService.register(formData)
-			}
-		},
+	const { mutate: login } = useMutation({
+		mutationFn: () => authService.login('username', formData),
 		onSuccess: () => {
-			toast.success(
-				type === 'Войти'
-					? 'Вы успешно вошли в систему'
-					: 'Вы успешно зарегистрировались'
-			)
+			toast.success('Успешный вход')
 			router.replace('/account')
 		},
-		onError: (error: any) => {
-			toast.error('Ошибка: ' + error.message)
+		onError: (error: ResponseError) => {
+			toast.error('Ошибка авторизации')
 		},
+	})
+
+	const { mutate: register } = useMutation({
+		mutationFn: () => authService.register(formData),
+		onSuccess: () => {
+			toast.success('Успешная регистрация')
+			router.replace('/account')
+		},
+		onError: (error: ResponseError) => {
+			toast.error('Ошибка регистрации')
+		}
 	})
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +58,12 @@ export function Auth({ type }: IAuth) {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
-		mutate()
+
+		if (type === 'Войти') {
+			login()
+		} else if (type === 'Создать аккаунт') {
+			register()
+		}
 	}
 
 	// const handleClick = (link: string) => {
@@ -104,6 +110,7 @@ export function Auth({ type }: IAuth) {
 											placeholder='Ник'
 											type='text'
 											onChange={handleChange}
+											name='username'
 										/>
 									</label>
 								)}
@@ -117,6 +124,7 @@ export function Auth({ type }: IAuth) {
 											placeholder='ник или email'
 											type='text'
 											onChange={handleChange}
+											name='username'
 										/>
 									</label>
 								)}
@@ -131,6 +139,7 @@ export function Auth({ type }: IAuth) {
 											placeholder='email'
 											type='email'
 											onChange={handleChange}
+											name='email'
 										/>
 									</label>
 								)}
@@ -144,6 +153,7 @@ export function Auth({ type }: IAuth) {
 										placeholder='Пароль'
 										type={isShowPassword ? 'text' : 'password'}
 										onChange={handleChange}
+										name='password'
 									/>
 									<div
 										className={styles.icon}

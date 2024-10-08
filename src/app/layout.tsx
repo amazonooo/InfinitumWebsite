@@ -9,6 +9,7 @@ import { navButtons, navItems } from '@/components/ui/header/navItems'
 import dynamic from 'next/dynamic'
 import { Bounce, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import QueryProvider from '@/providers/query-provider'
 
 const Sidebar = dynamic(() => import('../components/layout/sidebar/Sidebar'), { ssr: false })
 
@@ -33,21 +34,23 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<StarsCanvas />
-					<Sidebar />
-					<Header navItems={navItems} navButtons={navButtons} />
-					<ToastContainer
-						autoClose={3000}
-						limit={3}
-						position='top-center'
-						hideProgressBar={true}
-						closeOnClick
-						theme='dark'
-						pauseOnHover={false}
-						transition={Bounce}
-					/>
-					{children}
-					<Footer />
+					<QueryProvider>
+						<StarsCanvas />
+						<Sidebar />
+						<Header navItems={navItems} navButtons={navButtons} />
+						<ToastContainer
+							autoClose={3000}
+							limit={3}
+							position='top-center'
+							hideProgressBar={true}
+							closeOnClick
+							theme='dark'
+							pauseOnHover={false}
+							transition={Bounce}
+						/>
+						{children}
+						<Footer />
+					</QueryProvider>
 				</ThemeProvider>
 			</body>
 		</html>
