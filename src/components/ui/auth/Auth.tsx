@@ -29,10 +29,10 @@ export function Auth({ type }: IAuth) {
 
 	const { mutate: login } = useMutation({
 		mutationKey: ['login'],
-		mutationFn: (data: IAuthForm) => authService.login('email', data),
+		mutationFn: (data: IAuthForm) => authService.login('username', data),
 		onSuccess: () => {
 			toast.success('Успешный вход')
-			router.replace('/account')
+			router.push('/account')
 		},
 		onError: (error: ResponseError) => {      
 			toast.dismiss()
@@ -70,6 +70,12 @@ export function Auth({ type }: IAuth) {
 
 	const onSubmit: SubmitHandler<IAuthForm> = (data: IAuthForm) => {
 		if (type === 'Войти') {
+			if (!data.username) {
+				data.username = ''
+			}
+			if (!data.email) {
+				data.email = ''
+			}
 			login(data)
 		} else {
 			registerMode(data)
@@ -93,9 +99,9 @@ export function Auth({ type }: IAuth) {
 			<m.div initial='hidden' animate='visible'>
 				<m.div
 					variants={slideInFromLeft(0.6)}
-					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0'
+					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
 				>
-					<h1 className='Welcome-text font-bold text-2xl'>Infinitum</h1>
+					<Link href={'/'} className='cursor-pointer Welcome-text font-bold text-2xl'>Infinitum</Link>
 				</m.div>
 				<m.div
 					variants={slideInFromTop}
@@ -139,7 +145,7 @@ export function Auth({ type }: IAuth) {
 											{...register('username', {
 												required: true,
 												minLength: 4,
-												maxLength: 18
+												maxLength: 18,
 											})}
 										/>
 									</label>
