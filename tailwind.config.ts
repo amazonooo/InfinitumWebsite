@@ -81,6 +81,20 @@ const config: Config = {
 						backgroundPosition: '-200% 0',
 					},
 				},
+				btnAnim: {
+					'0%': {
+						transform: 'translateX(0)',
+					},
+					'30%': {
+						transform: 'translateX(10px)',
+					},
+					'70%': {
+						transform: 'translateX(-10px)',
+					},
+					'100%': {
+						transform: 'translateX(0)',
+					},
+				},
 			},
 			animation: {
 				'meteor-effect': 'meteor 5s linear infinite',
@@ -90,6 +104,7 @@ const config: Config = {
 				'card-down': 'card-down 0.8s ease',
 				spin: 'spin 1.5s linear infinite',
 				shimmer: 'shimmer 2s linear infinite',
+				'btnAnim': 'btnAnim .3s' 
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -99,6 +114,6 @@ const config: Config = {
 		},
 	},
 	plugins: [require('tailwindcss-animate')],
-	darkMode: 'class'
+	darkMode: 'class',
 }
 export default config;

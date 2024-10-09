@@ -122,10 +122,6 @@ canvas {
   padding: .5rem;
 }
 
-.Toastify__toast--success .Toastify__toast-icon svg {
-  fill: #cbacf9;
-}
-
 .Toastify__close-button {
   transition: .3s;
 }
@@ -133,4 +129,19 @@ canvas {
 .Toastify__close-button:hover,
 .Toastify__close-button:focus {
   color: #cbacf9;
+}
+
+@media (max-width: 480px) {
+  .Toastify__toast {
+    width: 250px;
+    margin-top: 1.4rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+  }
+
+  .Toastify__toast-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

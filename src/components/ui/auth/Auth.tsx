@@ -24,6 +24,17 @@ interface IAuth {
 
 export function Auth({ type }: IAuth) {
 	const [isShowPassword, setIsShowPassword] = useState(false)
+	const [isButtonClicked, setIsButtonClicked] = useState(false)
+	const [buttonKey, setButtonKey] = useState(0)
+
+	const handleButtonClick = () => {
+		setIsButtonClicked(true)
+
+		if (errors.email || errors.username || errors.password) {
+			setButtonKey((prevKey) => prevKey + 1)
+			toast.error('Пожалуйста, заполните все поля')
+		}
+	}
 
 	const router = useRouter()
 
@@ -101,7 +112,12 @@ export function Auth({ type }: IAuth) {
 					variants={slideInFromLeft(0.6)}
 					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
 				>
-					<Link href={'/'} className='cursor-pointer Welcome-text font-bold text-2xl'>Infinitum</Link>
+					<Link
+						href={'/'}
+						className='cursor-pointer Welcome-text font-bold text-2xl'
+					>
+						Infinitum
+					</Link>
 				</m.div>
 				<m.div
 					variants={slideInFromTop}
@@ -145,7 +161,6 @@ export function Auth({ type }: IAuth) {
 											{...register('username', {
 												required: true,
 												minLength: 4,
-												maxLength: 18,
 											})}
 										/>
 									</label>
@@ -200,12 +215,19 @@ export function Auth({ type }: IAuth) {
 									''
 								)}
 
-								<div
-									className='mb-3 mt-8 text-center'
-								>
-									<MainButton type='submit' className='uppercase w-full py-2'>
+								<div className='mb-3 mt-8 text-center'>
+									<button
+										type='submit'
+										onClick={handleButtonClick}
+										key={buttonKey}
+										className={
+											isButtonClicked && (errors.username || errors.password)
+												? styles.buttonError
+												: styles.form_btn
+										}
+									>
 										{type}
-									</MainButton>
+									</button>
 								</div>
 
 								{type === 'Создать аккаунт' ? (
