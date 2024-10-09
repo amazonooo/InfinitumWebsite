@@ -1,6 +1,14 @@
-'use client'
-
 import Slider from '../components/Slider'
+
+export async function generateStaticParams() {
+	const serverIds = ['1', '2']
+
+	return serverIds.map((serverId) => ({
+		serverId
+	}))
+}
+
+export const revalidate = 60
 
 const ServerDetail = ({params}: {
 	params: {
