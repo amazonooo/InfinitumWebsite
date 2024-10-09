@@ -118,17 +118,17 @@ canvas {
 
 .Toastify__toast {
   font-size: .9rem;
-  border-radius: 12px;
+  border-radius: 12px !important;
   padding: .5rem;
 }
 
-.Toastify__close-button {
-  transition: .3s;
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  background: #7F1D1D !important;
 }
 
-.Toastify__close-button:hover,
-.Toastify__close-button:focus {
-  color: #cbacf9;
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  background: #10b981 !important;
+  border: 1px solid #3A3A3C !important;
 }
 
 @media (max-width: 480px) {
@@ -136,7 +136,7 @@ canvas {
     width: 250px;
     margin-top: 1.4rem;
     margin-bottom: 1rem;
-    border-radius: 1rem;
+    border-radius: 12px !important;
   }
 
   .Toastify__toast-container {

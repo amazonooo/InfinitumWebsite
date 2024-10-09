@@ -7,7 +7,7 @@ import StarsCanvas from '@/components/ui/stars/Stars'
 import Footer from '@/components/layout/Footer'
 import { navButtons, navItems } from '@/components/ui/header/navItems'
 import dynamic from 'next/dynamic'
-import { Bounce, ToastContainer } from 'react-toastify'
+import { Bounce, Slide, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import QueryProvider from '@/providers/query-provider'
 
@@ -41,12 +41,12 @@ export default function RootLayout({
 						<ToastContainer
 							autoClose={3000}
 							limit={3}
-							position='top-center'
+							position='top-right'
 							hideProgressBar={true}
 							closeOnClick
-							theme='dark'
+							theme='colored'
 							pauseOnHover={false}
-							transition={Bounce}
+							transition={Slide}
 						/>
 						{children}
 						<Footer />

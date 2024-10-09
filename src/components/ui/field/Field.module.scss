@@ -33,7 +33,7 @@
 }
 
 .buttonError {
-	@apply cursor-pointer inline-flex justify-center whitespace-nowrap rounded-lg text-xl font-medium bg-red-600 shadow focus:outline-none focus-visible:outline-none relative w-full py-2 transition-all duration-300 animate-btnAnim;
+	@apply cursor-pointer inline-flex justify-center whitespace-nowrap rounded-lg text-xl font-medium bg-[#7F1D1D] shadow focus:outline-none focus-visible:outline-none relative w-full py-2 transition-all duration-300 animate-btnAnim;
 
 	&:hover {
 		@apply scale-105
