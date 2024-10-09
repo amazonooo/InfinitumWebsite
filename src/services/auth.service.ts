@@ -6,7 +6,10 @@ export const authService = {
 	async login(type: 'email' | 'username', data: IAuthForm) {
 		const response = await axiosClassic.post<IAuthResponse>(`/auth/login`, {...data, type})
 
-		if (response.data.accessToken) saveTokenToStorage(response.data.accessToken)
+		if (response.data.accessToken) {
+			saveTokenToStorage(response.data.accessToken)
+			console.log(response.data.accessToken)
+		}
 
 		return response
 	},

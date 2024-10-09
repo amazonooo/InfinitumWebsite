@@ -12,7 +12,7 @@ export const saveTokenToStorage = (accessToken: string) => {
 	Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
 		domain: DOMAIN,
 		sameSite: SAME_SITE,
-		expires: 1,
+		expires: 0.125
 	})
 }
 export const removeFromStorage = () => {
