@@ -39,7 +39,7 @@ export default function RootLayout({
 						<Sidebar />
 						<Header navItems={navItems} navButtons={navButtons} />
 						<ToastContainer
-							autoClose={3000}
+							autoClose={2000}
 							limit={3}
 							position='top-right'
 							hideProgressBar={true}

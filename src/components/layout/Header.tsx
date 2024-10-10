@@ -48,6 +48,7 @@ export const Header = ({
 		pathname !== '/rules' &&
 		pathname !== '/servers' &&
 		pathname !== '/donate' &&
+		pathname !== '/play' &&
 		pathname !== '/profile/general' &&
 		pathname !== '/profile/history' &&
 		pathname !== '/profile/pay' &&
