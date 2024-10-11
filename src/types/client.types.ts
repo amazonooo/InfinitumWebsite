@@ -5,6 +5,6 @@ export interface ClientObject {
 	minecraftVersion: string
 	imageUrl: string
 	recommendedMemory: number
-  }
+}
   
   export type ClientObjectWithOnline = ClientObject & { online: number }

@@ -44,6 +44,7 @@ export interface IPlayerServerStats {
 }
 
 export interface IUserProfile {
+	map(arg0: (post: any) => { params: { id: any } }): unknown
 	user: IUser
 	stats: IPlayerServerStats[]
 }
