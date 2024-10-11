@@ -117,10 +117,10 @@ export const Header = ({
 					>
 						<div className='xl:px-10 lg:px-5 py-4 bg-main-black rounded-lg'>
 							<ul className='flex justify-between'>
-								<div className='text-2xl font-bold Welcome-text'>
+								<li className='text-2xl font-bold Welcome-text'>
 									<Link href={'/'}>Infinitum</Link>
-								</div>
-								<li className='flex justify-between lg:gap-x-4 xl:gap-x-6 font-semibold'>
+								</li>
+								<ul className='flex justify-between lg:gap-x-4 xl:gap-x-6 font-semibold'>
 									{navItems.map((navItem: any, idx: number) => (
 										<Link
 											key={`link=${idx}`}
@@ -166,8 +166,8 @@ export const Header = ({
 											</div>
 										)}
 									</div>
-								</li>
-								<div className='flex justify-between items-center lg:gap-x-4 xl:gap-x-6'>
+								</ul>
+								<li className='flex justify-between items-center lg:gap-x-4 xl:gap-x-6'>
 									<Link
 										className={cn(
 											'relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-400 hover:text-neutral-700'
@@ -182,7 +182,7 @@ export const Header = ({
 										/>
 									</Link>
 									<Dropdown />
-								</div>
+								</li>
 							</ul>
 						</div>
 					</motion.div>
