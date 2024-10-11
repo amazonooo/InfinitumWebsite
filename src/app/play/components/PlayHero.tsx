@@ -5,6 +5,7 @@ import { slideInFromRight } from '@/utils/motion'
 import Heading from '@/components/ui/Heading'
 import Image from 'next/image'
 import { FaApple, FaLinux, FaWindows } from 'react-icons/fa6'
+import Faq from './Faq'
 
 export default function PlayHero() {
 	const handleScrollToSec = (sec: any) => {
@@ -107,6 +108,8 @@ export default function PlayHero() {
 					</ul>
 				</div>
 			</div>
+
+			<Faq />
 		</div>
 	)
 }

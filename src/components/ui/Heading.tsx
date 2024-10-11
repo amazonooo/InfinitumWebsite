@@ -11,7 +11,7 @@ interface IHeading {
 const Heading: FC<IHeading> = ({ title, className }) => {
   return (
     <h1 className={cn(
-        'Welcome-text text-center',
+        'text-primary-pink text-center',
         className
       )}
     >

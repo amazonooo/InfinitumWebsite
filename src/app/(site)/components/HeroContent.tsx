@@ -5,6 +5,7 @@ import { domAnimation, LazyMotion, m } from 'framer-motion'
 import { slideInFromLeft, slideInFromTop } from '@/utils/motion'
 import Heading from '../../../components/ui/Heading'
 import { MainButton } from '../../../components/ui/main-button/MainButton'
+import Link from 'next/link'
 
 const HeroContent: FC = () => {
   return (
@@ -34,7 +35,12 @@ const HeroContent: FC = () => {
 					</m.p>
 
 					<m.div variants={slideInFromLeft(0.7)}>
-						<MainButton text='Играть' className='px-8 py-3 md:px-12 md:py-4' />
+						<Link
+							href={'/play'}
+							className='px-8 py-3 md:px-12 md:py-4 cursor-pointer inline-flex justify-center whitespace-nowrap rounded-lg text-xl font-medium bg-gradient-to-r from-primary-pink to-primary-purple shadow focus:outline-none focus-visible:outline-none relative hover:scale-105 transition-all duration-300'
+						>
+							Играть
+						</Link>
 					</m.div>
 				</div>
 			</m.div>
