@@ -100,8 +100,6 @@ export const Header = ({
 										)}
 									>
 										<span className='block sm:hidden'>{navItem.icon}</span>
-										{/* add !cursor-pointer */}
-										{/* remove hidden sm:block for the mobile responsive */}
 										<span
 											className={`xl:text-base lg:text-sm !cursor-pointer hover:text-primary-pink transition-colors duration-300 ${
 												pathname === navItem.link

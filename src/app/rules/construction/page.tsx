@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import GameProcMain from './components/ConstructionMain'
 import ConstructionMain from './components/ConstructionMain'
 
 const page: FC = () => {
