@@ -13,7 +13,7 @@ export default function ProfilePage() {
 			<div
 				className='flex flex-col isolate z-[10] ml-auto mr-auto'
 			>
-				<GeneralMain />
+				{/* <GeneralMain /> */}
 			</div>
 		</section>
 	)

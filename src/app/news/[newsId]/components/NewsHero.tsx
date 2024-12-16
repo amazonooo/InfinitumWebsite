@@ -4,7 +4,7 @@ import Heading from '@/components/ui/Heading'
 import { slideInFromRight } from '@/utils/motion'
 import { m, LazyMotion, domAnimation } from 'framer-motion'
 
-export default function NewsHero() {
+export default function NewsHero({ title }: { title: string }) {
   return (
 		<LazyMotion features={domAnimation}>
 			<m.div
@@ -14,10 +14,9 @@ export default function NewsHero() {
 			>
 				<div className='flex flex-col w-full h-full justify-center items-center text-start'>
 					<m.div variants={slideInFromRight(0.3)}>
-						<Heading
-							title='Новости'
-							className='text-4xl md:text-6xl font-semibold'
-						/>
+						<h1 className='text-primary-pink text-center text-4xl md:text-6xl font-semibold'>
+							{title}
+						</h1>
 					</m.div>
 				</div>
 			</m.div>
