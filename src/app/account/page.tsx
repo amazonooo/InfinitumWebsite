@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
-import News from '@/components/ui/main-info/news/News'
 import AccountMain from './components/AccountMain'
 
 export const metadata: Metadata = {

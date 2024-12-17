@@ -56,7 +56,6 @@ export const Header = ({
 		pathname !== '/rules/serverrul' &&
 		pathname !== '/servers/server-info'
 
-	if (isNotFound) return null
 	if (isLoggedLogin) return null
 	if (isLoggedRegister) return null
 

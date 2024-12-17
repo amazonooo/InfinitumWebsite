@@ -26,7 +26,6 @@ export function ServerCards() {
 								height='1000'
 								width='1000'
 								className='pointer-events-none h-40 sm:h-48 md:h-56 lg:h-60 xl:h-64 w-full object-contain rounded-xl mb-10'
-								// object-cover
 								alt='thumbnail'
 							/>
 							<div className='flex flex-col items-center justify-center mb-4'>
@@ -45,7 +44,7 @@ export function ServerCards() {
 								а yстойчивое будущее требует изменений на системном уровне...
 							</CardItem>
 							<div className='flex justify-center items-center mt-10'>
-								<CardItem as={Link} href='/servers/server-info'>
+								<CardItem as={Link} href='/servers/1'>
 									<MainButton className='py-2.5 px-8'>Подробнее</MainButton>
 								</CardItem>
 							</div>

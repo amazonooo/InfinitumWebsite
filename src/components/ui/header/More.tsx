@@ -20,7 +20,7 @@ const More: FC = () => {
 					<li className='w-full h-full text-sm'>
 						<Link
 							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
-							href={'/'}
+							href={'/play'}
 						>
 							Помощь
 						</Link>
