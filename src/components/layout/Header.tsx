@@ -11,11 +11,11 @@ import { usePathname } from 'next/navigation'
 import { ChevronDown } from 'lucide-react'
 import Dropdown from '../ui/dropdown/Dropdown'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
+import { PROJECT_NAME } from '@/constants/api.constants'
 
 export const Header = ({
 	navItems,
 	className,
-	navButtons,
 }: {
 	navItems: {
 		name: string
@@ -74,7 +74,6 @@ export const Header = ({
 	const isDesktop = useMediaQuery({ minWidth: 951 })
 	const isMobile = useMediaQuery({ maxWidth: 950 })
 
-
 	return (
 		<>
 			{isDesktop && (
@@ -84,10 +83,10 @@ export const Header = ({
 						className
 					)}
 				>
-					<div className='xl:px-10 lg:px-5 py-4 bg-main-black rounded-full'>
+					<nav className='xl:px-10 lg:px-5 py-4 bg-main-black rounded-full'>
 						<ul className='flex justify-between'>
 							<li className='text-2xl font-bold Welcome-text'>
-								<Link href={'/'}>Infinitum</Link>
+								<Link href={'/'}>{PROJECT_NAME}</Link>
 							</li>
 							<ul className='flex justify-between lg:gap-x-4 xl:gap-x-6 font-semibold'>
 								{navItems.map((navItem: any, idx: number) => (
@@ -151,7 +150,7 @@ export const Header = ({
 								<Dropdown />
 							</li>
 						</ul>
-					</div>
+					</nav>
 				</header>
 			)}
 			{isMobile && <MobileNav />}

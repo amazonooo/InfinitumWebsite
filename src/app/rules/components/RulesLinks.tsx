@@ -47,7 +47,7 @@ const RulesLinks: FC<IProfile> = ({ currentPath, type }) => {
 			<m.div
 				initial='hidden'
 				animate='visible'
-				className='flex flex-col items-center px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
+				className='flex flex-col items-center'
 			>
 				<m.h1
 					variants={slideInFromTop}

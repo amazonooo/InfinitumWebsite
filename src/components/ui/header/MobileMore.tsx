@@ -5,6 +5,7 @@ import { LogOut, User } from 'lucide-react'
 import Link from 'next/link'
 import React, { FC, useEffect, useRef, useState } from 'react'
 import Dropdown from '../dropdown/Dropdown'
+import { PROJECT_NAME } from '@/constants/api.constants'
 
 interface IMobileMore {
 	closeMenu: () => void
@@ -38,7 +39,7 @@ const MobileMore: FC<IMobileMore> = ({ closeMenu }) => {
 		<div className='z-[10]'>
 			<div className='p-7 flex flex-col'>
 				<div className='flex justify-between items-center mb-24'>
-					<Link href={'/'} onClick={closeMenu} className='Welcome-text text-2xl'>Infinitum</Link>
+					<Link href={'/'} onClick={closeMenu} className='Welcome-text text-2xl'>{PROJECT_NAME}</Link>
 					<Dropdown />
 				</div>
 				<div className='grid grid-cols-1 sm:grid-cols-2 sm:gap-x-8 md:gap-x-10 gap-y-12'>

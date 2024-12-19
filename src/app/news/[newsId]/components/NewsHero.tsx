@@ -1,6 +1,5 @@
 'use client'
 
-import Heading from '@/components/ui/Heading'
 import { slideInFromRight } from '@/utils/motion'
 import { m, LazyMotion, domAnimation } from 'framer-motion'
 

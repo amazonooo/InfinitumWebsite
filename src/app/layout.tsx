@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Unbounded } from "next/font/google";
 import "./globals.css";
 import { Header } from '@/components/layout/Header';
-import { ThemeProvider } from '@/providers/theme-provider'
 import StarsCanvas from '@/components/ui/stars/Stars'
 import Footer from '@/components/layout/Footer'
 import { navButtons, navItems } from '@/components/ui/header/navItems'
@@ -14,7 +13,7 @@ import { PROJECT_NAME } from '@/constants/api.constants'
 
 const Sidebar = dynamic(() => import('../components/layout/sidebar/Sidebar'), { ssr: false })
 
-const unbounded = Unbounded({ subsets: ["latin"] });
+// const unbounded = Unbounded({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
@@ -32,30 +31,23 @@ export default function RootLayout({
   return (
 		<html lang='en' className='dark'>
 			<body className={`bg-[#09090B] overflow-x-hidden`}>
-				<ThemeProvider
-					attribute='class'
-					defaultTheme='dark'
-					enableSystem
-					disableTransitionOnChange
-				>
-					<QueryProvider>
-						<StarsCanvas />
-						<Sidebar />
-						<Header navItems={navItems} navButtons={navButtons} />
-						<ToastContainer
-							autoClose={2000}
-							limit={3}
-							position='top-right'
-							hideProgressBar={true}
-							closeOnClick
-							theme='colored'
-							pauseOnHover={false}
-							transition={Slide}
-						/>
-						{children}
-						<Footer />
-					</QueryProvider>
-				</ThemeProvider>
+				<QueryProvider>
+					<StarsCanvas />
+					<Sidebar />
+					<Header navItems={navItems} navButtons={navButtons} />
+					<ToastContainer
+						autoClose={2000}
+						limit={3}
+						position='top-right'
+						hideProgressBar={true}
+						closeOnClick
+						theme='colored'
+						pauseOnHover={false}
+						transition={Slide}
+					/>
+					{children}
+					<Footer />
+				</QueryProvider>
 			</body>
 		</html>
 	)

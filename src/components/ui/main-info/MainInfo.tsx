@@ -18,7 +18,7 @@ const MainInfo: FC = () => {
 
   return (
 		<LazyMotion features={domAnimation}>
-			<m.section
+			<m.div
 				id='news'
 				className='flex flex-col items-center justify-center relative pt-16'
 				initial='hidden'
@@ -41,7 +41,7 @@ const MainInfo: FC = () => {
 						<Button size={'lg'}>Все новости</Button>
 					</Link>
 				</m.div>
-			</m.section>
+			</m.div>
 		</LazyMotion>
 	)
 }

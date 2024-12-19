@@ -21,8 +21,8 @@ export default function PlayHero() {
 
 	return (
 		<div className='w-full h-full'>
-			<div className='bg-main-black h-[920px] w-full relative px-[100px]'>
-				<div className='absolute bottom-[313px]'>
+			<div className='hidden bg-main-black h-[920px] xl:block bg-[url(/play-bg.png)] bg-no-repeat bg-cover bg-center w-full relative'>
+				<div className='absolute bottom-[313px] px-[360px]'>
 					<Heading
 						title={'Установить лаунчер'}
 						className='text-6xl font-bold'
@@ -60,56 +60,63 @@ export default function PlayHero() {
 				</div>
 			</div>
 
-			<div className='flex items-center justify-center gap-x-7'>
-				<div
-					id='macOS'
-					className='bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col items-center justify-center rounded-lg'
-				>
-					<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
-						MacOS
-						<FaApple size={27} className='text-primary-pink' />
-					</h2>
-					<ul className='flex flex-col gap-y-4'>
-						<li>
-							1. <span>Скачай образ, нажав на кнопку “скачать на macOS”</span>
-						</li>
-						<li>
-							2.{' '}
-							<span>
-								Запустите его и установите лаунчер как любое другое приложение.
-							</span>
-						</li>
-					</ul>
+			<div className='max-w-[1440px] mx-auto px-5 sm:px-10 xl:block items-center justify-center flex flex-col'>
+				<Heading
+					title={'Инструкция по установке'}
+					className='block xl:hidden text-4xl md:text-6xl font-semibold mt-16'
+				/>
+				<div className='grid grid-cols-1 lg:grid-cols-3 gap-x-7 gap-y-6 pt-8'>
+					<div
+						id='macOS'
+						className='bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg'
+					>
+						<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
+							MacOS
+							<FaApple size={27} className='text-primary-pink mb-1.5' />
+						</h2>
+						<ul className='flex flex-col gap-y-4'>
+							<li>
+								1. <span>Скачай образ, нажав на кнопку “скачать на macOS”</span>
+							</li>
+							<li>
+								2.{' '}
+								<span>
+									Запустите его и установите лаунчер как любое другое
+									приложение.
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div
+						id='windows'
+						className='bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg'
+					>
+						<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
+							Windows
+							<FaWindows size={27} className='text-primary-pink mb-1' />
+						</h2>
+						<ul className='flex flex-col gap-y-4'>
+							<li>1. Скачай установщик для Windows</li>
+							<li>2. Запустите и следуйте инструкциям</li>
+						</ul>
+					</div>
+					<div
+						id='linux'
+						className='bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg'
+					>
+						<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
+							Linux
+							<FaLinux size={27} className='text-primary-pink mb-1' />
+						</h2>
+						<ul className='flex flex-col gap-y-4'>
+							<li>1. Откройте терминал и скачайте образ</li>
+							<li>2. Установите, следуя инструкции на экране</li>
+						</ul>
+					</div>
 				</div>
-				<div
-					id='windows'
-					className='bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col items-center justify-center rounded-lg'
-				>
-					<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
-						Windows
-						<FaWindows size={27} className='text-primary-pink' />
-					</h2>
-					<ul className='flex flex-col gap-y-4'>
-						<li>1. Скачай установщик для Windows</li>
-						<li>2. Запустите и следуйте инструкциям</li>
-					</ul>
-				</div>
-				<div
-					id='linux'
-					className='bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col items-center justify-center rounded-lg'
-				>
-					<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
-						Linux
-						<FaLinux size={27} className='text-primary-pink' />
-					</h2>
-					<ul className='flex flex-col gap-y-4'>
-						<li>1. Откройте терминал и скачайте образ</li>
-						<li>2. Установите, следуя инструкции на экране</li>
-					</ul>
-				</div>
-			</div>
 
-			<Faq />
+				<Faq />
+			</div>
 		</div>
 	)
 }

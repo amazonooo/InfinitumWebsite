@@ -9,15 +9,26 @@ import {
 
 export default function Faq() {
   return (
-		<div className='pt-[100px]'>
-			<Heading title={'FAQ'} className='text-6xl mb-[60px] font-bold' />
+		<div className='mt-[60px] w-full'>
+			<Heading
+				title={'FAQ'}
+				className='text-4xl md:text-6xl font-semibold mb-[60px]'
+			/>
 			<div className='flex flex-col gap-y-[30px]'>
 				<div className='w-full bg-main-black border border-primary-pink rounded-lg px-6 py-3'>
 					<Accordion type='single' collapsible>
 						<AccordionItem value='item-1'>
-							<AccordionTrigger>Is it accessible?</AccordionTrigger>
+							<AccordionTrigger>
+								Вместо лаунчера открывается архив
+							</AccordionTrigger>
 							<AccordionContent>
-								Yes. It adheres to the WAI-ARIA design pattern.
+								Устойчивое будущее требует изменений на системном уровне,
+								сильной государственной политики и новых технологий. Мы знаем,
+								что ИИ может помочь решить некоторые из самых серьёзных проблем
+								климата. Масштабирование искусственного интеллекта
+								и его использование для ускорения борьбы с изменением климата
+								будет столь же важным, как и устранение связанного
+								с ним воздействия на окружающую среду.
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>
@@ -26,9 +37,15 @@ export default function Faq() {
 				<div className='w-full bg-main-black border border-primary-pink rounded-lg px-6 py-3'>
 					<Accordion type='single' collapsible>
 						<AccordionItem value='item-1'>
-							<AccordionTrigger>Is it accessible?</AccordionTrigger>
+							<AccordionTrigger>Другая проблема</AccordionTrigger>
 							<AccordionContent>
-								Yes. It adheres to the WAI-ARIA design pattern.
+								Устойчивое будущее требует изменений на системном уровне,
+								сильной государственной политики и новых технологий. Мы знаем,
+								что ИИ может помочь решить некоторые из самых серьёзных проблем
+								климата. Масштабирование искусственного интеллекта
+								и его использование для ускорения борьбы с изменением климата
+								будет столь же важным, как и устранение связанного
+								с ним воздействия на окружающую среду.
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>

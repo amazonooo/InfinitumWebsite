@@ -17,6 +17,7 @@ import { authService } from '@/services/auth.service'
 import { toast } from 'react-toastify'
 import { ResponseError } from '@/types/error.types'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { PROJECT_NAME } from '@/constants/api.constants'
 
 interface IAuth {
   type?: 'Войти' | 'Создать аккаунт'
@@ -112,12 +113,11 @@ export function Auth({ type }: IAuth) {
 					variants={slideInFromLeft(0.6)}
 					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
 				>
-					<Link
-						href={'/'}
+					<h1
 						className='cursor-pointer Welcome-text font-bold text-2xl'
 					>
-						Infinitum
-					</Link>
+						{PROJECT_NAME}
+					</h1>
 				</m.div>
 				<m.div
 					variants={slideInFromTop}
@@ -253,11 +253,6 @@ export function Auth({ type }: IAuth) {
 								)}
 							</form>
 						</div>
-						{isDesktop && (
-							<div className=''>
-								<Image src={'/auth.png'} alt='auth' width={680} height={730} />
-							</div>
-						)}
 					</div>
 				</m.div>
 			</m.div>
