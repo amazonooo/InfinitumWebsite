@@ -1,8 +1,6 @@
-import { userService } from '@/services/user.service'
 import { IPlayerServerStats } from '@/types/user.types'
-import { GetStaticProps } from 'next'
 
-export default function ServerStatistics({ serverId, playtime, kills, deaths, killedMobs, messagesCount }: IPlayerServerStats) {
+export default function ServerStatistics({ serverId, playtime, kills, deaths, killedMobs, messagesCount, lastLogin, money }: { money: number, lastLogin: string, serverId: string, playtime: string, kills: string, deaths: string, killedMobs: string, messagesCount: string } ) {
   return (
 		<div className='bg-main-black border border-white/[0.2] rounded-lg mt-10 w-[310px] sm:w-[370px] md:w-[350px] lg:w-[440px]'>
 			<div className='p-6'>
@@ -30,6 +28,7 @@ export default function ServerStatistics({ serverId, playtime, kills, deaths, ki
 						{deaths}
 					</p>
 				</div>
+				{money}
 				<div className='flex items-center justify-between'>
 					<h2 className='text-base md:text-lg text-primary-pink'>убитые мобы:</h2>
 					<p className='text-base md:text-lg'>{killedMobs}</p>

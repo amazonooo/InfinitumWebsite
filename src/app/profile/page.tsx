@@ -1,17 +1,35 @@
 import type { Metadata } from 'next'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 import GeneralMain from './general/components/GeneralMain'
+import { userService } from '@/services/user.service'
+import { IPlayerServerStats } from '@/types/user.types'
 
 export const metadata: Metadata = {
   title: 'Profile',
   ...NO_INDEX_PAGE
 }
 
-export default function ProfilePage() {
+async function getServerSideProps() {
+	try {
+		const playerStats = await userService.getUserProfile()
+
+		return {
+			props: { playerStats }
+		}
+	} catch (error) {
+		console.log('Ошибка загрузки профиля', error)
+
+		return {
+			props: { playerStats: null }
+		}
+	}
+}
+
+export default function ProfilePage({ playerStats }: { playerStats: IPlayerServerStats }) {
   return (
 		<section className='h-full w-full pt-24 flex items-center justify-center max-w-[1440px] mx-auto px-5 sm:px-10'>
 			<div className='flex flex-col isolate z-[10] ml-auto mr-auto'>
-				{/* <GeneralMain /> */}
+				<GeneralMain playerStats={playerStats} />
 			</div>
 		</section>
 	)

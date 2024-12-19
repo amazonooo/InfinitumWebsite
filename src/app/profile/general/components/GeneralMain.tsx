@@ -1,36 +1,16 @@
 import PlayerInfo from './PlayerInfo'
 import { Button } from '@/components/ui/button'
 import Transactions from './Transactions'
-import { Charts } from './Charts'
-import PrivilegeMain from '../../privilege/components/PrivilegeMain'
 import ServerStatistics from './ServerStatistics'
-import { GetStaticProps } from 'next'
-import { userService } from '@/services/user.service'
 import { IPlayerServerStats } from '@/types/user.types'
 import LastSession from './LastSession'
+import { userService } from '@/services/user.service'
 
-export async function getStaticProps() {
-	const playerStats = await userService.getUserProfile()
-
-	return {
-		props: {
-			playerStats
-		},
-		revalidate: 30
-	}
+interface IGeneralMain {
+	playerStats: IPlayerServerStats
 }
 
-export async function getStaticPaths() {
-	const playerPaths = await userService.getUserProfile()
-
-	const paths = playerPaths.map(path => ({
-		params: { id: path.id },
-	}))
-
-	return { paths, fallback: 'blocking' }
-}
-
-export default function GeneralMain(playerStats: IPlayerServerStats) {
+export default function GeneralMain({ playerStats }: IGeneralMain) {
 	return (
 		<section>
 			<div className='grid grid-cols-1 lg:grid-cols-3 gap-y-20 lg:gap-y-20 lg:gap-x-10'>
@@ -43,13 +23,13 @@ export default function GeneralMain(playerStats: IPlayerServerStats) {
 								Текущий баланс
 							</h2>
 							<h1 className='text-3xl md:text-4xl lg:text-5xl mb-10'>
-								{playerStats.money}
+								{playerStats?.money || ''}
 							</h1>
 							<Button>Пополнить</Button>
 						</div>
 					</div>
 
-					<ServerStatistics lastLogin={playerStats.lastLogin} playtime={playerStats.playtime} kills={playerStats.kills} killedMobs={playerStats.killedMobs} deaths={playerStats.deaths} messagesCount={playerStats.messagesCount} nickname={''} muted={false} mutedAt={''} muteEnds={''} muteReason={''} donateRole={''} role={''} money={0} serverId={''} clientId={''} clientTitle={''} />
+					<ServerStatistics {...playerStats} />
 				</div>
 
 				<div className='col-span-1 sm:col-span-2'>
@@ -67,9 +47,7 @@ export default function GeneralMain(playerStats: IPlayerServerStats) {
 						</div>
 					</div>
 
-					<LastSession lastLogin={playerStats.lastLogin} />
-
-					{/* <PrivilegeMain /> */}
+					<LastSession lastLogin={playerStats?.lastLogin || ''} />
 				</div>
 			</div>
 		</section>
