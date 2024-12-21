@@ -16,7 +16,7 @@ const NewsHero: FC = () => {
 				<div className='flex flex-col w-full h-full justify-center items-center text-start'>
 					<m.div variants={slideInFromRight(0.3)}>
 						<Heading
-							title='Сервера'
+							title='Серверы'
 							className='text-4xl md:text-6xl font-semibold'
 						/>
 					</m.div>

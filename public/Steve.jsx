@@ -4,11 +4,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 import * as THREE from 'three'
 
 export default function Model({ skinUrl, animation }) {
-	const { nodes, materials, animations } = useGLTF('/steve.gltf')
-	const { actions } = useAnimations(
-		animations,
-		nodes['Steve_02_-_Default_0'].scene
-	)
+	const { nodes, materials } = useGLTF('/steve.gltf')
 	const textureLoader = new THREE.TextureLoader()
 	
 	const customMaterial = skinUrl
@@ -30,17 +26,6 @@ export default function Model({ skinUrl, animation }) {
 		  })
 		: materials['02_-_Default']
 
-	useEffect(() => {
-		if (actions[animation]) {
-			actions[animation].reset().play()
-		} else {
-			console.warn(`Animation "${animation}" not found.`)
-		}
-	}, [animation, actions])
-
-	useFrame((state, delta) => {
-		actions[animation]?.update(delta)
-	})
 
 	return (
 		<group dispose={null}>

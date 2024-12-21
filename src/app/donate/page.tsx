@@ -1,5 +1,10 @@
+import { Metadata } from 'next'
 import DonateHero from './components/DonateHero'
 import DonateMain from './components/DonateMain'
+
+export const metadata: Metadata = {
+	title: 'Донат',
+}
 
 export default function DonatePage() {
   return (

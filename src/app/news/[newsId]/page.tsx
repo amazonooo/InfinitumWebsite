@@ -8,25 +8,14 @@ interface INews {
 	params: { id: string }
 }
 
+export const metadata: Metadata = {
+	title: 'Новости',
+}
+
 async function fetchNewsData(id: string) {
 	const numericId = parseInt(id, 6)
 	const news = newsIdData.find((news) => news.id === numericId)
 	return news || null
-}
-
-export async function generateMetadata({ params }: INews) {
-	const news = await fetchNewsData(params.id)
-
-	// if(!news) {
-	// 	return {
-	// 		title: 'Новость не найдена'
-	// 	}
-	// }
-
-	// return {
-	// 	title: news.subTitle,
-	// 	description: news.subTitle
-	// }
 }
 
 export async function generateStaticParams() {

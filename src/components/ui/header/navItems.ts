@@ -1,6 +1,6 @@
 export const navItems = [
 	{ name: 'Новости', link: '/news' },
-	{ name: 'Сервера', link: '/servers' },
+	{ name: 'Серверы', link: '/servers' },
 	{ name: 'Донат', link: '/donate' },
 	{ name: 'Правила', link: '/rules' },
 ]

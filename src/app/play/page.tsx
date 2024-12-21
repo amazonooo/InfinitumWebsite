@@ -1,4 +1,9 @@
+import { Metadata } from 'next'
 import PlayHero from './components/PlayHero'
+
+export const metadata: Metadata = {
+	title: 'Установка',
+}
 
 export default function PlayPage() {
   return (

@@ -1,5 +1,10 @@
+import { Metadata } from 'next'
 import {ServerCards} from './components/ServerCards'
 import ServerHero from './components/ServerHero'
+
+export const metadata: Metadata = {
+	title: 'Серверы',
+}
 
 export default function NewsPage() {
 	return (

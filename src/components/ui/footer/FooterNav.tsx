@@ -24,7 +24,7 @@ const FooterNav: FC = () => {
 						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
 						href={'/servers'}
 					>
-						Сервера
+						Серверы
 					</Link>
 				</li>
 				<li>

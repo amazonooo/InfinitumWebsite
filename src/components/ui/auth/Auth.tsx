@@ -1,7 +1,6 @@
 'use client'
 
 import { CircleUser, Eye, EyeOff, KeyRound, Mail, Pickaxe } from 'lucide-react'
-import { MainButton } from '../main-button/MainButton'
 import Link from 'next/link'
 import { m, LazyMotion, domAnimation } from 'framer-motion'
 import { slideInFromLeft, slideInFromTop } from '@/utils/motion'
@@ -9,8 +8,6 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { cn } from '@/utils/cn'
 import styles from '../field/Field.module.scss'
-import Image from 'next/image'
-import { useMediaQuery } from 'react-responsive'
 import { useMutation } from '@tanstack/react-query'
 import { IAuthForm } from '@/types/auth.types'
 import { authService } from '@/services/auth.service'
@@ -104,8 +101,6 @@ export function Auth({ type }: IAuth) {
 		mode: 'onChange',
 	})
 
-	const isDesktop = useMediaQuery({ minWidth: 951 })
-
   return (
 		<LazyMotion features={domAnimation}>
 			<m.div initial='hidden' animate='visible'>
@@ -114,7 +109,7 @@ export function Auth({ type }: IAuth) {
 					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
 				>
 					<h1
-						className='cursor-pointer Welcome-text font-bold text-2xl'
+						className='Welcome-text font-bold text-2xl Welcome-box px-3 py-1.5'
 					>
 						{PROJECT_NAME}
 					</h1>

@@ -1,5 +1,10 @@
+import { Metadata } from 'next'
 import NewsHero from './components/NewsHero'
 import News from '@/components/ui/main-info/news/News'
+
+export const metadata: Metadata = {
+	title: 'Новости',
+}
 
 export default function NewsPage() {
   return (

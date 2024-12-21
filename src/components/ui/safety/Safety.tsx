@@ -18,7 +18,7 @@ const Safety: FC = () => {
 	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
 	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
 
-	const [selected, setSelected] = useState(false)
+	// const [selected, setSelected] = useState(false)
 	const [step, setStep] = useState(1)
 
 	const handleContinue = () => {
@@ -110,7 +110,7 @@ const Safety: FC = () => {
 												onClick={handleContinue}
 											>
 												<FloatingDock
-													mobileClassName='' // only for demo, remove for production
+													mobileClassName=''
 													items={links}
 												/>
 											</div>
