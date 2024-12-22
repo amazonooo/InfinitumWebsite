@@ -7,7 +7,11 @@ import { useState, useRef, useEffect } from 'react'
 import { m } from 'framer-motion'
 import { FaUserAstronaut } from 'react-icons/fa6'
 
-export default function Dropdown() {
+interface IDropdown {
+	closeMenu?: () => void
+}
+
+export default function Dropdown({ closeMenu }: IDropdown) {
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -56,6 +60,7 @@ export default function Dropdown() {
 				>
 					<Link
 						href={'/login'}
+						onClick={closeMenu}
 						className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
 					>
 						<span className='relative transition-all duration-300 after:content-[""] after:absolute after:top-[105%] after:h-[1px] after:left-0 after:w-0 after:transition-all after:duration-300 after:bg-white group-hover:opacity-100 visible group-hover:after:w-[100%]'>
@@ -64,6 +69,7 @@ export default function Dropdown() {
 					</Link>
 					<Link
 						href={'/profile'}
+						onClick={closeMenu}
 						className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
 					>
 						<CircleUserRound
@@ -76,6 +82,7 @@ export default function Dropdown() {
 					</Link>
 					<Link
 						href={'/'}
+						onClick={closeMenu}
 						className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
 					>
 						<LogOut

@@ -3,7 +3,7 @@ import { IMenuItem } from './menu.data'
 import Image from 'next/image'
 import styles from '../Sidebar.module.scss'
 import { useAtomValue } from 'jotai'
-import { isCollapsedAtom } from '@/store'
+import { isCollapsedAtom } from '@/store/sidebar-store'
 import cn from 'clsx'
 
 export default function MenuItem({ item }: { item: IMenuItem }) {

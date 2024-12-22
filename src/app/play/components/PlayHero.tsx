@@ -1,11 +1,9 @@
 'use client'
 
-import { domAnimation, LazyMotion, m } from 'framer-motion'
-import { slideInFromRight } from '@/utils/motion'
 import Heading from '@/components/ui/Heading'
-import Image from 'next/image'
 import { FaApple, FaLinux, FaWindows } from 'react-icons/fa6'
 import Faq from './Faq'
+import { Button } from '@/components/ui/button'
 
 export default function PlayHero() {
 	const handleScrollToSec = (sec: any) => {
@@ -21,34 +19,37 @@ export default function PlayHero() {
 
 	return (
 		<div className='w-full h-full'>
-			<div className='hidden bg-main-black h-[920px] xl:block bg-[url(/play-bg.png)] bg-no-repeat bg-cover bg-center w-full relative'>
+			<div className='hidden bg-main-black h-[920px] xl:block bg-[url(/help-hero.jpg)] bg-no-repeat bg-cover bg-center w-full relative'>
 				<div className='absolute bottom-[313px] px-[360px]'>
 					<Heading
 						title={'Установить лаунчер'}
 						className='text-6xl font-bold'
 					/>
 					<div className='flex flex-col md:flex-row gap-6 items-center mt-8'>
-						<button
+						<Button
+							className='py-10 flex items-center gap-x-1.5'
+							size={'lg'}
 							onClick={() => handleScrollToSec('macOS')}
-							className='bg-primary-purple rounded-lg flex items-center py-5 px-9 gap-x-2.5 cursor-pointer hover:scale-105 transition-transform duration-300'
 						>
 							MacOS
-							<FaApple size={20} />
-						</button>
-						<button
+							<FaApple size={20} className='mb-1' />
+						</Button>
+						<Button
+							className='py-10 flex items-center gap-x-1.5'
+							size={'lg'}
 							onClick={() => handleScrollToSec('macOS')}
-							className='bg-primary-purple rounded-lg flex items-center py-5 px-9 gap-x-2.5 cursor-pointer hover:scale-105 transition-transform duration-300'
 						>
 							Windows
 							<FaWindows size={20} />
-						</button>
-						<button
+						</Button>
+						<Button
+							className='py-10 flex items-center gap-x-1.5'
+							size={'lg'}
 							onClick={() => handleScrollToSec('macOS')}
-							className='bg-primary-purple rounded-lg flex items-center py-5 px-9 gap-x-2.5 cursor-pointer hover:scale-105 transition-transform duration-300'
 						>
 							Linux
 							<FaLinux size={20} />
-						</button>
+						</Button>
 					</div>
 				</div>
 

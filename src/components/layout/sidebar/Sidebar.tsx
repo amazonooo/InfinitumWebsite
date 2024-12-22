@@ -3,7 +3,7 @@
 import Menu from './menu/Menu'
 import styles from './Sidebar.module.scss'
 import { useAtom } from 'jotai'
-import { isCollapsedAtom } from '@/store'
+import { isCollapsedAtom } from '@/store/sidebar-store'
 import { domAnimation, LazyMotion, m } from 'framer-motion'
 import cn from 'clsx'
 import { useMediaQuery } from 'react-responsive'

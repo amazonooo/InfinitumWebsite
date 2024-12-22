@@ -44,7 +44,7 @@ export function ServerCards() {
 								а yстойчивое будущее требует изменений на системном уровне...
 							</CardItem>
 							<div className='flex justify-center items-center mt-10'>
-								<CardItem as={Link} href='/servers/1'>
+								<CardItem as={'button'}>
 									<MainButton className='py-2.5 px-8'>Подробнее</MainButton>
 								</CardItem>
 							</div>

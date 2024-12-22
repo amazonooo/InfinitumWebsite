@@ -10,28 +10,31 @@ import { MdLocalGroceryStore } from 'react-icons/md'
 import { IoMdClose } from 'react-icons/io'
 import { Menu } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { useAtom } from 'jotai'
+import { toggleMenu } from '@/store/menu-store'
 
 const MobileNavItems: FC = () => {
 	const [open, setOpen] = useState(false)
+	const [isMenuOpen, setMenuOpen] = useAtom(toggleMenu)
 	const [isClosing, setIsClosing] = useState(false)
-
-	const pathname = usePathname()
-
+	
 	const toggleMorePanel = () => {
-		if(open) {
+		if (isMenuOpen) {
 			setIsClosing(true)
 			setTimeout(() => {
-				setOpen(false)
+				setMenuOpen(false)
 				setIsClosing(false)
 			}, 300)
 		} else {
-			setOpen(true)
+			setMenuOpen(true)
 		}
 	}
 
-	const menuClose = () => {
-		setOpen(false)
+	const closeMenu = () => {
+		setMenuOpen(false)
 	}
+
+	const pathname = usePathname()
 
   return (
 		<>
@@ -39,7 +42,7 @@ const MobileNavItems: FC = () => {
 				<ul className='flex justify-between w-full items-center h-full'>
 					<Link
 						href={'/'}
-						onClick={menuClose}
+						onClick={closeMenu}
 						className={`text-sm sm:text-base flex items-center justify-center flex-col transition-colors duration-500 gap-y-1.5 group cursor-pointer ${
 							pathname === '/' ? 'text-[#cbacf9]' : ''
 						}`}
@@ -49,7 +52,7 @@ const MobileNavItems: FC = () => {
 					</Link>
 					<Link
 						href={'/servers'}
-						onClick={menuClose}
+						onClick={closeMenu}
 						className={`text-sm sm:text-base flex items-center justify-center flex-col transition-colors duration-500 gap-y-1.5 group cursor-pointer ${
 							pathname === '/servers' ? 'text-[#cbacf9]' : ''
 						}`}
@@ -59,7 +62,7 @@ const MobileNavItems: FC = () => {
 					</Link>
 					<Link
 						href={'/donate'}
-						onClick={menuClose}
+						onClick={closeMenu}
 						className={`text-sm sm:text-base flex items-center justify-center flex-col transition-colors duration-500 gap-y-1.5 group cursor-pointer ${
 							pathname === '/donate' ? 'text-primary-pink' : ''
 						}`}
@@ -69,7 +72,7 @@ const MobileNavItems: FC = () => {
 					</Link>
 					<Link
 						href={'/'}
-						onClick={menuClose}
+						onClick={closeMenu}
 						className='text-sm sm:text-base flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'
 					>
 						<IoHelpOutline className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
@@ -88,13 +91,13 @@ const MobileNavItems: FC = () => {
 					</li>
 				</ul>
 			</nav>
-			{open && (
+			{isMenuOpen && (
 				<div
 					className={`fixed inset-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B] ${
 						isClosing ? 'animate-slide-down' : 'animate-slide-up'
 					}`}
 				>
-					<MobileMore closeMenu={() => setOpen(false)} />
+					<MobileMore closeMenu={() => setMenuOpen(false)} />
 				</div>
 			)}
 		</>
