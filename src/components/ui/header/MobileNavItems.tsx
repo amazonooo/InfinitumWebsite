@@ -14,7 +14,6 @@ import { useAtom } from 'jotai'
 import { toggleMenu } from '@/store/menu-store'
 
 const MobileNavItems: FC = () => {
-	const [open, setOpen] = useState(false)
 	const [isMenuOpen, setMenuOpen] = useAtom(toggleMenu)
 	const [isClosing, setIsClosing] = useState(false)
 	
@@ -82,7 +81,7 @@ const MobileNavItems: FC = () => {
 						className='flex items-center justify-center flex-col gap-y-1.5 group cursor-pointer'
 						onClick={toggleMorePanel}
 					>
-						{!open ? (
+						{!isMenuOpen ? (
 							<Menu className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />
 						) : (
 							<IoMdClose className='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 group-active:text-[#cbacf9] transition-colors duration-500' />

@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import PlayHero from './components/PlayHero'
+import PlayHero from './components/HelpHero'
 
 export const metadata: Metadata = {
 	title: 'Установка',
