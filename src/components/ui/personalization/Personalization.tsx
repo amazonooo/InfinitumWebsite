@@ -1,54 +1,82 @@
-'use client'
+'use client';
 
-import { FC, Suspense, useEffect, useState } from 'react'
-import { GrInstallOption } from 'react-icons/gr'
-
-import { Canvas } from '@react-three/fiber'
-import { Environment, OrbitControls } from '@react-three/drei'
-import Steve from '../../../../public/Steve'
-import Model from '../../../../public/Steve'
-import { Footprints, Upload, User } from 'lucide-react'
-import { FaRunning } from 'react-icons/fa'
-import { Button } from '../button'
-import Modal from '../modal/Modal'
-import { IoBodySharp } from 'react-icons/io5'
-import { FaUserAstronaut } from 'react-icons/fa6'
+import { FC, Suspense, useEffect, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, useGLTF, Environment, useAnimations } from '@react-three/drei';
+import * as THREE from 'three';
+import Modal from '../modal/Modal';
+import { Button } from '../button';
+import { Upload, User } from 'lucide-react';
+import { IoBodySharp } from 'react-icons/io5';
+import { FaUserAstronaut } from 'react-icons/fa6';
 import { toast } from 'react-toastify'
 
 const Personalization: FC = () => {
-	const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [skinUrl, setSkinUrl] = useState<string>('/steve.png');
+  const [modelUrl, setModelUrl] = useState<string>('/models/steve.glb');
 
-	const [skinUrl, setSkinUrl] = useState<string>('')
-	const [animation, setAnimation] = useState<string>('')
+  useEffect(() => {
+    const savedSkin = localStorage.getItem('skinUrl');
+    const savedModel = localStorage.getItem('modelUrl');
+    if (savedSkin) setSkinUrl(savedSkin);
+    if (savedModel) setModelUrl(savedModel);
+  }, []);
 
-	useEffect(() => {
-		const savedSkin = localStorage.getItem('skinUrl')
-		if(savedSkin) {
-			setSkinUrl(savedSkin)
-		}
-	}, [])
+  const handleSkinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const image = new Image();
+      const reader = new FileReader();
 
-	const handleSkinChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-		const file = event.target.files?.[0]
-		if (file) {
-			const reader = new FileReader()
-			reader.onload = () => {
-				const base64 = reader.result as string
-				setSkinUrl(base64)
-				localStorage.setItem('skinUrl', base64)
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        image.src = base64;
+
+        image.onload = () => {
+          if ((image.width === 64 || image.width === 128) && image.height === image.width) {
+            setSkinUrl(base64);
+            localStorage.setItem('skinUrl', base64);
+          } else {
+            toast.error('Некорректный данные')
+          }
+        };
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const Model: FC<{ skinUrl: string }> = ({ skinUrl }) => {
+		const { scene, animations } = useGLTF(modelUrl)
+		const { actions, names } = useAnimations(animations, scene)
+
+		useEffect(() => {
+			if (skinUrl && scene) {
+				const texture = new THREE.TextureLoader().load(skinUrl)
+				scene.traverse(child => {
+					if (child instanceof THREE.Mesh) {
+						child.material = new THREE.MeshBasicMaterial({
+							map: texture,
+							transparent: true,
+						})
+					}
+				})
 			}
-			reader.readAsDataURL(file)
-		}
+
+			if (actions) {
+				actions[names[0]]?.reset().fadeIn(0.5).play()
+			}
+
+			return () => {
+				if (actions) {
+					actions[names[0]]?.fadeOut(0.5).stop()
+				}
+			}
+		}, [skinUrl, scene, actions, names])
+
+		return <primitive object={scene} />
 	}
-
-	useEffect(() => {
-		const savedSkin = localStorage.getItem('skinUrl')
-		if (savedSkin) {
-			setSkinUrl(savedSkin)
-		}
-	}, [])
-
-	
   return (
 		<>
 			<div className='rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090b]'>
@@ -62,49 +90,19 @@ const Personalization: FC = () => {
 								<Upload />
 							</Button>
 						</div>
-						{/* <div className='flex flex-col gap-y-4 mt-9 mb-6'>
-						<div className='flex w-full gap-x-4 items-center justify-center'>
-							<input
-								type='file'
-								accept='image'
-								onChange={handleSkinChange}
-								id='skin'
-								name='skin'
-								className='hidden'
-							/>
-							<label
-								htmlFor='skin'
-								className='bg-primary-purple rounded-lg transition-colors duration-300 py-2 px-5 hover:bg-dark-purple cursor-pointer w-full'
-							>
-								<span>Загрузить скин</span>
-							</label>
-							<button>
-								<GrInstallOption className='text-2xl hover:text-[#cbacf9] transition-colors duration-300' />
-							</button>
+						<div className='w-full'>
+							<Canvas camera={{ position: [1, 3, 40], fov: 50 }}>
+								<OrbitControls />
+								<Suspense fallback={null}>
+									<Model skinUrl={skinUrl} />
+								</Suspense>
+								<Environment preset='sunset' />
+							</Canvas>
 						</div>
-						<div className='flex w-full gap-x-4 items-center justify-center'>
-							<input type='file' id='skin' name='skin' className='hidden' />
-							<label
-								htmlFor='skin'
-								className='bg-primary-purple rounded-lg transition-colors duration-300 py-2 px-5 hover:bg-dark-purple cursor-pointer w-full'
-							>
-								<span>Загрузить плащ</span>
-							</label>
-							<button>
-								<GrInstallOption className='text-2xl hover:text-[#cbacf9] transition-colors duration-300' />
-							</button>
-						</div>
-					</div> */}
-						<Canvas camera={{ position: [1, 3, 40], fov: 50 }}>
-							<OrbitControls />
-							<Suspense fallback={null}>
-								<Model skinUrl={skinUrl} animation={animation} />
-							</Suspense>
-							<Environment preset='sunset' />
-						</Canvas>
 					</div>
 				</div>
 			</div>
+
 			{isOpen && (
 				<Modal
 					isOpen={isOpen}
@@ -145,6 +143,6 @@ const Personalization: FC = () => {
 			)}
 		</>
 	)
-}
+};
 
-export default Personalization
+export default Personalization;

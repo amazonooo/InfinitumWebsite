@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
-import { useFrame } from '@react-three/fiber'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import React from 'react'
+import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
-export default function Model({ skinUrl, animation }) {
+export default function Model({ skinUrl }) {
 	const { nodes, materials } = useGLTF('/steve.gltf')
 	const textureLoader = new THREE.TextureLoader()
 	
