@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
-import GeneralMain from './general/components/GeneralMain'
 import { userService } from '@/services/user.service'
 import { IPlayerServerStats } from '@/types/user.types'
 

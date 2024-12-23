@@ -1,19 +1,16 @@
 'use client'
 
+import UserInfo from '@/components/ui/user/UserInfo'
 import { m, LazyMotion, domAnimation } from 'framer-motion'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function ProfileLinks() {
-	const pathname = usePathname()
-
 	const [activeTab, setActiveTab] = useState<'Аккаунт' | 'Статистика' | 'Привилегии'>('Аккаунт')
 
 	const renderContent = () => {
 		switch (activeTab) {
 			case 'Аккаунт':
-				return <div>Аккаунт</div>
+				return <UserInfo />
 			case 'Статистика':
 				return <div>Статистика</div>
 			case 'Привилегии':
@@ -60,7 +57,7 @@ export default function ProfileLinks() {
 						</button>
 					</nav>
 
-					<section className='p-6'>{renderContent()}</section>
+					<section className='p-6 bg-main-black border border-white/20 rounded-lg mt-20'>{renderContent()}</section>
 				</div>
 			</m.div>
 		</LazyMotion>

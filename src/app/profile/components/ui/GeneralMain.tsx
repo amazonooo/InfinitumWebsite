@@ -3,7 +3,6 @@ import Transactions from './Transactions'
 import ServerStatistics from './ServerStatistics'
 import { IPlayerServerStats } from '@/types/user.types'
 import LastSession from './LastSession'
-import { userService } from '@/services/user.service'
 
 interface IGeneralMain {
 	playerStats: IPlayerServerStats

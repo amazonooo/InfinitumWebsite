@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react'
+import { FC, Suspense, useEffect, useState } from 'react'
 import Modal from '../modal/Modal';
 import { Button } from '../button';
 import { Upload, User } from 'lucide-react';
@@ -11,6 +11,7 @@ import SkinViewer from '../model/SkinViewer'
 import { FaRunning, FaWalking } from 'react-icons/fa'
 import { IoIosMan } from 'react-icons/io'
 import UserAvatar from '../user-avatar/UserAvatar'
+import Username from './Username'
 
 const Personalization: FC = () => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -60,8 +61,8 @@ const Personalization: FC = () => {
 						<UserAvatar />
 					</div>
 					<div className='text-center mt-20'>
-						<h1 className='text-2xl font-bold text-white mb-6'>username</h1>
-						<div className='mb-9 flex items-center gap-5 justify-center'>
+						<Username />
+						<div className='mb-7 flex items-center gap-5 justify-center'>
 							<Button
 								className={
 									animation === 'idle' ? 'border border-primary-pink' : ''

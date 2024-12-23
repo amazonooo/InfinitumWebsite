@@ -31,7 +31,7 @@ export default function SkinViewer({ skinUrl, animationState }: ISkinViewer) {
 		<ReactSkinview3d
 			className='viewer'
 			skinUrl={skinUrl}
-			height={400}
+			height={390}
 			width={270}
 			onReady={({ viewer }) => {
 				viewerRef.current = viewer
