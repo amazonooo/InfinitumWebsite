@@ -27,9 +27,9 @@ async function getServerSideProps() {
 
 export default function ProfilePage({ playerStats }: { playerStats: IPlayerServerStats }) {
   return (
-		<section className='h-full w-full pt-24 flex items-center justify-center max-w-[1440px] mx-auto px-5 sm:px-10'>
+		<section className='h-full w-full pt-24 flex items-center justify-center'>
 			<div className='flex flex-col isolate z-[10] ml-auto mr-auto'>
-				<GeneralMain playerStats={playerStats} />
+				{/* <GeneralMain playerStats={playerStats} /> */}
 			</div>
 		</section>
 	)

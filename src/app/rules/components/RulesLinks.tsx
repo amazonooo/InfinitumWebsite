@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import clsx from 'clsx'
 import { LazyMotion, m, domAnimation } from 'framer-motion'
 import { slideInFromLeft, slideInFromTop } from '@/utils/motion'
-import { ILinks, rules } from '@/app/profile/components/links'
+import { rules } from '@/app/profile/components/ui/links'
 
 interface IProfile {
 	currentType: string

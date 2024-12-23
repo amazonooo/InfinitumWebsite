@@ -1,36 +1,42 @@
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
-import { useState } from 'react'
-import * as THREE from 'three'
+import { useEffect, useRef } from 'react'
+import ReactSkinview3d from 'react-skinview3d'
+import { IdleAnimation, WalkingAnimation, RunningAnimation } from 'skinview3d'
 
-type SkinViewerProps = {
+interface ISkinViewer {
 	skinUrl: string
+	animationState: 'idle' | 'walking' | 'running'
 }
 
-const SkinViewer: React.FC<SkinViewerProps> = ({ skinUrl }) => {
-	const [texture, setTexture] = useState<THREE.Texture | null>(null)
+export default function SkinViewer({ skinUrl, animationState }: ISkinViewer) {
+	const viewerRef = useRef<any>(null)
 
-	const loadTexture = (url: string) => {
-		const loader = new THREE.TextureLoader()
-		loader.load(url, tex => setTexture(tex))
-	}
-
-	if (!texture) {
-		loadTexture(skinUrl)
-		return <div>Loading...</div>
-	}
+	useEffect(() => {
+		if (viewerRef.current) {
+			switch (animationState) {
+				case 'walking':
+					viewerRef.current.animation = new WalkingAnimation()
+					break
+				case 'running':
+					viewerRef.current.animation = new RunningAnimation()
+					break
+				case 'idle':
+				default:
+					viewerRef.current.animation = new IdleAnimation()
+					break
+			}
+		}
+	}, [animationState])
 
 	return (
-		<Canvas>
-			<ambientLight />
-			<pointLight position={[10, 10, 10]} />
-			<mesh>
-				<boxGeometry args={[1, 2, 0.5]} />
-				<meshBasicMaterial map={texture} />
-			</mesh>
-			<OrbitControls />
-		</Canvas>
+		<ReactSkinview3d
+			className='viewer'
+			skinUrl={skinUrl}
+			height={400}
+			width={270}
+			onReady={({ viewer }) => {
+				viewerRef.current = viewer
+				viewer.animation = new IdleAnimation()
+			}}
+		/>
 	)
 }
-
-export default SkinViewer

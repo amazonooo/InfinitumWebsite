@@ -1,4 +1,3 @@
-import PlayerInfo from './PlayerInfo'
 import { Button } from '@/components/ui/button'
 import Transactions from './Transactions'
 import ServerStatistics from './ServerStatistics'
@@ -15,8 +14,6 @@ export default function GeneralMain({ playerStats }: IGeneralMain) {
 		<section>
 			<div className='grid grid-cols-1 lg:grid-cols-3 gap-y-20 lg:gap-y-20 lg:gap-x-10'>
 				<div className='lg:col-span-1 flex items-center flex-col'>
-					<PlayerInfo />
-
 					<div className='bg-main-black border border-white/[0.2] rounded-lg mt-10 w-[310px] sm:w-[370px] md:w-[350px] lg:w-[440px]'>
 						<div className='p-6 text-center'>
 							<h2 className='Welcome-text text-lg md:text-xl lg:text-2xl mb-4'>
