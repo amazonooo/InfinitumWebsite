@@ -14,7 +14,6 @@ import UserAvatar from '../user-avatar/UserAvatar'
 import Username from './Username'
 
 const Personalization: FC = () => {
-	const [isOpen, setIsOpen] = useState(false)
 	const [skinUrl, setSkinUrl] = useState<string>('/steve.png')
 	const [animation, setAnimation] = useState<
 		'idle' | 'walking' | 'running'
@@ -42,7 +41,6 @@ const Personalization: FC = () => {
 					) {
 						setSkinUrl(base64)
 						localStorage.setItem('skinUrl', base64)
-						setIsOpen(false)
 					} else {
 						toast.error('Некорректный размер скина')
 					}

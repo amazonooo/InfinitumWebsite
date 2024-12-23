@@ -1,5 +1,4 @@
 import Personalization from '@/components/ui/personalization/Personalization'
-import ServerStatistics from '../general/components/ServerStatistics'
 import Balance from '@/components/ui/balance/Balance'
 
 export default function LayoutLeft() {

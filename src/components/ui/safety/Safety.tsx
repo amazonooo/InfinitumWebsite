@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 import { FaDiscord, FaTelegram, FaVk } from 'react-icons/fa6'
 import { FloatingDock } from '../floating-dock'
 import { toast } from 'react-toastify'
+import Logout from './Logout'
 
 const Safety: FC = () => {
 	// const [isOpen, setIsOpen] = useState(false)
@@ -216,14 +217,7 @@ const Safety: FC = () => {
 						)}
 					</div>
 
-					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
-						<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>
-							Выход
-						</h2>
-						<Button size={'lg'} variant={'destructive'}>
-							Выйти из аккаунта
-						</Button>
-					</div>
+				<Logout />
 				</div>
 			</div>
 		</div>

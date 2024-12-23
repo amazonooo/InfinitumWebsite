@@ -4,7 +4,7 @@ import { userService } from '@/services/user.service'
 import { IPlayerServerStats } from '@/types/user.types'
 
 export const metadata: Metadata = {
-  title: 'Profile',
+  title: 'Профиль',
   ...NO_INDEX_PAGE
 }
 
