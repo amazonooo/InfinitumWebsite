@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { HiHome } from 'react-icons/hi2'
 import { FaGamepad } from 'react-icons/fa6'
 import { IoHelpOutline, IoCloseSharp } from 'react-icons/io5'
@@ -16,6 +16,18 @@ import { toggleMenu } from '@/store/menu-store'
 const MobileNavItems: FC = () => {
 	const [isMenuOpen, setMenuOpen] = useAtom(toggleMenu)
 	const [isClosing, setIsClosing] = useState(false)
+
+	useEffect(() => {
+		if(isMenuOpen) {
+			document.body.classList.add('overflow-hidden')
+		} else {
+			document.body.classList.remove('overflow-hidden')
+		}
+
+		return () => {
+			document.body.classList.remove('overflow-hidden')
+		}
+	}, [isMenuOpen])
 	
 	const toggleMorePanel = () => {
 		if (isMenuOpen) {
