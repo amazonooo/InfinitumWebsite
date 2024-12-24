@@ -36,7 +36,7 @@ const HeroContent: FC = () => {
 
 					<m.div variants={slideInFromLeft(0.7)}>
 						<Link
-							href={'/play'}
+							href={'/download'}
 							className='px-8 py-3 md:px-12 md:py-4 cursor-pointer inline-flex justify-center whitespace-nowrap rounded-lg text-xl font-medium bg-gradient-to-r from-primary-pink to-primary-purple shadow focus:outline-none focus-visible:outline-none relative hover:scale-105 transition-all duration-300'
 						>
 							Играть

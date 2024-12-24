@@ -41,7 +41,7 @@ export function Auth({ type }: IAuth) {
 		mutationFn: (data: IAuthForm) => authService.login('username', data),
 		onSuccess: () => {
 			toast.success('Успешный вход')
-			router.push('/account')
+			router.push('/profile')
 		},
 		onError: (error: ResponseError) => {      
 			toast.dismiss()
@@ -58,24 +58,12 @@ export function Auth({ type }: IAuth) {
 		mutationFn: (data: IAuthForm) => authService.register(data),
 		onSuccess: () => {
 			toast.success('Успешная регистрация')
-			router.replace('/account')
+			router.replace('/profile')
 		},
 		onError: () => {
 			toast.error('Ошибка')
 		}
 	})
-
-	// const [isButtonClicked, setIsButtonClicked] = useState(false)
-	// const [buttonKey, setButtonKey] = useState(0)
-
-	// const handleButtonClick = () => {
-	// 	setIsButtonClicked(true)
-
-	// 	if (errors.username || errors.password) {
-	// 		setButtonKey(prevKey => prevKey + 1)
-	// 		toast.error('Пожалуйста, заполните все поля')
-	// 	}
-	// }
 
 	const onSubmit: SubmitHandler<IAuthForm> = (data: IAuthForm) => {
 		if (type === 'Войти') {

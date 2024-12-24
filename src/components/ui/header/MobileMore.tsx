@@ -36,7 +36,7 @@ const MobileMore: FC<IMobileMore> = ({ closeMenu }) => {
 	return (
 		<div className='z-[10]'>
 			<div className='p-7 flex flex-col'>
-				<div className='flex justify-between items-center mb-24'>
+				<div className='flex justify-between items-center mb-16'>
 					<h1
 						onClick={closeMenu}
 						className='Welcome-text text-2xl'
@@ -91,7 +91,7 @@ const MobileMore: FC<IMobileMore> = ({ closeMenu }) => {
 						<div className='flex items-center'>
 							<Link
 								onClick={closeMenu}
-								href={'/play'}
+								href={'/download'}
 								className='group-hover:text-[#cbacf9] transition-all duration-450 w-full'
 							>
 								Помощь

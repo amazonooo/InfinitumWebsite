@@ -1,6 +1,7 @@
 'use client'
 
 import { useProfileData } from '@/hooks/useProfileData'
+import { Banknote } from 'lucide-react'
 import { Suspense } from 'react'
 
 export default function Balance() {
@@ -15,8 +16,9 @@ export default function Balance() {
 					<h1 className='text-center Welcome-text text-3xl xl:text-4xl'>
 						Ваш баланс
 					</h1>
-					<h2 className='Welcome-box text-2xl text-center px-3 py-2 mt-5'>
+					<h2 className='Welcome-box text-2xl text-center px-8 py-2.5 mt-5'>
 						{balance}
+						<Banknote className='text-emerald-500 ml-3' size={27} />
 					</h2>
 				</div>
 			</div>

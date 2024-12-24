@@ -19,7 +19,7 @@ export default function PlayHero() {
 
 	return (
 		<div className='w-full h-full'>
-			<div className='hidden bg-main-black h-[920px] xl:block bg-[url(/help-hero.jpg)] bg-no-repeat bg-cover bg-center w-full relative'>
+			<div className='hidden bg-main-black h-[920px] xl:block bg-[url(/download-hero.jpg)] bg-no-repeat bg-cover bg-center w-full relative'>
 				<div className='absolute bottom-[313px] px-[360px]'>
 					<Heading
 						title={'Установить лаунчер'}

@@ -11,11 +11,13 @@ export default function ProfileLayout({
 		<div
 			className={`bg-[#09090B] overflow-x-clip h-full max-w-[1440px] mx-auto px-5 sm:px-10`}
 		>
-			<div className='flex mt-16 lg:mt-40 gap-10'>
-				<div className='lg:static lg:left-0 lg:top-0'>
+			<div className='flex mt-16 lg:mt-40 gap-10 flex-col lg:flex-row'>
+				<div className='order-2 lg:order-1'>
 					<LayoutLeft />
 				</div>
-				<ProfileLinks />
+				<div className='flex-1 z-10 order-1 lg:order-2'>
+					<ProfileLinks />
+				</div>
 			</div>
 		</div>
 	)

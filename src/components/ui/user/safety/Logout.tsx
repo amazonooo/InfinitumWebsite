@@ -1,11 +1,11 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { Button } from '../button'
 import { useMutation } from '@tanstack/react-query'
 import { authService } from '@/services/auth.service'
 import { toast } from 'react-toastify'
 import { ResponseError } from '@/types/error.types'
+import { Button } from '../../button'
 
 export default function Logout() {
   const router = useRouter()
@@ -18,7 +18,7 @@ export default function Logout() {
       router.push('/login')
     },
     onError: (error: ResponseError) => {
-      toast.dismiss(error.message)
+      toast.error('Что-то пошло не так')
       console.log(error.status)
     }
   })

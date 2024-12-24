@@ -35,7 +35,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
 						localStorage.setItem('avatarUrl', base64)
 					} else {
 						toast.error(
-							'Некорректный формат'
+							'Некорректное разрешение'
 						)
 					}
 				}

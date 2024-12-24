@@ -2,14 +2,14 @@
 
 import { FC, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import Modal from '../modal/Modal'
 import { Eye, KeyRound, EyeOff, Trash2, Check, ShieldHalf, ArrowBigLeft } from 'lucide-react'
-import styles from '../field/Field.module.scss'
+import styles from '../../field/Field.module.scss'
 import { cn } from '@/lib/utils'
 import { FaDiscord, FaTelegram, FaVk } from 'react-icons/fa6'
-import { FloatingDock } from '../floating-dock'
 import { toast } from 'react-toastify'
 import Logout from './Logout'
+import Modal from '../../modal/Modal'
+import { FloatingDock } from '../../floating-dock'
 
 const Safety: FC = () => {
 	// const [isOpen, setIsOpen] = useState(false)

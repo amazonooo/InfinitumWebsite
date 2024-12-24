@@ -5,7 +5,7 @@ export default function LayoutLeft() {
   return (
 		<div className='flex flex-col'>
 			<Personalization />
-			<div className='z-[10] mt-[100px]'>
+			<div className='z-[10] mt-20'>
 				<Balance />
 			</div>
 			{/* <ServerStatistics /> */}
