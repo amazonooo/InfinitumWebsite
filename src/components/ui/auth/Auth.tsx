@@ -97,7 +97,7 @@ export function Auth({ type }: IAuth) {
 					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
 				>
 					<h1
-						className='Welcome-text font-bold text-2xl Welcome-box px-3 py-1.5'
+						className='Welcome-text font-bold text-2xl Welcome-box items-center px-3 py-1.5'
 					>
 						{PROJECT_NAME}
 					</h1>

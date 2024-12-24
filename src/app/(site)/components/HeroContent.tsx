@@ -18,7 +18,7 @@ const HeroContent: FC = () => {
 				<div className='flex flex-col justify-center items-center'>
 					<m.div
 						variants={slideInFromTop}
-						className='Welcome-box py-1.5 px-[6px]'
+						className='Welcome-box py-1.5 px-[6px] items-center'
 					>
 						<Heading
 							title='Infinitum'

@@ -1,52 +1,26 @@
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuShortcut,
-	DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Button } from '../../button'
 import { Award, Gamepad } from 'lucide-react'
+import ServerDropdown from './ServerDropdown'
 import { useProfileData } from '@/hooks/useProfileData'
+import StatsInfo from './StatsInfo'
 export default function Statistics() {
 	const { userProfile } = useProfileData()
 
 	return (
-		<div className='w-full flex items-center justify-between'>
-			<div>
+		<div className='w-full flex flex-col items-center justify-between'>
+			<div className='flex items-center justify-between w-full'>
 				<Gamepad size={30} />
+				<ServerDropdown />
+				<Award size={30} />
 			</div>
-			<DropdownMenu>
-				<DropdownMenuTrigger asChild>
-					<Button variant='outline'>Выбрать сервер</Button>
-				</DropdownMenuTrigger>
-				<DropdownMenuContent className='w-56'>
-					<DropdownMenuLabel>{userProfile?.stats[0].clientTitle}</DropdownMenuLabel>
-					<DropdownMenuSeparator />
-					<DropdownMenuGroup>
-						<DropdownMenuItem>
-							Profile
-							<DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-						</DropdownMenuItem>
-						<DropdownMenuItem>
-							Billing
-							<DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-						</DropdownMenuItem>
-						<DropdownMenuItem>
-							Settings
-							<DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-						</DropdownMenuItem>
-						<DropdownMenuItem>
-							Keyboard shortcuts
-							<DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-						</DropdownMenuItem>
-					</DropdownMenuGroup>
-				</DropdownMenuContent>
-			</DropdownMenu>
-			<Award size={30} />
+			<div className='mt-12 Welcome-box flex flex-col w-[420px] px-6 py-4 '>
+				<div className='text-center'>
+					<h2 className='text-xl mb-2'>Текущий сервер</h2>
+					<h1 className='text-3xl font-bold Welcome-text'>
+						{userProfile?.stats[0].clientTitle}
+					</h1>
+				</div>
+				<StatsInfo />
+			</div>
 		</div>
 	)
 }

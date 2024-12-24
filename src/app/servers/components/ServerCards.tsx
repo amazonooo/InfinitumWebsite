@@ -79,7 +79,7 @@ export function ServerCards() {
 							<div className='flex justify-between items-center mt-10'>
 								<CardItem
 									as='div'
-									className='text-xs md:text-base font-normal Welcome-text Welcome-box px-3 py-1.5 cursor-default'
+									className='text-xs md:text-base font-normal Welcome-text Welcome-box items-center px-3 py-1.5 cursor-default'
 								>
 									В разработке
 								</CardItem>
