@@ -1,6 +1,6 @@
+import { updatePassword } from '@/services/update-password.service'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { updatePassword } from '@/services/updatePassword.service'
 
 export const useChangePassword = () => {
 	const [isLoading, setIsLoading] = useState(false)

@@ -11,21 +11,20 @@ import Logout from './Logout'
 import Modal from '../../modal/Modal'
 import { FloatingDock } from '../../floating-dock'
 import { useChangePassword } from '@/hooks/useChangePassword'
-import { updatePassword } from '@/services/updatePassword.service'
+import { updatePassword } from '@/services/update-password.service'
 
 const Safety: FC = () => {
-	// const [isOpen, setIsOpen] = useState(false)
 	const { changePassword, isLoading } = useChangePassword()
 
-	const [isShowPastPassword, setIsShowPastPassword] = useState(false)
-	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
-
-	const [oldPassword, setOldPassword] = useState('')
-
 	const [isTwoFactorOpen, setIsTwoFactorOpen] = useState(false)
-	const [newPassword, setNewPassword] = useState('')
-	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
 	const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false)
+
+	const [currentPassword, setCurrentPassword] = useState('')
+	const [newPassword, setNewPassword] = useState('')
+	const [confirmPassword, setConfirmPassword] = useState('')
+	const [isShowPastPassword, setIsShowPastPassword] = useState(false)
+	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
+	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
 
 	const [step, setStep] = useState(1)
 
@@ -33,24 +32,24 @@ const Safety: FC = () => {
 		setStep(step + 1)
 	}
 
-	const [confirmPassword, setConfirmPassword] = useState('')
+  const handleChangePassword = async () => {
+		if (!currentPassword || !newPassword || !confirmPassword) {
+			toast.error('Заполните все поля')
+			return
+		}
 
-	const handleChangePassword = async () => {
+		if (newPassword !== confirmPassword) {
+			toast.error('Новый пароль не совпадает')
+			return
+		}
+
 		try {
-			if (!oldPassword || !newPassword || !confirmPassword) {
-				toast.error('Заполните все поля')
-				return
-			}
-
-			if (newPassword !== confirmPassword) {
-				toast.error('Пароли не совпадают')
-				return
-			}
+			await updatePassword.UpdatePassword(currentPassword, newPassword, confirmPassword)
 			toast.success('Пароль успешно изменён')
 			setIsChangePasswordOpen(false)
-		} catch (error: any) {
-			console.error('Ошибка при смене пароля')
-			toast.error('Произошла ошибка')
+		} catch (error) {
+			toast.error('Ошибка при смене пароля')
+			console.error('Ошибка при смене пароля: ', error)
 		}
 	}
 
@@ -78,11 +77,6 @@ const Safety: FC = () => {
 				href: '#!',
 			},
 		]
-
-		const changedConfirm = () => {
-			setIsChangePasswordOpen(false)
-			toast.success('Пароль изменен')
-		}
 
   return (
 		<div className='rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'>
@@ -138,10 +132,7 @@ const Safety: FC = () => {
 												className='flex items-center justify-center w-full'
 												onClick={handleContinue}
 											>
-												<FloatingDock
-													mobileClassName=''
-													items={links}
-												/>
+												<FloatingDock mobileClassName='' items={links} />
 											</div>
 										</div>
 									)}
@@ -195,8 +186,8 @@ const Safety: FC = () => {
 											className='bg-transparent outline-none truncate'
 											placeholder='Старый пароль'
 											type={isShowPastPassword ? 'text' : 'password'}
-											value={oldPassword}
-											onChange={(e) => setOldPassword(e.target.value)}
+											value={currentPassword}
+											onChange={e => setCurrentPassword(e.target.value)}
 										/>
 										<div
 											className={styles.icon}
@@ -214,7 +205,7 @@ const Safety: FC = () => {
 											placeholder='Новый пароль'
 											type={isShowNewPassword ? 'text' : 'password'}
 											value={newPassword}
-											onChange={(e) => setNewPassword(e.target.value)}
+											onChange={e => setNewPassword(e.target.value)}
 										/>
 										<div
 											className={styles.icon}
@@ -232,7 +223,7 @@ const Safety: FC = () => {
 											placeholder='Введи новый пароль повторно'
 											type={isShowAgreePassword ? 'text' : 'password'}
 											value={confirmPassword}
-											onChange={(e) => setConfirmPassword(e.target.value)}
+											onChange={e => setConfirmPassword(e.target.value)}
 										/>
 										<div
 											className={styles.icon}
@@ -243,7 +234,11 @@ const Safety: FC = () => {
 											{isShowAgreePassword ? <Eye /> : <EyeOff />}
 										</div>
 									</label>
-									<Button onClick={handleChangePassword} disabled={isLoading} className='text-center mt-6'>
+									<Button
+										onClick={handleChangePassword}
+										disabled={isLoading}
+										className='text-center mt-6'
+									>
 										{isLoading ? (
 											<Loader2 className='animate-spin' />
 										) : (
@@ -255,7 +250,7 @@ const Safety: FC = () => {
 						)}
 					</div>
 
-				<Logout />
+					<Logout />
 				</div>
 			</div>
 		</div>

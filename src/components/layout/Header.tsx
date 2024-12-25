@@ -33,31 +33,36 @@ export const Header = ({
 	const isLoggedLogin = pathname === '/login'
 	const isLoggedRegister = pathname === '/register'
 
-	const isNotFound =
-		pathname !== '/' &&
-		pathname !== '/account' &&
-		pathname !== '/news' &&
-		pathname !== '/profile' &&
-		pathname !== '/register' &&
-		pathname !== '/rules' &&
-		pathname !== '/servers' &&
-		pathname !== '/donate' &&
-		pathname !== '/download' &&
-		pathname !== '/profile/general' &&
-		pathname !== '/profile/history' &&
-		pathname !== '/profile/pay' &&
-		pathname !== '/profile/possibilities' &&
-		pathname !== '/profile/privilege' &&
-		pathname !== '/profile/statistics' &&
-		pathname !== '/rules/communication' &&
-		pathname !== '/rules/construction' &&
-		pathname !== '/rules/gameproc' &&
-		pathname !== '/rules/general' &&
-		pathname !== '/rules/serverrul' &&
-		pathname !== '/servers/server-info'
+	// const isNotFound =
+	// 	pathname !== '/' &&
+	// 	pathname !== '/account' &&
+	// 	pathname !== '/news' &&
+	// 	pathname !== '/profile' &&
+	// 	pathname !== '/register' &&
+	// 	pathname !== '/rules' &&
+	// 	pathname !== '/servers' &&
+	// 	pathname !== '/donate' &&
+	// 	pathname !== '/download' &&
+	// 	pathname !== '/profile/general' &&
+	// 	pathname !== '/profile/history' &&
+	// 	pathname !== '/profile/pay' &&
+	// 	pathname !== '/profile/possibilities' &&
+	// 	pathname !== '/profile/privilege' &&
+	// 	pathname !== '/profile/statistics' &&
+	// 	pathname !== '/rules/communication' &&
+	// 	pathname !== '/rules/construction' &&
+	// 	pathname !== '/rules/gameproc' &&
+	// 	pathname !== '/rules/general' &&
+	// 	pathname !== '/rules/serverrul' &&
+	// 	pathname !== '/servers/server-info'
 
+	const isNotFound = pathname === '/player-top'
+	const isNotFound2 = pathname === '/help'
+// TODO: убрать или поставить все, кроме not found
 	if (isLoggedLogin) return null
 	if (isLoggedRegister) return null
+	if (isNotFound) return null
+	if (isNotFound2) return null
 
 	const scrollDirection = useScrollDirection()
 	const [isVisible, setIsVisible] = useState(true)

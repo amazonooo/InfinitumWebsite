@@ -3,7 +3,7 @@
 import { CircleUser, Eye, EyeOff, KeyRound, Mail, Pickaxe } from 'lucide-react'
 import Link from 'next/link'
 import { m, LazyMotion, domAnimation } from 'framer-motion'
-import { slideInFromLeft, slideInFromTop } from '@/utils/motion'
+import { slideInFromLeft, slideInFromRight, slideInFromTop } from '@/utils/motion'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { cn } from '@/utils/cn'
@@ -93,7 +93,7 @@ export function Auth({ type }: IAuth) {
 		<LazyMotion features={domAnimation}>
 			<m.div initial='hidden' animate='visible'>
 				<m.div
-					variants={slideInFromLeft(0.6)}
+					variants={slideInFromLeft(0.2)}
 					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
 				>
 					<h1
@@ -103,7 +103,7 @@ export function Auth({ type }: IAuth) {
 					</h1>
 				</m.div>
 				<m.div
-					variants={slideInFromTop}
+					variants={slideInFromRight(0.2)}
 					className='flex items-center justify-center h-screen isolate z-[10] relative px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
 				>
 					<div className='flex flex-row gap-36'>
