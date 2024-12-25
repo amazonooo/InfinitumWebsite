@@ -114,9 +114,8 @@ export const Header = ({
 									onMouseEnter={() => setShow(true)}
 									onMouseLeave={() => setShow(false)}
 								>
-									<Link
-										className='z-[10] group-hover:text-primary-pink transition-colors duration-300 flex items-center gap-x-1.5'
-										href={'/'}
+									<div
+										className='z-[10] group-hover:text-primary-pink transition-colors duration-300 flex items-center gap-x-1.5 cursor-pointer select-none'
 									>
 										Дополнительно
 										<ChevronDown
@@ -125,7 +124,7 @@ export const Header = ({
 											} transition-transform duration-300`}
 											size={15}
 										/>
-									</Link>
+									</div>
 									{show && (
 										<div className='w-[250px] absolute left-0 top-0'>
 											<More />

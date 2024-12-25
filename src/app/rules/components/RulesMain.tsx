@@ -29,7 +29,7 @@ export default function RulesMain() {
   return (
 		<>
       <RulesLinks currentType={currentType} setCurrentType={setCurrentType} />
-			<div className='pt-16'>{currentContent()}</div>
+			<section className='pt-16'>{currentContent()}</section>
 		</>
 	)
 }

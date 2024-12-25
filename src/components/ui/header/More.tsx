@@ -28,9 +28,9 @@ const More: FC = () => {
 					<li className='w-full h-full text-sm'>
 						<Link
 							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
-							href={'/'}
+							href={'/player-top'}
 						>
-							Помощь
+							Топ игроков
 						</Link>
 					</li>
 					<li className='w-full h-full text-sm'>
@@ -55,6 +55,14 @@ const More: FC = () => {
 							href={'/'}
 						>
 							Бонусы
+						</Link>
+					</li>
+					<li className='w-full h-full text-sm'>
+						<Link
+							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
+							href={'/help'}
+						>
+							Помощь
 						</Link>
 					</li>
 					<li className='w-full h-full text-sm'>

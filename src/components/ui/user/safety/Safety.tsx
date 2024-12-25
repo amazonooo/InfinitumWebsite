@@ -2,7 +2,7 @@
 
 import { FC, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Eye, KeyRound, EyeOff, Trash2, Check, ShieldHalf, ArrowBigLeft } from 'lucide-react'
+import { Eye, KeyRound, EyeOff, Trash2, Check, ShieldHalf, ArrowBigLeft, Loader2 } from 'lucide-react'
 import styles from '../../field/Field.module.scss'
 import { cn } from '@/lib/utils'
 import { FaDiscord, FaTelegram, FaVk } from 'react-icons/fa6'
@@ -10,22 +10,50 @@ import { toast } from 'react-toastify'
 import Logout from './Logout'
 import Modal from '../../modal/Modal'
 import { FloatingDock } from '../../floating-dock'
+import { useChangePassword } from '@/hooks/useChangePassword'
+import { updatePassword } from '@/services/updatePassword.service'
 
 const Safety: FC = () => {
 	// const [isOpen, setIsOpen] = useState(false)
-	const [isTwoFactorOpen, setIsTwoFactorOpen] = useState(false)
-	const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false)
+	const { changePassword, isLoading } = useChangePassword()
+
 	const [isShowPastPassword, setIsShowPastPassword] = useState(false)
-	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
 	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
 
-	// const [selected, setSelected] = useState(false)
+	const [oldPassword, setOldPassword] = useState('')
+
+	const [isTwoFactorOpen, setIsTwoFactorOpen] = useState(false)
+	const [newPassword, setNewPassword] = useState('')
+	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
+	const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false)
+
 	const [step, setStep] = useState(1)
 
 	const handleContinue = () => {
 		setStep(step + 1)
 	}
-	
+
+	const [confirmPassword, setConfirmPassword] = useState('')
+
+	const handleChangePassword = async () => {
+		try {
+			if (!oldPassword || !newPassword || !confirmPassword) {
+				toast.error('Заполните все поля')
+				return
+			}
+
+			if (newPassword !== confirmPassword) {
+				toast.error('Пароли не совпадают')
+				return
+			}
+			toast.success('Пароль успешно изменён')
+			setIsChangePasswordOpen(false)
+		} catch (error: any) {
+			console.error('Ошибка при смене пароля')
+			toast.error('Произошла ошибка')
+		}
+	}
+
 	 const links = [
 			{
 				title: 'Телеграм',
@@ -167,6 +195,8 @@ const Safety: FC = () => {
 											className='bg-transparent outline-none truncate'
 											placeholder='Старый пароль'
 											type={isShowPastPassword ? 'text' : 'password'}
+											value={oldPassword}
+											onChange={(e) => setOldPassword(e.target.value)}
 										/>
 										<div
 											className={styles.icon}
@@ -183,6 +213,8 @@ const Safety: FC = () => {
 											className='bg-transparent outline-none truncate'
 											placeholder='Новый пароль'
 											type={isShowNewPassword ? 'text' : 'password'}
+											value={newPassword}
+											onChange={(e) => setNewPassword(e.target.value)}
 										/>
 										<div
 											className={styles.icon}
@@ -199,6 +231,8 @@ const Safety: FC = () => {
 											className='bg-transparent outline-none truncate'
 											placeholder='Введи новый пароль повторно'
 											type={isShowAgreePassword ? 'text' : 'password'}
+											value={confirmPassword}
+											onChange={(e) => setConfirmPassword(e.target.value)}
 										/>
 										<div
 											className={styles.icon}
@@ -209,8 +243,12 @@ const Safety: FC = () => {
 											{isShowAgreePassword ? <Eye /> : <EyeOff />}
 										</div>
 									</label>
-									<Button onClick={changedConfirm} className='text-center mt-6'>
-										Подтвердить
+									<Button onClick={handleChangePassword} disabled={isLoading} className='text-center mt-6'>
+										{isLoading ? (
+											<Loader2 className='animate-spin' />
+										) : (
+											'Подтвердить'
+										)}
 									</Button>
 								</div>
 							</Modal>
