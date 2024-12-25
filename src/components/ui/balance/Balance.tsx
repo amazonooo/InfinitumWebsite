@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 export default function Balance() {
   const { userProfile } = useProfileData()
 
-	const balance = userProfile?.stats[0].money || '0'
+	const balance = userProfile?.user.balance || '0'
 
   return (
 		<Suspense fallback={<div>Loading...</div>}>

@@ -2,8 +2,6 @@
 
 import { FC } from 'react'
 import FooterNav from '../ui/footer/FooterNav'
-import { domAnimation, LazyMotion, m } from 'framer-motion'
-import { slideInFromRight } from '@/utils/motion'
 import { usePathname } from 'next/navigation'
 
 const Footer: FC = () => {
