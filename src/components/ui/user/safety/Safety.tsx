@@ -47,6 +47,9 @@ const Safety: FC = () => {
 			await updatePassword.UpdatePassword(currentPassword, newPassword, confirmPassword)
 			toast.success('Пароль успешно изменён')
 			setIsChangePasswordOpen(false)
+			setCurrentPassword('')
+			setNewPassword('')
+			setConfirmPassword('')
 		} catch (error) {
 			toast.error('Ошибка при смене пароля')
 			console.error('Ошибка при смене пароля: ', error)

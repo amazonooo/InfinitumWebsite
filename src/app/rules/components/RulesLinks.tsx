@@ -56,6 +56,7 @@ const RulesLinks: FC<IProfile> = ({ currentType, setCurrentType }) => {
 									setHoveredWidth(offsetWidth)
 								}}
 								onMouseLeave={() => setHoveredIndex(null)}
+								onClick={() => handleCurrentType(card.name)}
 							>
 								<button
 									className={clsx(
@@ -64,7 +65,6 @@ const RulesLinks: FC<IProfile> = ({ currentType, setCurrentType }) => {
 											? 'Welcome-text font-extrabold border-none'
 											: ''
 									)}
-									onClick={() => handleCurrentType(card.name)}
 								>
 									{card.name}
 								</button>

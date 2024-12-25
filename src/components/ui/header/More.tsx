@@ -28,7 +28,7 @@ const More: FC = () => {
 					<li className='w-full h-full text-sm'>
 						<Link
 							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
-							href={'/player-top'}
+							href={'/not-found'}
 						>
 							Топ игроков
 						</Link>
@@ -36,7 +36,7 @@ const More: FC = () => {
 					<li className='w-full h-full text-sm'>
 						<Link
 							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
-							href={'/'}
+							href={'/not-found'}
 						>
 							Команда проекта
 						</Link>
@@ -44,7 +44,7 @@ const More: FC = () => {
 					<li className='w-full h-full text-sm'>
 						<Link
 							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
-							href={'/'}
+							href={'/not-found'}
 						>
 							Банлист
 						</Link>
@@ -52,7 +52,7 @@ const More: FC = () => {
 					<li className='w-full h-full text-sm'>
 						<Link
 							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
-							href={'/'}
+							href={'/not-found'}
 						>
 							Бонусы
 						</Link>
@@ -60,7 +60,7 @@ const More: FC = () => {
 					<li className='w-full h-full text-sm'>
 						<Link
 							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
-							href={'/help'}
+							href={'/not-found'}
 						>
 							Помощь
 						</Link>
@@ -68,7 +68,7 @@ const More: FC = () => {
 					<li className='w-full h-full text-sm'>
 						<Link
 							className='relative text-neutral-50 transition-colors duration-300 items-center  flex space-x-1 hover:text-primary-pink'
-							href={'/'}
+							href={'/not-found'}
 						>
 							Контакты
 						</Link>

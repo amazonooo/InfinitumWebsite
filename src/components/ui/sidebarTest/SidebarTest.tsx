@@ -18,7 +18,7 @@ export function SidebarDemo() {
 	const links = [
 		{
 			label: 'Killbichs',
-			count: '758',
+			count: '624',
 			href: '#',
 			icon: (
 				<Image
@@ -60,7 +60,7 @@ export function SidebarDemo() {
 		},
 		{
 			label: 'Boomboobs',
-			count: '94',
+			count: '152',
 			href: '#',
 			icon: (
 				<Image

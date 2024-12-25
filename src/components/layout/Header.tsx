@@ -56,13 +56,11 @@ export const Header = ({
 	// 	pathname !== '/rules/serverrul' &&
 	// 	pathname !== '/servers/server-info'
 
-	const isNotFound = pathname === '/player-top'
-	const isNotFound2 = pathname === '/help'
+	const isNotFound = pathname === '/not-found'
 // TODO: убрать или поставить все, кроме not found
 	if (isLoggedLogin) return null
 	if (isLoggedRegister) return null
 	if (isNotFound) return null
-	if (isNotFound2) return null
 
 	const scrollDirection = useScrollDirection()
 	const [isVisible, setIsVisible] = useState(true)
