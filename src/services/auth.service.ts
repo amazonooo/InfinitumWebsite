@@ -3,6 +3,7 @@ import { removeFromStorage, saveTokenToStorage } from './auth-token.service'
 import { IAuthResponse, IAuthForm } from '@/types/auth.types'
 
 export const authService = {
+	// type убрать, data: ILoginForm
 	async login(type: 'email' | 'username', data: IAuthForm) {
 		const response = await axiosClassic.post<IAuthResponse>(`/auth/login`, {...data, type})
 
