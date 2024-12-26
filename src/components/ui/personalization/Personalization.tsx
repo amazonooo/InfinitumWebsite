@@ -90,13 +90,6 @@ const Personalization: FC = () => {
 							</Button>
 						</div>
 						<div className='w-full flex items-center justify-center'>
-							{/* <Canvas camera={{ position: [1, 3, 40], fov: 50 }}>
-								<OrbitControls />
-								<Suspense fallback={null}>
-									<Model skinUrl={skinUrl} />
-								</Suspense>
-								<Environment preset='sunset' />
-							</Canvas> */}
 							<SkinViewer animationState={animation} skinUrl={skinUrl} />
 						</div>
 						<div className='mt-4'>

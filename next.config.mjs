@@ -8,6 +8,24 @@ const nextConfig = {
 				port: '',
 				pathname: '/**',
 			},
+			{
+				protocol: 'https',
+				hostname: 'steamuserimages-a.akamaihd.net',
+				port: '',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'avatars.mds.yandex.net',
+				port: '',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'i.pinimg.com',
+				port: '',
+				pathname: '/**',
+			},
 		],
 	},
 	// !!! нерекомндуемая настройка

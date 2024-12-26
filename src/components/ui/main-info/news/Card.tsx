@@ -14,7 +14,6 @@ interface ICard {
   title: string
   desc?: string
 	link: string
-	// containerClassName?: string
 }
 
 const Card: FC<ICard> = ({ image, title, desc, id, link }) => {

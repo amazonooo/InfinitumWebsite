@@ -17,7 +17,7 @@ export default function MenuItem({ item }: { item: IMenuItem }) {
 					{!isCollapsed && <span className='group-hover:translate-x-1.5 transition-transform duration-300 ease-in-out'>{item.name}</span>}
 				</div>
 				{!isCollapsed && (
-					<div className='Welcome-box rounded-md p-1.5'>{item.count}</div>
+					<div className='Welcome-box rounded-full p-1.5 w-10 h-10 flex items-center justify-center'>{item.count}</div>
 				)}
 			</div>
 		</Link>

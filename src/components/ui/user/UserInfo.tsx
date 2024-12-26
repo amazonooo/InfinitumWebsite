@@ -1,17 +1,26 @@
 'use client'
 
 import { useProfileData } from '@/hooks/useProfileData'
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import Safety from './safety/Safety'
+import { Skeleton } from '../skeleton'
 
 export default function UserInfo() {
-	const { userProfile } = useProfileData()
+	const { userProfile, isLoading } = useProfileData()
 	console.log(userProfile)
+
+	useEffect(() => {
+		isLoading
+	}, [userProfile])
 
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
 			<h1>User Profile</h1>
-			<p>Nickname: {userProfile?.user.username || 'Guest'}</p>
+			{isLoading ? (
+				<Skeleton className='h-2 w-full rounded-lg' />
+			) : (
+				<p>Nickname: {userProfile?.user.username || 'Guest'}</p>
+			)}
 			<div className='mt-5'>
 				<Safety />
 			</div>

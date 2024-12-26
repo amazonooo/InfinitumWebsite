@@ -1,4 +1,4 @@
-import { Auth } from '@/components/ui/auth/Auth'
+import Login from '@/components/ui/login/Login'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -7,6 +7,6 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <Auth type='Войти' />
+    <Login />
   )
 }

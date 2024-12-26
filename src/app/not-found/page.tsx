@@ -15,7 +15,7 @@ export default function Page() {
 	return (
 		<section className='h-screen w-screen overflow-x-clip'>
 			<div className='flex flex-col items-center justify-center isolate z-[10] w-full h-full Welcome-box'>
-				<h1 className='text-4xl md:text-7xl Welcome-text font-semibold mb-10'>
+				<h1 className='text-4xl md:text-7xl Welcome-text font-semibold mb-9'>
 					В разработке
 				</h1>
 				<Button onClick={() => router.push('/')}>Вернуться на главную</Button>

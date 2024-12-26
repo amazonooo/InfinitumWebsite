@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 	title: 'Серверы',
 }
 
-export const relalidate = 60
+export const relalidate = 600
 
 async function getClients() {
 	const data = await clientsService.getClients()

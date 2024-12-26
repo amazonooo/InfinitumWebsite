@@ -1,4 +1,4 @@
-import { Auth } from '@/components/ui/auth/Auth'
+import Register from '@/components/ui/register/Register'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -7,6 +7,6 @@ export const metadata: Metadata = {
 
 export default function RegisterPage() {
 	return (
-		<Auth type='Создать аккаунт' />
+		<Register />
   )
 }

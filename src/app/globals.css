@@ -104,10 +104,6 @@ body {
   display: none;
 }
 
-canvas {
-  height: 300px;
-}
-
 @layer base {
   :root {
     --radius: 0.75rem;

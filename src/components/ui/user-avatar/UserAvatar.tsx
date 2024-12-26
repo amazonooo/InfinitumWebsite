@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Button } from '../button'
 import { toast } from 'react-toastify'
 import { FaEdit } from 'react-icons/fa'
+import { Skeleton } from '../skeleton'
+import { useProfileData } from '@/hooks/useProfileData'
 
 interface UserAvatarProps {
 	defaultAvatar?: string
@@ -45,15 +46,20 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
 		}
 	}
 
+	const { userProfile } = useProfileData()
+
 	return (
 		<div className='relative user-avatar text-center group'>
 			<div className='absolute top-0 left-0 w-full h-full transition-all duration-300 opacity-0 bg-black/50 group-hover:opacity-100' />
-			<img
-				src={avatarUrl || defaultAvatar}
-				alt='User Avatar'
-				className='rounded-lg w-28 h-28 border-2 border-primary-pink shadow-md'
-			/>
-
+			{isLoading ? (
+				<Skeleton className='rounded-lg w-28 h-28' />
+			) : (
+				<img
+					src={avatarUrl || defaultAvatar}
+					alt='user-avatar'
+					className='rounded-lg w-28 h-28 border-2 border-primary-pink shadow-md'
+				/>
+			)}
 			<div>
 				<input
 					type='file'

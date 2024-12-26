@@ -3,9 +3,10 @@
 import { useProfileData } from '@/hooks/useProfileData'
 import { Banknote } from 'lucide-react'
 import { Suspense } from 'react'
+import { Skeleton } from '../skeleton'
 
 export default function Balance() {
-  const { userProfile } = useProfileData()
+  const { userProfile, isLoading } = useProfileData()
 
 	const balance = userProfile?.user.balance || '0'
 
@@ -16,10 +17,14 @@ export default function Balance() {
 					<h1 className='text-center Welcome-text text-3xl xl:text-4xl'>
 						Ваш баланс
 					</h1>
-					<h2 className='Welcome-box items-center text-2xl text-center px-8 py-2.5 mt-5'>
-						{balance}
-						<Banknote className='text-emerald-500 ml-3' size={27} />
-					</h2>
+					{isLoading ? (
+						<Skeleton className='w-28 h-12 rounded-full mt-5' />
+					) : (
+						<h2 className='Welcome-box items-center text-2xl text-center px-8 py-2.5 mt-5'>
+							{balance}
+							<Banknote className='text-emerald-500 ml-3' size={27} />
+						</h2>
+					)}
 				</div>
 			</div>
 		</Suspense>
