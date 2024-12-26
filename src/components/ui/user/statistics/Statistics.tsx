@@ -16,7 +16,7 @@ export default function Statistics() {
 				<div className='text-center'>
 					<h2 className='text-xl mb-2'>Текущий сервер</h2>
 					<h1 className='text-3xl font-bold Welcome-text'>
-						{userProfile?.stats[0].clientTitle}
+						{/* {userProfile?.stats[0].clientTitle} */}
 					</h1>
 				</div>
 				<StatsInfo />

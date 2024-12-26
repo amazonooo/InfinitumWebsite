@@ -21,7 +21,7 @@ export default function ServerDropdown() {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className='w-56'>
 				<DropdownMenuLabel>
-					{userProfile?.stats[0].clientTitle}
+					{/* {userProfile?.stats[0].clientTitle} */}
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>

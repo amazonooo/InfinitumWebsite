@@ -48,17 +48,19 @@ export const authService = {
 
 	async checkUsernameAvailability(username: string): Promise<boolean> {
 		const response = await axiosClassic.get(`/auth/register/username-available`, {
-			params: { username }
-		})
+			data: { username },
+		});
 
-		return response.data === true
+		console.log(response.data);
+		return response.data;
 	},
 
 	async checkEmailAvailability(email: string): Promise<boolean> {
 		const response = await axiosClassic.get(`/auth/register/email-available`, {
-			params: { email }
-		})
+			data: { email },
+		});
 
-		return response.data === true
-	},
+		console.log(response.data);
+		return response.data;
+	}
 }
