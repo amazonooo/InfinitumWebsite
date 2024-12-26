@@ -16,10 +16,6 @@ class UpdatePassword {
 			confirmPassword,
 		})
 
-		// if(response.data.accessToken) {
-		// 	saveTokenToStorage(response.data.accessToken)
-		// }
-
 		return response.data
 	}
 }

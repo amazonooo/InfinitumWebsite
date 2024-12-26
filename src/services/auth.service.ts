@@ -3,9 +3,11 @@ import { removeFromStorage, saveTokenToStorage } from './auth-token.service'
 import { IAuthResponse, IAuthForm, ILoginForm } from '@/types/auth.types'
 
 export const authService = {
-	// type убрать, data: ILoginForm
 	async login(data: ILoginForm) {
-		const response = await axiosClassic.post<IAuthResponse>(`/auth/login`, {...data, type: data.type})
+		const response = await axiosClassic.post<IAuthResponse>(`/auth/login`, {
+			...data,
+			type: data.type,
+		})
 
 		if (response.data.accessToken) {
 			saveTokenToStorage(response.data.accessToken)
@@ -16,7 +18,10 @@ export const authService = {
 	},
 
 	async register(data: IAuthForm) {
-		const response = await axiosClassic.post<IAuthResponse>(`/auth/register`, data)
+		const response = await axiosClassic.post<IAuthResponse>(
+			`/auth/register`,
+			data
+		)
 
 		if (response.data.accessToken) saveTokenToStorage(response.data.accessToken)
 
@@ -24,7 +29,9 @@ export const authService = {
 	},
 
 	async getNewTokens() {
-		const response = await axiosClassic.post<IAuthResponse>('/auth/login/access-token')
+		const response = await axiosClassic.post<IAuthResponse>(
+			'/auth/login/access-token'
+		)
 
 		if (response.data.accessToken) saveTokenToStorage(response.data.accessToken)
 
@@ -37,5 +44,21 @@ export const authService = {
 		if (response.data) removeFromStorage()
 
 		return response
-	}
+	},
+
+	async checkUsernameAvailability(username: string): Promise<boolean> {
+		const response = await axiosClassic.get(`/auth/register/username-available`, {
+			params: { username }
+		})
+
+		return response.data === true
+	},
+
+	async checkEmailAvailability(email: string): Promise<boolean> {
+		const response = await axiosClassic.get(`/auth/register/email-available`, {
+			params: { email }
+		})
+
+		return response.data === true
+	},
 }

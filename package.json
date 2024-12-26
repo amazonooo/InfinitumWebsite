@@ -28,6 +28,7 @@
     "framer-motion": "^11.3.19",
     "jotai": "^2.9.3",
     "js-cookie": "^3.0.5",
+    "lodash.debounce": "^4.0.8",
     "lucide-react": "^0.424.0",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
@@ -54,6 +55,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20",
     "@types/owasp-password-strength-test": "^1.3.2",
     "@types/react": "^18",

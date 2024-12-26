@@ -30,6 +30,7 @@ export const Header = ({
 }) => {
 	const pathname = usePathname()
 
+	const isRecoveryPage = pathname === '/recovery'
 	const isLoggedLogin = pathname === '/login'
 	const isLoggedRegister = pathname === '/register'
 
@@ -61,6 +62,7 @@ export const Header = ({
 	if (isLoggedLogin) return null
 	if (isLoggedRegister) return null
 	if (isNotFound) return null
+	if (isRecoveryPage) return null
 
 	const scrollDirection = useScrollDirection()
 	const [isVisible, setIsVisible] = useState(true)

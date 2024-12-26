@@ -5,8 +5,8 @@ import { IPost, IPosts, NewsResponse } from '@/types/posts.types'
 class PostsService {
   private BASE_URL = `${API_URL}/posts`
 
-  async getPosts(page: number, limit: number) {
-    const response = await axiosClassic.get(`${this.BASE_URL}?page=${page}&limit=${limit}`)
+  async getPosts(page: number): Promise<IPosts[]> {
+    const response = await axiosClassic.get(`${this.BASE_URL}?page=${page}&limit=8`)
 
     return response.data
   }

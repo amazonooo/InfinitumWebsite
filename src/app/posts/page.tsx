@@ -15,13 +15,13 @@ export default async function PostsPage({
 	const page = Number(searchParams.page || 1)
 	const limit = Number(searchParams.limit || 8)
 
-	const initialPosts = await postsService.getPosts(page, limit)
+	// const initialPosts = await postsService.getPosts(page, limit)
 
 	return (
 		<section className='h-full w-full flex flex-col overflow-x-clip max-w-[1440px] mx-auto px-5 sm:px-10'>
 			<div className='flex flex-col items-center justify-center isolate z-[10]'>
 				<NewsHero />
-				<News initialPosts={initialPosts} limit={limit} />
+				<News />
 			</div>
 		</section>
 	)

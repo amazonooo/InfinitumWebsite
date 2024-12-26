@@ -147,12 +147,12 @@ export default function Login() {
 										{isShowPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{errors.password && <div className='text-red-500 text-sm mb-1'>
+								{errors.password && <p className='text-red-500 text-sm mb-1'>
 									{errors.password.message}	
-								</div>}
+								</p>}
 								<Link
 									className='text-white/60 hover:text-white transition-colors duration-300'
-									href={'/'}
+									href={'/recovery'}
 								>
 									Забыл пароль?
 								</Link>
