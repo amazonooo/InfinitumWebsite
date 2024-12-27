@@ -31,7 +31,7 @@ export default function Confirm() {
 	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
 	const [isButtonClicked, setIsButtonClicked] = useState(false)
 	const [buttonKey, setButtonKey] = useState(0)
-	const [passwordStrenlgthError, setPasswordStrengthError] = useState('')
+	const [passwordStrengthError, setPasswordStrengthError] = useState('')
 
 	const router = useRouter()
 
@@ -135,9 +135,9 @@ export default function Confirm() {
 										{isShowNewPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{passwordStrenlgthError && (
+								{passwordStrengthError && (
 									<p className='text-red-500 text-sm mb-1'>
-										{passwordStrenlgthError}
+										{passwordStrengthError}
 									</p>
 								)}
 								{errors.password && (
@@ -188,9 +188,9 @@ export default function Confirm() {
 										{isShowAgreePassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{passwordStrenlgthError && (
+								{passwordStrengthError && (
 									<p className='text-red-500 text-sm mb-1'>
-										{passwordStrenlgthError}
+										{passwordStrengthError}
 									</p>
 								)}
 								{errors.passwordRepeat && (
