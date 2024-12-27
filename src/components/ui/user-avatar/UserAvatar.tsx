@@ -63,7 +63,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
 			<div>
 				<input
 					type='file'
-					accept='image/*'
+					accept='image/*,image/gif'
 					id='avatar-upload'
 					onChange={handleAvatarChange}
 					className='hidden'
