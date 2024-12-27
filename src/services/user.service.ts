@@ -12,7 +12,7 @@ class UserService {
 	}
 
 	async changePassword(data: IChangePasswordDto) {
-		const response = await axiosWithAuth.post<IUserProfile>(
+		const response = await axiosWithAuth.patch<IUserProfile>(
 			`${this.BASE_URL}/settings/change-password`,
 			data
 		)
