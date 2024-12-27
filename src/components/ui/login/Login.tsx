@@ -15,7 +15,6 @@ import styles from '../field/Field.module.scss'
 import { CircleUser, Eye, EyeOff, KeyRound } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
-import owasp from '@/config/owaps.confit'
 
 export default function Login() {
   const [isShowPassword, setIsShowPassword] = useState(false)

@@ -34,10 +34,7 @@ const MainInfo: FC = () => {
 					<News />
 				</m.div>
 				<m.div className='my-8' variants={slideInFromLeft(0.8)}>
-					<Link
-						href={'/news'}
-						onClick={handleClick}
-					>
+					<Link href={'/posts?page=1&limit=8'} onClick={handleClick}>
 						<Button size={'lg'}>Все новости</Button>
 					</Link>
 				</m.div>

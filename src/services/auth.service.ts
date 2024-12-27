@@ -17,15 +17,16 @@ export const authService = {
 		return response
 	},
 
-	async register(data: IAuthForm) {
-		const response = await axiosClassic.post<IAuthResponse>(
-			`/auth/register`,
-			data
-		)
+	async register(data: IAuthForm): Promise<IAuthResponse> {
+		const response = await axiosClassic.post<IAuthResponse>('/auth/register', data);
 
-		if (response.data.accessToken) saveTokenToStorage(response.data.accessToken)
+		if (response.data?.accessToken) {
+			saveTokenToStorage(response.data.accessToken)
+		} else {
+			throw new Error('Access token is missing in the response.')
+		}
 
-		return response
+		return response.data
 	},
 
 	async getNewTokens() {

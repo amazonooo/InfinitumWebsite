@@ -8,17 +8,19 @@ import { toast } from 'react-toastify'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { slideInFromLeft, slideInFromRight } from '@/utils/motion'
 import { PROJECT_NAME } from '@/constants/api.constants'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useState } from 'react'
 import styles from '../field/Field.module.scss'
 import { cn } from '@/lib/utils'
 import { Eye, EyeOff, KeyRound, Mail, Pickaxe } from 'lucide-react'
 import Link from 'next/link'
+import { Checkbox } from '../checkbox'
 
 export default function Register() {
   const [isShowPassword, setIsShowPassword] = useState(false)
   const [isButtonClicked, setIsButtonClicked] = useState(false)
   const [buttonKey, setButtonKey] = useState(0)
+	const [isChecked, setIsChecked] = useState(false)
 
   const router = useRouter()
 
@@ -53,16 +55,7 @@ export default function Register() {
     }
   }
 
-  const onSubmit = (data: IAuthForm) => {
-    if (!data.username) {
-      data.username = ''
-    }
-    if (!data.email) {
-      data.email = ''
-    }
-    if (!data.password) {
-      data.password = ''
-    }
+  const onSubmit: SubmitHandler<IAuthForm> = (data) => {
     registerMode(data)
     reset()
   }
@@ -84,11 +77,14 @@ export default function Register() {
 				>
 					<div className='flex flex-row gap-36'>
 						<div className='flex items-center justify-center'>
-							<form onSubmit={handleSubmit(onSubmit)} className='relative rounded-xl bg-main-black border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] p-8 sm:p-9 md:p-10 w-[320px] sm:w-[400px] md:w-[500px] lg:w-[600px]'>
+							<form
+								onSubmit={handleSubmit(onSubmit)}
+								className='relative rounded-xl bg-main-black border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] p-8 sm:p-9 md:p-10 w-[320px] sm:w-[400px] md:w-[500px] lg:w-[600px]'
+							>
 								<h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 Welcome-text'>
 									Создать аккаунт
 								</h2>
-								<label className={cn(styles.field, '')}>
+								<label className={cn(styles.field, 'mb-2')}>
 									<div className={styles.icon}>
 										<Pickaxe />
 									</div>
@@ -98,12 +94,36 @@ export default function Register() {
 										type='text'
 										{...register('username', {
 											required: true,
-											minLength: 4,
-											maxLength: 16,
+											validate: {
+												minLength: value =>
+													value.length >= 4 ||
+													'Имя пользователя должно состоять минимум из 4 символов',
+												maxLength: value =>
+													value.length <= 16 ||
+													'Имя пользователя должно содержать не более 16 символов',
+											},
+											// pattern: {
+											// 	value: /^(?=.*[a-z])(?=.*\d)[A-Za-z\d!@#$&]{8,}$/,
+											// 	message:
+											// 		'Пароль должен содержать минимум одну букву, одну цифру и быть длиной не менее 8 символов',
+											// },
+
+											// validate: async (username: string) => {
+											// 	const response =
+											// 		await authService.checkUsernameAvailability(username)
+											// 	if (!response) {
+											// 		return 'Ник уже используется'
+											// 	}
+											// },
 										})}
 									/>
 								</label>
-								<label className={cn(styles.field, 'mt-6')}>
+								{errors.username && (
+									<p className='text-red-500 text-sm mb-1'>
+										{errors.username.message}
+									</p>
+								)}
+								<label className={cn(styles.field, 'mt-6 mb-2')}>
 									<div className={styles.icon}>
 										<Mail />
 									</div>
@@ -115,6 +135,13 @@ export default function Register() {
 											required: true,
 											pattern:
 												/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+											// validate: async (email: string) => {
+											// 	const response =
+											// 		await authService.checkEmailAvailability(email)
+											// 	if (!response) {
+											// 		return 'Почта уже используется'
+											// 	}
+											// },
 										})}
 									/>
 								</label>
@@ -128,7 +155,23 @@ export default function Register() {
 										type={isShowPassword ? 'text' : 'password'}
 										{...register('password', {
 											required: true,
-											minLength: 8,
+											validate: {
+												minLength: value =>
+													value.length >= 8 ||
+													'Пароль должен содержать минимум 8 символов',
+												maxLength: value =>
+													value.length <= 128 ||
+													'Пароль должен содержать максимум 128 символов',
+												// hasUpperCase: value =>
+												// 	/[A-Z]/.test(value) ||
+												// 	'Пароль должен содержать хотя бы одну заглавную букву',
+												hasLowerCase: value =>
+													/[a-z]/.test(value) ||
+													'Пароль должен содержать хотя бы одну строчную букву',
+												hasNumber: value =>
+													/[0-9]/.test(value) ||
+													'Пароль должен содержать хотя бы одну цифру',
+											},
 										})}
 									/>
 									<div
@@ -138,17 +181,53 @@ export default function Register() {
 										{isShowPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
+								{errors.password && (
+									<p className='text-red-500 text-sm mb-1'>
+										{errors.password.message}
+									</p>
+								)}
+								<div className='mt-5 flex gap-x-3'>
+									<Checkbox
+										checked={isChecked}
+										onCheckedChange={(checked: any) => setIsChecked(checked)}
+										id='agreeement'
+									/>
+									<label
+										htmlFor='agreeement'
+										className='text-sm font-medium leading-5 peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+									>
+										Я согласен(-на) с положениями{' '}
+										<span className='text-primary-pink cursor-pointer hover:underline hover:underline-offset-2'>
+											Пользовательского соглашения
+										</span>
+										,{' '}
+										<span className='text-primary-pink cursor-pointer hover:underline hover:underline-offset-2'>
+											Политикой конфиденциальности
+										</span>{' '}
+										и{' '}
+										<span className='text-primary-pink cursor-pointer hover:underline hover:underline-offset-2'>
+											правилами проекта
+										</span>
+									</label>
+								</div>
 								<div className='mb-3 mt-8 text-center'>
 									<button
 										type='submit'
 										key={buttonKey}
 										onClick={handleButtonClick}
-										className={
-											isButtonClicked &&
-											(errors.email || errors.username || errors.password)
-												? styles.buttonError
-												: styles.form_btn
-										}
+										disabled={!isChecked}
+										className={cn(
+											{
+												[styles.buttonError]:
+													isButtonClicked &&
+													(errors.email || errors.username || errors.password),
+												[styles.form_btn]: !(
+													isButtonClicked &&
+													(errors.email || errors.username || errors.password)
+												),
+											},
+											'disabled:opacity-60 disabled:cursor-default disabled:scale-100'
+										)}
 									>
 										СОЗДАТЬ АККАУНТ
 									</button>

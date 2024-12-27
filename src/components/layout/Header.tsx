@@ -12,6 +12,7 @@ import { ChevronDown } from 'lucide-react'
 import Dropdown from '../ui/dropdown/Dropdown'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
 import { PROJECT_NAME } from '@/constants/api.constants'
+import { TbChristmasBall } from 'react-icons/tb'
 
 export const Header = ({
 	navItems,
@@ -84,14 +85,17 @@ export const Header = ({
 			{isDesktop && (
 				<header
 					className={cn(
-						`max-w-fit md:min-w-[40vw] lg:min-w-[62vw] 2xl:min-w-[67vw] mx-auto fixed z-50 top-5 inset-x-0 p-[1px] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[linear-gradient(130deg,#b2d8f1,#e7b4f6)] rounded-full transition-transform duration-300 ${isVisible ? '-translate-y-0' : '-translate-y-24'}`,
+						`max-w-fit md:min-w-[40vw] lg:min-w-[62vw] 2xl:min-w-[67vw] mx-auto fixed z-50 top-5 inset-x-0 p-[1px] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[linear-gradient(130deg,#b2d8f1,#e7b4f6)] rounded-full transition-transform duration-300 ${
+							isVisible ? '-translate-y-0' : '-translate-y-24'
+						}`,
 						className
 					)}
 				>
 					<nav className='xl:px-10 lg:px-5 py-4 bg-main-black rounded-full'>
 						<ul className='flex justify-between'>
-							<li className='text-2xl font-bold Welcome-text'>
+							<li className='text-2xl font-bold Welcome-text relative'>
 								<Link href={'/'}>{PROJECT_NAME}</Link>
+								{/* <TbChristmasBall className='absolute -right-3 top-6' /> */}
 							</li>
 							<ul className='flex justify-between lg:gap-x-4 xl:gap-x-6 font-semibold'>
 								{navItems.map((navItem: any, idx: number) => (
@@ -119,9 +123,7 @@ export const Header = ({
 									onMouseEnter={() => setShow(true)}
 									onMouseLeave={() => setShow(false)}
 								>
-									<div
-										className='z-[10] group-hover:text-primary-pink transition-colors duration-300 flex items-center gap-x-1.5 cursor-pointer select-none'
-									>
+									<div className='z-[10] group-hover:text-primary-pink transition-colors duration-300 flex items-center gap-x-1.5 cursor-pointer select-none'>
 										Дополнительно
 										<ChevronDown
 											className={`${

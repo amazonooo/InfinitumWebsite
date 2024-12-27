@@ -1,59 +1,90 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Heading from '@/components/ui/Heading'
 import { FaApple, FaLinux, FaWindows } from 'react-icons/fa6'
 import Faq from './Faq'
 import { Button } from '@/components/ui/button'
+import { Check } from 'lucide-react'
 
 export default function PlayHero() {
+	const [userPlatform, setUserPlatform] = useState('')
+
+	useEffect(() => {
+		if (typeof navigator !== 'undefined') {
+			const platform = navigator.platform.toLowerCase()
+			if (platform.includes('mac')) {
+				setUserPlatform('macOS')
+			} else if (platform.includes('win')) {
+				setUserPlatform('windows')
+			} else if (platform.includes('linux')) {
+				setUserPlatform('linux')
+			} else {
+				setUserPlatform('unknown')
+			}
+		}
+	}, [])
+
 	const handleScrollToSec = (sec: any) => {
 		const section = document.getElementById(sec)
 
-		if(section) {
+		if (section) {
 			window.scrollTo({
 				top: section.offsetTop,
-				behavior: 'smooth'
+				behavior: 'smooth',
 			})
 		}
 	}
 
 	return (
 		<div className='w-full h-full'>
-			<div className='hidden bg-main-black h-[920px] xl:block bg-[url(/download-hero.jpg)] bg-no-repeat bg-cover bg-center w-full relative'>
-				<div className='absolute bottom-[313px] px-[360px]'>
+			<div className='w-full relative'>
+				<div className='mt-16 lg:mt-40'>
 					<Heading
 						title={'Установить лаунчер'}
 						className='text-6xl font-bold'
 					/>
-					<div className='flex flex-col md:flex-row gap-6 items-center mt-8'>
+					<div className='flex flex-col justify-center md:flex-row gap-6 items-center mt-8'>
 						<Button
-							className='py-10 flex items-center gap-x-1.5'
+							className={`py-10 flex items-center gap-x-1.5 ${
+								userPlatform === 'macOS' ? 'Welcome-box' : ''
+							}`}
 							size={'lg'}
 							onClick={() => handleScrollToSec('macOS')}
 						>
 							MacOS
 							<FaApple size={20} className='mb-1' />
 						</Button>
+						{/* {userPlatform === 'macOS' && <div>Ваша платформа</div>} */}
+						<div className='flex flex-col items-center'>
+							<Button
+								className={`py-10 flex items-center gap-x-1.5 ${
+									userPlatform === 'windows' ? 'Welcome-box' : ''
+								}`}
+								size={'lg'}
+								onClick={() => handleScrollToSec('windows')}
+							>
+								Windows
+								<FaWindows size={20} />
+								<Check className='ml-1' />
+							</Button>
+							{/* {userPlatform === 'windows' && <div>Ваша платформа</div>} */}
+						</div>
 						<Button
-							className='py-10 flex items-center gap-x-1.5'
+							className={`py-10 flex items-center gap-x-1.5 ${
+								userPlatform === 'linux' ? 'Welcome-box' : ''
+							}`}
 							size={'lg'}
-							onClick={() => handleScrollToSec('macOS')}
-						>
-							Windows
-							<FaWindows size={20} />
-						</Button>
-						<Button
-							className='py-10 flex items-center gap-x-1.5'
-							size={'lg'}
-							onClick={() => handleScrollToSec('macOS')}
+							onClick={() => handleScrollToSec('linux')}
 						>
 							Linux
 							<FaLinux size={20} />
 						</Button>
+						{/* {userPlatform === 'linux' && <div>Ваша платформа</div>} */}
 					</div>
 				</div>
 
-				<div className='absolute bottom-12 left-1/2 -translate-x-1/2'>
+				<div className='mt-32'>
 					<Heading
 						title={'Инструкция по установке'}
 						className='text-6xl font-bold'
@@ -69,7 +100,7 @@ export default function PlayHero() {
 				<div className='grid grid-cols-1 lg:grid-cols-3 gap-x-7 gap-y-6 pt-8'>
 					<div
 						id='macOS'
-						className='bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg'
+						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg`}
 					>
 						<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
 							MacOS
@@ -90,7 +121,7 @@ export default function PlayHero() {
 					</div>
 					<div
 						id='windows'
-						className='bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg'
+						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg`}
 					>
 						<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
 							Windows
@@ -103,7 +134,7 @@ export default function PlayHero() {
 					</div>
 					<div
 						id='linux'
-						className='bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg'
+						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg`}
 					>
 						<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
 							Linux

@@ -28,14 +28,15 @@
 	@apply cursor-pointer inline-flex justify-center whitespace-nowrap rounded-lg text-xl font-medium bg-gradient-to-r from-primary-pink to-primary-purple shadow focus:outline-none focus-visible:outline-none relative w-full py-2 transition-all duration-300;
 
 	&:hover {
-		@apply scale-105
+		@apply scale-105;
 	}
+
 }
 
 .buttonError {
 	@apply cursor-pointer inline-flex justify-center whitespace-nowrap rounded-lg text-xl font-medium bg-[#7F1D1D] shadow focus:outline-none focus-visible:outline-none relative w-full py-2 transition-all duration-300 animate-btnAnim;
 
 	&:hover {
-		@apply scale-105
+		@apply scale-105;
 	}
 }
