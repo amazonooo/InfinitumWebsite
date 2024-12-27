@@ -10,9 +10,8 @@ import { useMutation } from '@tanstack/react-query'
 import { authService } from '@/services/auth.service'
 import { toast } from 'react-toastify'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import zxcvbn from 'zxcvbn'
-import { useRouter } from 'next/router'
 
 export interface IResetPasswordConfirmForm {
 	password: string
@@ -30,7 +29,6 @@ export default function Confirm() {
 	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
 	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
 	const [isButtonClicked, setIsButtonClicked] = useState(false)
-	const [buttonKey, setButtonKey] = useState(0)
 	const [passwordStrengthError, setPasswordStrengthError] = useState('')
 
 	const router = useRouter()
