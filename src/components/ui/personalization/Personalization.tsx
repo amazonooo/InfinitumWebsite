@@ -60,7 +60,7 @@ const Personalization: FC = () => {
 					</div>
 					<div className='text-center mt-20'>
 						<Username />
-						<div className='mb-7 flex items-center gap-5 justify-center'>
+						<div className='mb-4 flex items-center gap-5 justify-center'>
 							<Button
 								className={
 									animation === 'idle' ? 'border border-primary-pink' : ''

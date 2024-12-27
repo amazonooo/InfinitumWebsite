@@ -45,6 +45,6 @@ export interface IPlayerServerStats {
 
 export interface IUserProfile {
 	user: IUser
-	stats: IPlayerServerStats[]
+	stats: IPlayerServerStats
 }
 // IPlayerServerStats[]

@@ -28,9 +28,18 @@ export default function Logout() {
 			<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>
 				Выход
 			</h2>
-			<Button onClick={() => logout()} size={'lg'} variant={'destructive'}>
-				Выйти из аккаунта
-			</Button>
+			<div className='flex gap-x-4'>
+				<Button onClick={() => logout()} size={'lg'} variant={'destructive'}>
+					Выйти из аккаунта
+				</Button>
+				<Button
+					onClick={() => logout()}
+					className='h-11'
+					variant={'destructive'}
+				>
+					Выйти со всех устройств
+				</Button>
+			</div>
 		</div>
 	)
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import Privileges from '@/components/ui/privileges/Privileges'
 import Statistics from '@/components/ui/user/statistics/Statistics'
 import UserInfo from '@/components/ui/user/UserInfo'
 import { m, LazyMotion, domAnimation } from 'framer-motion'
@@ -21,7 +22,7 @@ export default function ProfileLinks() {
 			case 'Статистика':
 				return <Statistics />
 			case 'Привилегии':
-				return <div>Привилегии</div>
+				return <Privileges />
 			case 'Аккаунт':
 				return <UserInfo />
 			default:
@@ -51,7 +52,7 @@ export default function ProfileLinks() {
 				<div className='text-white'>
 					<nav
 						ref={navRef}
-						className='relative flex lg:justify-around justify-between lg:px-0 px-3 bg-main-black border rounded-lg border-white/20'
+						className='relative flex justify-between lg:px-8 px-3 bg-main-black border rounded-lg border-white/20'
 					>
 						{tabs.map(tab => (
 							<button
@@ -76,7 +77,7 @@ export default function ProfileLinks() {
 						/>
 					</nav>
 
-					<section className='p-6 bg-main-black border border-white/20 rounded-lg mt-20'>
+					<section className='p-6 bg-main-black border border-white/20 rounded-lg mt-10	'>
 						{renderContent()}
 					</section>
 				</div>

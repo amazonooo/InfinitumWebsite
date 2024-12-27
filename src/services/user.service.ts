@@ -7,11 +7,11 @@ class UserService {
 	private BASE_URL = `${API_URL}/user`
 
 	async getUserProfile() {
-		const response = await axiosWithAuth.get<IUserProfile[]>(this.BASE_URL)
+		const response = await axiosWithAuth.get<IUserProfile>(this.BASE_URL)
 		if (!response.data) {
 			throw new Error('Профиль пользователя не найден')
 		}		
-		return response.data[0]
+		return response.data
 	}
 
 	async changePassword(data: IChangePasswordDto) {

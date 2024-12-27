@@ -13,7 +13,7 @@ export default function StatsInfo() {
 						<Skeleton className='h-2 w-12 rounded-lg' />
 					) : (
 						<h2 className='Welcome-text font-bold'>
-							{userProfile?.stats[0].playtime || '0'}
+							{userProfile?.stats.playtime || '0'}
 						</h2>
 					)}
 				</div>
@@ -25,7 +25,7 @@ export default function StatsInfo() {
 						<Skeleton className='h-2 w-12 rounded-lg' />
 					) : (
 						<h2 className='Welcome-text font-bold'>
-							{userProfile?.stats[0].kills || '0'}
+							{userProfile?.stats.kills || '0'}
 						</h2>
 					)}
 				</div>
@@ -37,7 +37,7 @@ export default function StatsInfo() {
 						<Skeleton className='h-2 w-12 rounded-lg' />
 					) : (
 						<h2 className='Welcome-text font-bold'>
-							{userProfile?.stats[0].deaths || '0'}
+							{userProfile?.stats.deaths || '0'}
 						</h2>
 					)}
 				</div>
@@ -49,7 +49,7 @@ export default function StatsInfo() {
 						<Skeleton className='h-2 w-12 rounded-lg' />
 					) : (
 						<h2 className='Welcome-text font-bold'>
-							{userProfile?.stats[0].killedMobs || '0'}
+							{userProfile?.stats.killedMobs || '0'}
 						</h2>
 					)}
 				</div>
@@ -61,7 +61,7 @@ export default function StatsInfo() {
 						<Skeleton className='h-2 w-12 rounded-lg' />
 					) : (
 						<h2 className='Welcome-text font-bold'>
-							{userProfile?.stats[0].messagesCount || '0'}
+							{userProfile?.stats.messagesCount || '0'}
 						</h2>
 					)}
 				</div>

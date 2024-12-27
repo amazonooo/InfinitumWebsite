@@ -11,6 +11,8 @@ import {
 	ShieldHalf,
 	ArrowBigLeft,
 	Loader2,
+	Mail,
+	ScanEye,
 } from 'lucide-react'
 import styles from '../../field/Field.module.scss'
 import { cn } from '@/lib/utils'
@@ -19,9 +21,9 @@ import { toast } from 'react-toastify'
 import Logout from './Logout'
 import Modal from '../../modal/Modal'
 import { FloatingDock } from '../../floating-dock'
-import { useChangePassword } from '@/hooks/useChangePassword'
 import { useMutation } from '@tanstack/react-query'
 import { userService } from '@/services/user.service'
+import { useProfileData } from '@/hooks/useProfileData'
 
 export interface IChangePasswordDto {
 	currentPassword: string
@@ -31,6 +33,8 @@ export interface IChangePasswordDto {
 const Safety: FC = () => {
 	const [isTwoFactorOpen, setIsTwoFactorOpen] = useState(false)
 	const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false)
+	const [isOpenEmailModal, setIsOpenEmailModal] = useState(false)
+	const [isOpenIpModal, setIsOpenIpModal] = useState(false)
 
 	const [currentPassword, setCurrentPassword] = useState('')
 	const [newPassword, setNewPassword] = useState('')
@@ -39,6 +43,8 @@ const Safety: FC = () => {
 	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
 	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
 
+	const { userProfile } = useProfileData()
+	
 	const [step, setStep] = useState(1)
 
 	const handleContinue = () => {
@@ -105,7 +111,7 @@ const Safety: FC = () => {
 	return (
 		<div className='rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'>
 			<div className='py-7 px-3 md:px-5 lg:px-7 xl:px-8'>
-				<h1 className='text-center Welcome-text text-3xl xl:text-4xl'>
+				<h1 className='text-center Welcome-text text-3xl xl:text-4xl font-bold'>
 					Безопасность
 				</h1>
 				<div className='flex flex-col mt-9 mb-3 gap-y-6'>
@@ -269,6 +275,64 @@ const Safety: FC = () => {
 											'Подтвердить'
 										)}
 									</Button>
+								</div>
+							</Modal>
+						)}
+					</div>
+
+					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
+						<h2 className='text-xs sm:text-base md:text-lgl'>
+							Почта: <span className='Welcome-text font-bold'>{userProfile?.user.email}</span>
+						</h2>
+						<Button
+							onClick={() => setIsOpenEmailModal(true)}
+							variant={'outline'}
+							className='text-base md:text-lg whitespace-nowrap px-4 py-1.5'
+						>
+							Изменить
+						</Button>
+						{isOpenEmailModal && (
+							<Modal
+								onClose={() => setIsOpenEmailModal(false)}
+								isOpen={isOpenEmailModal}
+								header={'Изменить почту'}
+								icon={<Mail className='text-primary-pink' />}
+							>
+								<div className=''>
+									<div className='h-full w-full'>
+										<div className='Welcome-box items-center justify-center flex w-full h-[150px] rounded-lg Welcome-text font-bold'>
+											В разработке
+										</div>
+									</div>
+								</div>
+							</Modal>
+						)}
+					</div>
+
+					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
+						<h2 className='text-xs sm:text-base md:text-lgl'>
+							История активности
+						</h2>
+						<Button
+							onClick={() => setIsOpenIpModal(true)}
+							variant={'outline'}
+							className='text-base md:text-lg whitespace-nowrap px-4 py-1.5'
+						>
+							Посмотреть
+						</Button>
+						{isOpenIpModal && (
+							<Modal
+								onClose={() => setIsOpenIpModal(false)}
+								isOpen={isOpenIpModal}
+								header={'История активности'}
+								icon={<ScanEye className='text-primary-pink' />}
+							>
+								<div className=''>
+									<div className='h-full w-full'>
+										<div className='Welcome-box items-center justify-center flex w-full h-[150px] rounded-lg Welcome-text font-bold'>
+											В разработке
+										</div>
+									</div>
 								</div>
 							</Modal>
 						)}

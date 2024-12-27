@@ -4,6 +4,8 @@ import { useProfileData } from '@/hooks/useProfileData'
 import { Suspense, useEffect } from 'react'
 import Safety from './safety/Safety'
 import { Skeleton } from '../skeleton'
+import { Loader } from 'lucide-react'
+import Information from './information/Information'
 
 export default function UserInfo() {
 	const { userProfile, isLoading } = useProfileData()
@@ -14,14 +16,11 @@ export default function UserInfo() {
 	}, [userProfile])
 
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<h1>User Profile</h1>
-			{isLoading ? (
-				<Skeleton className='h-2 w-full rounded-lg' />
-			) : (
-				<p>Nickname: {userProfile?.user.displayName || 'Guest'}</p>
-			)}
-			<div className='mt-5'>
+		<Suspense fallback={<div><Loader /></div>}>
+			<div className='mb-20'>
+				<Information />
+			</div>
+			<div className=''>
 				<Safety />
 			</div>
 		</Suspense>
