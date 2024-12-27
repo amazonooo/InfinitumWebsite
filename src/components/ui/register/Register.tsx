@@ -9,74 +9,103 @@ import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { slideInFromLeft, slideInFromRight } from '@/utils/motion'
 import { PROJECT_NAME } from '@/constants/api.constants'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import styles from '../field/Field.module.scss'
 import { cn } from '@/lib/utils'
 import { Eye, EyeOff, KeyRound, Mail, Pickaxe } from 'lucide-react'
 import Link from 'next/link'
 import { Checkbox } from '../checkbox'
 import zxcvbn from 'zxcvbn'
+import debounce from 'lodash.debounce'
 
 export default function Register() {
-  const [isShowPassword, setIsShowPassword] = useState(false)
-  const [isButtonClicked, setIsButtonClicked] = useState(false)
-  const [buttonKey, setButtonKey] = useState(0)
+	const [isShowPassword, setIsShowPassword] = useState(false)
+	const [isButtonClicked, setIsButtonClicked] = useState(false)
+	const [buttonKey, setButtonKey] = useState(0)
 	const [isChecked, setIsChecked] = useState(false)
 	const [usernameError, setUsernameError] = useState('')
 	const [emailError, setEmailError] = useState('')
-	const [passwordStrenlgthError, setPasswordStrengthError] = useState('')
+	const [passwordStrengthError, setPasswordStrengthError] = useState('')
 
-  const router = useRouter()
+	const router = useRouter()
 
-  const { mutate: registerMode } = useMutation({
-    mutationKey: ['register'],
-    mutationFn: (data: IAuthForm) => authService.register(data),
-    onSuccess: () => {
-      router.replace('/profile'),
-      toast.success('Успешная регистрация')
+	const { mutate: registerMode } = useMutation({
+		mutationKey: ['register'],
+		mutationFn: (data: IAuthForm) => authService.register(data),
+		onSuccess: () => {
+			router.replace('/profile'), toast.success('Успешная регистрация')
 			reset()
-    },
-    onError: (error) => {
-      console.log('Ошибка регистрации: ', error)
-    }
-  })
+		},
+		onError: error => {
+			console.log('Ошибка регистрации: ', error)
+		},
+	})
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		reset,
+		trigger,
+		setValue,
 	} = useForm<IAuthForm>({
 		mode: 'onChange',
 	})
 
-  const handleButtonClick = () => {
-    setIsButtonClicked(true)
+	const handleButtonClick = () => {
+		setIsButtonClicked(true)
 
-    if (errors.email || errors.username || errors.password) {
-      setButtonKey((prevKey) => prevKey + 1)
-      toast.error('Пожалуйста, заполните все поля')
-    }
-		if(usernameError) {
+		if (errors.email || errors.username || errors.password) {
+			setButtonKey(prevKey => prevKey + 1)
+			toast.error('Пожалуйста, заполните все поля')
+		}
+		if (usernameError) {
 			toast.error('Имя пользователя уже занято')
 		}
-		if(emailError) {
+		if (emailError) {
 			toast.error('Пользователь с таким email уже зарегистрирован')
 		}
-  }
+	}
 
-  const onSubmit: SubmitHandler<IAuthForm> = (data) => {
+	const onSubmit: SubmitHandler<IAuthForm> = data => {
 		const result = zxcvbn(data.password)
 		if (result.score <= 1) {
-			setPasswordStrengthError(
-				'Пароль слишком простой'
-			)
+			setPasswordStrengthError('Пароль слишком простой')
 			return
 		}
-    registerMode(data)
-  }
+		registerMode(data)
+	}
 
-  return (
+	const debouncedCheck = useCallback(
+		debounce(async (value: string, type: 'email' | 'username') => {
+			try {
+				const isAvailable = await authService.checkAvailability(type, value)
+				if (!isAvailable) {
+					if (type === 'email') setEmailError('Почта уже используется')
+					else setUsernameError('Ник уже используется')
+				} else {
+					if (type === 'email') setEmailError('')
+					else setUsernameError('')
+				}
+			} catch (error) {}
+		}, 300),
+		[]
+	)
+
+	const handleChange = async (
+		e: React.ChangeEvent<HTMLInputElement>,
+		type: 'email' | 'username'
+	) => {
+		const value = e.target.value
+		setValue(type, value)
+		await trigger(type)
+
+		if (!errors.username) {
+			debouncedCheck(value, type)
+		}
+	}
+
+	return (
 		<LazyMotion features={domAnimation}>
 			<m.div initial='hidden' animate='visible'>
 				<m.div
@@ -121,32 +150,17 @@ export default function Register() {
 													'Имя пользователя должно состоять минимум из 4 символов',
 											},
 										})}
-										onBlur={e => {
-											const value = e.target.value
-											if (value) {
-												authService
-													.checkAvailability('username', value)
-													.then(isAvailable => {
-														if (!isAvailable) {
-															setUsernameError('Этот никнейм уже используется')
-														} else {
-															setUsernameError('') // Очистить ошибку, если доступно
-														}
-													})
-													.catch(error => {
-														console.log('Failed to check availability: ', error)
-													})
-											}
-										}}
+										onChange={e => handleChange(e, 'username')}
 									/>
 								</label>
-								{usernameError && (
+								{usernameError ? (
 									<p className='text-red-500 text-sm mb-1'>{usernameError}</p>
-								)}
-								{errors.username && (
-									<p className='text-red-500 text-sm mb-1'>
-										{errors.username.message}
-									</p>
+								) : (
+									errors.username && (
+										<p className='text-red-500 text-sm mb-1'>
+											{errors.username.message}
+										</p>
+									)
 								)}
 								<label className={cn(styles.field, 'mt-6 mb-2')}>
 									<div className={styles.icon}>
@@ -161,23 +175,7 @@ export default function Register() {
 											pattern:
 												/^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
 										})}
-										onBlur={e => {
-											const value = e.target.value
-											if (value) {
-												authService
-													.checkAvailability('email', value)
-													.then(isAvailable => {
-														if (!isAvailable) {
-															setEmailError('Почта уже используется')
-														} else {
-															setEmailError('') // Очистить ошибку, если доступно
-														}
-													})
-													.catch(error => {
-														console.log('Failed to check availability: ', error)
-													})
-											}
-										}}
+										// onChange={(e) => handleChange(e, 'email')}
 									/>
 								</label>
 								{emailError && (
@@ -218,17 +216,17 @@ export default function Register() {
 												setPasswordStrengthError('')
 											}
 										}}
-										/>
+									/>
 									<div
 										className={styles.icon}
 										onClick={() => setIsShowPassword(!isShowPassword)}
-										>
+									>
 										{isShowPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{passwordStrenlgthError && (
+								{passwordStrengthError && (
 									<p className='text-red-500 text-sm mb-1'>
-										{passwordStrenlgthError}
+										{passwordStrengthError}
 									</p>
 								)}
 								{errors.password && (

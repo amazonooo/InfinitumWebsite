@@ -1,11 +1,15 @@
 import { axiosClassic } from '@/api/interceptors'
-import { removeFromStorage, saveAccessTokenToStorage } from './auth-token.service'
+import {
+	removeFromStorage,
+	saveAccessTokenToStorage,
+} from './auth-token.service'
 import {
 	IAuthResponse,
 	IAuthForm,
 	ILoginForm,
 	IConfirmPassword,
 } from '@/types/auth.types'
+import { useQuery } from '@tanstack/react-query'
 
 export const authService = {
 	async login(data: ILoginForm) {
@@ -40,7 +44,8 @@ export const authService = {
 			'/auth/login/access-token'
 		)
 
-		if (response.data.accessToken) saveAccessTokenToStorage(response.data.accessToken)
+		if (response.data.accessToken)
+			saveAccessTokenToStorage(response.data.accessToken)
 
 		return response
 	},
@@ -53,10 +58,7 @@ export const authService = {
 		return response
 	},
 
-	async checkAvailability(
-		type: 'username' | 'email',
-		value: string
-	): Promise<boolean> {
+	async checkAvailability(type: 'username' | 'email', value: string) {
 		const response = await axiosClassic.get(
 			`/auth/register/${type}-available`,
 			{
