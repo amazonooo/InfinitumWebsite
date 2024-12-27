@@ -120,23 +120,8 @@ export default function Login() {
 										type={isShowPassword ? 'text' : 'password'}
 										{...register('password', {
 											required: true,
-											validate: {
-												minLength: value =>
-													value.length >= 8 ||
-													'Пароль должен содержать минимум 8 символов',
-												maxLength: value =>
-													value.length <= 128 ||
-													'Пароль должен содержать максимум 128 символов',
-												// hasUpperCase: value =>
-												// 	/[A-Z]/.test(value) ||
-												// 	'Пароль должен содержать хотя бы одну заглавную букву',
-												hasLowerCase: value =>
-													/[a-z]/.test(value) ||
-													'Пароль должен содержать хотя бы одну строчную букву',
-												hasNumber: value =>
-													/[0-9]/.test(value) ||
-													'Пароль должен содержать хотя бы одну цифру',
-											},
+											minLength: 4,
+											maxLength: 16
 										})}
 									/>
 									<div
@@ -146,9 +131,6 @@ export default function Login() {
 										{isShowPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{errors.password && <p className='text-red-500 text-sm mb-1'>
-									{errors.password.message}	
-								</p>}
 								<Link
 									className='text-white/60 hover:text-white transition-colors duration-300'
 									href={'/reset-password'}

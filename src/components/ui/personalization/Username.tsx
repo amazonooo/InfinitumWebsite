@@ -15,7 +15,7 @@ export default function Username() {
 				</div>
 			) : (
 				<h1 className='text-2xl font-bold text-white mb-6'>
-					{userProfile?.user.username || 'Гость'}
+					{userProfile?.user?.displayName || 'Гость'}
 				</h1>
 			)}
 		</Suspense>

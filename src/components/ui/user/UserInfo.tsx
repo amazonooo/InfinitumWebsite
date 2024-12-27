@@ -19,7 +19,7 @@ export default function UserInfo() {
 			{isLoading ? (
 				<Skeleton className='h-2 w-full rounded-lg' />
 			) : (
-				<p>Nickname: {userProfile?.user.username || 'Guest'}</p>
+				<p>Nickname: {userProfile?.user.displayName || 'Guest'}</p>
 			)}
 			<div className='mt-5'>
 				<Safety />

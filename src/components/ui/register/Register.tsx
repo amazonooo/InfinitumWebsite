@@ -82,7 +82,7 @@ export default function Register() {
 				const isAvailable = await authService.checkAvailability(type, value)
 				if (!isAvailable) {
 					if (type === 'email') setEmailError('Почта уже используется')
-					else setUsernameError('Ник уже используется')
+					else setUsernameError('Имя пользователя уже занято')
 				} else {
 					if (type === 'email') setEmailError('')
 					else setUsernameError('')
@@ -175,7 +175,6 @@ export default function Register() {
 											pattern:
 												/^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
 										})}
-										// onChange={(e) => handleChange(e, 'email')}
 									/>
 								</label>
 								{emailError && (
@@ -210,7 +209,7 @@ export default function Register() {
 											const result = zxcvbn(e.target.value)
 											if (result.score <= 1) {
 												setPasswordStrengthError(
-													'Пароль слишком простой. Попробуйте использовать сложный пароль.'
+													'Пароль слишком простой'
 												)
 											} else {
 												setPasswordStrengthError('')
