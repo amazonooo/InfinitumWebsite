@@ -27,7 +27,7 @@ export default function Login() {
     mutationKey: ['login'],
     mutationFn: (data: ILoginForm) => authService.login(data),
     onSuccess: () => {
-      router.replace('/profile')
+      router.push('/profile')
       toast.success('Успешный вход')
     },
     onError: (error: ResponseError) => {

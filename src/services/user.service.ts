@@ -1,4 +1,5 @@
 import { axiosWithAuth } from '@/api/interceptors'
+import { IChangePasswordDto } from '@/components/ui/user/safety/Safety'
 import { API_URL } from '@/constants/api.constants'
 import { IUserProfile } from '@/types/user.types'
 
@@ -7,6 +8,14 @@ class UserService {
 
 	async getUserProfile() {
 		const response = await axiosWithAuth.get<IUserProfile>(this.BASE_URL)
+		return response.data
+	}
+
+	async changePassword(data: IChangePasswordDto) {
+		const response = await axiosWithAuth.patch<IUserProfile>(
+			`${this.BASE_URL}/settings/change-password`,
+			data
+		)
 		return response.data
 	}
 }

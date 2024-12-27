@@ -20,9 +20,10 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 		return NextResponse.next()
 	}
 
-	if (isProfilePage && !refreshToken) {
-		return NextResponse.redirect(new URL(ENDPOINTS.LOGIN, url))
-	}
+	// Раскомментить на проде
+	// if (isProfilePage && !refreshToken) {
+	// 	return NextResponse.redirect(new URL(ENDPOINTS.LOGIN, url))
+	// }
 
 	return NextResponse.next()
 }

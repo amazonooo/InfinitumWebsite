@@ -9,31 +9,48 @@ import { useEffect, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { authService } from '@/services/auth.service'
 import { toast } from 'react-toastify'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSearchParams } from 'next/navigation'
+import zxcvbn from 'zxcvbn'
+import { useRouter } from 'next/router'
+
+export interface IResetPasswordConfirmForm {
+	password: string
+	passwordRepeat: string
+}
+
+interface IResetPasswordData {
+	password: string
+	token: string
+}
 
 export default function Confirm() {
-  const [newPassword, setNewPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [isShowNewPassword, setIsShowNewPassword] = useState(false)
-  const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
+	const [newPassword, setNewPassword] = useState('')
+	const [confirmPassword, setConfirmPassword] = useState('')
+	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
+	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
 	const [isButtonClicked, setIsButtonClicked] = useState(false)
 	const [buttonKey, setButtonKey] = useState(0)
+	const [passwordStrenlgthError, setPasswordStrengthError] = useState('')
+
+	const router = useRouter()
 
 	const searchParams = useSearchParams()
 	const token = searchParams.get('token')
 
 	const { mutate: confirm } = useMutation({
 		mutationKey: ['confirm-reset-password'],
-		mutationFn: ({password, token}: { password: string, token: string }) => authService.resetPasswordConfirm(password, token),
+		mutationFn: ({ password, token }: IResetPasswordData) =>
+			authService.resetPasswordConfirm(password, token),
 		onSuccess: () => {
 			toast.success('Пароль восстановлен')
 			reset()
+			router.push('/login')
 		},
 		onError: (error: any) => {
 			toast.error('Ошибка восстановления пароля')
 			console.log(error)
-		}
+		},
 	})
 
 	const {
@@ -41,15 +58,21 @@ export default function Confirm() {
 		handleSubmit,
 		formState: { errors },
 		reset,
-	} = useForm({
+	} = useForm<IResetPasswordConfirmForm>({
 		mode: 'onChange',
 	})
 
-	const onSubmit = (data: any) => {
+	const onSubmit: SubmitHandler<IResetPasswordConfirmForm> = data => {
 		if (!token) {
 			toast.error('Токен отсутствует')
 			return
 		}
+
+		if (data.password !== data.passwordRepeat) {
+			toast.error('Пароли не совпадают')
+			return
+		}
+
 		confirm({ password: data.password, token })
 	}
 
@@ -74,8 +97,8 @@ export default function Confirm() {
 										<KeyRound />
 									</div>
 									<input
-										className='bg-transparent outline-none truncate'
-										placeholder='Новый пароль'
+										className='bg-transparent outline-none'
+										placeholder='Пароль'
 										type={isShowNewPassword ? 'text' : 'password'}
 										{...register('password', {
 											required: true,
@@ -86,9 +109,6 @@ export default function Confirm() {
 												maxLength: value =>
 													value.length <= 128 ||
 													'Пароль должен содержать максимум 128 символов',
-												// hasUpperCase: value =>
-												// 	/[A-Z]/.test(value) ||
-												// 	'Пароль должен содержать хотя бы одну заглавную букву',
 												hasLowerCase: value =>
 													/[a-z]/.test(value) ||
 													'Пароль должен содержать хотя бы одну строчную букву',
@@ -97,6 +117,16 @@ export default function Confirm() {
 													'Пароль должен содержать хотя бы одну цифру',
 											},
 										})}
+										onBlur={e => {
+											const result = zxcvbn(e.target.value)
+											if (result.score <= 1) {
+												setPasswordStrengthError(
+													'Пароль слишком простой. Попробуйте использовать сложный пароль.'
+												)
+											} else {
+												setPasswordStrengthError('')
+											}
+										}}
 									/>
 									<div
 										className={styles.icon}
@@ -105,6 +135,16 @@ export default function Confirm() {
 										{isShowNewPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
+								{passwordStrenlgthError && (
+									<p className='text-red-500 text-sm mb-1'>
+										{passwordStrenlgthError}
+									</p>
+								)}
+								{errors.password && (
+									<p className='text-red-500 text-sm mb-1'>
+										{errors.password.message}
+									</p>
+								)}
 								<label className={cn(styles.field, 'mb-2 mt-6')}>
 									<div className={styles.icon}>
 										<Check />
@@ -113,7 +153,7 @@ export default function Confirm() {
 										className='bg-transparent outline-none truncate'
 										placeholder='Введи новый пароль повторно'
 										type={isShowAgreePassword ? 'text' : 'password'}
-										{...register('new-password', {
+										{...register('passwordRepeat', {
 											required: true,
 											validate: {
 												minLength: value =>
@@ -122,9 +162,6 @@ export default function Confirm() {
 												maxLength: value =>
 													value.length <= 128 ||
 													'Пароль должен содержать максимум 128 символов',
-												// hasUpperCase: value =>
-												// 	/[A-Z]/.test(value) ||
-												// 	'Пароль должен содержать хотя бы одну заглавную букву',
 												hasLowerCase: value =>
 													/[a-z]/.test(value) ||
 													'Пароль должен содержать хотя бы одну строчную букву',
@@ -133,6 +170,16 @@ export default function Confirm() {
 													'Пароль должен содержать хотя бы одну цифру',
 											},
 										})}
+										onBlur={e => {
+											const result = zxcvbn(e.target.value)
+											if (result.score <= 1) {
+												setPasswordStrengthError(
+													'Пароль слишком простой. Попробуйте использовать сложный пароль.'
+												)
+											} else {
+												setPasswordStrengthError('')
+											}
+										}}
 									/>
 									<div
 										className={styles.icon}
@@ -141,12 +188,23 @@ export default function Confirm() {
 										{isShowAgreePassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
+								{passwordStrenlgthError && (
+									<p className='text-red-500 text-sm mb-1'>
+										{passwordStrenlgthError}
+									</p>
+								)}
+								{errors.passwordRepeat && (
+									<p className='text-red-500 text-sm mb-1'>
+										{errors.passwordRepeat.message}
+									</p>
+								)}
 								<div className='mb-3 mt-8 text-center'>
 									<button
 										type='submit'
 										// key={buttonKey}
 										className={
-											isButtonClicked && (errors.identifier || errors.password)
+											isButtonClicked &&
+											(errors.password || errors.passwordRepeat)
 												? styles.buttonError
 												: styles.form_btn
 										}
@@ -161,5 +219,4 @@ export default function Confirm() {
 			</m.div>
 		</LazyMotion>
 	)
-
 }

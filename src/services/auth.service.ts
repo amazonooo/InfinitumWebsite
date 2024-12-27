@@ -1,6 +1,11 @@
 import { axiosClassic } from '@/api/interceptors'
-import { removeFromStorage, saveTokenToStorage } from './auth-token.service'
-import { IAuthResponse, IAuthForm, ILoginForm, IConfirmPassword } from '@/types/auth.types'
+import { removeFromStorage, saveAccessTokenToStorage } from './auth-token.service'
+import {
+	IAuthResponse,
+	IAuthForm,
+	ILoginForm,
+	IConfirmPassword,
+} from '@/types/auth.types'
 
 export const authService = {
 	async login(data: ILoginForm) {
@@ -9,8 +14,7 @@ export const authService = {
 		})
 
 		if (response.data.accessToken) {
-			saveTokenToStorage(response.data.accessToken)
-			console.log(response.data.accessToken)
+			saveAccessTokenToStorage(response.data.accessToken)
 		}
 
 		return response
@@ -23,7 +27,7 @@ export const authService = {
 		)
 
 		if (response.data?.accessToken) {
-			saveTokenToStorage(response.data.accessToken)
+			saveAccessTokenToStorage(response.data.accessToken)
 		} else {
 			throw new Error('Access token is missing in the response.')
 		}
@@ -36,7 +40,7 @@ export const authService = {
 			'/auth/login/access-token'
 		)
 
-		if (response.data.accessToken) saveTokenToStorage(response.data.accessToken)
+		if (response.data.accessToken) saveAccessTokenToStorage(response.data.accessToken)
 
 		return response
 	},
@@ -60,7 +64,6 @@ export const authService = {
 			}
 		)
 
-		console.log(response.data)
 		return response.data
 	},
 
@@ -71,10 +74,13 @@ export const authService = {
 	},
 
 	async resetPasswordConfirm(password: string, token: string) {
-		const response = await axiosClassic.post<IConfirmPassword>(`/auth/reset-password`, {
-			data: password,
-			params: { token }
-		})
+		const response = await axiosClassic.post<IConfirmPassword>(
+			`/auth/reset-password/confirm`,
+			{ password },
+			{
+				params: { token },
+			}
+		)
 		return response
 	},
 }
