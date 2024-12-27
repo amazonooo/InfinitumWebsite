@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react'
 import Heading from '@/components/ui/Heading'
 import { FaApple, FaLinux, FaWindows } from 'react-icons/fa6'
 import Faq from './Faq'
-import { Button } from '@/components/ui/button'
-import { Check } from 'lucide-react'
+import styles from '@/components/ui/field/Field.module.scss'
 
 export default function PlayHero() {
 	const [userPlatform, setUserPlatform] = useState('')
@@ -90,23 +89,20 @@ export default function PlayHero() {
 				<div className='grid grid-cols-1 lg:grid-cols-3 gap-x-7 gap-y-6 pt-8'>
 					<div
 						id='macOS'
-						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg relative ${
+						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg relative h-[400px] ${
 							userPlatform === 'macOS' ? 'Welcome-box' : ''
 						}`}
 					>
 						{userPlatform === 'macOS' ? (
-							<div className='absolute top-2 right-2 bg-main-black border border-white/20 p-2 rounded-lg Welcome-text font-bold'>
+							<div className='absolute top-8 right-6 bg-main-black border border-white/20 p-2 rounded-lg Welcome-text font-bold'>
 								Ваш выбор
 							</div>
 						) : (
 							''
 						)}
 						<div className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
-							<span>
-								<h2 className='Welcome-text text-center text-2xl'>MacOS</h2>
-								<FaApple size={27} className='text-primary-pink mb-1.5' />
-							</span>
-							{/*  */}
+							<h2 className='Welcome-text text-center text-2xl'>MacOS</h2>
+							<FaApple size={27} className='text-primary-pink mb-1.5' />
 						</div>
 						<ul className='flex flex-col gap-y-4'>
 							<li>
@@ -120,15 +116,18 @@ export default function PlayHero() {
 								</span>
 							</li>
 						</ul>
+						<div className='mt-12 left-1/2 -translate-x-1/2 absolute bottom-7 w-[200px]'>
+							<button className={styles.form_btn}>Скачать</button>
+						</div>
 					</div>
 					<div
 						id='windows'
-						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg ${
+						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg relative h-[400px] ${
 							userPlatform === 'windows' ? 'Welcome-box' : ''
 						}`}
 					>
 						{userPlatform === 'windows' ? (
-							<div className='absolute top-2 right-2 bg-main-black border border-white/20 p-2 rounded-lg Welcome-text font-bold'>
+							<div className='absolute top-8 right-6 bg-main-black border border-white/20 p-2 rounded-lg Welcome-text font-bold'>
 								Ваш выбор
 							</div>
 						) : (
@@ -142,15 +141,18 @@ export default function PlayHero() {
 							<li>1. Скачай установщик для Windows</li>
 							<li>2. Запустите и следуйте инструкциям</li>
 						</ul>
+						<div className='mt-12 left-1/2 -translate-x-1/2 absolute bottom-7 w-[200px]'>
+							<button className={styles.form_btn}>Скачать</button>
+						</div>
 					</div>
 					<div
 						id='linux'
-						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg ${
+						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg relative h-[400px] ${
 							userPlatform === 'linux' ? 'Welcome-box' : ''
 						}`}
 					>
 						{userPlatform === 'linux' ? (
-							<div className='absolute top-2 right-2 bg-main-black border border-white/20 p-2 rounded-lg Welcome-text font-bold'>
+							<div className='absolute top-8 right-6 bg-main-black border border-white/20 p-2 rounded-lg Welcome-text font-bold'>
 								Ваш выбор
 							</div>
 						) : (
@@ -164,6 +166,10 @@ export default function PlayHero() {
 							<li>1. Откройте терминал и скачайте образ</li>
 							<li>2. Установите, следуя инструкции на экране</li>
 						</ul>
+
+						<div className='mt-12 left-1/2 -translate-x-1/2 absolute bottom-7 w-[200px]'>
+							<button className={styles.form_btn}>Скачать</button>
+						</div>
 					</div>
 				</div>
 
