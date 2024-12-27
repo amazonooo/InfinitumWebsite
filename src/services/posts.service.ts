@@ -6,7 +6,9 @@ class PostsService {
   private BASE_URL = `${API_URL}/posts`
 
   async getPosts(page: number): Promise<IPosts[]> {
-    const response = await axiosClassic.get(`${this.BASE_URL}?page=${page}&limit=8`)
+    const response = await axiosClassic.get(`${this.BASE_URL}`, {
+      params: { page }
+    })
 
     return response.data
   }

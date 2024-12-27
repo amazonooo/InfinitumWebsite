@@ -2,7 +2,16 @@
 
 import { FC, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Eye, KeyRound, EyeOff, Trash2, Check, ShieldHalf, ArrowBigLeft, Loader2 } from 'lucide-react'
+import {
+	Eye,
+	KeyRound,
+	EyeOff,
+	Trash2,
+	Check,
+	ShieldHalf,
+	ArrowBigLeft,
+	Loader2,
+} from 'lucide-react'
 import styles from '../../field/Field.module.scss'
 import { cn } from '@/lib/utils'
 import { FaDiscord, FaTelegram, FaVk } from 'react-icons/fa6'
@@ -11,11 +20,15 @@ import Logout from './Logout'
 import Modal from '../../modal/Modal'
 import { FloatingDock } from '../../floating-dock'
 import { useChangePassword } from '@/hooks/useChangePassword'
-import { updatePassword } from '@/services/update-password.service'
+import { useMutation } from '@tanstack/react-query'
+import { userService } from '@/services/user.service'
+
+export interface IChangePasswordDto {
+	currentPassword: string
+	newPassword: string
+}
 
 const Safety: FC = () => {
-	const { changePassword, isLoading } = useChangePassword()
-
 	const [isTwoFactorOpen, setIsTwoFactorOpen] = useState(false)
 	const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false)
 
@@ -32,7 +45,23 @@ const Safety: FC = () => {
 		setStep(step + 1)
 	}
 
-  const handleChangePassword = async () => {
+	const { mutate: changePassword, isPending } = useMutation({
+		mutationKey: ['change-password'],
+		mutationFn: (data: IChangePasswordDto) => userService.changePassword(data),
+		onSuccess: () => {
+			toast.success('Пароль успешно изменён')
+			setIsChangePasswordOpen(false)
+			setCurrentPassword('')
+			setNewPassword('')
+			setConfirmPassword('')
+		},
+		onError: error => {
+			toast.error('Ошибка при смене пароля')
+			console.error('Ошибка при смене пароля: ', error)
+		},
+	})
+
+	const handleChangePassword = async () => {
 		if (!currentPassword || !newPassword || !confirmPassword) {
 			toast.error('Заполните все поля')
 			return
@@ -42,46 +71,38 @@ const Safety: FC = () => {
 			toast.error('Новый пароль не совпадает')
 			return
 		}
-
-		try {
-			await updatePassword.UpdatePassword(currentPassword, newPassword, confirmPassword)
-			toast.success('Пароль успешно изменён')
-			setIsChangePasswordOpen(false)
-			setCurrentPassword('')
-			setNewPassword('')
-			setConfirmPassword('')
-		} catch (error) {
-			toast.error('Ошибка при смене пароля')
-			console.error('Ошибка при смене пароля: ', error)
-		}
+		changePassword({
+			currentPassword,
+			newPassword,
+		})
 	}
 
-	 const links = [
-			{
-				title: 'Телеграм',
-				icon: (
-					<FaTelegram className='h-full w-full text-neutral-500 dark:text-neutral-300' />
-				),
-				href: '#!',
-			},
+	const links = [
+		{
+			title: 'Телеграм',
+			icon: (
+				<FaTelegram className='h-full w-full text-neutral-500 dark:text-neutral-300' />
+			),
+			href: '#!',
+		},
 
-			{
-				title: 'Дискорд',
-				icon: (
-					<FaDiscord className='h-full w-full text-neutral-500 dark:text-neutral-300' />
-				),
-				href: '#!',
-			},
-			{
-				title: 'Вконтакте',
-				icon: (
-					<FaVk className='h-full w-full text-neutral-500 dark:text-neutral-300' />
-				),
-				href: '#!',
-			},
-		]
+		{
+			title: 'Дискорд',
+			icon: (
+				<FaDiscord className='h-full w-full text-neutral-500 dark:text-neutral-300' />
+			),
+			href: '#!',
+		},
+		{
+			title: 'Вконтакте',
+			icon: (
+				<FaVk className='h-full w-full text-neutral-500 dark:text-neutral-300' />
+			),
+			href: '#!',
+		},
+	]
 
-  return (
+	return (
 		<div className='rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'>
 			<div className='py-7 px-3 md:px-5 lg:px-7 xl:px-8'>
 				<h1 className='text-center Welcome-text text-3xl xl:text-4xl'>
@@ -239,10 +260,10 @@ const Safety: FC = () => {
 									</label>
 									<Button
 										onClick={handleChangePassword}
-										disabled={isLoading}
+										disabled={isPending}
 										className='text-center mt-6'
 									>
-										{isLoading ? (
+										{isPending ? (
 											<Loader2 className='animate-spin' />
 										) : (
 											'Подтвердить'
