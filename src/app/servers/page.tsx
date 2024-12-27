@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 	title: 'Серверы',
 }
 
-export const relalidate = 600
+export const revalidate = 600
 
 async function getClients() {
 	const data = await clientsService.getClients()
@@ -15,7 +15,7 @@ async function getClients() {
 	return data
 }
 
-export default async function NewsPage() {
+export default async function ServersPage() {
 	const data = await getClients()
 	return (
 		<section className='h-full w-full flex flex-col overflow-x-clip max-w-[1440px] mx-auto px-5 sm:px-10'>
