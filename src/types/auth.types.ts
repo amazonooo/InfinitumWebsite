@@ -12,6 +12,11 @@ export interface IAuthForm {
 	password: string
 }
 
+export interface IConfirmPassword {
+	currentPassword: string
+	newPassword: string
+}
+
 export interface IAuthResponse {
 	user: IUser
 	accessToken: string

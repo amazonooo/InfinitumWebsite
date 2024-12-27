@@ -1,12 +1,11 @@
 import { axiosClassic } from '@/api/interceptors'
 import { removeFromStorage, saveTokenToStorage } from './auth-token.service'
-import { IAuthResponse, IAuthForm, ILoginForm } from '@/types/auth.types'
+import { IAuthResponse, IAuthForm, ILoginForm, IConfirmPassword } from '@/types/auth.types'
 
 export const authService = {
 	async login(data: ILoginForm) {
 		const response = await axiosClassic.post<IAuthResponse>(`/auth/login`, {
 			...data,
-			type: data.type,
 		})
 
 		if (response.data.accessToken) {
@@ -18,7 +17,10 @@ export const authService = {
 	},
 
 	async register(data: IAuthForm): Promise<IAuthResponse> {
-		const response = await axiosClassic.post<IAuthResponse>('/auth/register', data);
+		const response = await axiosClassic.post<IAuthResponse>(
+			'/auth/register',
+			data
+		)
 
 		if (response.data?.accessToken) {
 			saveTokenToStorage(response.data.accessToken)
@@ -47,21 +49,32 @@ export const authService = {
 		return response
 	},
 
-	async checkUsernameAvailability(username: string): Promise<boolean> {
-		const response = await axiosClassic.get(`/auth/register/username-available`, {
-			data: { username },
-		});
+	async checkAvailability(
+		type: 'username' | 'email',
+		value: string
+	): Promise<boolean> {
+		const response = await axiosClassic.get(
+			`/auth/register/${type}-available`,
+			{
+				params: { [type]: value },
+			}
+		)
 
-		console.log(response.data);
-		return response.data;
+		console.log(response.data)
+		return response.data
 	},
 
-	async checkEmailAvailability(email: string): Promise<boolean> {
-		const response = await axiosClassic.get(`/auth/register/email-available`, {
-			data: { email },
-		});
+	async resetPasswordRequest(email: string) {
+		const response = axiosClassic.post(`/auth/reset-password`, email)
 
-		console.log(response.data);
-		return response.data;
-	}
+		return response
+	},
+
+	async resetPasswordConfirm(password: string, token: string) {
+		const response = await axiosClassic.post<IConfirmPassword>(`/auth/reset-password`, {
+			data: password,
+			params: { token }
+		})
+		return response
+	},
 }

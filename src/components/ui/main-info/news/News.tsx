@@ -58,16 +58,14 @@ export default function News() {
 		}
 	}, [page])
 
-	if (isError) return <div>Error: {error.message}</div>
-
 	return (
 		<LazyMotion features={domAnimation}>
-			<m.div initial='hidden' animate='visible'>
-				{isLoading ? (
-					<div className='grid grid-cols-1 md:grid-cols-2 py-8 gap-12 items-center'>
-						<Skeleton className='h-auto w-[300px] sm:w-[450px] md:w-[350px] lg:w-[425px] xl:w-[550px] rounded-lg ' />
-					</div>
-				) : (
+			{isLoading ? (
+				<div className='grid grid-cols-1 md:grid-cols-2 py-8 gap-12 items-center'>
+					<Skeleton className='h-auto w-[300px] sm:w-[450px] md:w-[350px] lg:w-[425px] xl:w-[550px] rounded-lg ' />
+				</div>
+			) : (
+				<m.div initial='hidden' animate='visible'>
 					<m.div
 						variants={slideInFromLeft(0.3)}
 						className='grid grid-cols-1 md:grid-cols-2 py-8 gap-12 items-center'
@@ -104,8 +102,8 @@ export default function News() {
 							</Link>
 						))}
 					</m.div>
-				)}
-			</m.div>
+				</m.div>
+			)}
 		</LazyMotion>
 	)
 }

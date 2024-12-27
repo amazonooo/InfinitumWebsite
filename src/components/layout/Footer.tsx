@@ -32,7 +32,7 @@ const Footer: FC = () => {
 	// 	pathname !== '/servers/server-info'
 
 	const isNotFound = pathname === '/not-found'
-	const isRecoveryPage = pathname === '/recovery'
+	const isRecoveryPage = pathname === '/reset-password'
 
 
 	if (isLoggedLogin) return null

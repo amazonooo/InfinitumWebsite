@@ -1,6 +1,5 @@
 import { axiosWithAuth } from '@/api/interceptors'
 import { API_URL } from '@/constants/api.constants'
-import { saveTokenToStorage } from './auth-token.service'
 
 class UpdatePassword {
 	private BASE_URL = `${API_URL}/user/settings/change-password`

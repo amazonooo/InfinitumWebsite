@@ -31,7 +31,7 @@ export const Header = ({
 }) => {
 	const pathname = usePathname()
 
-	const isRecoveryPage = pathname === '/recovery'
+	const isRecoveryPage = pathname === '/reset-password'
 	const isLoggedLogin = pathname === '/login'
 	const isLoggedRegister = pathname === '/register'
 

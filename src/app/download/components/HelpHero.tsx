@@ -40,53 +40,43 @@ export default function PlayHero() {
 		<div className='w-full h-full'>
 			<div className='w-full relative'>
 				<div className='mt-16 lg:mt-40'>
-					<Heading
+					{/* <Heading
 						title={'Установить лаунчер'}
 						className='text-6xl font-bold'
 					/>
 					<div className='flex flex-col justify-center md:flex-row gap-6 items-center mt-8'>
 						<Button
-							className={`py-10 flex items-center gap-x-1.5 ${
-								userPlatform === 'macOS' ? 'Welcome-box' : ''
-							}`}
+							className={`py-10 flex items-center gap-x-1.5`}
 							size={'lg'}
 							onClick={() => handleScrollToSec('macOS')}
 						>
 							MacOS
 							<FaApple size={20} className='mb-1' />
 						</Button>
-						{/* {userPlatform === 'macOS' && <div>Ваша платформа</div>} */}
 						<div className='flex flex-col items-center'>
 							<Button
-								className={`py-10 flex items-center gap-x-1.5 ${
-									userPlatform === 'windows' ? 'Welcome-box' : ''
-								}`}
+								className={`py-10 flex items-center gap-x-1.5 `}
 								size={'lg'}
 								onClick={() => handleScrollToSec('windows')}
 							>
 								Windows
 								<FaWindows size={20} />
-								<Check className='ml-1' />
 							</Button>
-							{/* {userPlatform === 'windows' && <div>Ваша платформа</div>} */}
 						</div>
 						<Button
-							className={`py-10 flex items-center gap-x-1.5 ${
-								userPlatform === 'linux' ? 'Welcome-box' : ''
-							}`}
+							className={`py-10 flex items-center gap-x-1.5`}
 							size={'lg'}
 							onClick={() => handleScrollToSec('linux')}
 						>
 							Linux
 							<FaLinux size={20} />
 						</Button>
-						{/* {userPlatform === 'linux' && <div>Ваша платформа</div>} */}
-					</div>
+					</div> */}
 				</div>
 
 				<div className='mt-32'>
 					<Heading
-						title={'Инструкция по установке'}
+						title={'Установить лаунчер'}
 						className='text-6xl font-bold'
 					/>
 				</div>
@@ -100,12 +90,24 @@ export default function PlayHero() {
 				<div className='grid grid-cols-1 lg:grid-cols-3 gap-x-7 gap-y-6 pt-8'>
 					<div
 						id='macOS'
-						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg`}
+						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg relative ${
+							userPlatform === 'macOS' ? 'Welcome-box' : ''
+						}`}
 					>
-						<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
-							MacOS
-							<FaApple size={27} className='text-primary-pink mb-1.5' />
-						</h2>
+						{userPlatform === 'macOS' ? (
+							<div className='absolute top-2 right-2 bg-main-black border border-white/20 p-2 rounded-lg Welcome-text font-bold'>
+								Ваш выбор
+							</div>
+						) : (
+							''
+						)}
+						<div className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
+							<span>
+								<h2 className='Welcome-text text-center text-2xl'>MacOS</h2>
+								<FaApple size={27} className='text-primary-pink mb-1.5' />
+							</span>
+							{/*  */}
+						</div>
 						<ul className='flex flex-col gap-y-4'>
 							<li>
 								1. <span>Скачай образ, нажав на кнопку “скачать на macOS”</span>
@@ -121,8 +123,17 @@ export default function PlayHero() {
 					</div>
 					<div
 						id='windows'
-						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg`}
+						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg ${
+							userPlatform === 'windows' ? 'Welcome-box' : ''
+						}`}
 					>
+						{userPlatform === 'windows' ? (
+							<div className='absolute top-2 right-2 bg-main-black border border-white/20 p-2 rounded-lg Welcome-text font-bold'>
+								Ваш выбор
+							</div>
+						) : (
+							''
+						)}
 						<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
 							Windows
 							<FaWindows size={27} className='text-primary-pink mb-1' />
@@ -134,8 +145,17 @@ export default function PlayHero() {
 					</div>
 					<div
 						id='linux'
-						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg`}
+						className={`bg-main-black border border-white/20 px-7 py-10 max-w-[396px] flex flex-col rounded-lg ${
+							userPlatform === 'linux' ? 'Welcome-box' : ''
+						}`}
 					>
+						{userPlatform === 'linux' ? (
+							<div className='absolute top-2 right-2 bg-main-black border border-white/20 p-2 rounded-lg Welcome-text font-bold'>
+								Ваш выбор
+							</div>
+						) : (
+							''
+						)}
 						<h2 className='flex items-center gap-x-2.5 Welcome-text text-center text-2xl mb-10'>
 							Linux
 							<FaLinux size={27} className='text-primary-pink mb-1' />

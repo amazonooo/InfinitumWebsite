@@ -15,12 +15,16 @@ import { cn } from '@/lib/utils'
 import { Eye, EyeOff, KeyRound, Mail, Pickaxe } from 'lucide-react'
 import Link from 'next/link'
 import { Checkbox } from '../checkbox'
+import zxcvbn from 'zxcvbn'
 
 export default function Register() {
   const [isShowPassword, setIsShowPassword] = useState(false)
   const [isButtonClicked, setIsButtonClicked] = useState(false)
   const [buttonKey, setButtonKey] = useState(0)
 	const [isChecked, setIsChecked] = useState(false)
+	const [usernameError, setUsernameError] = useState('')
+	const [emailError, setEmailError] = useState('')
+	const [passwordStrenlgthError, setPasswordStrengthError] = useState('')
 
   const router = useRouter()
 
@@ -30,10 +34,10 @@ export default function Register() {
     onSuccess: () => {
       router.replace('/profile'),
       toast.success('Успешная регистрация')
+			reset()
     },
     onError: (error) => {
       console.log('Ошибка регистрации: ', error)
-      toast.error('Ошибка регистрации')
     }
   })
 
@@ -53,11 +57,23 @@ export default function Register() {
       setButtonKey((prevKey) => prevKey + 1)
       toast.error('Пожалуйста, заполните все поля')
     }
+		if(usernameError) {
+			toast.error('Имя пользователя уже занято')
+		}
+		if(emailError) {
+			toast.error('Пользователь с таким email уже зарегистрирован')
+		}
   }
 
   const onSubmit: SubmitHandler<IAuthForm> = (data) => {
+		const result = zxcvbn(data.password)
+		if (result.score <= 1) {
+			setPasswordStrengthError(
+				'Пароль слишком простой'
+			)
+			return
+		}
     registerMode(data)
-    reset()
   }
 
   return (
@@ -94,30 +110,39 @@ export default function Register() {
 										type='text'
 										{...register('username', {
 											required: true,
-											validate: {
-												minLength: value =>
-													value.length >= 4 ||
-													'Имя пользователя должно состоять минимум из 4 символов',
-												maxLength: value =>
-													value.length <= 16 ||
+											maxLength: {
+												value: 16,
+												message:
 													'Имя пользователя должно содержать не более 16 символов',
 											},
-											// pattern: {
-											// 	value: /^(?=.*[a-z])(?=.*\d)[A-Za-z\d!@#$&]{8,}$/,
-											// 	message:
-											// 		'Пароль должен содержать минимум одну букву, одну цифру и быть длиной не менее 8 символов',
-											// },
-
-											// validate: async (username: string) => {
-											// 	const response =
-											// 		await authService.checkUsernameAvailability(username)
-											// 	if (!response) {
-											// 		return 'Ник уже используется'
-											// 	}
-											// },
+											minLength: {
+												value: 4,
+												message:
+													'Имя пользователя должно состоять минимум из 4 символов',
+											},
 										})}
+										onBlur={e => {
+											const value = e.target.value
+											if (value) {
+												authService
+													.checkAvailability('username', value)
+													.then(isAvailable => {
+														if (!isAvailable) {
+															setUsernameError('Этот никнейм уже используется')
+														} else {
+															setUsernameError('') // Очистить ошибку, если доступно
+														}
+													})
+													.catch(error => {
+														console.log('Failed to check availability: ', error)
+													})
+											}
+										}}
 									/>
 								</label>
+								{usernameError && (
+									<p className='text-red-500 text-sm mb-1'>{usernameError}</p>
+								)}
 								{errors.username && (
 									<p className='text-red-500 text-sm mb-1'>
 										{errors.username.message}
@@ -134,17 +159,30 @@ export default function Register() {
 										{...register('email', {
 											required: true,
 											pattern:
-												/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-											// validate: async (email: string) => {
-											// 	const response =
-											// 		await authService.checkEmailAvailability(email)
-											// 	if (!response) {
-											// 		return 'Почта уже используется'
-											// 	}
-											// },
+												/^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
 										})}
+										onBlur={e => {
+											const value = e.target.value
+											if (value) {
+												authService
+													.checkAvailability('email', value)
+													.then(isAvailable => {
+														if (!isAvailable) {
+															setEmailError('Почта уже используется')
+														} else {
+															setEmailError('') // Очистить ошибку, если доступно
+														}
+													})
+													.catch(error => {
+														console.log('Failed to check availability: ', error)
+													})
+											}
+										}}
 									/>
 								</label>
+								{emailError && (
+									<p className='text-red-500 text-sm mb-1'>{emailError}</p>
+								)}
 								<label className={cn(styles.field, 'mt-6 mb-2')}>
 									<div className={styles.icon}>
 										<KeyRound />
@@ -162,9 +200,6 @@ export default function Register() {
 												maxLength: value =>
 													value.length <= 128 ||
 													'Пароль должен содержать максимум 128 символов',
-												// hasUpperCase: value =>
-												// 	/[A-Z]/.test(value) ||
-												// 	'Пароль должен содержать хотя бы одну заглавную букву',
 												hasLowerCase: value =>
 													/[a-z]/.test(value) ||
 													'Пароль должен содержать хотя бы одну строчную букву',
@@ -173,14 +208,29 @@ export default function Register() {
 													'Пароль должен содержать хотя бы одну цифру',
 											},
 										})}
-									/>
+										onBlur={e => {
+											const result = zxcvbn(e.target.value)
+											if (result.score <= 1) {
+												setPasswordStrengthError(
+													'Пароль слишком простой. Попробуйте использовать сложный пароль.'
+												)
+											} else {
+												setPasswordStrengthError('')
+											}
+										}}
+										/>
 									<div
 										className={styles.icon}
 										onClick={() => setIsShowPassword(!isShowPassword)}
-									>
+										>
 										{isShowPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
+								{passwordStrenlgthError && (
+									<p className='text-red-500 text-sm mb-1'>
+										{passwordStrenlgthError}
+									</p>
+								)}
 								{errors.password && (
 									<p className='text-red-500 text-sm mb-1'>
 										{errors.password.message}

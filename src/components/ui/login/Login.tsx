@@ -151,7 +151,7 @@ export default function Login() {
 								</p>}
 								<Link
 									className='text-white/60 hover:text-white transition-colors duration-300'
-									href={'/recovery'}
+									href={'/reset-password'}
 								>
 									Забыл пароль?
 								</Link>
