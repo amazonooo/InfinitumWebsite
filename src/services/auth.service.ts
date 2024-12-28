@@ -9,7 +9,6 @@ import {
 	ILoginForm,
 	IConfirmPassword,
 } from '@/types/auth.types'
-import { useQuery } from '@tanstack/react-query'
 
 export const authService = {
 	async login(data: ILoginForm) {

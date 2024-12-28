@@ -8,7 +8,6 @@ import {
 	useEffect,
 	useState,
 } from 'react'
-import Cookies from 'js-cookie'
 import { getAccessToken } from '@/services/auth-token.service'
 import { userService } from '@/services/user.service'
 
@@ -40,7 +39,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 			const token = getAccessToken()
 			setIsAuthenticated(!!token)
 		}
-
 		checkAuth()
 	}, [])
 
@@ -49,7 +47,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 			if (isAuthenticated) {
 				try {
 					const userProfile: any = await userService.getUserProfile()
-					setUser(userProfile) // Обновляем профиль
+					setUser(userProfile)
 					setIsEmailConfirmed(userProfile.emailConfirmed)
 				} catch (error) {
 					console.error('Ошибка при загрузке профиля', error)
@@ -62,12 +60,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		}
 	}, [isAuthenticated])
 
-	useEffect(() => {
-		const emailConfirmedFromCookie = Cookies.get('isEmailConfirmed')
-		if (emailConfirmedFromCookie === 'true') {
-			setIsEmailConfirmed(true)
-		}
-	}, [])
+	// useEffect(() => {
+	// 	const emailConfirmedFromCookie = Cookies.get('isEmailConfirmed')
+	// 	if (emailConfirmedFromCookie === 'true') {
+	// 		setIsEmailConfirmed(true)
+	// 	}
+	// }, [])
 
 	return (
 		<AuthContext.Provider

@@ -41,7 +41,7 @@ const Footer: FC = () => {
 	if (isRecoveryPage) return null
 
   return (
-		<footer className='mt-10 lg:mt-16 border border-white/20 isolate z-[10] rounded-lg w-full md:mb-0 mb-20 bg-main-black'>
+		<footer className='mt-10 lg:mt-16 border-t border-white/20 isolate z-[10] rounded-lg w-full md:mb-0 mb-20 bg-main-black'>
 			<div className='px-5 xl:px-10 mx-auto max-w-[1440px] rounded-full py-8 lg:py-3'>
 				<FooterNav />
 			</div>

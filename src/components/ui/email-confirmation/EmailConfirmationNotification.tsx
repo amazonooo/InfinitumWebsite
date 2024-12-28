@@ -27,7 +27,7 @@ export function EmailConfirmationNotification() {
 			const userProfile: any = await userService.getUserProfile()
 			setUser(userProfile)
 		} catch (error) {
-			toast.error('Ошибка при отправке письма')
+			toast.success('Почта уже подтверждена')
 		}
 	}
 
