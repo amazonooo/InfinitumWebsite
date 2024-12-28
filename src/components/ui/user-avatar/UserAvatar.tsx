@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { FaEdit } from 'react-icons/fa'
@@ -9,7 +11,7 @@ interface UserAvatarProps {
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = ({
-	defaultAvatar = '/ava.jpg',
+	defaultAvatar = '/default-ava.jpg',
 }) => {
 	const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
 	const [isLoading, setIsLoading] = useState(true)
@@ -35,9 +37,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
 						setAvatarUrl(base64)
 						localStorage.setItem('avatarUrl', base64)
 					} else {
-						toast.error(
-							'Некорректное разрешение'
-						)
+						toast.error('Некорректное разрешение')
 					}
 				}
 			}
@@ -55,7 +55,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
 				<Skeleton className='rounded-lg w-28 h-28' />
 			) : (
 				<img
-					src={avatarUrl || defaultAvatar}
+					src={userProfile?.user.avatarUrl || 'default-ava.jpg'}
 					alt='user-avatar'
 					className='rounded-lg w-28 h-28 border-2 border-primary-pink shadow-md'
 				/>

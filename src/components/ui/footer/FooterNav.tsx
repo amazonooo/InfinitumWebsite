@@ -2,72 +2,75 @@
 
 import Link from 'next/link'
 import { FC } from 'react'
-import { FaDiscord, FaTelegram } from 'react-icons/fa'
+import { FaDiscord, FaTelegram, FaTelegramPlane } from 'react-icons/fa'
+import { FloatingDock } from '../floating-dock'
+import { links } from '../user/safety/Safety'
 
 const FooterNav: FC = () => {
 	return (
-		<nav className='xl:flex xl:justify-between xl:items-center xl:flex-row'>
-			<Link href={'/'} className='Welcome-text font-bold text-2xl xl:mb-0 xl:mr-40'>
-				Infinitum
-			</Link>
-			<ul className='xl:flex grid grid-cols-2 sm:grid-cols-3 xl:flex-row gap-y-6 sm:text-base xl:text-xl font-normal xl:items-center xl:gap-x-8 xl:mr-auto mt-6 xl:mt-0'>
-				<li>
-					<Link
-						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'/news'}
-					>
-						Новости
-					</Link>
-				</li>
-				<li>
-					<Link
-						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'/servers'}
-					>
-						Серверы
-					</Link>
-				</li>
-				<li>
-					<Link
-						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'/donate'}
-					>
-						Донат
-					</Link>
-				</li>
-				<li>
-					<Link
-						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'/rules'}
-					>
-						Правила
-					</Link>
-				</li>
-				<li>
-					<Link
-						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'/'}
-					>
-						Помощь
-					</Link>
-				</li>
-				<li>
-					<Link
-						className='transition-colors duration-300 hover:text-primary-pink cursor-pointer text-[14px] md:text-[16px]'
-						href={'/'}
-					>
-						Команда проекта
-					</Link>
-				</li>
-			</ul>
-			<ul className='mt-8 xl:mt-0 flex gap-x-8'>
-				<li className='transition-colors duration-300 cursor-pointer text-xl '>
-					<FaTelegram />
-				</li>
-				<li className='transition-colors duration-300 cursor-pointer text-xl '>
-					<FaDiscord />
-				</li>
-			</ul>
+		<nav className='flex flex-col z-[10]'>
+			<div className='md:flex w-full md:justify-between grid grid-cols-1'>
+				<div className='flex flex-col gap-y-2 md:gap-y-[70px] mb-10 md:mb-0'>
+					<span className='uppercase Welcome-text font-bold text-xl md:text-2xl'>
+						Infinitum
+					</span>{' '}
+					<span className='text-zinc-200 text-sm md:text-base hidden md:block'>
+						Copyright © 2024. Все права защищены
+					</span>
+				</div>
+				<div className='flex flex-col gap-y-2 mb-10 md:mb-0'>
+					<h2 className='text-zinc-200 text-base md:text-lg'>
+						Полезная информация
+					</h2>
+					<ul className='flex flex-col gap-y-2'>
+						<li className='text-zinc-400 hover:text-primary-pink transition-colors duration-300'>
+							<Link href={'/download'}>Установить лаунчер</Link>
+						</li>
+						<li className='text-zinc-400 hover:text-primary-pink transition-colors duration-300'>
+							<Link href={'/servers'}>Серверы</Link>
+						</li>
+						<li className='text-zinc-400 hover:text-primary-pink transition-colors duration-300'>
+							<Link href={'/rules'}>Правила</Link>
+						</li>
+					</ul>
+				</div>
+				<div className='flex flex-col gap-y-2'>
+					<h2 className='text-zinc-200 text-base md:text-lg'>
+						Для пользователей
+					</h2>
+					<ul className='flex flex-col gap-y-2'>
+						<li className='text-zinc-400 hover:text-primary-pink transition-colors duration-300'>
+							<Link href={'/'}>Публичная оферта</Link>
+						</li>
+						<li className='text-zinc-400 hover:text-primary-pink transition-colors duration-300'>
+							<Link href={'/'}>Политика конфиденциальности</Link>
+						</li>
+						<li className='text-zinc-400 hover:text-primary-pink transition-colors duration-300'>
+							<Link href={'/'}>Наша команда</Link>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<h2 className='mt-12 block md:hidden text-zinc-200 text-sm md:text-base '>
+				Copyright © 2024. Все права защищены
+			</h2>
+			<div className='w-full flex items-center justify-center'>
+				<div className='flex w-fit mt-10 items-center justify-center'>
+					{/* <div>
+						<FaDiscord
+							className='text-zinc-400 hover:text-zinc-200 transition-colors duration-300 cursor-pointer'
+							size={30}
+						/>
+					</div>
+					<div>
+						<FaTelegramPlane
+							className='text-zinc-400 hover:text-zinc-200 transition-colors duration-300 cursor-pointer'
+							size={30}
+						/>
+					</div> */}
+					<FloatingDock mobileClassName='' items={links} />
+				</div>
+			</div>
 		</nav>
 	)
 }

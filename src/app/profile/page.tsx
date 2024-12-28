@@ -8,22 +8,6 @@ export const metadata: Metadata = {
   ...NO_INDEX_PAGE
 }
 
-async function getServerSideProps() {
-	try {
-		const playerStats = await userService.getUserProfile()
-
-		return {
-			props: { playerStats }
-		}
-	} catch (error) {
-		console.log('Ошибка загрузки профиля', error)
-
-		return {
-			props: { playerStats: null }
-		}
-	}
-}
-
 export default function ProfilePage({ playerStats }: { playerStats: IPlayerServerStats }) {
   return (
 		<section className='h-full w-full pt-24 flex items-center justify-center'>

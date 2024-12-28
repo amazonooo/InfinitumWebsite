@@ -30,11 +30,11 @@ const MainInfo: FC = () => {
 						className='text-4xl md:text-6xl font-semibold'
 					></Heading>
 				</m.div>
-				<m.div variants={slideInFromRight(0.8)}>
+				<div>
 					<News />
-				</m.div>
+				</div>
 				<m.div className='my-8' variants={slideInFromLeft(0.8)}>
-					<Link href={'/posts?page=1&limit=8'} onClick={handleClick}>
+					<Link href={'/posts'} onClick={handleClick}>
 						<Button size={'lg'}>Все новости</Button>
 					</Link>
 				</m.div>

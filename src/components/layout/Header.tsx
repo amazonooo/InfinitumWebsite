@@ -5,14 +5,12 @@ import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import Image from 'next/image'
 import More from '../ui/header/More'
-import { useMediaQuery } from 'react-responsive'
 import MobileNav from '../ui/header/MobileNav'
 import { usePathname } from 'next/navigation'
 import { ChevronDown } from 'lucide-react'
 import Dropdown from '../ui/dropdown/Dropdown'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
 import { PROJECT_NAME } from '@/constants/api.constants'
-import { TbChristmasBall } from 'react-icons/tb'
 
 export const Header = ({
 	navItems,
@@ -30,6 +28,8 @@ export const Header = ({
 	className?: string
 }) => {
 	const pathname = usePathname()
+
+	if (typeof window === 'undefined') return null
 
 	const isRecoveryPage = pathname === '/reset-password'
 	const isLoggedLogin = pathname === '/login'
@@ -59,7 +59,7 @@ export const Header = ({
 	// 	pathname !== '/servers/server-info'
 
 	const isNotFound = pathname === '/not-found'
-// TODO: убрать или поставить все, кроме not found
+	// TODO: убрать или поставить все, кроме not found
 	if (isLoggedLogin) return null
 	if (isLoggedRegister) return null
 	if (isNotFound) return null
@@ -77,8 +77,13 @@ export const Header = ({
 		}
 	}, [scrollDirection])
 
-	const isDesktop = useMediaQuery({ minWidth: 951 })
-	const isMobile = useMediaQuery({ maxWidth: 950 })
+	const [isDesktop, setIsDesktop] = useState(false)
+	const [isMobile, setIsMobile] = useState(false)
+
+	useEffect(() => {
+		setIsDesktop(window.innerWidth > 950)
+		setIsMobile(window.innerWidth <= 950)
+	}, [])
 
 	return (
 		<>
@@ -92,7 +97,7 @@ export const Header = ({
 					)}
 				>
 					<nav className='xl:px-10 lg:px-5 py-4 bg-main-black rounded-full'>
-						<ul className='flex justify-between'>
+						<ul className='flex justify-between items-center'>
 							<li className='text-2xl font-bold Welcome-text relative'>
 								<Link href={'/'}>{PROJECT_NAME}</Link>
 								{/* <TbChristmasBall className='absolute -right-3 top-6' /> */}

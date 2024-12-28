@@ -24,11 +24,33 @@ import { FloatingDock } from '../../floating-dock'
 import { useMutation } from '@tanstack/react-query'
 import { userService } from '@/services/user.service'
 import { useProfileData } from '@/hooks/useProfileData'
+import { FaTelegramPlane } from 'react-icons/fa'
 
 export interface IChangePasswordDto {
 	currentPassword: string
 	newPassword: string
 }
+
+export const links = [
+	{
+		title: 'Телеграм',
+		icon: (
+			<FaTelegramPlane className='h-full w-full text-black lg:text-zinc-400' />
+		),
+		href: '#!',
+	},
+
+	{
+		title: 'Дискорд',
+		icon: <FaDiscord className='h-full w-full text-black lg:text-zinc-400' />,
+		href: '#!',
+	},
+	{
+		title: 'Вконтакте',
+		icon: <FaVk className='h-full w-full text-black lg:text-zinc-400' />,
+		href: '#!',
+	},
+]
 
 const Safety: FC = () => {
 	const [isTwoFactorOpen, setIsTwoFactorOpen] = useState(false)
@@ -82,31 +104,6 @@ const Safety: FC = () => {
 			newPassword,
 		})
 	}
-
-	const links = [
-		{
-			title: 'Телеграм',
-			icon: (
-				<FaTelegram className='h-full w-full text-neutral-500 dark:text-neutral-300' />
-			),
-			href: '#!',
-		},
-
-		{
-			title: 'Дискорд',
-			icon: (
-				<FaDiscord className='h-full w-full text-neutral-500 dark:text-neutral-300' />
-			),
-			href: '#!',
-		},
-		{
-			title: 'Вконтакте',
-			icon: (
-				<FaVk className='h-full w-full text-neutral-500 dark:text-neutral-300' />
-			),
-			href: '#!',
-		},
-	]
 
 	return (
 		<div className='rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'>

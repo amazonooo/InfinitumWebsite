@@ -1,7 +1,7 @@
 import { axiosWithAuth } from '@/api/interceptors'
 import { IChangePasswordDto } from '@/components/ui/user/safety/Safety'
 import { API_URL } from '@/constants/api.constants'
-import { IUserProfile } from '@/types/user.types'
+import { IUser, IUserProfile } from '@/types/user.types'
 
 class UserService {
 	private BASE_URL = `${API_URL}/user`
@@ -21,6 +21,11 @@ class UserService {
 		)
 		return response.data
 	}
+
+	async emailConfirmation() {
+		const response = await axiosWithAuth.post<IUser>(`/send-confirmation`)
+		return response.data
+ 	}
 }
 
 export const userService = new UserService()

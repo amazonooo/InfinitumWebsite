@@ -54,19 +54,13 @@ const FloatingDockMobile = ({
 					>
 						<div
 							key={item.title}
-							className='h-12 w-12 rounded-full bg-neutral-900 flex items-center justify-center'
+							className='h-12 w-12 rounded-full bg-zinc-300 flex items-center justify-center'
 						>
 							<div className='h-5 w-5'>{item.icon}</div>
 						</div>
 					</div>
 				))}
 			</div>
-			{/* <button
-				onClick={() => setOpen(!open)}
-				className='h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center'
-			>
-				<IconLayoutNavbarCollapse className='h-5 w-5 text-neutral-400' />
-			</button> */}
 		</div>
 	)
 }
@@ -149,7 +143,7 @@ function IconContainer({
 				style={{ width, height }}
 				onMouseEnter={() => setHovered(true)}
 				onMouseLeave={() => setHovered(false)}
-				className='aspect-square rounded-full bg-neutral-800 flex items-center justify-center relative'
+				className='aspect-square rounded-full isolate backdrop-blur-[6px] shadow-[inset_0_-7px_11px_rgba(164,143,255,0.125)] flex border border-white/20 items-center justify-center relative'
 			>
 				<AnimatePresence>
 					{hovered && (

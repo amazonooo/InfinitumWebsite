@@ -5,7 +5,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Button } from '../../button'
 import { useProfileData } from '@/hooks/useProfileData'
 
 export default function ServerSelect() {

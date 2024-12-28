@@ -12,14 +12,16 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useCallback, useState } from 'react'
 import styles from '../field/Field.module.scss'
 import { cn } from '@/lib/utils'
-import { Eye, EyeOff, KeyRound, Mail, Pickaxe } from 'lucide-react'
+import { Check, Eye, EyeOff, KeyRound, Mail, Pickaxe } from 'lucide-react'
 import Link from 'next/link'
 import { Checkbox } from '../checkbox'
 import zxcvbn from 'zxcvbn'
 import debounce from 'lodash.debounce'
+import { useAuth } from '@/hooks/useAuth'
 
 export default function Register() {
 	const [isShowPassword, setIsShowPassword] = useState(false)
+	const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false)
 	const [isButtonClicked, setIsButtonClicked] = useState(false)
 	const [buttonKey, setButtonKey] = useState(0)
 	const [isChecked, setIsChecked] = useState(false)
@@ -29,10 +31,13 @@ export default function Register() {
 
 	const router = useRouter()
 
+	const { setIsAuthenticated } = useAuth()
+
 	const { mutate: registerMode } = useMutation({
 		mutationKey: ['register'],
 		mutationFn: (data: IAuthForm) => authService.register(data),
 		onSuccess: () => {
+			setIsAuthenticated(true)
 			router.replace('/profile'), toast.success('Успешная регистрация')
 			reset()
 		},
@@ -64,6 +69,9 @@ export default function Register() {
 		}
 		if (emailError) {
 			toast.error('Пользователь с таким email уже зарегистрирован')
+		}
+		if (isShowPassword !== isShowConfirmPassword) {
+			toast.error('Пароли не совпадают')
 		}
 	}
 
@@ -135,7 +143,7 @@ export default function Register() {
 									</div>
 									<input
 										className='bg-transparent outline-none'
-										placeholder='Ник'
+										placeholder='Никнейм'
 										type='text'
 										{...register('username', {
 											required: true,
@@ -172,13 +180,28 @@ export default function Register() {
 										placeholder='Почта'
 										{...register('email', {
 											required: true,
-											pattern:
-												/^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+											validate: {
+												hasAtSymbol: value =>
+													/@/.test(value) ||
+													'Адрес электронной почты должен содержать символ "@"',
+												isValidEmailFormat: value =>
+													/^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/.test(
+														value
+													) ||
+													'Адрес электронной почты должен быть в корректном формате',
+											},
 										})}
+										onChange={e => handleChange(e, 'email')}
 									/>
 								</label>
-								{emailError && (
+								{emailError ? (
 									<p className='text-red-500 text-sm mb-1'>{emailError}</p>
+								) : (
+									errors.email && (
+										<p className='text-red-500 text-sm mb-1'>
+											{errors.email.message}
+										</p>
+									)
 								)}
 								<label className={cn(styles.field, 'mt-6 mb-2')}>
 									<div className={styles.icon}>
@@ -207,10 +230,8 @@ export default function Register() {
 										})}
 										onBlur={e => {
 											const result = zxcvbn(e.target.value)
-											if (result.score <= 1) {
-												setPasswordStrengthError(
-													'Пароль слишком простой'
-												)
+											if (result.score <= 1 && e.target.value.length > 0) {
+												setPasswordStrengthError('Пароль слишком простой')
 											} else {
 												setPasswordStrengthError('')
 											}
@@ -223,15 +244,68 @@ export default function Register() {
 										{isShowPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{passwordStrengthError && (
-									<p className='text-red-500 text-sm mb-1'>
-										{passwordStrengthError}
-									</p>
-								)}
-								{errors.password && (
+								{errors.password ? (
 									<p className='text-red-500 text-sm mb-1'>
 										{errors.password.message}
 									</p>
+								) : (
+									passwordStrengthError && (
+										<p className='text-red-500 text-sm mb-1'>
+											{passwordStrengthError}
+										</p>
+									)
+								)}
+								<label className={cn(styles.field, 'mt-6 mb-2')}>
+									<div className={styles.icon}>
+										<Check />
+									</div>
+									<input
+										className='bg-transparent outline-none'
+										placeholder='Повторить пароль'
+										type={isShowConfirmPassword ? 'text' : 'password'}
+										{...register('confirmPassword', {
+											required: true,
+											validate: {
+												minLength: value =>
+													value.length >= 8 ||
+													'Пароль должен содержать минимум 8 символов',
+												maxLength: value =>
+													value.length <= 128 ||
+													'Пароль должен содержать максимум 128 символов',
+												hasLowerCase: value =>
+													/[a-z]/.test(value) ||
+													'Пароль должен содержать хотя бы одну строчную букву',
+												hasNumber: value =>
+													/[0-9]/.test(value) ||
+													'Пароль должен содержать хотя бы одну цифру',
+											},
+										})}
+										onBlur={e => {
+											const result = zxcvbn(e.target.value)
+											if (result.score <= 1 && e.target.value.length > 0) {
+												setPasswordStrengthError('Пароль слишком простой')
+											} else {
+												setPasswordStrengthError('')
+											}
+										}}
+									/>
+									<div
+										className={styles.icon}
+										onClick={() => setIsShowConfirmPassword(!isShowPassword)}
+									>
+										{isShowPassword ? <Eye /> : <EyeOff />}
+									</div>
+								</label>
+								{errors.confirmPassword ? (
+									<p className='text-red-500 text-sm mb-1'>
+										{errors.confirmPassword.message}
+									</p>
+								) : (
+									passwordStrengthError && (
+										<p className='text-red-500 text-sm mb-1'>
+											{passwordStrengthError}
+										</p>
+									)
 								)}
 								<div className='mt-5 flex gap-x-3'>
 									<Checkbox

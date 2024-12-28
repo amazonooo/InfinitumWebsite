@@ -119,7 +119,7 @@ export default function Confirm() {
 											const result = zxcvbn(e.target.value)
 											if (result.score <= 1) {
 												setPasswordStrengthError(
-													'Пароль слишком простой. Попробуйте использовать сложный пароль.'
+													'Пароль слишком простой'
 												)
 											} else {
 												setPasswordStrengthError('')
@@ -172,7 +172,7 @@ export default function Confirm() {
 											const result = zxcvbn(e.target.value)
 											if (result.score <= 1) {
 												setPasswordStrengthError(
-													'Пароль слишком простой. Попробуйте использовать сложный пароль.'
+													'Пароль слишком простой'
 												)
 											} else {
 												setPasswordStrengthError('')

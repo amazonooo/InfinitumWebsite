@@ -15,11 +15,13 @@ import styles from '../field/Field.module.scss'
 import { CircleUser, Eye, EyeOff, KeyRound } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@/hooks/useAuth'
 
 export default function Login() {
   const [isShowPassword, setIsShowPassword] = useState(false)
   const [isButtonClicked, setIsButtonClicked] = useState(false)
   const [buttonKey, setButtonKey] = useState(0)
+	const { setIsAuthenticated } = useAuth()
 
   const router = useRouter()
 
@@ -27,10 +29,12 @@ export default function Login() {
     mutationKey: ['login'],
     mutationFn: (data: ILoginForm) => authService.login(data),
     onSuccess: () => {
+			setIsAuthenticated(true)
       router.push('/profile')
       toast.success('Успешный вход')
     },
     onError: (error: ResponseError) => {
+			setIsAuthenticated(false)
       toast.dismiss()
       if (error.status && error.status === 401) {
         toast.error('Указан неверный логин или пароль')
@@ -102,7 +106,7 @@ export default function Login() {
 									</div>
 									<input
 										className='bg-transparent outline-none'
-										placeholder='Ник или Email'
+										placeholder='Никнейм или Email'
 										type='text'
 										{...register('identifier', {
 											required: true,

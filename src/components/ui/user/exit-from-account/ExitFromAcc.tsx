@@ -1,5 +1,6 @@
 'use client'
 
+import { useAuth } from '@/hooks/useAuth'
 import { authService } from '@/services/auth.service'
 import { ResponseError } from '@/types/error.types'
 import { useMutation } from '@tanstack/react-query'
@@ -10,11 +11,13 @@ import { toast } from 'react-toastify'
 
 export default function ExitFromAcc() {
   const router = useRouter()
+  const { setIsAuthenticated } = useAuth()
 
   const { mutate: logout } = useMutation({
     mutationKey: ['logout from acc'],
     mutationFn: () => authService.logout(),
     onSuccess: () => {
+      setIsAuthenticated(false)
       router.replace('/')
       toast.success('Успешный выход')
     },

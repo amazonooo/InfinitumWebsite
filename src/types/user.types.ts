@@ -21,6 +21,7 @@ export interface IUser {
 	banGiverId: string | null
 	banGiverNickname: string | null
 	warns: number
+	emailConfirmed: boolean
 }
 
 export interface IPlayerServerStats {

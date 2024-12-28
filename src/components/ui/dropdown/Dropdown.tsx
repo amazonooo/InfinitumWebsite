@@ -7,6 +7,9 @@ import { useState, useRef, useEffect } from 'react'
 import { m } from 'framer-motion'
 import { FaUserAstronaut } from 'react-icons/fa6'
 import ExitFromAcc from '../user/exit-from-account/ExitFromAcc'
+import { useAuth } from '@/hooks/useAuth'
+import { useProfileData } from '@/hooks/useProfileData'
+import { Avatar, AvatarFallback, AvatarImage } from '../avatar'
 
 interface IDropdown {
 	closeMenu?: () => void
@@ -17,6 +20,8 @@ export default function Dropdown({ closeMenu }: IDropdown) {
 
   const dropdownRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLDivElement>(null)
+
+	const { isAuthenticated } = useAuth()
 
   const handleClickOutside = (event: any) => {
     if (
@@ -36,18 +41,37 @@ export default function Dropdown({ closeMenu }: IDropdown) {
     }
   }, [])
 
+	const { userProfile } = useProfileData()
+
   return (
 		<div
 			ref={buttonRef}
-			onClick={() => setDropdownOpen(!dropdownOpen)}
-			className={cn('relative items-center flex')}
+			onClick={
+				isAuthenticated ? () => setDropdownOpen(!dropdownOpen) : () => {}
+			}
+			className={cn(isAuthenticated ? 'relative items-center flex' : '')}
 		>
-			<FaUserAstronaut
-				size={18}
-				className={`cursor-pointer select-none ${
-					dropdownOpen ? 'text-[#cbacf9]' : 'text-neutral-50'
-				}`}
-			/>
+			{isAuthenticated ? (
+				userProfile?.user.avatarUrl ? (
+					<img
+						src={userProfile.user.avatarUrl}
+						alt='User Avatar'
+						className='w-8 h-8 rounded-full cursor-pointer'
+					/>
+				) : (
+					<Avatar>
+						<AvatarImage src='/default-ava.jpg' />
+						<AvatarFallback>CN</AvatarFallback>
+					</Avatar>
+				)
+			) : (
+				<Link href={'/login'} className='Welcome-box px-3 py-2 group'>
+					<span className='text-zinc-200 group-hover:text-primary-pink transition-colors duration-300'>
+						ВОЙТИ
+					</span>
+				</Link>
+			)}
+
 			<m.div
 				ref={dropdownRef}
 				className={`absolute right-0 top-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[linear-gradient(130deg,#b2d8f1,#e7b4f6)] p-[1px] rounded-lg text-base w-52 transition-all opacity-0 duration-300 ${
@@ -60,7 +84,7 @@ export default function Dropdown({ closeMenu }: IDropdown) {
 					}`}
 				>
 					<Link
-						href={'/login'}
+						href={isAuthenticated ? '/profile' : '/login'}
 						onClick={closeMenu}
 						className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'
 					>

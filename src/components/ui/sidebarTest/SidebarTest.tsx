@@ -17,6 +17,7 @@ export function SidebarDemo() {
 
 	const links = [
 		{
+			id: 1,
 			label: 'Killbichs',
 			count: '624',
 			href: '#',
@@ -31,6 +32,7 @@ export function SidebarDemo() {
 			),
 		},
 		{
+			id: 2,
 			label: 'Boomboobs',
 			count: '112',
 			href: '#',
@@ -45,6 +47,7 @@ export function SidebarDemo() {
 			),
 		},
 		{
+			id: 3,
 			label: 'Killbichs',
 			count: '312',
 			href: '#',
@@ -59,6 +62,7 @@ export function SidebarDemo() {
 			),
 		},
 		{
+			id: 4,
 			label: 'Boomboobs',
 			count: '152',
 			href: '#',
@@ -85,7 +89,7 @@ export function SidebarDemo() {
 						{open ? <Logo /> : <LogoIcon />}
 						<div className='mt-8 flex flex-col gap-2'>
 							{links.map((link) => (
-								<SidebarLink key={link.href} link={link} />
+								<SidebarLink key={link.id} link={link} />
 							))}
 						</div>
 					</div>

@@ -10,6 +10,8 @@ import { Bounce, Slide, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import QueryProvider from '@/providers/query-provider'
 import { PROJECT_NAME } from '@/constants/api.constants'
+import { AuthProvider } from '@/providers/auth-provider'
+import { EmailConfirmationNotification } from '@/components/ui/email-confirmation/EmailConfirmationNotification'
 
 const Sidebar = dynamic(() => import('../components/layout/sidebar/Sidebar'), { ssr: false })
 
@@ -31,23 +33,26 @@ export default function RootLayout({
   return (
 		<html lang='en' className='dark'>
 			<body className={`bg-[#09090B] overflow-x-hidden`}>
-				<QueryProvider>
-					<StarsCanvas />
-					<Sidebar />
-					<Header navItems={navItems} navButtons={navButtons} />
-					<ToastContainer
-						autoClose={2000}
-						limit={3}
-						position='top-right'
-						hideProgressBar={true}
-						closeOnClick
-						theme='colored'
-						pauseOnHover={false}
-						transition={Slide}
-					/>
-					{children}
-					<Footer />
-				</QueryProvider>
+				<AuthProvider>
+					<QueryProvider>
+						<StarsCanvas />
+						<Sidebar />
+						<Header navItems={navItems} navButtons={navButtons} />
+						<ToastContainer
+							autoClose={2000}
+							limit={3}
+							position='top-right'
+							hideProgressBar={true}
+							closeOnClick
+							theme='colored'
+							pauseOnHover={false}
+							transition={Slide}
+						/>
+						<EmailConfirmationNotification />
+						{children}
+						<Footer />
+					</QueryProvider>
+				</AuthProvider>
 			</body>
 		</html>
 	)
