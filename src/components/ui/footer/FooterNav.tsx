@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { FC } from 'react'
-import { FaDiscord, FaTelegram, FaTelegramPlane } from 'react-icons/fa'
 import { FloatingDock } from '../floating-dock'
 import { links } from '../user/safety/Safety'
 
@@ -10,7 +9,7 @@ const FooterNav: FC = () => {
 	return (
 		<nav className='flex flex-col z-[10]'>
 			<div className='md:flex w-full md:justify-between grid grid-cols-1'>
-				<div className='flex flex-col gap-y-2 md:gap-y-[76px] mb-10 md:mb-0'>
+				<div className='flex flex-col gap-y-2 md:gap-y-[74px] mb-10 md:mb-0'>
 					<span className='uppercase Welcome-text font-bold text-2xl md:text-3xl'>
 						Infinitum
 					</span>{' '}

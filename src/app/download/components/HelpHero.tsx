@@ -76,7 +76,7 @@ export default function PlayHero() {
 				<div className='mt-32'>
 					<Heading
 						title={'Установить лаунчер'}
-						className='text-6xl font-bold'
+						className='text-3xl xl:text-4xl font-bold'
 					/>
 				</div>
 			</div>

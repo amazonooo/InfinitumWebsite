@@ -12,7 +12,7 @@ export default function Faq() {
 		<div className='mt-[60px] w-full'>
 			<Heading
 				title={'FAQ'}
-				className='text-4xl md:text-6xl font-semibold mb-[60px]'
+				className='md:text-6xl mb-[60px] text-3xl xl:text-4xl font-bold'
 			/>
 			<div className='flex flex-col gap-y-[30px]'>
 				<div className='w-full bg-main-black border border-primary-pink rounded-lg px-6 py-3'>
