@@ -12,6 +12,8 @@ import { toast } from 'react-toastify'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useRouter, useSearchParams } from 'next/navigation'
 import zxcvbn from 'zxcvbn'
+import Link from 'next/link'
+import { PROJECT_NAME } from '@/constants/api.constants'
 
 export interface IResetPasswordConfirmForm {
 	password: string
@@ -24,8 +26,6 @@ interface IResetPasswordData {
 }
 
 export default function Confirm() {
-	const [newPassword, setNewPassword] = useState('')
-	const [confirmPassword, setConfirmPassword] = useState('')
 	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
 	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
 	const [isButtonClicked, setIsButtonClicked] = useState(false)
@@ -54,7 +54,7 @@ export default function Confirm() {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isValid },
 		reset,
 	} = useForm<IResetPasswordConfirmForm>({
 		mode: 'onChange',
@@ -77,6 +77,16 @@ export default function Confirm() {
 	return (
 		<LazyMotion features={domAnimation}>
 			<m.div initial='hidden' animate='visible'>
+				<m.div
+					variants={slideInFromLeft(0.2)}
+					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
+				>
+					<Link href='/'>
+						<h1 className='Welcome-text font-bold text-2xl Welcome-box items-center px-3 py-1.5'>
+							{PROJECT_NAME}
+						</h1>
+					</Link>
+				</m.div>
 				<m.div
 					variants={slideInFromLeft(0.2)}
 					className='flex items-center justify-center h-screen isolate z-[10] relative px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
@@ -118,9 +128,7 @@ export default function Confirm() {
 										onBlur={e => {
 											const result = zxcvbn(e.target.value)
 											if (result.score <= 1) {
-												setPasswordStrengthError(
-													'Пароль слишком простой'
-												)
+												setPasswordStrengthError('Пароль слишком простой')
 											} else {
 												setPasswordStrengthError('')
 											}
@@ -153,31 +161,31 @@ export default function Confirm() {
 										type={isShowAgreePassword ? 'text' : 'password'}
 										{...register('passwordRepeat', {
 											required: true,
-											validate: {
-												minLength: value =>
-													value.length >= 8 ||
-													'Пароль должен содержать минимум 8 символов',
-												maxLength: value =>
-													value.length <= 128 ||
-													'Пароль должен содержать максимум 128 символов',
-												hasLowerCase: value =>
-													/[a-z]/.test(value) ||
-													'Пароль должен содержать хотя бы одну строчную букву',
-												hasNumber: value =>
-													/[0-9]/.test(value) ||
-													'Пароль должен содержать хотя бы одну цифру',
-											},
+											// validate: {
+											// 	minLength: value =>
+											// 		value.length >= 8 ||
+											// 		'Пароль должен содержать минимум 8 символов',
+											// 	maxLength: value =>
+											// 		value.length <= 128 ||
+											// 		'Пароль должен содержать максимум 128 символов',
+											// 	hasLowerCase: value =>
+											// 		/[a-z]/.test(value) ||
+											// 		'Пароль должен содержать хотя бы одну строчную букву',
+											// 	hasNumber: value =>
+											// 		/[0-9]/.test(value) ||
+											// 		'Пароль должен содержать хотя бы одну цифру',
+											// },
 										})}
-										onBlur={e => {
-											const result = zxcvbn(e.target.value)
-											if (result.score <= 1) {
-												setPasswordStrengthError(
-													'Пароль слишком простой'
-												)
-											} else {
-												setPasswordStrengthError('')
-											}
-										}}
+										// onBlur={e => {
+										// 	const result = zxcvbn(e.target.value)
+										// 	if (result.score <= 1) {
+										// 		setPasswordStrengthError(
+										// 			'Пароль слишком простой'
+										// 		)
+										// 	} else {
+										// 		setPasswordStrengthError('')
+										// 	}
+										// }}
 									/>
 									<div
 										className={styles.icon}
@@ -186,7 +194,7 @@ export default function Confirm() {
 										{isShowAgreePassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{passwordStrengthError && (
+								{/* {passwordStrengthError && (
 									<p className='text-red-500 text-sm mb-1'>
 										{passwordStrengthError}
 									</p>
@@ -195,17 +203,23 @@ export default function Confirm() {
 									<p className='text-red-500 text-sm mb-1'>
 										{errors.passwordRepeat.message}
 									</p>
-								)}
+								)} */}
 								<div className='mb-3 mt-8 text-center'>
 									<button
 										type='submit'
-										// key={buttonKey}
-										className={
-											isButtonClicked &&
-											(errors.password || errors.passwordRepeat)
-												? styles.buttonError
-												: styles.form_btn
-										}
+										disabled={!isValid}
+										className={cn(
+											{
+												[styles.buttonError]:
+													isButtonClicked &&
+													(errors.password || errors.passwordRepeat),
+												[styles.form_btn]: !(
+													isButtonClicked &&
+													(errors.password || errors.passwordRepeat)
+												),
+											},
+											'disabled:opacity-60 disabled:cursor-default disabled:scale-100'
+										)}
 									>
 										ПОДТВЕРДИТЬ
 									</button>

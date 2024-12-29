@@ -21,6 +21,7 @@ export default function Login() {
   const [isShowPassword, setIsShowPassword] = useState(false)
   const [isButtonClicked, setIsButtonClicked] = useState(false)
   const [buttonKey, setButtonKey] = useState(0)
+
 	const { setIsAuthenticated } = useAuth()
 
   const router = useRouter()
@@ -47,14 +48,16 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    reset
+    formState: { errors, isValid },
+    reset,
   } = useForm<ILoginForm>({
     mode: 'onChange'
   })
 
   const handleButtonClick = () => {
     setIsButtonClicked(true)
+		// setusernameOrEmailNotEmpty(true)
+		// setPasswordNotEmpty(true)
     if (errors.identifier || errors.password) {
       setButtonKey((prevKey) => prevKey + 1)
       toast.error('Пожалуйста, заполните все поля')
@@ -83,9 +86,11 @@ export default function Login() {
 					variants={slideInFromLeft(0.2)}
 					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
 				>
-					<h1 className='Welcome-text font-bold text-2xl Welcome-box items-center px-3 py-1.5'>
-						{PROJECT_NAME}
-					</h1>
+					<Link href='/'>
+						<h1 className='Welcome-text font-bold text-2xl Welcome-box items-center px-3 py-1.5'>
+							{PROJECT_NAME}
+						</h1>
+					</Link>
 				</m.div>
 				<m.div
 					variants={slideInFromRight(0.2)}
@@ -125,7 +130,7 @@ export default function Login() {
 										{...register('password', {
 											required: true,
 											minLength: 4,
-											maxLength: 16
+											maxLength: 16,
 										})}
 									/>
 									<div
@@ -144,13 +149,21 @@ export default function Login() {
 								<div className='mb-3 mt-8 text-center'>
 									<button
 										type='submit'
-										key={buttonKey}
 										onClick={handleButtonClick}
-										className={
-											isButtonClicked && (errors.identifier || errors.password)
-												? styles.buttonError
-												: styles.form_btn
-										}
+										key={buttonKey}
+										disabled={!isValid}
+										className={cn(
+											{
+												[styles.buttonError]:
+													isButtonClicked &&
+													(errors.identifier || errors.password),
+												[styles.form_btn]: !(
+													isButtonClicked &&
+													(errors.identifier || errors.password)
+												),
+											},
+											'disabled:opacity-60 disabled:cursor-default disabled:scale-100'
+										)}
 									>
 										ВОЙТИ
 									</button>

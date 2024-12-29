@@ -1,14 +1,14 @@
 'use client'
 
 import { slideInFromTop } from '@/utils/motion'
-// import { LazyMotion, m, domAnimation } from 'framer-motion'
+import { LazyMotion, m, domAnimation } from 'framer-motion'
 
 import { FC } from 'react'
 
 const GeneralMain: FC = () => {
 	return (
-		<div>
-			<div className='relative rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'>
+		<LazyMotion features={domAnimation}>
+			<m.div initial='hidden' animate='visible' variants={slideInFromTop} className='relative rounded-lg border border-white/[0.2] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] bg-[#09090B]'>
 				<div className='p-8'>
 					<h1 className='space-x-2 text-lg md:text-xl lg:text-2xl'>
 						<span className='text-[#cbacf9] underline underline-offset-4 decoration-[2px] decoration-[#cbacf9]'>
@@ -196,8 +196,8 @@ const GeneralMain: FC = () => {
 						</ul>
 					</div>
 				</div>
-			</div>
-		</div>
+			</m.div>
+		</LazyMotion>
 )
 }
 

@@ -60,7 +60,7 @@ export default function Dropdown({ closeMenu }: IDropdown) {
 					/>
 				) : (
 					<Avatar>
-						<AvatarImage src='/default-ava.jpg' />
+						<AvatarImage src='/default-avatar.png' />
 						<AvatarFallback>CN</AvatarFallback>
 					</Avatar>
 				)

@@ -25,6 +25,7 @@ import { useMutation } from '@tanstack/react-query'
 import { userService } from '@/services/user.service'
 import { useProfileData } from '@/hooks/useProfileData'
 import { FaTelegramPlane } from 'react-icons/fa'
+import maskEmail from '@/utils/maskEmail'
 
 export interface IChangePasswordDto {
 	currentPassword: string
@@ -279,7 +280,12 @@ const Safety: FC = () => {
 
 					<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
 						<h2 className='text-xs sm:text-base md:text-lgl'>
-							Почта: <span className='Welcome-text font-bold'>{userProfile?.user.email}</span>
+							Почта:{' '}
+							<span className='Welcome-text font-bold'>
+								{userProfile?.user.email
+									? maskEmail(userProfile.user.email)
+									: '-'}
+							</span>
 						</h2>
 						<Button
 							onClick={() => setIsOpenEmailModal(true)}
@@ -297,7 +303,7 @@ const Safety: FC = () => {
 							>
 								<div className=''>
 									<div className='h-full w-full'>
-										<div className='Welcome-box items-center justify-center flex w-full h-[150px] rounded-lg Welcome-text font-bold'>
+										<div className='Welcome-box items-center justify-center flex w-full h-[300px] rounded-lg Welcome-text font-bold'>
 											В разработке
 										</div>
 									</div>
@@ -326,7 +332,7 @@ const Safety: FC = () => {
 							>
 								<div className=''>
 									<div className='h-full w-full'>
-										<div className='Welcome-box items-center justify-center flex w-full h-[150px] rounded-lg Welcome-text font-bold'>
+										<div className='Welcome-box items-center justify-center flex w-full h-[300px] rounded-lg Welcome-text font-bold'>
 											В разработке
 										</div>
 									</div>

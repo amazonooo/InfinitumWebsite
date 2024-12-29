@@ -11,7 +11,7 @@ interface UserAvatarProps {
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = ({
-	defaultAvatar = '/default-ava.jpg',
+	defaultAvatar = '/default-avatar.png',
 }) => {
 	const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
 	const [isLoading, setIsLoading] = useState(true)
@@ -55,7 +55,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
 				<Skeleton className='rounded-lg w-28 h-28' />
 			) : (
 				<img
-					src={userProfile?.user.avatarUrl || 'default-ava.jpg'}
+					src={userProfile?.user.avatarUrl || 'default-avatar.png'}
 					alt='user-avatar'
 					className='rounded-lg w-28 h-28 border-2 border-primary-pink shadow-md'
 				/>

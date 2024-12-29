@@ -49,7 +49,7 @@ export default function Register() {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isValid },
 		reset,
 		trigger,
 		setValue,
@@ -120,9 +120,11 @@ export default function Register() {
 					variants={slideInFromLeft(0.2)}
 					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
 				>
-					<h1 className='Welcome-text font-bold text-2xl Welcome-box items-center px-3 py-1.5'>
-						{PROJECT_NAME}
-					</h1>
+					<Link href='/'>
+						<h1 className='Welcome-text font-bold text-2xl Welcome-box items-center px-3 py-1.5'>
+							{PROJECT_NAME}
+						</h1>
+					</Link>
 				</m.div>
 				<m.div
 					variants={slideInFromRight(0.2)}
@@ -265,29 +267,29 @@ export default function Register() {
 										type={isShowConfirmPassword ? 'text' : 'password'}
 										{...register('confirmPassword', {
 											required: true,
-											validate: {
-												minLength: value =>
-													value.length >= 8 ||
-													'Пароль должен содержать минимум 8 символов',
-												maxLength: value =>
-													value.length <= 128 ||
-													'Пароль должен содержать максимум 128 символов',
-												hasLowerCase: value =>
-													/[a-z]/.test(value) ||
-													'Пароль должен содержать хотя бы одну строчную букву',
-												hasNumber: value =>
-													/[0-9]/.test(value) ||
-													'Пароль должен содержать хотя бы одну цифру',
-											},
+											// validate: {
+											// 	minLength: value =>
+											// 		value.length >= 8 ||
+											// 		'Пароль должен содержать минимум 8 символов',
+											// 	maxLength: value =>
+											// 		value.length <= 128 ||
+											// 		'Пароль должен содержать максимум 128 символов',
+											// 	hasLowerCase: value =>
+											// 		/[a-z]/.test(value) ||
+											// 		'Пароль должен содержать хотя бы одну строчную букву',
+											// 	hasNumber: value =>
+											// 		/[0-9]/.test(value) ||
+											// 		'Пароль должен содержать хотя бы одну цифру',
+											// },
 										})}
-										onBlur={e => {
-											const result = zxcvbn(e.target.value)
-											if (result.score <= 1 && e.target.value.length > 0) {
-												setPasswordStrengthError('Пароль слишком простой')
-											} else {
-												setPasswordStrengthError('')
-											}
-										}}
+										// onBlur={e => {
+										// 	const result = zxcvbn(e.target.value)
+										// 	if (result.score <= 1 && e.target.value.length > 0) {
+										// 		setPasswordStrengthError('Пароль слишком простой')
+										// 	} else {
+										// 		setPasswordStrengthError('')
+										// 	}
+										// }}
 									/>
 									<div
 										className={styles.icon}
@@ -296,7 +298,7 @@ export default function Register() {
 										{isShowPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{errors.confirmPassword ? (
+								{/* {errors.confirmPassword ? (
 									<p className='text-red-500 text-sm mb-1'>
 										{errors.confirmPassword.message}
 									</p>
@@ -306,7 +308,7 @@ export default function Register() {
 											{passwordStrengthError}
 										</p>
 									)
-								)}
+								)} */}
 								<div className='mt-5 flex gap-x-3'>
 									<Checkbox
 										checked={isChecked}
@@ -314,7 +316,7 @@ export default function Register() {
 										id='agreeement'
 									/>
 									<label
-										htmlFor='agreeement'
+										htmlFor=''
 										className='text-sm font-medium leading-5 peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
 									>
 										Я согласен(-на) с положениями{' '}
@@ -336,7 +338,7 @@ export default function Register() {
 										type='submit'
 										key={buttonKey}
 										onClick={handleButtonClick}
-										disabled={!isChecked}
+										disabled={!isValid || !isChecked}
 										className={cn(
 											{
 												[styles.buttonError]:

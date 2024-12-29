@@ -35,7 +35,7 @@ export default function Logout() {
 				<Button
 					onClick={() => logout()}
 					className='h-11'
-					variant={'destructive'}
+					variant={'logout'}
 				>
 					Выйти со всех устройств
 				</Button>
