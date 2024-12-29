@@ -10,8 +10,8 @@ const FooterNav: FC = () => {
 	return (
 		<nav className='flex flex-col z-[10]'>
 			<div className='md:flex w-full md:justify-between grid grid-cols-1'>
-				<div className='flex flex-col gap-y-2 md:gap-y-[70px] mb-10 md:mb-0'>
-					<span className='uppercase Welcome-text font-bold text-xl md:text-2xl'>
+				<div className='flex flex-col gap-y-2 md:gap-y-[76px] mb-10 md:mb-0'>
+					<span className='uppercase Welcome-text font-bold text-2xl md:text-3xl'>
 						Infinitum
 					</span>{' '}
 					<span className='text-zinc-200 text-sm md:text-base hidden md:block'>
@@ -19,7 +19,7 @@ const FooterNav: FC = () => {
 					</span>
 				</div>
 				<div className='flex flex-col gap-y-2 mb-10 md:mb-0'>
-					<h2 className='text-zinc-200 text-base md:text-lg'>
+					<h2 className='text-zinc-200 text-base md:text-lg mb-1.5'>
 						Полезная информация
 					</h2>
 					<ul className='flex flex-col gap-y-2'>
@@ -35,7 +35,7 @@ const FooterNav: FC = () => {
 					</ul>
 				</div>
 				<div className='flex flex-col gap-y-2'>
-					<h2 className='text-zinc-200 text-base md:text-lg'>
+					<h2 className='text-zinc-200 text-base md:text-lg mb-1.5'>
 						Для пользователей
 					</h2>
 					<ul className='flex flex-col gap-y-2'>

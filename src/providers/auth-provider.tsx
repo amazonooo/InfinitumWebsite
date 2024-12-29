@@ -60,13 +60,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		}
 	}, [isAuthenticated])
 
-	// useEffect(() => {
-	// 	const emailConfirmedFromCookie = Cookies.get('isEmailConfirmed')
-	// 	if (emailConfirmedFromCookie === 'true') {
-	// 		setIsEmailConfirmed(true)
-	// 	}
-	// }, [])
-
 	return (
 		<AuthContext.Provider
 			value={{
