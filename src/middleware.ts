@@ -2,34 +2,27 @@ import { NextRequest, NextResponse } from 'next/server'
 import { EnumTokens } from './services/auth-token.service'
 import { ENDPOINTS } from './config/endpoints.config'
 
-export async function middleware(request: NextRequest, response: NextResponse) {
+export async function middleware(request: NextRequest) {
 	const { url, cookies } = request
 
 	const refreshToken = cookies.get(EnumTokens.REFRESH_TOKEN)?.value
-  const accessToken = request.cookies.get(EnumTokens.ACCESS_TOKEN)?.value
 
-	const isAuthPage =
-		request.url.includes(ENDPOINTS.REGISTER) ||
-		request.url.includes(ENDPOINTS.LOGIN)
-	const isProtectedPage =
-		request.url.includes('/profile') || request.url.includes('/dashboard')
+	const isAuthPage = url.includes('/login') || url.includes('/register')
+	const isResetPasswordPage = url.includes('/reset-password')
 
-	if (isAuthPage && accessToken) {
-		return NextResponse.redirect(new URL(ENDPOINTS.HOME, url))
-	}
+	if (isAuthPage || isResetPasswordPage) {
+		if (refreshToken) return NextResponse.redirect(new URL(ENDPOINTS.PROFILE, url))
 
-	if (isAuthPage) {
 		return NextResponse.next()
 	}
 
-	if (isProtectedPage && !accessToken) {
+	if (!refreshToken) {
 		return NextResponse.redirect(new URL(ENDPOINTS.LOGIN, url))
 	}
 
-	// Раскомментить на проде
-	// if (isProfilePage && !refreshToken) {
-	// 	return NextResponse.redirect(new URL(ENDPOINTS.LOGIN, url))
-	// }
-
 	return NextResponse.next()
-} 	
+}
+
+export const config = {
+	matcher: ['/register', '/login', '/reset-password', '/profile'],
+}
