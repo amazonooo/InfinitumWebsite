@@ -18,68 +18,60 @@ import Link from 'next/link'
 import { useAuth } from '@/hooks/useAuth'
 
 export default function Login() {
-  const [isShowPassword, setIsShowPassword] = useState(false)
-  const [isButtonClicked, setIsButtonClicked] = useState(false)
-  const [buttonKey, setButtonKey] = useState(0)
+	const [isShowPassword, setIsShowPassword] = useState(false)
+	const [isButtonClicked, setIsButtonClicked] = useState(false)
+	const [buttonKey, setButtonKey] = useState(0)
 
 	const { setIsAuthenticated } = useAuth()
 
-  const router = useRouter()
+	const router = useRouter()
 
-  const { mutate: login } = useMutation({
-    mutationKey: ['login'],
-    mutationFn: (data: ILoginForm) => authService.login(data),
-    onSuccess: () => {
+	const { mutate: login } = useMutation({
+		mutationKey: ['login'],
+		mutationFn: (data: ILoginForm) => authService.login(data),
+		onSuccess: () => {
 			setIsAuthenticated(true)
-      router.push('/profile')
-      toast.success('Успешный вход')
-    },
-    onError: (error: ResponseError) => {
+			router.push('/profile')
+			toast.success('Успешный вход')
+		},
+		onError: (error: ResponseError) => {
 			setIsAuthenticated(false)
-      toast.dismiss()
-      if (error.status && error.status === 401) {
-        toast.error('Указан неверный логин или пароль')
-      } else {
-        toast.error('Ошибка авторизации')
-      }
-    }
-  })
+			toast.dismiss()
+			if (error.status && error.status === 401) {
+				toast.error('Указан неверный логин или пароль')
+			} else {
+				toast.error('Ошибка авторизации')
+			}
+		},
+	})
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    reset,
-  } = useForm<ILoginForm>({
-    mode: 'onChange'
-  })
+	const {
+		register,
+		handleSubmit,
+		formState: { errors, isValid },
+		reset,
+	} = useForm<ILoginForm>({
+		mode: 'onChange',
+	})
 
-  const handleButtonClick = () => {
-    setIsButtonClicked(true)
-		// setusernameOrEmailNotEmpty(true)
-		// setPasswordNotEmpty(true)
-    if (errors.identifier || errors.password) {
-      setButtonKey((prevKey) => prevKey + 1)
-      toast.error('Пожалуйста, заполните все поля')
-    }
-  }
+	const handleButtonClick = () => {
+		setIsButtonClicked(true)
+		if (errors.identifier || errors.password) {
+			setButtonKey(prevKey => prevKey + 1)
+			toast.error('Пожалуйста, заполните все поля')
+		}
+	}
 
-  const onSubmit: SubmitHandler<ILoginForm> = (data) => {
-    if(!data.identifier) {
-      data.identifier = ''
-    }
-    if(!data.password) {
-      data.password = ''
-    }
+	const onSubmit: SubmitHandler<ILoginForm> = data => {
 		const dataToSend: ILoginForm = {
 			...data,
-			type: data.identifier.includes('@') ? 'email' : 'username'
+			type: data.identifier.includes('@') ? 'email' : 'username',
 		}
-    login(dataToSend)
-    reset()
-  }
+		login(dataToSend)
+		reset()
+	}
 
-  return (
+	return (
 		<LazyMotion features={domAnimation}>
 			<m.div initial='hidden' animate='visible'>
 				<m.div
@@ -129,8 +121,8 @@ export default function Login() {
 										type={isShowPassword ? 'text' : 'password'}
 										{...register('password', {
 											required: true,
-											minLength: 4,
-											maxLength: 16,
+											minLength: 8,
+											maxLength: 128,
 										})}
 									/>
 									<div
