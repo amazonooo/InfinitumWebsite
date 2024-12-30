@@ -128,6 +128,11 @@ body {
   border: 1px solid #3A3A3C !important;
 }
 
+.Toastify__toast-theme--colored.Toastify__toast--info {
+  background: #09090B !important;
+  border: 1px solid #cbacf9 !important;
+}
+
 @media (max-width: 480px) {
   .Toastify__toast {
     width: 250px;

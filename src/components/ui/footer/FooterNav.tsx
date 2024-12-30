@@ -50,7 +50,7 @@ const FooterNav: FC = () => {
 					</ul>
 				</div>
 			</div>
-			<h2 className='mt-12 block md:hidden text-zinc-200 text-sm md:text-base '>
+			<h2 className='mt-12 block md:hidden text-zinc-200 text-sm md:text-base text-center'>
 				Copyright © 2024. Все права защищены
 			</h2>
 			<div className='w-full flex items-center justify-center'>

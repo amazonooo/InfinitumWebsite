@@ -5,6 +5,12 @@ import { userService } from '@/services/user.service'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import styles from '@/components/ui/field/Field.module.scss'
+import { IUser } from '@/types/user.types'
+import { ResponseError } from '@/types/error.types'
+
+interface IEmailConfirmationNotification {
+	user: IUser
+}
 
 export function EmailConfirmationNotification() {
 	const { isEmailConfirmed, setIsEmailConfirmed, isAuthenticated, setUser } =
@@ -24,10 +30,12 @@ export function EmailConfirmationNotification() {
 			await userService.emailConfirmation()
 			toast.success('Письмо отправлено')
 			setIsEmailConfirmed(true)
-			const userProfile: any = await userService.getUserProfile()
+			const userProfile: IEmailConfirmationNotification = await userService.getUserProfile()
 			setUser(userProfile)
-		} catch (error) {
-			toast.success('Почта уже подтверждена')
+		} catch (error: ResponseError | any) {
+			if (error.status && error.status === 400) {
+				toast.success('Почта уже подтверждена')
+			}
 		}
 	}
 
