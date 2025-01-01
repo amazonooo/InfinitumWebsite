@@ -7,11 +7,13 @@ export async function middleware(request: NextRequest) {
 
 	const refreshToken = cookies.get(EnumTokens.REFRESH_TOKEN)?.value
 
-	const isAuthPage = url.includes('/login') || url.includes('/register')
-	const isResetPasswordPage = url.includes('/reset-password')
+	const isAuthPage =
+		url.includes(ENDPOINTS.LOGIN) || url.includes(ENDPOINTS.REGISTER)
+	const isResetPasswordPage = url.includes(ENDPOINTS.RESET_PASSWORD)
 
 	if (isAuthPage || isResetPasswordPage) {
-		if (refreshToken) return NextResponse.redirect(new URL(ENDPOINTS.PROFILE, url))
+		if (refreshToken)
+			return NextResponse.redirect(new URL(ENDPOINTS.PROFILE, url))
 
 		return NextResponse.next()
 	}
@@ -24,5 +26,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-	matcher: ['/register', '/login', '/reset-password', '/profile'],
+	matcher: ['/login', '/register', '/profile', '/reset-password'],
 }
