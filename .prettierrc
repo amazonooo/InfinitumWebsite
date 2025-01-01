@@ -1,15 +1,7 @@
 {
-  "prettier.semi": false,
-	"prettier.useTabs": true,
-	"prettier.singleQuote": true,
-	"prettier.jsxSingleQuote": true,
-	"editor.codeActionsOnSave": {
-		"source.organizeImports": "never"
-	},
-	"[prisma]": {
-		"editor.defaultFormatter": "Prisma.prisma"
-	},
-	"prettier.arrowParens": "avoid",
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.inlineSuggest.enabled": true,
+	"semi": false,
+	"useTabs": true,
+	"singleQuote": true,
+	"jsxSingleQuote": true,
+	"arrowParens": "avoid"
 }
