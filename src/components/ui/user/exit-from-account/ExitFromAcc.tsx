@@ -5,29 +5,28 @@ import { authService } from '@/services/auth.service'
 import { ResponseError } from '@/types/error.types'
 import { useMutation } from '@tanstack/react-query'
 import { LogOut } from 'lucide-react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 
 export default function ExitFromAcc() {
-  const router = useRouter()
-  const { setIsAuthenticated } = useAuth()
+	const router = useRouter()
+	const { setIsAuthenticated, setUser } = useAuth()
 
-  const { mutate: logout } = useMutation({
-    mutationKey: ['logout from acc'],
-    mutationFn: () => authService.logout(),
-    onSuccess: () => {
-      setIsAuthenticated(false)
-      router.replace('/')
-      toast.success('Успешный выход')
-    },
-    onError: (error: ResponseError) => {
-      toast.error('Что-то пошло не так')
-      console.log(error.status)
-    }
-  })
+	const { mutate: logout } = useMutation({
+		mutationKey: ['logout'],
+		mutationFn: () => authService.logout(),
+		onSuccess: () => {
+			setIsAuthenticated(false)
+			setUser(null)
+			router.replace('/')
+			toast.success('Успешный выход')
+		},
+		onError: (error: ResponseError) => {
+			toast.error('Что-то пошло не так')
+		},
+	})
 
-  return (
+	return (
 		<button
 			onClick={() => logout()}
 			className='relative inline-flex transition-opacity border-none outline-none bg-transparent p-0 whitespace-nowrap group items-center'

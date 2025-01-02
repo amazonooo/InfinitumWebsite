@@ -6,24 +6,42 @@ import { authService } from '@/services/auth.service'
 import { toast } from 'react-toastify'
 import { ResponseError } from '@/types/error.types'
 import { Button } from '../../button'
+import { useAuth } from '@/hooks/useAuth'
 
 export default function Logout() {
-  const router = useRouter()
+	const router = useRouter()
 
-  const { mutate: logout } = useMutation({
-    mutationKey: ['logout'],
-    mutationFn: () => authService.logout(),
-    onSuccess: () => {
-      toast.success('Успешный выход')
-      router.push('/login')
-    },
-    onError: (error: ResponseError) => {
-      toast.error('Что-то пошло не так')
-      console.log(error.status)
-    }
-  })
+	const { setIsAuthenticated, setUser } = useAuth()
 
-  return (
+	const { mutate: logout } = useMutation({
+		mutationKey: ['logout'],
+		mutationFn: () => authService.logout(),
+		onSuccess: () => {
+			setIsAuthenticated(false)
+			setUser(null)
+			toast.success('Успешный выход')
+			router.push('/')
+		},
+		onError: (error: ResponseError) => {
+			toast.error('Что-то пошло не так')
+		},
+	})
+
+	const { mutate: logoutEverywhere } = useMutation({
+		mutationKey: ['logout-everywhere'],
+		mutationFn: () => authService.logoutEverywhere(),
+		onSuccess: () => {
+			setIsAuthenticated(false)
+			setUser(null)
+			toast.success('Успешный выход')
+			router.push('/')
+		},
+		onError: (error: ResponseError) => {
+			toast.error('Что-то пошло не так')
+		},
+	})
+
+	return (
 		<div className='flex items-center justify-between border-b border-b-white/[0.2] pb-5'>
 			<h2 className='text-xs sm:text-base md:text-lg whitespace-nowrap'>
 				Выход
@@ -33,7 +51,7 @@ export default function Logout() {
 					Выйти из аккаунта
 				</Button>
 				<Button
-					onClick={() => logout()}
+					onClick={() => logoutEverywhere()}
 					className='h-11'
 					variant={'logout'}
 				>

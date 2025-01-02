@@ -3,7 +3,7 @@ import axios, { type CreateAxiosDefaults } from 'axios'
 import { errorCatch } from './error'
 import {
 	getAccessToken,
-	removeFromStorage
+	removeFromStorage,
 } from '@/services/auth-token.service'
 import { authService } from '@/services/auth.service'
 import { API_URL, URL } from '@/constants/api.constants'

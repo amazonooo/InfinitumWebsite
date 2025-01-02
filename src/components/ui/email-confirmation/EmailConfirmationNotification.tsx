@@ -2,55 +2,40 @@
 
 import { useAuth } from '@/hooks/useAuth'
 import { userService } from '@/services/user.service'
-import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import styles from '@/components/ui/field/Field.module.scss'
-import { IUser } from '@/types/user.types'
 import { ResponseError } from '@/types/error.types'
-
-interface IEmailConfirmationNotification {
-	user: IUser
-}
+import { useQueryClient } from '@tanstack/react-query'
 
 export function EmailConfirmationNotification() {
-	const { isEmailConfirmed, setIsEmailConfirmed, isAuthenticated, setUser } =
-		useAuth()
+	const { isEmailConfirmed, isAuthenticated } = useAuth()
 
-	if (!isAuthenticated) {
+	if (!isAuthenticated || isEmailConfirmed) {
 		return null
 	}
 
+	const queryClient = useQueryClient()
+
 	const handleResendConfirmation = async () => {
 		try {
-			if (isEmailConfirmed) {
-				toast.success('Почта уже подтверждена')
-				return
-			}
-
 			await userService.emailConfirmation()
-			toast.success('Письмо отправлено')
-			setIsEmailConfirmed(true)
-			const userProfile: IEmailConfirmationNotification = await userService.getUserProfile()
-			setUser(userProfile)
+			toast.success('Письмо с подтверждением отправлено')
 		} catch (error: ResponseError | any) {
 			if (error.status && error.status === 400) {
 				toast.success('Почта уже подтверждена')
+				queryClient.invalidateQueries({
+					queryKey: ['userProfile'],
+				})
 			}
 		}
 	}
 
-	useEffect(() => {
-		if (isEmailConfirmed) {
-			toast.success('Почта подтверждена')
-		}
-	}, [isEmailConfirmed])
-
-	return !isEmailConfirmed ? (
+	return (
 		<div className='fixed bottom-10 right-5 bg-main-black border border-white/20 text-zinc-200 p-4 rounded-lg shadow-lg z-50 flex flex-col items-center justify-center'>
 			<h1 className='mb-5'>Пожалуйста, подтвердите ваш email!</h1>
 			<button onClick={handleResendConfirmation} className={styles.form_btn}>
 				Отправить письмо
 			</button>
 		</div>
-	) : null
+	)
 }

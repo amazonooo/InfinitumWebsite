@@ -10,11 +10,12 @@ export function useProfileData() {
 	} = useQuery<IUserProfile>({
 		queryKey: ['userProfile'],
 		queryFn: async () => {
-			const profile = await userService.getUserProfile()
-			if (!profile) {
-				throw new Error('Профиль не загружен')
+			try {
+				const profile = await userService.getUserProfile()
+				return profile
+			} catch (error) {
+				throw error
 			}
-			return profile
 		},
 		staleTime: 5 * 60 * 1000,
 		refetchOnWindowFocus: false,
@@ -23,6 +24,6 @@ export function useProfileData() {
 	return {
 		userProfile,
 		isLoading,
-		error: error instanceof Error ? error.message : null,
+		error: error,
 	}
 }

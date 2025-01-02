@@ -5,10 +5,8 @@ import { CircleUserRound, LogOut, User } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
 import { m } from 'framer-motion'
-import { FaUserAstronaut } from 'react-icons/fa6'
 import ExitFromAcc from '../user/exit-from-account/ExitFromAcc'
 import { useAuth } from '@/hooks/useAuth'
-import { useProfileData } from '@/hooks/useProfileData'
 import { Avatar, AvatarFallback, AvatarImage } from '../avatar'
 
 interface IDropdown {
@@ -16,34 +14,32 @@ interface IDropdown {
 }
 
 export default function Dropdown({ closeMenu }: IDropdown) {
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+	const [dropdownOpen, setDropdownOpen] = useState(false)
 
-  const dropdownRef = useRef<HTMLDivElement>(null)
-  const buttonRef = useRef<HTMLDivElement>(null)
+	const dropdownRef = useRef<HTMLDivElement>(null)
+	const buttonRef = useRef<HTMLDivElement>(null)
 
-	const { isAuthenticated } = useAuth()
+	const { isAuthenticated, user } = useAuth()
 
-  const handleClickOutside = (event: any) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target) &&
-      buttonRef.current &&
-      !buttonRef.current.contains(event.target)
-    ) {
-      setDropdownOpen(false)
-    }
-  }
+	const handleClickOutside = (event: any) => {
+		if (
+			dropdownRef.current &&
+			!dropdownRef.current.contains(event.target) &&
+			buttonRef.current &&
+			!buttonRef.current.contains(event.target)
+		) {
+			setDropdownOpen(false)
+		}
+	}
 
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside)
-    return () => {
-      document.removeEventListener('click', handleClickOutside)
-    }
-  }, [])
+	useEffect(() => {
+		document.addEventListener('click', handleClickOutside)
+		return () => {
+			document.removeEventListener('click', handleClickOutside)
+		}
+	}, [])
 
-	const { userProfile } = useProfileData()
-
-  return (
+	return (
 		<div
 			ref={buttonRef}
 			onClick={
@@ -52,9 +48,9 @@ export default function Dropdown({ closeMenu }: IDropdown) {
 			className={cn(isAuthenticated ? 'relative items-center flex' : '')}
 		>
 			{isAuthenticated ? (
-				userProfile?.user.avatarUrl ? (
+				user?.avatarUrl ? (
 					<img
-						src={userProfile.user.avatarUrl}
+						src={user.avatarUrl}
 						alt='User Avatar'
 						className='w-8 h-8 rounded-full cursor-pointer'
 					/>
