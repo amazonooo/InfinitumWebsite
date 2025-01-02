@@ -9,19 +9,19 @@ export interface IUser {
 	email: string
 	username: string
 	displayName: string
+	isEmailConfirmed: boolean
 	ipHistory: string[]
 	lastIp: string
 	telegramId: string | null
-	balance: number
-	money: number
 	banned: boolean
 	banReason: string
-	bannedAt: number | null
 	banEnds: number | null
+	bannedAt: number | null
 	banGiverId: string | null
 	banGiverNickname: string | null
 	warns: number
-	emailConfirmed: boolean
+	balance: number
+	money: number
 }
 
 export interface IPlayerServerStats {

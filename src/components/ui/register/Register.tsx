@@ -53,33 +53,31 @@ export default function Register() {
 		reset,
 		trigger,
 		setValue,
+		setError,
+		clearErrors,
+		getValues,
 	} = useForm<IAuthForm>({
 		mode: 'onChange',
 	})
 
 	const handleButtonClick = () => {
 		setIsButtonClicked(true)
-
-		if (errors.email || errors.username || errors.password) {
-			setButtonKey(prevKey => prevKey + 1)
-			toast.error('Пожалуйста, заполните все поля')
-		}
-		if (usernameError) {
-			toast.error('Имя пользователя уже занято')
-		}
-		if (emailError) {
-			toast.error('Пользователь с таким email уже зарегистрирован')
-		}
-		if (isShowPassword !== isShowConfirmPassword) {
-			toast.error('Пароли не совпадают')
-		}
 	}
 
 	const onSubmit: SubmitHandler<IAuthForm> = data => {
+		if (errors.email || errors.username || errors.password) {
+			setButtonKey(prevKey => prevKey + 1)
+			return toast.error('Пожалуйста, заполните все поля')
+		}
+		if (usernameError) {
+			return toast.error('Имя пользователя уже занято')
+		}
+		if (emailError) {
+			return toast.error('Пользователь с таким email уже зарегистрирован')
+		}
 		const result = zxcvbn(data.password)
 		if (result.score <= 1) {
-			setPasswordStrengthError('Пароль слишком простой')
-			return
+			return setPasswordStrengthError('Пароль слишком простой')
 		}
 		registerMode(data)
 	}
@@ -108,8 +106,38 @@ export default function Register() {
 		setValue(type, value)
 		await trigger(type)
 
-		if (!errors.username) {
+		if (
+			(!errors.username && type === 'username') ||
+			(!errors.email && type === 'email')
+		) {
 			debouncedCheck(value, type)
+		}
+	}
+
+	const validatePasswords = async (
+		e: React.ChangeEvent<HTMLInputElement>,
+		type: 'password' | 'confirmPassword'
+	) => {
+		const value = e.target.value
+		setValue(type, value)
+
+		const password = getValues('password')
+		const confirmPassword = getValues('confirmPassword')
+
+		await trigger(type)
+		if (
+			!errors.confirmPassword &&
+			confirmPassword &&
+			password !== confirmPassword
+		) {
+			setError('password', {
+				type: 'manual',
+				message: 'Passwords do not match',
+			})
+		} else {
+			clearErrors('password')
+			setPasswordStrengthError('')
+			await trigger(type)
 		}
 	}
 
@@ -221,23 +249,19 @@ export default function Register() {
 													'Пароль должен содержать минимум 8 символов',
 												maxLength: value =>
 													value.length <= 128 ||
-													'Пароль должен содержать максимум 128 символов',
+													'Пароль должен содержать не более 128 символов',
 												hasLowerCase: value =>
 													/[a-z]/.test(value) ||
 													'Пароль должен содержать хотя бы одну строчную букву',
 												hasNumber: value =>
 													/[0-9]/.test(value) ||
 													'Пароль должен содержать хотя бы одну цифру',
+												// notMatch: value =>
+												// 	confirmPassword &&
+												// 	(value === confirmPassword || 'Пароли не совпадают'),
 											},
 										})}
-										onBlur={e => {
-											const result = zxcvbn(e.target.value)
-											if (result.score <= 1 && e.target.value.length > 0) {
-												setPasswordStrengthError('Пароль слишком простой')
-											} else {
-												setPasswordStrengthError('')
-											}
-										}}
+										onChange={e => validatePasswords(e, 'password')}
 									/>
 									<div
 										className={styles.icon}
@@ -267,48 +291,38 @@ export default function Register() {
 										type={isShowConfirmPassword ? 'text' : 'password'}
 										{...register('confirmPassword', {
 											required: true,
-											// validate: {
-											// 	minLength: value =>
-											// 		value.length >= 8 ||
-											// 		'Пароль должен содержать минимум 8 символов',
-											// 	maxLength: value =>
-											// 		value.length <= 128 ||
-											// 		'Пароль должен содержать максимум 128 символов',
-											// 	hasLowerCase: value =>
-											// 		/[a-z]/.test(value) ||
-											// 		'Пароль должен содержать хотя бы одну строчную букву',
-											// 	hasNumber: value =>
-											// 		/[0-9]/.test(value) ||
-											// 		'Пароль должен содержать хотя бы одну цифру',
-											// },
+											validate: {
+												minLength: value =>
+													value.length >= 8 ||
+													'Пароль должен содержать минимум 8 символов',
+												maxLength: value =>
+													value.length <= 128 ||
+													'Пароль должен содержать максимум 128 символов',
+												hasLowerCase: value =>
+													/[a-z]/.test(value) ||
+													'Пароль должен содержать хотя бы одну строчную букву',
+												hasNumber: value =>
+													/[0-9]/.test(value) ||
+													'Пароль должен содержать хотя бы одну цифру',
+												// notMatch: value =>
+												// 	password &&
+												// 	(value === password || 'Пароли не совпадают'),
+											},
 										})}
-										// onBlur={e => {
-										// 	const result = zxcvbn(e.target.value)
-										// 	if (result.score <= 1 && e.target.value.length > 0) {
-										// 		setPasswordStrengthError('Пароль слишком простой')
-										// 	} else {
-										// 		setPasswordStrengthError('')
-										// 	}
-										// }}
+										onChange={e => validatePasswords(e, 'confirmPassword')}
 									/>
 									<div
 										className={styles.icon}
-										onClick={() => setIsShowConfirmPassword(!isShowPassword)}
+										onClick={() => setIsShowConfirmPassword(!isShowConfirmPassword)}
 									>
-										{isShowPassword ? <Eye /> : <EyeOff />}
+										{isShowConfirmPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{/* {errors.confirmPassword ? (
+								{errors.confirmPassword && (
 									<p className='text-red-500 text-sm mb-1'>
 										{errors.confirmPassword.message}
 									</p>
-								) : (
-									passwordStrengthError && (
-										<p className='text-red-500 text-sm mb-1'>
-											{passwordStrengthError}
-										</p>
-									)
-								)} */}
+								)}
 								<div className='mt-5 flex gap-x-3'>
 									<Checkbox
 										checked={isChecked}

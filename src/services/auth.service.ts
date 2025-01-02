@@ -1,4 +1,4 @@
-import { axiosClassic } from '@/api/interceptors'
+import { axiosClassic, axiosWithAuth } from '@/api/interceptors'
 import {
 	removeFromStorage,
 	saveAccessTokenToStorage,
@@ -51,6 +51,14 @@ export const authService = {
 
 	async logout() {
 		const response = await axiosClassic.post<boolean>('auth/logout')
+
+		if (response.data) removeFromStorage()
+
+		return response
+	},
+
+	async logoutEverywhere() {
+		const response = await axiosWithAuth.post<boolean>('auth/logout-everywhere')
 
 		if (response.data) removeFromStorage()
 
