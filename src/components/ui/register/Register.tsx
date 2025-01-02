@@ -2,7 +2,7 @@
 
 import { authService } from '@/services/auth.service'
 import { IAuthForm } from '@/types/auth.types'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
@@ -31,18 +31,20 @@ export default function Register() {
 
 	const router = useRouter()
 
-	const { setIsAuthenticated } = useAuth()
+	const queryClient = useQueryClient()
 
 	const { mutate: registerMode } = useMutation({
 		mutationKey: ['register'],
 		mutationFn: (data: IAuthForm) => authService.register(data),
 		onSuccess: () => {
-			setIsAuthenticated(true)
+			queryClient.invalidateQueries({
+				queryKey: ['userProfile'],
+			})
 			router.replace('/profile'), toast.success('Успешная регистрация')
 			reset()
 		},
 		onError: error => {
-			console.log('Ошибка регистрации: ', error)
+			toast.error('Ошибка регистрации')
 		},
 	})
 
