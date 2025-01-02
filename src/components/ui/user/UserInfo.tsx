@@ -9,14 +9,19 @@ import Information from './information/Information'
 
 export default function UserInfo() {
 	const { userProfile, isLoading } = useProfileData()
-	console.log(userProfile)
 
 	useEffect(() => {
 		isLoading
 	}, [userProfile])
 
 	return (
-		<Suspense fallback={<div><Loader /></div>}>
+		<Suspense
+			fallback={
+				<div>
+					<Loader />
+				</div>
+			}
+		>
 			<div className='mb-20'>
 				<Information />
 			</div>

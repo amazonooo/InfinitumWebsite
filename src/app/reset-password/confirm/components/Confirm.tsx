@@ -17,7 +17,7 @@ import { PROJECT_NAME } from '@/constants/api.constants'
 
 export interface IResetPasswordConfirmForm {
 	password: string
-	passwordRepeat: string
+	confirmPassword: string
 }
 
 interface IResetPasswordData {
@@ -26,8 +26,8 @@ interface IResetPasswordData {
 }
 
 export default function Confirm() {
-	const [isShowNewPassword, setIsShowNewPassword] = useState(false)
-	const [isShowAgreePassword, setIsShowAgreePassword] = useState(false)
+	const [isShowPassword, setIsShowPassword] = useState(false)
+	const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false)
 	const [isButtonClicked, setIsButtonClicked] = useState(false)
 	const [passwordStrengthError, setPasswordStrengthError] = useState('')
 
@@ -56,22 +56,50 @@ export default function Confirm() {
 		handleSubmit,
 		formState: { errors, isValid },
 		reset,
+		getValues,
+		setValue,
+		trigger,
+		setError,
+		clearErrors,
 	} = useForm<IResetPasswordConfirmForm>({
 		mode: 'onChange',
 	})
 
 	const onSubmit: SubmitHandler<IResetPasswordConfirmForm> = data => {
 		if (!token) {
-			toast.error('Токен отсутствует')
-			return
+			router.push('/reset-password')
+			return toast.error('Срок действия ссылки восстановления пароля истёк')
 		}
-
-		if (data.password !== data.passwordRepeat) {
-			toast.error('Пароли не совпадают')
-			return
+		const result = zxcvbn(data.password)
+		if (result.score <= 1) {
+			return setPasswordStrengthError('Пароль слишком простой')
 		}
-
 		confirm({ password: data.password, token })
+	}
+
+	const validatePasswords = async (
+		e: React.ChangeEvent<HTMLInputElement>,
+		type: 'password' | 'confirmPassword'
+	) => {
+		const value = e.target.value
+		setValue(type, value)
+
+		const password = getValues('password')
+		const confirmPassword = getValues('confirmPassword')
+
+		await trigger(type)
+		if (!errors.password && confirmPassword && password !== confirmPassword) {
+			setError('password', {
+				type: 'manual',
+				message: 'Пароли не совпадают',
+			})
+		} else if (confirmPassword && password === confirmPassword) {
+			clearErrors('password')
+			await trigger('password')
+		} else {
+			setPasswordStrengthError('')
+			await trigger(type)
+		}
 	}
 
 	return (
@@ -107,7 +135,7 @@ export default function Confirm() {
 									<input
 										className='bg-transparent outline-none'
 										placeholder='Пароль'
-										type={isShowNewPassword ? 'text' : 'password'}
+										type={isShowPassword ? 'text' : 'password'}
 										{...register('password', {
 											required: true,
 											validate: {
@@ -125,31 +153,25 @@ export default function Confirm() {
 													'Пароль должен содержать хотя бы одну цифру',
 											},
 										})}
-										onBlur={e => {
-											const result = zxcvbn(e.target.value)
-											if (result.score <= 1) {
-												setPasswordStrengthError('Пароль слишком простой')
-											} else {
-												setPasswordStrengthError('')
-											}
-										}}
+										onChange={e => validatePasswords(e, 'password')}
 									/>
 									<div
 										className={styles.icon}
-										onClick={() => setIsShowNewPassword(!isShowNewPassword)}
+										onClick={() => setIsShowPassword(!isShowPassword)}
 									>
-										{isShowNewPassword ? <Eye /> : <EyeOff />}
+										{isShowPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{passwordStrengthError && (
-									<p className='text-red-500 text-sm mb-1'>
-										{passwordStrengthError}
-									</p>
-								)}
-								{errors.password && (
+								{errors.password ? (
 									<p className='text-red-500 text-sm mb-1'>
 										{errors.password.message}
 									</p>
+								) : (
+									passwordStrengthError && (
+										<p className='text-red-500 text-sm mb-1'>
+											{passwordStrengthError}
+										</p>
+									)
 								)}
 								<label className={cn(styles.field, 'mb-2 mt-6')}>
 									<div className={styles.icon}>
@@ -158,8 +180,8 @@ export default function Confirm() {
 									<input
 										className='bg-transparent outline-none truncate'
 										placeholder='Введи новый пароль повторно'
-										type={isShowAgreePassword ? 'text' : 'password'}
-										{...register('passwordRepeat', {
+										type={isShowConfirmPassword ? 'text' : 'password'}
+										{...register('confirmPassword', {
 											required: true,
 											// validate: {
 											// 	minLength: value =>
@@ -176,34 +198,22 @@ export default function Confirm() {
 											// 		'Пароль должен содержать хотя бы одну цифру',
 											// },
 										})}
-										// onBlur={e => {
-										// 	const result = zxcvbn(e.target.value)
-										// 	if (result.score <= 1) {
-										// 		setPasswordStrengthError(
-										// 			'Пароль слишком простой'
-										// 		)
-										// 	} else {
-										// 		setPasswordStrengthError('')
-										// 	}
-										// }}
+										onChange={e => validatePasswords(e, 'confirmPassword')}
 									/>
 									<div
 										className={styles.icon}
-										onClick={() => setIsShowAgreePassword(!isShowAgreePassword)}
+										onClick={() =>
+											setIsShowConfirmPassword(!isShowConfirmPassword)
+										}
 									>
-										{isShowAgreePassword ? <Eye /> : <EyeOff />}
+										{isShowConfirmPassword ? <Eye /> : <EyeOff />}
 									</div>
 								</label>
-								{/* {passwordStrengthError && (
+								{errors.confirmPassword && (
 									<p className='text-red-500 text-sm mb-1'>
-										{passwordStrengthError}
+										{errors.confirmPassword.message}
 									</p>
 								)}
-								{errors.passwordRepeat && (
-									<p className='text-red-500 text-sm mb-1'>
-										{errors.passwordRepeat.message}
-									</p>
-								)} */}
 								<div className='mb-3 mt-8 text-center'>
 									<button
 										type='submit'
@@ -212,10 +222,10 @@ export default function Confirm() {
 											{
 												[styles.buttonError]:
 													isButtonClicked &&
-													(errors.password || errors.passwordRepeat),
+													(errors.password || errors.confirmPassword),
 												[styles.form_btn]: !(
 													isButtonClicked &&
-													(errors.password || errors.passwordRepeat)
+													(errors.password || errors.confirmPassword)
 												),
 											},
 											'disabled:opacity-60 disabled:cursor-default disabled:scale-100'

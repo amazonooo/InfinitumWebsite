@@ -32,8 +32,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		if (userProfile) {
 			setUser(userProfile.user)
-			setIsAuthenticated(true)
 			setIsEmailConfirmed(userProfile.user.isEmailConfirmed)
+			setIsAuthenticated(true)
 		} else {
 			setIsAuthenticated(false)
 			setUser(null)

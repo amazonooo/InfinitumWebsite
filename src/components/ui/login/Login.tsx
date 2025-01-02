@@ -6,7 +6,7 @@ import { authService } from '@/services/auth.service'
 import { ILoginForm } from '@/types/auth.types'
 import { ResponseError } from '@/types/error.types'
 import { slideInFromLeft, slideInFromRight } from '@/utils/motion'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -15,27 +15,27 @@ import styles from '../field/Field.module.scss'
 import { CircleUser, Eye, EyeOff, KeyRound } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
-import { useAuth } from '@/hooks/useAuth'
 
 export default function Login() {
 	const [isShowPassword, setIsShowPassword] = useState(false)
 	const [isButtonClicked, setIsButtonClicked] = useState(false)
 	const [buttonKey, setButtonKey] = useState(0)
 
-	const { setIsAuthenticated } = useAuth()
-
 	const router = useRouter()
+
+	const queryClient = useQueryClient()
 
 	const { mutate: login } = useMutation({
 		mutationKey: ['login'],
 		mutationFn: (data: ILoginForm) => authService.login(data),
 		onSuccess: () => {
-			setIsAuthenticated(true)
+			queryClient.invalidateQueries({
+				queryKey: ['userProfile'],
+			})
 			router.push('/profile')
 			toast.success('Успешный вход')
 		},
 		onError: (error: ResponseError) => {
-			setIsAuthenticated(false)
 			toast.dismiss()
 			if (error.status && error.status === 401) {
 				toast.error('Указан неверный логин или пароль')

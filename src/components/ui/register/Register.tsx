@@ -125,17 +125,15 @@ export default function Register() {
 		const confirmPassword = getValues('confirmPassword')
 
 		await trigger(type)
-		if (
-			!errors.confirmPassword &&
-			confirmPassword &&
-			password !== confirmPassword
-		) {
+		if (!errors.password && confirmPassword && password !== confirmPassword) {
 			setError('password', {
 				type: 'manual',
-				message: 'Passwords do not match',
+				message: 'Пароли не совпадают',
 			})
-		} else {
+		} else if (confirmPassword && password === confirmPassword) {
 			clearErrors('password')
+			await trigger('password')
+		} else {
 			setPasswordStrengthError('')
 			await trigger(type)
 		}
@@ -256,9 +254,6 @@ export default function Register() {
 												hasNumber: value =>
 													/[0-9]/.test(value) ||
 													'Пароль должен содержать хотя бы одну цифру',
-												// notMatch: value =>
-												// 	confirmPassword &&
-												// 	(value === confirmPassword || 'Пароли не совпадают'),
 											},
 										})}
 										onChange={e => validatePasswords(e, 'password')}
@@ -291,29 +286,28 @@ export default function Register() {
 										type={isShowConfirmPassword ? 'text' : 'password'}
 										{...register('confirmPassword', {
 											required: true,
-											validate: {
-												minLength: value =>
-													value.length >= 8 ||
-													'Пароль должен содержать минимум 8 символов',
-												maxLength: value =>
-													value.length <= 128 ||
-													'Пароль должен содержать максимум 128 символов',
-												hasLowerCase: value =>
-													/[a-z]/.test(value) ||
-													'Пароль должен содержать хотя бы одну строчную букву',
-												hasNumber: value =>
-													/[0-9]/.test(value) ||
-													'Пароль должен содержать хотя бы одну цифру',
-												// notMatch: value =>
-												// 	password &&
-												// 	(value === password || 'Пароли не совпадают'),
-											},
+											// validate: {
+											// 	minLength: value =>
+											// 		value.length >= 8 ||
+											// 		'Пароль должен содержать минимум 8 символов',
+											// 	maxLength: value =>
+											// 		value.length <= 128 ||
+											// 		'Пароль должен содержать максимум 128 символов',
+											// 	hasLowerCase: value =>
+											// 		/[a-z]/.test(value) ||
+											// 		'Пароль должен содержать хотя бы одну строчную букву',
+											// 	hasNumber: value =>
+											// 		/[0-9]/.test(value) ||
+											// 		'Пароль должен содержать хотя бы одну цифру',
+											// },
 										})}
 										onChange={e => validatePasswords(e, 'confirmPassword')}
 									/>
 									<div
 										className={styles.icon}
-										onClick={() => setIsShowConfirmPassword(!isShowConfirmPassword)}
+										onClick={() =>
+											setIsShowConfirmPassword(!isShowConfirmPassword)
+										}
 									>
 										{isShowConfirmPassword ? <Eye /> : <EyeOff />}
 									</div>
