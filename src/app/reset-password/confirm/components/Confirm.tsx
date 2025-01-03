@@ -117,6 +117,16 @@ export default function Confirm() {
 				</m.div>
 				<m.div
 					variants={slideInFromLeft(0.2)}
+					className='absolute top-12 xl:left-16 invisible xl:visible xl:-translate-x-0 z-[20]'
+				>
+					<Link href='/'>
+						<h1 className='Welcome-text font-bold text-2xl Welcome-box items-center px-3 py-1.5'>
+							{PROJECT_NAME}
+						</h1>
+					</Link>
+				</m.div>
+				<m.div
+					variants={slideInFromLeft(0.2)}
 					className='flex items-center justify-center h-screen isolate z-[10] relative px-5 sm:px-10 md:px-15 lg:px-28 xl:px-[182.5px]'
 				>
 					<div className='flex flex-row gap-36'>

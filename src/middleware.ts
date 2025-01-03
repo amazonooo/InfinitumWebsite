@@ -11,16 +11,16 @@ export async function middleware(request: NextRequest) {
 		url.includes(ENDPOINTS.LOGIN) || url.includes(ENDPOINTS.REGISTER)
 	const isResetPasswordPage = url.includes(ENDPOINTS.RESET_PASSWORD)
 
-	if (isAuthPage || isResetPasswordPage) {
-		if (refreshToken)
-			return NextResponse.redirect(new URL(ENDPOINTS.PROFILE, url))
+	// if (isAuthPage || isResetPasswordPage) {
+	// 	if (refreshToken)
+	// 		return NextResponse.redirect(new URL(ENDPOINTS.PROFILE, url))
 
-		return NextResponse.next()
-	}
+	// 	return NextResponse.next()
+	// }
 
-	if (!refreshToken) {
-		return NextResponse.redirect(new URL(ENDPOINTS.LOGIN, url))
-	}
+	// if (!refreshToken) {
+	// 	return NextResponse.redirect(new URL(ENDPOINTS.LOGIN, url))
+	// }
 
 	return NextResponse.next()
 }

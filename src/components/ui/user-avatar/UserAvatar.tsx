@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ChangeEvent } from 'react'
 import { toast } from 'react-toastify'
 import { FaEdit } from 'react-icons/fa'
 import { Skeleton } from '../skeleton'
 import { useProfileData } from '@/hooks/useProfileData'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 interface UserAvatarProps {
 	defaultAvatar?: string
@@ -13,49 +14,45 @@ interface UserAvatarProps {
 const UserAvatar: React.FC<UserAvatarProps> = ({
 	defaultAvatar = '/default-avatar.png',
 }) => {
-	const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
-	const [isLoading, setIsLoading] = useState(true)
+	const { userProfile, isLoading } = useProfileData()
+	const queryClient = useQueryClient()
+	const [newAvatar, setNewAvatar] = useState<File | null>(null)
 
-	useEffect(() => {
-		const savedAvatar = localStorage.getItem('avatarUrl')
-		setAvatarUrl(savedAvatar || defaultAvatar)
-		setIsLoading(false)
-	}, [defaultAvatar])
+	const mutation = useMutation({
+		mutationKey: ['updateAvatar'],
+		mutationFn: async (avatarUrl: string) => {
+			if(!userProfile) return
+			const updatedProfile = {...userProfile, avatar: avatarUrl}
+			await queryClient.setQueryData(['userProfile'], updatedProfile)
+			return updatedProfile
+		}
+	})
 
-	const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const file = event.target.files?.[0]
-		if (file) {
-			const reader = new FileReader()
+	const handleAvatarChange = (event: ChangeEvent<HTMLInputElement>) => {
+		if(event.target.files && event.target.files[0]) {
+			const file = event.target.files[0]
+			setNewAvatar(file)
 
-			reader.onload = () => {
-				const base64 = reader.result as string
-				const image = new Image()
+			const formData = new FormData()
+			formData.append('avatar', file)
 
-				image.src = base64
-				image.onload = () => {
-					if (image.width === image.height && image.width <= 512) {
-						setAvatarUrl(base64)
-						localStorage.setItem('avatarUrl', base64)
-					} else {
-						toast.error('Некорректное разрешение')
-					}
-				}
+			try {
+				const avatarUrl = URL.createObjectURL(file)
+				mutation.mutate(avatarUrl)
+			} catch (error) {
+				toast.error('Ошибка при загрузке аватара')
 			}
-
-			reader.readAsDataURL(file)
 		}
 	}
-
-	const { userProfile } = useProfileData()
 
 	return (
 		<div className='relative user-avatar text-center group'>
 			<div className='absolute top-0 left-0 w-full h-full transition-all duration-300 opacity-0 bg-black/50 group-hover:opacity-100' />
-			{isLoading ? (
+			{isLoading || !userProfile ? (
 				<Skeleton className='rounded-lg w-28 h-28' />
 			) : (
 				<img
-					src={userProfile?.user.avatarUrl || 'default-avatar.png'}
+					src={userProfile?.user.avatarUrl || defaultAvatar}
 					alt='user-avatar'
 					className='rounded-lg w-28 h-28 border-2 border-primary-pink shadow-md'
 				/>

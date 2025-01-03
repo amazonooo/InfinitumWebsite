@@ -110,6 +110,15 @@ body {
   }
 }
 
+.rules-main {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.rules-main-animate {
+  opacity: 1;
+}
+
 
 /* Уведомления */
 
